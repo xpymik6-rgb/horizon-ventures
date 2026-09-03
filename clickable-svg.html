@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clickable SVG for Confluence — diagrams with working links</title>
+<meta name="description" content="Confluence renders SVG as a flat picture and kills the links inside. Clickable SVG brings them back: click any shape to open the page behind it.">
+<link rel="icon" href="img/csvg-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="clickable-svg.html">Clickable SVG</a>
+      <a href="smart-search.html">Smart Search</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="status">In review at the Atlassian Marketplace</span>
+    <h1>Your diagram is not a picture. It is a map.</h1>
+    <p class="lede">Confluence renders SVG as a flat image and kills every link inside it. Clickable SVG brings those links back, so a box in your architecture map opens the runbook behind it.</p>
+    <div class="actions">
+      <a class="btn" href="https://xpymik6-rgb.github.io/clickable-svg/">Read the documentation</a>
+      <a class="btn ghost" aria-disabled="true" href="#pricing">Marketplace listing pending review</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="prose" style="max-width:66ch">
+      <p>Your team draws diagrams — architecture maps, process flows, floor plans — and puts them into Confluence. But Confluence renders SVG as a flat picture: the links inside are dead, and nobody can click through to the page behind a box.</p>
+      <p>Clickable SVG fixes that. Attach an SVG to a page, drop the macro in, and every link inside the diagram works. Zoom in, pan around, hover a shape to see where it leads. It reads diagrams exported from draw.io, Figma, Illustrator, Inkscape and Visio, and renders Mermaid and PlantUML source as well.</p>
+      <p>Links you set through the app point at the Confluence page itself, not at its URL. Rename the page, move it to another space — the diagram keeps working. No more hunting for broken links after a reorganisation.</p>
+      <p>SVG files can hide scripts, and that is exactly why Confluence refuses to render them live. The app strips every dangerous element before showing the diagram, and tells you honestly what it removed.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap product">
+    <div>
+      <h2>Navigate an architecture map</h2>
+      <p>Each service in the diagram points at the page that documents it. New engineers stop asking where the runbook lives.</p>
+    </div>
+    <div class="shot">
+      <img src="img/csvg-map.png" alt="Architecture diagram inside a Confluence page with clickable service boxes" loading="lazy" width="1840" height="900">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap product flip">
+    <div>
+      <h2>Links that outlive your page tree</h2>
+      <p>The link is bound to the page, not to its address. Move it, rename it, put it in another space — the diagram follows.</p>
+    </div>
+    <div class="shot">
+      <img src="img/csvg-links.png" alt="Setting a link from a diagram shape to a Confluence page" loading="lazy" width="1840" height="900">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap product">
+    <div>
+      <h2>Not only for architects</h2>
+      <p>A floor plan where each room opens its booking page. A process flow where each step opens its instructions. Anything you can draw, you can make walkable.</p>
+    </div>
+    <div class="shot">
+      <img src="img/csvg-plan.png" alt="Floor plan in Confluence where rooms are clickable" loading="lazy" width="1840" height="900">
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2>Pricing</h2>
+    <p class="price"><b>Free for teams up to 10 people.</b> Above that, $2 per user per month, billed by Atlassian with your other apps.</p>
+    <p class="note">A 15-person team pays $30 a month, 50 people pay $100. Cancel from your Atlassian admin at any time.</p>
+    <div class="prose" style="margin-top:26px">
+      <p>The app runs entirely on Atlassian infrastructure under the Runs on Atlassian programme. Diagrams are read and rendered inside your own Confluence site — nothing is sent to us, because we run no servers.</p>
+    </div>
+    <div class="actions" style="margin-top:22px">
+      <a class="btn" href="https://xpymik6-rgb.github.io/clickable-svg/">Documentation</a>
+      <a class="btn ghost" href="mailto:xpymik6@gmail.com">Ask a question</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:xpymik6@gmail.com">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Horizon Ventures — apps for Confluence</title>
+<meta name="description" content="Focused Confluence apps from Horizon Ventures: clickable SVG diagrams, and live page lists built without a query language.">
+<link rel="icon" href="img/csvg-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="clickable-svg.html">Clickable SVG</a>
+      <a href="smart-search.html">Smart Search</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Confluence apps that fix one thing properly.</h1>
+      <p class="lede">Horizon Ventures builds small apps for Confluence Cloud. Two so far: one gives the diagrams on your pages working links, the other builds page lists that keep themselves current.</p>
+      <div class="actions">
+        <a class="btn" href="clickable-svg.html">See Clickable SVG</a>
+        <a class="btn ghost" href="smart-search.html">See Smart Search</a>
+      </div>
+    </div>
+
+    <figure class="demo">
+      <!-- Схема-демонстрация: каждый блок здесь — настоящая ссылка.
+           Ровно то, что делает Clickable SVG внутри Confluence. -->
+      <svg viewBox="0 0 520 340" role="group" aria-label="Diagram where each box links to a section of this site">
+        <path class="wire live" d="M260 108 L260 150 L120 150 L120 196"/>
+        <path class="wire live" d="M260 108 L260 150 L400 150 L400 196"/>
+        <path class="wire" d="M120 268 L120 300 L400 300 L400 268"/>
+
+        <a class="node" href="#about" aria-label="About Horizon Ventures">
+          <rect x="160" y="52" width="200" height="56" rx="2"/>
+          <text x="260" y="78" text-anchor="middle">Horizon Ventures</text>
+          <text class="sub" x="260" y="95" text-anchor="middle">Peru · two apps shipped</text>
+        </a>
+
+        <a class="node" href="clickable-svg.html" aria-label="Clickable SVG">
+          <rect x="30" y="196" width="180" height="72" rx="2"/>
+          <text x="120" y="226" text-anchor="middle">Clickable SVG</text>
+          <text class="sub" x="120" y="245" text-anchor="middle">diagrams keep their links</text>
+        </a>
+
+        <a class="node" href="smart-search.html" aria-label="Smart Search">
+          <rect x="310" y="196" width="180" height="72" rx="2"/>
+          <text x="400" y="226" text-anchor="middle">Smart Search</text>
+          <text class="sub" x="400" y="245" text-anchor="middle">lists that update themselves</text>
+        </a>
+      </svg>
+      <figcaption>Every box above is a working link. Inside Confluence that stops being true — which is where the first app came from.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="clickable-svg">
+  <div class="wrap product">
+    <div>
+      <span class="status">In review at the Atlassian Marketplace</span>
+      <h2>Clickable SVG</h2>
+      <p class="lede">Show SVG diagrams in Confluence with every link inside them working — safely, and without breaking when pages move.</p>
+
+      <ul class="facts">
+        <li>
+          <h3>Every shape becomes a link</h3>
+          <p>Click a box in your architecture map to open its runbook. Click a room on a floor plan to book it. The diagram stops being a picture and becomes a way to navigate.</p>
+        </li>
+        <li>
+          <h3>Links that survive a reorganisation</h3>
+          <p>Links point at the page itself, not at its address. Rename a page or move it to another space and the diagram keeps working.</p>
+        </li>
+        <li>
+          <h3>Safe by design, and honest about it</h3>
+          <p>SVG files can hide scripts — that is why Confluence will not render them live. Every dangerous element is stripped before display, and the app tells you what it removed.</p>
+        </li>
+      </ul>
+
+      <p class="price"><b>Free for teams up to 10.</b> Above that, $2 per user per month.</p>
+      <p class="note"><a href="clickable-svg.html">Full description, documentation and pricing</a></p>
+    </div>
+    <div class="shot">
+      <img src="img/csvg-map.png" alt="An architecture diagram in a Confluence page, with one box highlighted as a link" loading="lazy" width="1840" height="900">
+    </div>
+  </div>
+</section>
+
+<section id="smart-search">
+  <div class="wrap product flip">
+    <div>
+      <span class="status">In review at the Atlassian Marketplace</span>
+      <h2>Smart Search</h2>
+      <p class="lede">Build live lists of Confluence pages from simple conditions — no query language, no manual updating.</p>
+
+      <ul class="facts">
+        <li>
+          <h3>Ask in plain conditions</h3>
+          <p>Pick a space, some labels, "not updated for six months". The app shows in plain English what the list will contain before you save it.</p>
+        </li>
+        <li>
+          <h3>The list keeps itself current</h3>
+          <p>When a page is updated it leaves the list on its own. Nobody has to maintain a page of links that went stale months ago.</p>
+        </li>
+        <li>
+          <h3>CQL when you want it</h3>
+          <p>If you already know the query language, switch to manual mode and write the query yourself.</p>
+        </li>
+      </ul>
+
+      <p class="price"><b>Free for teams up to 10.</b> Above that, $1 per user per month.</p>
+      <p class="note"><a href="smart-search.html">Full description, documentation and pricing</a></p>
+    </div>
+    <div class="shot">
+      <img src="img/ss-list.png" alt="A Confluence page showing a live list of pages built from conditions" loading="lazy" width="1840" height="900">
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <div class="prose">
+      <p>Horizon Ventures E.I.R.L. is a one-person software company registered in Peru. It builds narrow Confluence apps: each one does a single job that Confluence leaves undone, and does it without asking your team to learn anything new.</p>
+      <p>Both apps run entirely on Atlassian infrastructure under the Runs on Atlassian programme. No data is sent to our servers, because there are none — your pages, diagrams and attachments never leave your Atlassian site.</p>
+      <p>Questions, bug reports and feature requests go to <a href="mailto:xpymik6@gmail.com">xpymik6@gmail.com</a>. Support is answered in English, Spanish or Russian.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:xpymik6@gmail.com">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

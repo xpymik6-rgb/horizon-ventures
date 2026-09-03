@@ -1,0 +1,181 @@
+/* Horizon Ventures — общие стили.
+   Идея оформления: инженерный чертёж. Бумага в тонкую сетку, чернильный текст,
+   индиго для конструкции и янтарь для «живой» связи — того, что делают наши
+   приложения: превращают мёртвую картинку в рабочий инструмент. */
+
+:root {
+  --paper:  #edf1f4;
+  --sheet:  #ffffff;
+  --ink:    #17222e;
+  --muted:  #566573;
+  --rule:   #cbd5de;
+  --grid:   #e2e8ee;
+  --indigo: #23478f;
+  --amber:  #b5711a;
+  --measure: 66ch;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  /* сетка как на миллиметровке */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--ink);
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+a { color: var(--indigo); }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+/* ── шапка ─────────────────────────────────────────── */
+
+.top {
+  border-bottom: 1px solid var(--rule);
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(4px);
+}
+.top .wrap {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 24px; padding-top: 18px; padding-bottom: 18px; flex-wrap: wrap;
+}
+.mark {
+  font-weight: 600; font-size: 18px; letter-spacing: -.01em;
+  color: var(--ink); text-decoration: none;
+}
+.mark span { color: var(--indigo); }
+.top nav { display: flex; gap: 22px; font-size: 15px; }
+.top nav a { color: var(--muted); text-decoration: none; }
+.top nav a:hover { color: var(--indigo); }
+
+/* ── общий вид блоков ───────────────────────────────── */
+
+section { padding: 76px 0; border-bottom: 1px solid var(--rule); }
+
+h1 {
+  font-size: clamp(34px, 5.2vw, 56px);
+  line-height: 1.08; letter-spacing: -.025em; font-weight: 600;
+  margin: 0 0 22px; max-width: 18ch;
+}
+h2 {
+  font-size: clamp(26px, 3.4vw, 36px);
+  line-height: 1.15; letter-spacing: -.02em; font-weight: 600;
+  margin: 0 0 18px;
+}
+h3 { font-size: 19px; font-weight: 600; margin: 0 0 8px; letter-spacing: -.01em; }
+
+p { max-width: var(--measure); }
+
+.lede {
+  font-family: "IBM Plex Serif", Georgia, serif;
+  font-size: clamp(18px, 2.2vw, 21px);
+  line-height: 1.65; color: var(--muted); margin: 0 0 30px;
+}
+.prose { font-family: "IBM Plex Serif", Georgia, serif; line-height: 1.7; }
+.prose p { margin: 0 0 18px; }
+
+/* ── кнопки ─────────────────────────────────────────── */
+
+.btn {
+  display: inline-block; padding: 12px 22px; border-radius: 3px;
+  background: var(--indigo); color: #fff; text-decoration: none;
+  font-weight: 500; font-size: 16px; border: 1px solid var(--indigo);
+}
+.btn:hover { background: #1b3a76; }
+.btn.ghost { background: transparent; color: var(--indigo); }
+.btn.ghost:hover { background: rgba(35,71,143,.07); }
+.btn[aria-disabled="true"] {
+  background: transparent; color: var(--muted);
+  border-color: var(--rule); cursor: default;
+}
+.actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.note { font-size: 14.5px; color: var(--muted); margin: 12px 0 0; }
+
+/* ── герой ──────────────────────────────────────────── */
+
+.hero { padding: 84px 0 68px; }
+.hero-grid {
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center;
+}
+.demo { position: relative; }
+.demo svg { width: 100%; height: auto; display: block; }
+.demo figcaption {
+  font-size: 14.5px; color: var(--muted); margin-top: 14px; max-width: 42ch;
+}
+
+/* узлы схемы-демонстрации */
+.node rect {
+  fill: var(--sheet); stroke: var(--rule); stroke-width: 1.5;
+  transition: stroke .15s ease, fill .15s ease;
+}
+.node text { font-size: 13px; fill: var(--ink); font-weight: 500; }
+.node .sub { font-size: 11px; fill: var(--muted); font-weight: 400; }
+.node:hover rect, .node:focus-visible rect { stroke: var(--amber); stroke-width: 2.5; fill: #fffaf2; }
+.node:focus-visible { outline: none; }
+.wire { stroke: var(--rule); stroke-width: 1.5; fill: none; }
+.wire.live { stroke: var(--amber); stroke-dasharray: 5 4; }
+
+/* ── продукты на главной ────────────────────────────── */
+
+.product { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+.product.flip .shot { order: -1; }
+.shot {
+  border: 1px solid var(--rule); border-radius: 3px; overflow: hidden;
+  background: var(--sheet); box-shadow: 0 1px 0 rgba(23,34,46,.06);
+}
+.shot img { width: 100%; height: auto; display: block; }
+
+.facts { margin: 26px 0 30px; padding: 0; list-style: none; }
+.facts li { padding: 13px 0; border-top: 1px solid var(--rule); }
+.facts li:last-child { border-bottom: 1px solid var(--rule); }
+.facts p { margin: 4px 0 0; font-size: 15.5px; color: var(--muted); max-width: 52ch; }
+
+.price {
+  font-family: "IBM Plex Serif", Georgia, serif;
+  font-size: 17px; color: var(--ink);
+}
+.price b { font-weight: 600; }
+
+.status {
+  display: inline-block; font-size: 14px; color: var(--amber);
+  border: 1px solid rgba(181,113,26,.35); background: rgba(181,113,26,.07);
+  padding: 4px 10px; border-radius: 3px; margin-bottom: 18px;
+}
+
+/* ── подвал ─────────────────────────────────────────── */
+
+footer { padding: 54px 0 72px; border-bottom: none; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+footer h3 { font-size: 15px; }
+footer ul { list-style: none; margin: 0; padding: 0; font-size: 15.5px; }
+footer li { margin-bottom: 8px; }
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--indigo); text-decoration: underline; }
+.legal { font-size: 14.5px; color: var(--muted); max-width: 46ch; margin: 0; }
+
+/* ── адаптив ────────────────────────────────────────── */
+
+@media (max-width: 880px) {
+  .hero-grid, .product { grid-template-columns: 1fr; gap: 34px; }
+  .product.flip .shot { order: 0; }
+  .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+  section { padding: 54px 0; }
+  h1 { max-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
