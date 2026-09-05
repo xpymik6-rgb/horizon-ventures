@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Table Export for Confluence — tables to CSV and Excel, a whole space at once</title>
+<meta name="description" content="Export Confluence tables to CSV or Excel. One table, every table on a page, or every table in the whole space into a single workbook. Merged cells stay aligned. Runs on Atlassian.">
+<meta property="og:title" content="Table Export for Confluence">
+<meta property="og:description" content="Get your data out of Confluence tables — a whole space into one Excel workbook.">
+<link rel="canonical" href="https://horizonventures.app/docs/table-export/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+</head>
+<body class="doc">
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<header>
+  <svg class="logo" viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00875A"/><stop offset="100%" stop-color="#36B37E"/>
+    </linearGradient></defs>
+    <rect width="144" height="144" rx="32" fill="url(#g)"/>
+    <rect x="26" y="34" width="60" height="14" rx="3" fill="#fff"/>
+    <rect x="26" y="56" width="60" height="12" rx="3" fill="#fff" fill-opacity="0.8"/>
+    <rect x="26" y="76" width="60" height="12" rx="3" fill="#fff" fill-opacity="0.6"/>
+    <rect x="26" y="96" width="60" height="12" rx="3" fill="#fff" fill-opacity="0.45"/>
+    <path d="M104,58 L104,96" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+    <path d="M88,82 L104,100 L120,82" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+  <h1>Table Export for Confluence</h1>
+  <p class="sub">Get your data out of Confluence tables — a whole space at once.</p>
+  <nav style="margin-top:18px">
+    <a href="#start">Getting started</a>
+    <a href="#space">Whole space</a>
+    <a href="#merged">Merged cells</a>
+    <a href="#privacy-short">Where data goes</a>
+    <a href="#support">Support</a>
+  </nav>
+</header>
+
+<p>
+  Your team keeps budgets, registries and checklists in Confluence tables. Sooner
+  or later somebody needs that data in a spreadsheet — to sum it, chart it, or send
+  it on. Copying by hand works until a table has merged cells; then the columns
+  drift and the numbers stop lining up.
+</p>
+
+<h2 id="start">Getting started</h2>
+
+<ol>
+  <li>Edit the page, type <code>/Table Export</code> and pick the macro.</li>
+  <li>Publish. Every table on the page appears in a list, with its size.</li>
+  <li>Press <b>CSV</b> or <b>Excel</b> next to the table you need.</li>
+</ol>
+
+<div class="note">
+  The macro can sit anywhere on the page — it finds tables above and below itself.
+  A good spot is the very bottom, out of the way of readers.
+</div>
+
+<h3>Three ways to take a table out</h3>
+
+<table>
+  <tr><th>Button</th><th>What you get</th><th>When</th></tr>
+  <tr>
+    <td><b>CSV</b></td>
+    <td>A plain <code>.csv</code> file</td>
+    <td>For importing anywhere: Excel, Google Sheets, Numbers, a database</td>
+  </tr>
+  <tr>
+    <td><b>Excel</b></td>
+    <td>A file Excel opens as a formatted workbook</td>
+    <td>When you want the header row and borders to survive</td>
+  </tr>
+  <tr>
+    <td><b>Copy</b></td>
+    <td>The table in the clipboard</td>
+    <td>When downloads are blocked by company policy — paste straight into a sheet</td>
+  </tr>
+</table>
+
+<h3>Comma or semicolon</h3>
+<p>
+  Pick the separator above the list. Use the semicolon if your Excel treats the
+  comma as a decimal mark — that is the default in most of Europe and Latin
+  America, and it is why exported files sometimes land all in one column.
+</p>
+
+<h2 id="space">Every table in the space, in one workbook</h2>
+
+<p>
+  This is the part hand-copying cannot replace. Press
+  <b>All tables in this space</b> and the app walks the pages of the space, collects
+  every table it finds, and gives you a single Excel workbook.
+</p>
+
+<p>
+  Each table in that workbook is labelled with its own heading and the page it came
+  from. Without the page name, a workbook of fifty tables is unusable — you cannot
+  tell the March budget from the April one.
+</p>
+
+<div class="note">
+  <b>What it reads.</b> Only pages you are allowed to open. The app asks Confluence
+  with your permissions, not its own — it can never pull out a page you could not
+  see yourself.
+</div>
+
+<div class="warn">
+  <b>Limit: 100 pages.</b> Beyond that the scan turns into minutes of waiting and
+  hundreds of requests. If your space is larger, the app takes the first hundred
+  pages and says so plainly rather than hanging.
+</div>
+
+<h2 id="merged">Merged cells do not break the file</h2>
+
+<p>
+  A cell spanning two columns leaves a hole in every naive export, and everything
+  after it shifts one column left. On a budget table that means numbers landing
+  under the wrong heading — the kind of error nobody notices until it matters.
+</p>
+
+<p>
+  This app unrolls merged cells: the value is repeated in each position the merged
+  cell occupied, so every row comes out the same width. Cells with several
+  paragraphs keep their line breaks instead of running together.
+</p>
+
+<h2 id="privacy-short">Where your data goes</h2>
+
+<p>
+  Nowhere. The page body is read with your own permissions, the file is built inside
+  your browser, and the browser hands it to you. The app has no servers of its own
+  and makes no outbound request of any kind. It carries the <b>Runs on Atlassian</b>
+  badge, which means Atlassian verifies this at the platform level, not on our word.
+</p>
+
+<p>
+  For budgets, payroll registries and HR data this is usually the deciding argument:
+  the data never leaves the place where it already lives.
+</p>
+
+<h2 id="limits">Known limits</h2>
+<ul>
+  <li>Whole-space scan stops at 100 pages.</li>
+  <li>The Excel file is a formatted table, not a multi-sheet <code>.xlsx</code>:
+      every table in a space export lands on one sheet, one after another.</li>
+  <li>Images and macros inside cells are not exported — only their text.</li>
+  <li>Tables inside other macros (expand blocks, panels) are read; tables inside
+      other apps' macros may not be, because their content is not part of the page.</li>
+</ul>
+
+<h2 id="support">Support</h2>
+<p>
+  Write to <a href="mailto:xpymik6@gmail.com">xpymik6@gmail.com</a>. If a table
+  comes out wrong, send the page — or just the table — and we will tell you why.
+  We answer within one business day.
+</p>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:xpymik6@gmail.com">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
