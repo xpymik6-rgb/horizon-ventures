@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to find the Confluence pages nobody maintains any more</title>
+<meta name="description" content="Every large wiki hides hundreds of pages nobody has touched in years. Here is how to find them in Confluence Cloud with search filters and CQL, what the built-in tools cannot do, and how to run an audit that stays useful.">
+<link rel="canonical" href="https://horizonventures.app/docs/find-stale-pages-confluence.html">
+<meta property="og:title" content="How to find the Confluence pages nobody maintains any more">
+<meta property="og:description" content="Search filters, CQL, and an audit routine that does not go stale itself.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to find the Confluence pages nobody maintains any more",
+   "description": "Finding stale pages in Confluence Cloud: search filters, CQL through the API, what the built-in tools cannot do, and an audit routine that stays current.",
+   "url": "https://horizonventures.app/docs/find-stale-pages-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {
+     "@type": "Organization",
+     "name": "Horizon Ventures E.I.R.L.",
+     "url": "https://horizonventures.app/"
+   },
+   "datePublished": "2026-09-05",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "How do I find pages that have not been updated in a year in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Use the search filters: search within a space and set the last modified filter to before your cut-off date. For anything more precise, the CQL query space = KEY AND type = page AND lastModified < now(\"-365d\") can be run through the REST API, or through an app that builds the query for you."}},
+    {"@type": "Question", "name": "Can I put the list of stale pages on a Confluence page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not with plain search. Search results live in the search screen and cannot be embedded, so teams usually paste a snapshot into a page, and that snapshot is out of date within weeks. Keeping a live list on a page requires a macro from an app."}},
+    {"@type": "Question", "name": "Is an old page the same as an unused page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Last modified tells you nobody edited it, not that nobody reads it. A stable policy page can be correct and heavily read after three years, while a project page edited last month can be dead. Treat the date as a shortlist, not a verdict."}},
+    {"@type": "Question", "name": "Should stale pages be deleted or archived?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Archive first. Archiving takes a page out of search and navigation while keeping it recoverable, which is usually what people actually want. Delete only after archiving has been in place long enough that nobody has asked for the page back."}}
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to find the pages nobody maintains any more</h1>
+    <p class="sub">Every wiki older than three years is carrying documentation for systems that no longer exist. Here is how to find it in Confluence Cloud, what the built-in tools genuinely do, and how to run the audit so it does not have to be redone by hand every quarter.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Search inside a space and set the last modified filter to a cut-off date, for example before last year. For a sharper cut, the query <code>space = KEY AND type = page AND lastModified &lt; now("-365d")</code> can be run through the Confluence REST API. Both give you a snapshot; keeping that list live on a page needs a macro from an app.</p>
+
+  <h2>Why this piles up</h2>
+
+  <p>Nobody sets out to abandon documentation. It happens because writing a page is somebody's job and retiring one is nobody's. The service gets decommissioned, the project ends, the tool is replaced — and the page stays, indexed and searchable, looking exactly as authoritative as the page next to it that is still true.</p>
+
+  <p>The damage is not storage. It is that a new engineer follows instructions for a system switched off two years ago, and an auditor finds a policy page dated 2023 that contradicts the current one.</p>
+
+  <h2>What Confluence gives you out of the box</h2>
+
+  <h3>Search filters</h3>
+  <p>The advanced search screen lets you narrow by space, by contributor, by label and by last modified date, including "before" a date you choose. For a first pass this is often enough: pick a space, set the date to two years ago, and look at what comes back.</p>
+
+  <h3>CQL through the API</h3>
+  <p>Confluence's query language is more precise than the filter UI, and in Cloud it is available through the REST API. A typical audit query looks like this:</p>
+
+  <p><code>space = ENG AND type = page AND lastModified &lt; now("-365d") ORDER BY lastModified ASC</code></p>
+
+  <p>Add <code>AND label = "policy"</code> to narrow it, or <code>AND creator = "someone"</code> to find what left with a person who has moved on. This is the right tool if somebody on the team is comfortable calling an API and turning JSON into a spreadsheet.</p>
+
+  <h3>Labels and page reports</h3>
+  <p>If your spaces use labels consistently, the built-in macros that list content by label will assemble a page of everything tagged, say, <code>runbook</code>. That does not tell you what is stale, but it does tell you what should have been reviewed.</p>
+
+  <h2>Where the built-in route runs out</h2>
+
+  <div class="cards">
+    <div class="card"><b>Search results cannot live on a page</b>You can find the pages, but you cannot put the finding anywhere. Teams paste a snapshot into a page called "Documentation audit", and the snapshot is wrong within a month.</div>
+    <div class="card"><b>CQL is a skill, not a setting</b>The syntax is fine for an engineer and a wall for the technical writer or the office manager who actually owns the space.</div>
+    <div class="card"><b>An audit that needs rerunning does not get rerun</b>Anything requiring somebody to remember a quarterly chore will survive exactly two quarters.</div>
+  </div>
+
+  <h2>An audit routine that survives contact with reality</h2>
+
+  <p>The mistake is treating this as a one-off cleanup. Do it as a standing list instead.</p>
+
+  <p><strong>1. Pick one space, not the whole site.</strong> A site-wide list of eight hundred pages gets closed and never reopened. One space with forty candidates gets dealt with.</p>
+
+  <p><strong>2. Set the cut-off by content type, not by feel.</strong> Runbooks go stale in six months. Policies live for years. Onboarding material is wrong the moment the tooling changes. One cut-off for everything produces noise.</p>
+
+  <p><strong>3. Sort oldest first.</strong> The bottom of that list is where the obvious corpses are — the page about the office printer on floor three, the setup guide for a laptop model nobody has.</p>
+
+  <p><strong>4. Decide per page: update, archive, or delete.</strong> Most pages deserve archiving. Archiving removes a page from search and navigation while keeping it recoverable, which is what people usually mean when they say "delete it".</p>
+
+  <p><strong>5. Leave the list in place.</strong> This is the step everyone skips. If the list stays on a page and rebuilds itself, next quarter's audit is ten minutes instead of an afternoon, because everything handled has already dropped off it.</p>
+
+  <div class="note">
+    <p>Careful with one thing: "not edited" is not the same as "not used". A page can be correct and heavily read for three years without a single edit. Use the date to build a shortlist, then judge each page on what it says.</p>
+  </div>
+
+  <h2>What to do with what you find</h2>
+
+  <p><strong>Archive rather than delete.</strong> The archived page keeps its history and can be restored, and it stops competing with the current page in search results — which was the real problem.</p>
+
+  <p><strong>Give the survivors an owner.</strong> A page with a named owner and a review date is a page that gets updated. A page owned by "the team" is a page owned by nobody.</p>
+
+  <p><strong>Write the retirement into the process.</strong> If your definition of done for decommissioning a service does not include "archive its documentation", this list will be exactly as long next year.</p>
+
+  <h2>When an app is worth it</h2>
+
+  <p>Apps in this category exist for one reason: to turn the snapshot into something that stays true. The condition sits on a page, the list rebuilds itself as pages change, and a page that somebody finally updated leaves the list on its own.</p>
+
+  <p><strong>Disclosure:</strong> I build one of them, <a href="/smart-search.html">Smart Search</a>. Conditions are picked from dropdowns rather than written in CQL, the app shows in plain English what the list will contain before you save it, and CQL is still there in manual mode if you prefer it. It runs entirely on Atlassian infrastructure, so your pages are read inside your own site and nothing is sent to us. There is a <a href="/smart-search.html#demo2">demo you can click through</a> without installing anything.</p>
+
+  <p>If a quarterly search filter and a spreadsheet work for your team, use those. The audit matters more than the tooling.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Can I see which pages nobody reads, rather than nobody edits?</h3>
+  <p>Views are a different signal from edits, and where page analytics are available on your plan they answer that question better than a date filter. The two lists rarely match: plenty of unread pages are perfectly correct, and some heavily read pages are dangerously out of date.</p>
+
+  <h3>What is a reasonable cut-off?</h3>
+  <p>180 days for operational material, one year for reference, two years before anything gets deleted rather than archived. Adjust once you have seen your first list.</p>
+
+  <h3>Does this work across the whole site?</h3>
+  <p>Technically yes, practically no. Space by space is the only version that gets finished.</p>
+
+  <h3>We are migrating from Data Center. Does the same apply?</h3>
+  <p>The idea does. Some of the tooling does not: Data Center has reporting features Cloud does not, and several audit apps never made the move — see our note on <a href="/docs/connect-end-of-life.html">what the Connect end of life means for admins</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
