@@ -184,3 +184,15 @@ footer a:hover { color: var(--indigo); text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* ── человек на странице о компании ─────────────────────────── */
+
+.person { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+.portrait {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--rule); border-radius: 3px;
+}
+@media (max-width: 880px) {
+  .person { grid-template-columns: 1fr; gap: 24px; }
+  .portrait { max-width: 240px; }
+}
