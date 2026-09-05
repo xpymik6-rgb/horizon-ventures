@@ -98,3 +98,58 @@
   .demo-page { border-left: none; border-top: 1px solid var(--rule); max-height: none; }
   .demo-zoom { margin-left: 0; }
 }
+
+/* ── демо Smart Search: условия и живой список ─────────────── */
+
+.ss-bar {
+  display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-end;
+  padding: 14px; border: 1px solid var(--rule); border-bottom: none;
+  border-radius: 3px 3px 0 0; background: var(--sheet);
+}
+.ss-field { display: flex; flex-direction: column; gap: 5px; }
+.ss-field span { font-size: 13px; color: var(--muted); }
+.ss-field select {
+  font: inherit; font-size: 15px; padding: 7px 9px; min-width: 150px;
+  border: 1px solid var(--rule); border-radius: 3px; background: #fff; color: var(--ink);
+}
+.ss-presets { display: flex; gap: 8px; margin-left: auto; }
+.ss-presets button {
+  font: inherit; font-size: 14px; padding: 7px 12px; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 3px; background: #fff; color: var(--indigo);
+}
+.ss-presets button:hover { border-color: var(--indigo); background: rgba(35,71,143,.06); }
+
+.ss-sentence {
+  max-width: none; /* иначе наследует ограничение ширины обычного абзаца */
+  padding: 13px 16px; border: 1px solid var(--rule); border-bottom: none;
+  background: #f7f9fb; font-family: "IBM Plex Serif", Georgia, serif;
+  font-size: 15.5px; color: var(--ink); margin: 0;
+}
+.ss-sentence b { font-weight: 600; }
+
+.ss-result { border: 1px solid var(--rule); border-radius: 0 0 3px 3px; background: #fff; }
+.ss-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 11px 16px; border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--muted);
+}
+.ss-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.ss-table th {
+  text-align: left; font-weight: 500; font-size: 13px; color: var(--muted);
+  padding: 9px 16px; border-bottom: 1px solid var(--rule);
+}
+.ss-table td { padding: 10px 16px; border-bottom: 1px solid #edf1f4; vertical-align: middle; }
+.ss-table tr:last-child td { border-bottom: none; }
+.ss-name { font-weight: 500; color: var(--indigo); }
+.ss-when { color: var(--muted); white-space: nowrap; }
+.ss-tag {
+  display: inline-block; font-size: 12.5px; color: #55606d;
+  background: #eef2f6; border-radius: 3px; padding: 2px 7px;
+}
+.ss-empty { padding: 26px 16px; color: var(--muted); font-size: 15px; }
+.ss-scroll { max-height: 420px; overflow-y: auto; }
+
+@media (max-width: 880px) {
+  .ss-presets { margin-left: 0; }
+  .ss-field select { min-width: 130px; }
+  .ss-table th:nth-child(2), .ss-table td:nth-child(2) { display: none; }
+}

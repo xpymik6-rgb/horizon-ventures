@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="demo.css">
 </head>
 <body>
 
@@ -32,9 +33,84 @@
     <h1>What are we no longer maintaining?</h1>
     <p class="lede">Confluence search finds a page when you know what you are looking for. It does not answer that question. Smart Search does, as a list that keeps itself current.</p>
     <div class="actions">
-      <a class="btn" href="https://xpymik6-rgb.github.io/clickable-svg/smart-search/">Read the documentation</a>
-      <a class="btn ghost" aria-disabled="true" href="#pricing">Marketplace listing pending review</a>
+      <a class="btn" href="#demo2">Try it here, no install</a>
+      <a class="btn ghost" href="https://xpymik6-rgb.github.io/clickable-svg/smart-search/">Read the documentation</a>
     </div>
+    <p class="note">The Marketplace listing is still in review. The demo below runs in your browser on a made-up wiki.</p>
+  </div>
+</section>
+
+<section id="demo2">
+  <div class="wrap">
+    <h2>Build the list, watch it fill</h2>
+    <p>Below is a wiki of 25 pages, the way a real one looks after a few years. Change the conditions and the list rebuilds itself. Notice the sentence above the results: that is the app telling you, in plain English, what it is about to show.</p>
+
+    <div class="demo-wrap">
+      <div class="ss-bar">
+        <label class="ss-field"><span>Space</span>
+          <select id="ss-space">
+            <option value="any">Any space</option>
+            <option>Engineering</option>
+            <option>IT</option>
+            <option>People</option>
+            <option>Finance</option>
+            <option>Legal</option>
+            <option>Marketing</option>
+          </select>
+        </label>
+        <label class="ss-field"><span>Label</span>
+          <select id="ss-label">
+            <option value="any">Any label</option>
+            <option>runbook</option>
+            <option>process</option>
+            <option>policy</option>
+            <option>reference</option>
+            <option>howto</option>
+            <option>onboarding</option>
+            <option>postmortem</option>
+          </select>
+        </label>
+        <label class="ss-field"><span>Not updated for</span>
+          <select id="ss-age">
+            <option value="0">Any time</option>
+            <option value="90">90 days</option>
+            <option value="180" selected>180 days</option>
+            <option value="365">1 year</option>
+            <option value="730">2 years</option>
+          </select>
+        </label>
+        <label class="ss-field"><span>Sort</span>
+          <select id="ss-sort">
+            <option value="oldest">Oldest first</option>
+            <option value="newest">Newest first</option>
+          </select>
+        </label>
+        <span class="ss-presets">
+          <button type="button" id="ss-preset-stale">Find what everyone forgot</button>
+          <button type="button" id="ss-preset-onboarding">Onboarding index</button>
+        </span>
+      </div>
+
+      <p class="ss-sentence" id="ss-sentence"></p>
+
+      <div class="ss-result">
+        <div class="ss-head">
+          <span>This list is live: it changes as pages change</span>
+          <span id="ss-summary" aria-live="polite"></span>
+        </div>
+        <div class="ss-scroll">
+          <table class="ss-table">
+            <thead>
+              <tr><th>Page</th><th>Space</th><th>Label</th><th>Last updated</th></tr>
+            </thead>
+            <tbody id="ss-rows"></tbody>
+          </table>
+          <p class="ss-empty" id="ss-empty" hidden>Nothing matches these conditions. In Confluence that is an answer too: the list stays empty until a page starts matching.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="demo-hint">In Confluence this macro sits on a page and refreshes itself. Somebody updates a forgotten policy, and it leaves the list on its own, without anyone maintaining the page of links.</p>
   </div>
 </section>
 
@@ -115,5 +191,6 @@
   </div>
 </footer>
 
+<script src="demo-search.js"></script>
 </body>
 </html>
