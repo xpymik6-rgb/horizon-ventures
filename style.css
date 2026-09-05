@@ -169,6 +169,11 @@ footer a:hover { color: var(--indigo); text-decoration: underline; }
 /* ── адаптив ────────────────────────────────────────── */
 
 @media (max-width: 880px) {
+  /* На телефоне схема сжимается, и мелкие подписи превращаются в кашу:
+     убираем второстепенные строки, а названия делаем крупнее. */
+  .node text { font-size: 22px; }
+  .node .sub { display: none; }
+
   .hero-grid, .product { grid-template-columns: 1fr; gap: 34px; }
   .product.flip .shot { order: 0; }
   .foot-grid { grid-template-columns: 1fr; gap: 28px; }
