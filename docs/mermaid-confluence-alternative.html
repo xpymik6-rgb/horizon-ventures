@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mermaid for Confluence alternative — abandoned apps and what to use instead</title>
+<meta name="description" content="Several Mermaid apps for Confluence were abandoned in 2024 and run on the retiring Connect platform. What your options are, including the free ones, and when a paid app is actually worth it.">
+<meta property="og:title" content="Mermaid for Confluence — what to use now">
+<meta property="og:description" content="Abandoned Mermaid apps, free alternatives, and when paying is justified.">
+<link rel="canonical" href="https://horizonventures.app/docs/mermaid-confluence-alternative.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+</head>
+<body class="doc">
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="crumbs"><a href="./">Clickable Diagrams for Confluence</a> → Mermaid apps</div>
+
+<header>
+  <h1>Your Mermaid app for Confluence stopped being maintained</h1>
+  <p class="sub">What the options are — including the free ones.</p>
+</header>
+
+<h2>What happened</h2>
+
+<p>
+  Several apps that render Mermaid diagrams in Confluence were last updated in
+  <b>2024</b> and sit on <b>Connect</b>, the platform Atlassian is retiring. Among
+  them <i>Mermaid for Confluence</i> (around 700 installations) and
+  <i>Mermaid Integration for Confluence</i> (around 590), both last touched in
+  December 2024.
+</p>
+
+<p>
+  They still work today. They will not be updated again, and during 2026–2027 they
+  stop rendering. See <a href="connect-end-of-life.html">what Connect end of life
+  actually means</a> if this is new to you.
+</p>
+
+<div class="note">
+  <b>Your diagrams are safe.</b> Mermaid is plain text. Whether it lives in a page
+  or in an attached <code>.mmd</code> file, it is not locked inside anything.
+</div>
+
+<h2>Start here: you may not need to pay at all</h2>
+
+<p>
+  We sell a diagram app, and we will still say this plainly: <b>there are free,
+  actively maintained Mermaid apps for Confluence.</b> Search the Marketplace for
+  "Mermaid" and sort by recent updates — several were released in 2026.
+</p>
+
+<p>
+  If all you need is "show this Mermaid text as a picture", install one of those
+  and stop reading. Paying for a solved problem is not a good trade.
+</p>
+
+<h2>When a free renderer is not enough</h2>
+
+<p>Three cases, in our experience the only three that matter:</p>
+
+<h3>1. The diagram has to be navigable</h3>
+<p>
+  An architecture map is not a picture, it is a menu. A person looks at the box
+  labelled "Payments", wants the documentation behind it, and clicks. Free
+  renderers give you an image; the click goes nowhere.
+</p>
+<p>
+  Mermaid supports links natively:
+</p>
+<pre>graph TD
+  A[Payments service] --> B[(Ledger)]
+  click A "https://your-wiki/display/OPS/Payments"</pre>
+<p>
+  The question is whether your app honours that line, and whether the link keeps
+  working after somebody renames the page.
+</p>
+
+<h3>2. You have more than one diagram format</h3>
+<p>
+  Real wikis are mixed: Mermaid from the developers, draw.io from the architects,
+  exported SVG from whoever used Visio. One app per format means three macros,
+  three settings dialogs, three things to migrate next time.
+</p>
+
+<h3>3. The diagrams got big</h3>
+<p>
+  Past thirty boxes, a rendered picture becomes unreadable in a page macro. You
+  need search inside the diagram and a full-screen view, or nobody uses it.
+</p>
+
+<h2>What our app does with Mermaid</h2>
+
+<table>
+  <tr><th>Feature</th><th>Detail</th></tr>
+  <tr><td>Flowcharts</td><td><code>graph</code> and <code>flowchart</code>, all four directions (TD, TB, LR, RL, BT)</td></tr>
+  <tr><td>Shapes</td><td>box <code>[text]</code>, rounded <code>(text)</code>, decision <code>{text}</code></td></tr>
+  <tr><td>Edge labels</td><td><code>--&gt;|yes|</code></td></tr>
+  <tr><td>Links</td><td><code>click A "..."</code>, to external URLs or pages in your own Confluence</td></tr>
+  <tr><td>Loops back</td><td>Handled — a "rejected, return to author" arrow does not stretch the layout into a ladder</td></tr>
+  <tr><td>Other formats</td><td>Same macro also reads SVG and draw.io files</td></tr>
+  <tr><td>Search</td><td>Type a word, matching shapes are outlined, the rest fades</td></tr>
+  <tr><td>Where it runs</td><td>Inside your own browser on your own site. Runs on Atlassian — no vendor servers</td></tr>
+</table>
+
+<div class="warn">
+  <b>Not supported yet:</b> sequence diagrams, class diagrams, state diagrams,
+  Gantt charts, pie charts. Only flowcharts. If your diagrams are sequence
+  diagrams, this app is the wrong tool today and we would rather you knew now.
+</div>
+
+<h2>How to use it</h2>
+
+<ol>
+  <li>Save your Mermaid diagram as a file with a <code>.mmd</code> extension.</li>
+  <li>Attach it to the Confluence page.</li>
+  <li>Add the macro. The diagram is drawn from the text.</li>
+</ol>
+
+<p>
+  Keeping the diagram as a file rather than pasted into the page has a side benefit:
+  the same file can live in your git repository, so the diagram and the code it
+  describes change together.
+</p>
+
+<h2>Questions</h2>
+<p>
+  Send your <code>.mmd</code> file to
+  <a href="mailto:xpymik6@gmail.com">xpymik6@gmail.com</a> and we will tell you
+  whether it renders — before you install anything.
+</p>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:xpymik6@gmail.com">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

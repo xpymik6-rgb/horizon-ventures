@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Search for Confluence — live page lists without CQL</title>
+<meta name="description" content="Put a live list of Confluence pages on a page, built from checkboxes instead of CQL. Find documents nobody has touched in years. Groups by space or author. Runs on Atlassian.">
+<meta property="og:title" content="Smart Search for Confluence">
+<meta property="og:description" content="Live page lists built from plain conditions — no query language needed.">
+<link rel="canonical" href="https://horizonventures.app/docs/smart-search/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+</head>
+<body class="doc">
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<header>
+  <svg class="logo" viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0052CC"/><stop offset="100%" stop-color="#0065FF"/>
+    </linearGradient></defs>
+    <rect width="144" height="144" rx="32" fill="url(#g)"/>
+    <rect x="30" y="38" width="58" height="8" rx="4" fill="#fff"/>
+    <rect x="30" y="58" width="44" height="8" rx="4" fill="#fff" fill-opacity="0.8"/>
+    <rect x="30" y="78" width="52" height="8" rx="4" fill="#fff" fill-opacity="0.6"/>
+    <rect x="30" y="98" width="36" height="8" rx="4" fill="#fff" fill-opacity="0.45"/>
+    <circle cx="98" cy="92" r="22" fill="none" stroke="#fff" stroke-width="7"/>
+    <path d="M114,108 L128,122" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  </svg>
+  <h1>Smart Search for Confluence</h1>
+  <p class="sub">Live lists of pages, built from plain conditions.</p>
+  <nav style="margin-top:18px">
+    <a href="#start">Getting started</a>
+    <a href="#uses">What it is for</a>
+    <a href="#settings">Settings</a>
+    <a href="cql-search-alternative.html">Replacing CQL Search</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="#support">Support</a>
+  </nav>
+</header>
+
+<h2 id="start">Getting started</h2>
+
+<ol>
+  <li>Edit a page, type <code>/Smart Search</code> and pick the macro.</li>
+  <li>Publish. The list appears straight away, showing recent pages from this space.</li>
+  <li>To narrow it down, open the macro settings and choose your conditions.</li>
+</ol>
+
+<div class="note">
+  The list is live. When a page is updated, renamed or deleted, the list reflects
+  that on its own — you never edit it again.
+</div>
+
+<h2 id="uses">What it is for</h2>
+
+<h3>Finding what everyone forgot</h3>
+<p>
+  Set <b>Last updated → Not touched for → 180 days</b> and pick a space. You get
+  every page in that space nobody has opened in half a year: outdated policies,
+  dead projects, instructions for systems that no longer exist.
+</p>
+<p>
+  This is the reason most people install the app. Confluence search finds a page
+  when you know what you want. It cannot answer "what are we no longer maintaining?"
+</p>
+
+<h3>A review page that never goes stale</h3>
+<p>
+  Put the macro on a page called "Needs review", set the conditions once, and it
+  stays accurate for years without anyone maintaining it.
+</p>
+
+<h3>An index by label</h3>
+<p>
+  Type a label such as <code>onboarding</code> and get every page carrying it —
+  a table of contents that builds itself as your team adds pages.
+</p>
+
+<h3>What the team published recently</h3>
+<p>
+  Set <b>Updated within → 30 days</b> for a status page or a team home page.
+</p>
+
+<h2 id="settings">Settings</h2>
+
+<table>
+  <tr><th>Setting</th><th>What it does</th></tr>
+  <tr><td>Space</td><td>Limit to one space, or search everywhere you have access to.</td></tr>
+  <tr><td>Content type</td><td>Pages, blog posts, or both.</td></tr>
+  <tr><td>Labels</td><td>Comma separated. A page must carry all of them.</td></tr>
+  <tr><td>Last updated</td><td>Not touched for N days, or updated within N days.</td></tr>
+  <tr><td>Words in the text</td><td>Plain words to look for inside pages.</td></tr>
+  <tr><td>Sort by</td><td>Recently updated, oldest first, title, recently created.</td></tr>
+  <tr><td>Show</td><td>How many results to display, up to 50.</td></tr>
+</table>
+
+<h3>Writing the query yourself</h3>
+<p>
+  Under the conditions there is a <b>Search query</b> section. It shows the query
+  the app built for you. Tick <b>Write the query myself</b> to edit it directly —
+  useful if you already know CQL and need something the dropdowns do not cover.
+</p>
+
+<h3>What people see</h3>
+<p>
+  Above the list, readers see in plain English what it contains — for example,
+  "Pages, in HR, not updated for over 180 days". Nobody has to guess where the
+  list came from.
+</p>
+
+<h2 id="permissions">Permissions and what people can see</h2>
+<p>
+  The list respects Confluence permissions. Each reader sees only the pages they
+  are allowed to see — the same list can look different for different people, and
+  that is correct behaviour.
+</p>
+
+<h2 id="limits">Known limits</h2>
+<ul>
+  <li>Confluence returns results in batches; the "Show more" button loads the next
+      one. For very large sets, narrowing the conditions is still faster than paging.</li>
+  <li>Labels are combined with AND: a page must carry all of them, not any.</li>
+  <li>Search covers what Confluence search indexes; very recent edits may take a
+      minute to appear.</li>
+</ul>
+
+<h2 id="replacing">Replacing an app that is going away</h2>
+<p>
+  Atlassian is retiring the Connect platform, and apps built on it stop working
+  during 2026–2027. If you built your page lists with one of them:
+</p>
+<ul>
+  <li><a href="cql-search-alternative.html">Replacing CQL Search</a> — last updated
+      July 2024, around 1000 installations. How to carry your queries over.</li>
+  <li><a href="../connect-end-of-life.html">Connect end of life, in plain words</a> —
+      how to check which of your apps are affected.</li>
+</ul>
+
+<h2 id="support">Support</h2>
+<p>
+  Write to <a href="mailto:xpymik6@gmail.com">xpymik6@gmail.com</a>. Include your
+  Confluence site address and the conditions you set — it makes finding the cause
+  much faster.
+</p>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:xpymik6@gmail.com">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

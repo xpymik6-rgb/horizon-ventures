@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect app end of life — what a Confluence admin actually has to do</title>
+<meta name="description" content="Atlassian is retiring the Connect platform. What the deadlines mean, how to find which of your Confluence apps are affected, and how to tell an abandoned app from one that is migrating.">
+<meta property="og:title" content="Connect end of life, in plain words">
+<meta property="og:description" content="How to find which of your Confluence apps will stop working, and what to do about it.">
+<link rel="canonical" href="https://horizonventures.app/docs/connect-end-of-life.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+</head>
+<body class="doc">
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="crumbs"><a href="./">Clickable Diagrams for Confluence</a> → Connect end of life</div>
+
+<header>
+  <h1>Connect end of life, in plain words</h1>
+  <p class="sub">Which of your Confluence apps will stop working, and how to tell.</p>
+</header>
+
+<h2>The short version</h2>
+
+<p>
+  Atlassian Cloud apps are built on one of two platforms. <b>Connect</b> is the old
+  one: the app runs on the vendor's own servers and talks to your site over the
+  network. <b>Forge</b> is the new one: the app runs inside Atlassian's own
+  infrastructure.
+</p>
+
+<p>
+  Atlassian is retiring Connect. Since <b>March 2026</b> Connect apps can no longer
+  ship updates, and support winds down through <b>2026 and 2027</b>. Every Connect
+  app either migrates to Forge or dies.
+</p>
+
+<div class="warn">
+  <b>The part that catches people out.</b> Nothing switches off on an announced date.
+  Connect apps degrade: a macro renders on some pages and not others, settings stop
+  saving, then the macro shows an error box. Nobody is notified — you find out when
+  someone needs the page.
+</div>
+
+<h2>How big is this</h2>
+
+<p>
+  As of August 2026 the Marketplace lists roughly <b>6000 cloud apps</b>. About
+  <b>1475</b> of them are still on Connect, and <b>936</b> of those are paid — which
+  means they have paying customers who will need somewhere to go.
+</p>
+
+<p>
+  Most of those will migrate. A significant minority will not: their authors moved
+  on years ago, and the app still collects subscriptions without anyone maintaining
+  it.
+</p>
+
+<h2>How to check your own site</h2>
+
+<h3>1. List what you have</h3>
+<p>
+  In Confluence: <b>Settings → Manage apps</b>. This gives you every installed app
+  and its vendor.
+</p>
+
+<h3>2. Check each one on the Marketplace</h3>
+<p>
+  Open the app's Marketplace page. Two things tell you where it stands:
+</p>
+
+<table>
+  <tr><th>What to look at</th><th>Good sign</th><th>Bad sign</th></tr>
+  <tr>
+    <td>Last release date</td>
+    <td class="good">2026</td>
+    <td class="bad">2024 or earlier</td>
+  </tr>
+  <tr>
+    <td>"Runs on Atlassian" badge</td>
+    <td class="good">Present — it is on Forge, safe</td>
+    <td class="bad">Absent and no recent releases</td>
+  </tr>
+</table>
+
+<div class="note">
+  <b>The single most useful signal:</b> a release in 2026. It means somebody is
+  still there. An app last touched in 2023 with no Forge version is not going to be
+  rescued in the time left.
+</div>
+
+<h3>3. Ask the vendor, once</h3>
+<p>
+  A one-line email — "do you have a Forge migration planned, and when" — sorts the
+  list quickly. No answer within a couple of weeks is itself an answer.
+</p>
+
+<h2>What to do about the ones that are not migrating</h2>
+
+<ol>
+  <li><b>Find out how much you actually use it.</b> Confluence advanced search
+      supports <code>macro = "name"</code> — that gives you every page depending on
+      it. Sometimes the answer is four pages and the problem evaporates.</li>
+  <li><b>Check what happens to your data.</b> Most apps store content as ordinary
+      page attachments or in the page body — that stays yours regardless. Apps with
+      their own database are the painful case; export before anything breaks.</li>
+  <li><b>Replace early, not late.</b> Both apps can be installed at once. Migrating
+      a wiki calmly over a month is a different job from doing it in an afternoon
+      because a diagram everyone needs went blank.</li>
+</ol>
+
+<h2>Is Forge actually better, or is this just churn</h2>
+
+<p>Honestly, both. But two things genuinely change for you as an admin:</p>
+
+<ul>
+  <li><b>Your data stops travelling.</b> A Connect app sends page content to the
+      vendor's servers to do its job. A Forge app carrying the "Runs on Atlassian"
+      badge cannot — Atlassian enforces it at the platform level, not on the
+      vendor's word. For anything under a compliance regime this is the whole
+      argument.</li>
+  <li><b>Vendor outages stop being your outages.</b> No vendor server in the path
+      means one fewer thing that can be down on a Monday morning.</li>
+</ul>
+
+<h2>Specific apps</h2>
+
+<p>Pages on individual apps, what they did and what to move to:</p>
+
+<ul>
+  <li><a href="svg-out-alternative.html">SVG out</a> — clickable SVG diagrams,
+      last updated February 2023</li>
+  <li><a href="mermaid-confluence-alternative.html">Mermaid apps for Confluence</a>
+      — several abandoned during 2024</li>
+  <li><a href="plantuml-confluence-alternative.html">PlantUML apps for Confluence</a>
+      — the main ones untouched since 2022</li>
+</ul>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:xpymik6@gmail.com">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG out alternative for Confluence Cloud — what to use instead</title>
+<meta name="description" content="SVG out for Confluence has not been updated since February 2023 and runs on the retiring Connect platform. What breaks, what your options are, and how to move your diagrams without losing links.">
+<meta property="og:title" content="SVG out alternative for Confluence Cloud">
+<meta property="og:description" content="What breaks when SVG out stops working, and how to move your clickable diagrams.">
+<link rel="canonical" href="https://horizonventures.app/docs/svg-out-alternative.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+</head>
+<body class="doc">
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="crumbs"><a href="./">Clickable Diagrams for Confluence</a> → replacing SVG out</div>
+
+<header>
+  <h1>Looking for an SVG out alternative</h1>
+  <p class="sub">What breaks, what you keep, and what it costs to move.</p>
+</header>
+
+<h2>What is happening to SVG out</h2>
+
+<p>
+  <b>SVG out</b> displays SVG diagrams in Confluence with their internal links
+  clickable. It has around 840 installations. Its last update was in
+  <b>February 2023</b>.
+</p>
+
+<p>
+  It is built on <b>Connect</b> — the older Atlassian app platform. Since March 2026
+  Connect apps can no longer be updated, and Atlassian is winding the platform down
+  through 2026 and 2027. An app that nobody has touched in three years will not be
+  migrated by its author.
+</p>
+
+<div class="warn">
+  <b>What this means in practice.</b> Nothing breaks on a fixed date with a loud
+  warning. Connect apps degrade: the macro stops rendering on some pages, then on
+  all of them, and your diagrams quietly turn back into flat pictures with dead
+  links. Nobody notices until someone needs the diagram.
+</div>
+
+<h2>What you actually lose</h2>
+
+<table>
+  <tr><th>What you had</th><th>After it stops</th></tr>
+  <tr><td>Diagram rendered on the page</td><td>Attachment stays, but shows as a flat image or not at all</td></tr>
+  <tr><td>Clickable shapes leading to pages</td><td>Dead — the links are inside the picture</td></tr>
+  <tr><td>Zoom and pan</td><td>Gone</td></tr>
+  <tr><td>The SVG files themselves</td><td><b>Safe.</b> They are ordinary attachments and stay on your pages</td></tr>
+</table>
+
+<p>
+  That last row is the good news: your diagrams are not held hostage. Whatever you
+  move to, the files are already where they need to be.
+</p>
+
+<h2>Your options</h2>
+
+<h3>1. Do nothing</h3>
+<p>
+  Reasonable if your diagrams are decorative. If people actually navigate by them —
+  architecture maps, floor plans, process flows — this postpones a problem into a
+  moment when you will not have time for it.
+</p>
+
+<h3>2. Move to a full diagramming suite</h3>
+<p>
+  draw.io and Gliffy are alive, actively maintained, and do far more than display
+  files. They are also priced accordingly, and they expect you to draw inside them.
+  If your diagrams come from Illustrator, Visio or a design team, you would be
+  paying for an editor you will not use.
+</p>
+
+<h3>3. Move to a viewer built on the new platform</h3>
+<p>
+  This is what we build, and this page exists because of it — so read the next
+  section knowing that.
+</p>
+
+<h2>Clickable Diagrams for Confluence</h2>
+
+<p>
+  Same job as SVG out: attach a diagram, drop a macro, links inside it work. Built
+  on <b>Forge</b>, the platform Connect is being replaced by, so the end-of-life
+  problem does not apply.
+</p>
+
+<h3>What is the same</h3>
+<ul>
+  <li>SVG files render with their internal links clickable;</li>
+  <li>zoom, pan, touch gestures on tablets;</li>
+  <li>unsafe content stripped before display.</li>
+</ul>
+
+<h3>What is different</h3>
+<ul>
+  <li><b>Links can point at the page, not the URL.</b> Rename a page or move it to
+      another space and the diagram keeps working. This is the failure mode that
+      quietly rots wikis over years, and it is the reason we built this.</li>
+  <li><b>draw.io and Mermaid files are read directly</b> — no exporting to SVG
+      before every update.</li>
+  <li><b>Search inside the diagram.</b> Type a word, matching shapes light up.</li>
+  <li><b>Runs on Atlassian</b> — no servers of ours, your diagrams never leave your
+      site. Atlassian verifies this at the platform level.</li>
+</ul>
+
+<h3>What it costs</h3>
+<p>
+  Free for teams up to 10 people. Above that, a few dollars per user per month —
+  the current price is on the Marketplace listing.
+</p>
+
+<h2>How to move</h2>
+
+<ol>
+  <li>Install the new app. Both can coexist while you check things.</li>
+  <li>On each page with a diagram, add the new macro. The attachment is already
+      there — nothing to upload.</li>
+  <li>If shapes had links inside the file, they keep working immediately.</li>
+  <li>Optionally, open the macro settings and re-point important shapes at
+      Confluence pages instead of URLs. This is what makes them survive
+      reorganisations.</li>
+  <li>Remove the old macro.</li>
+</ol>
+
+<div class="note">
+  <b>How many pages?</b> Find them with Confluence search:
+  <code>macro = "svg-out"</code> in the advanced search. That gives you the full
+  list before you start.
+</div>
+
+<h2>If you have questions before moving</h2>
+<p>
+  Write to <a href="mailto:xpymik6@gmail.com">xpymik6@gmail.com</a> — including
+  "will it handle my file", with the file attached. We would rather tell you it
+  does not fit than have you find out after installing.
+</p>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:xpymik6@gmail.com">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

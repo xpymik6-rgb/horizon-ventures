@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CQL Search alternative for Confluence Cloud — what to use instead</title>
+<meta name="description" content="CQL Search for Confluence has not been updated since July 2024 and runs on the retiring Connect platform. What breaks, how to keep your saved queries, and how to build the same lists without writing CQL.">
+<meta property="og:title" content="CQL Search alternative for Confluence Cloud">
+<meta property="og:description" content="Keep your live page lists working when CQL Search stops.">
+<link rel="canonical" href="https://horizonventures.app/docs/smart-search/cql-search-alternative.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+</head>
+<body class="doc">
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="crumbs"><a href="./">Smart Search for Confluence</a> → replacing CQL Search</div>
+
+<header>
+  <h1>Looking for a CQL Search alternative</h1>
+  <p class="sub">Keep your live page lists working — without writing CQL.</p>
+</header>
+
+<h2>What is happening to CQL Search</h2>
+
+<p>
+  <b>CQL Search</b> lets you put a live list of pages into a Confluence page by
+  writing a CQL query. It has around 1000 installations. Its last update was
+  <b>July 2024</b>, and it is built on <b>Connect</b> — the platform Atlassian is
+  retiring through 2026 and 2027.
+</p>
+
+<div class="warn">
+  <b>What breaks and when.</b> Not on an announced date. Connect macros degrade:
+  the list renders on some pages, then stops. On a documentation page that is
+  cosmetic. On a review dashboard that a team actually works from, it is a process
+  quietly failing with nobody informed.
+</div>
+
+<h2>What you lose, and what you keep</h2>
+
+<table>
+  <tr><th>What you had</th><th>After it stops</th></tr>
+  <tr><td>Live list of pages on a page</td><td>Gone — the macro no longer renders</td></tr>
+  <tr><td>Your CQL queries</td><td>Stored in the page as macro parameters. Not lost, but you have to open each page to read them out</td></tr>
+  <tr><td>The pages themselves</td><td><b>Untouched.</b> This app never stored your content, only queries</td></tr>
+</table>
+
+<div class="note">
+  <b>Before anything breaks, list the pages that use it.</b> Confluence advanced
+  search understands <code>macro = "cql-search"</code>. Do this while the macro
+  still renders — it is much harder to reconstruct intent from a broken page.
+</div>
+
+<h2>Smart Search — the same job, without the query language</h2>
+
+<p>
+  Built on <b>Forge</b>, so the end-of-life problem does not apply. Same idea: a
+  block on the page showing a live list of documents that updates itself.
+</p>
+
+<h3>The main difference: you do not write CQL</h3>
+
+<p>
+  CQL Search assumed you know the query language. That is fine for the person who
+  set it up and useless for everyone else — which is why these lists rot: the one
+  person who could edit them left the company.
+</p>
+
+<p>
+  Smart Search builds the query from checkboxes and dropdowns: pick a space, pick
+  labels, "not touched for N days", words in the text, sort order. It shows you in
+  plain English what the list will contain before you save it.
+</p>
+
+<div class="note">
+  <b>CQL is still there for those who want it.</b> There is a manual mode where you
+  paste a query directly — so your existing CQL from the old macro can be carried
+  over as-is. Nothing forces you to rebuild it with checkboxes.
+</div>
+
+<h3>What else it does</h3>
+
+<table>
+  <tr><th>Feature</th><th>Detail</th></tr>
+  <tr><td>Excerpts</td><td>A line of text from each document, so you can tell which one you want without opening it</td></tr>
+  <tr><td>Grouping</td><td>By space, by who edited last, or by month — a flat list of forty pages is unreadable</td></tr>
+  <tr><td>Show more</td><td>Confluence returns results in batches; the button loads the next one</td></tr>
+  <tr><td>Works out of the box</td><td>Dropped on a page with no configuration, it shows the recently updated documents of that space instead of an empty "please configure me" screen</td></tr>
+  <tr><td>Permissions</td><td>The list is built as the person reading it. Nobody sees a page they could not already open</td></tr>
+  <tr><td>Where it runs</td><td>In the reader's browser, on your own site. Runs on Atlassian — no vendor servers involved</td></tr>
+</table>
+
+<h2>The thing these lists are actually best at</h2>
+
+<p>
+  Finding documents nobody has touched in years. Every large wiki has hundreds of
+  them, and nobody knows which — that is the whole problem. A list built on
+  "in this space, not updated for 365 days, sorted oldest first" turns an unknowable
+  mess into a work queue, and it keeps itself current.
+</p>
+
+<h2>How to move</h2>
+
+<ol>
+  <li>Install Smart Search. Both apps can be installed at once.</li>
+  <li>Find your pages with <code>macro = "cql-search"</code> in advanced search.</li>
+  <li>On each page, open the old macro, copy the query, add the new macro and paste
+      it into manual mode. Or rebuild it with checkboxes — usually faster.</li>
+  <li>Check the list looks right, remove the old macro.</li>
+</ol>
+
+<h2>What it costs</h2>
+<p>
+  Free for teams up to 10 people. Above that, $1 per user per month.
+</p>
+
+<h2>Questions before you move</h2>
+<p>
+  Send your CQL query to <a href="mailto:xpymik6@gmail.com">xpymik6@gmail.com</a>
+  and we will tell you whether it works as-is. We would rather say "this one does
+  not fit" than have you find out after installing.
+</p>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:xpymik6@gmail.com">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

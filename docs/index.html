@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clickable Diagrams for Confluence — SVG, draw.io, Mermaid and PlantUML with working links</title>
+<meta name="description" content="Show SVG, draw.io, Mermaid and PlantUML diagrams in Confluence with every link inside them working. Click a shape to open the page behind it. Links survive page renames. Runs on Atlassian.">
+<meta property="og:title" content="Clickable Diagrams for Confluence">
+<meta property="og:description" content="SVG, draw.io, Mermaid and PlantUML diagrams in Confluence with working links, search and full screen.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://horizonventures.app/docs/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+</head>
+<body class="doc">
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<header>
+  <svg class="logo" viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0052CC"/><stop offset="100%" stop-color="#0065FF"/>
+    </linearGradient></defs>
+    <rect width="144" height="144" rx="32" fill="url(#g)"/>
+    <path d="M46,54 L98,54 M46,54 L46,92 M98,54 L98,92" stroke="#fff" stroke-opacity="0.55" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <rect x="26" y="36" width="40" height="26" rx="6" fill="#fff"/>
+    <rect x="78" y="36" width="40" height="26" rx="6" fill="#fff"/>
+    <rect x="26" y="82" width="40" height="26" rx="6" fill="#fff" fill-opacity="0.75"/>
+    <rect x="76" y="80" width="44" height="30" rx="7" fill="#fff"/>
+    <path d="M96,92 L96,124 L104,116 L110,128 L117,124 L111,112 L121,112 Z" fill="#172B4D" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/>
+  </svg>
+  <h1>Clickable Diagrams for Confluence</h1>
+  <p class="sub">SVG, draw.io, Mermaid and PlantUML diagrams with every link inside them working.</p>
+  <nav style="margin-top:18px">
+    <a href="#start">Getting started</a>
+    <a href="#formats">Formats</a>
+    <a href="#links">Linking shapes</a>
+    <a href="#search">Search</a>
+    <a href="#safety">Safety</a>
+    <a href="#support">Support</a>
+  </nav>
+</header>
+
+<p>
+  Confluence renders a diagram as a flat picture. The links inside it are dead, and
+  nobody can click a box to reach the page behind it. This app brings those links
+  back — and reads four diagram formats, not one.
+</p>
+
+<h2 id="start">Getting started</h2>
+
+<ol>
+  <li>Attach your diagram to a Confluence page, the same way you attach any file.</li>
+  <li>Edit the page, type <code>/Clickable SVG</code> and pick the macro.</li>
+  <li>Publish. The diagram appears with its links working.</li>
+</ol>
+
+<div class="note">
+  If the page has several diagrams, the macro shows the first one. Open the macro
+  settings to pick a specific file.
+</div>
+
+<h2 id="formats">Which diagrams it reads</h2>
+
+<table>
+  <tr><th>Format</th><th>File</th><th>How it is shown</th></tr>
+  <tr>
+    <td><b>SVG</b></td>
+    <td><code>.svg</code></td>
+    <td>Displayed as-is, after unsafe content is stripped. Works with anything that
+        exports SVG: Illustrator, Inkscape, Figma, Visio, Lucidchart.</td>
+  </tr>
+  <tr>
+    <td><b>draw.io</b></td>
+    <td><code>.drawio</code>, <code>.drawio.svg</code></td>
+    <td>Read directly and drawn by the app. You do not have to export anything —
+        keep drawing in draw.io as usual.</td>
+  </tr>
+  <tr>
+    <td><b>Mermaid</b></td>
+    <td><code>.mmd</code>, <code>.mermaid</code></td>
+    <td>The diagram is written as text; the app draws the picture. Flowcharts
+        (<code>graph</code> and <code>flowchart</code>) in all four directions.</td>
+  </tr>
+  <tr>
+    <td><b>PlantUML</b></td>
+    <td><code>.puml</code>, <code>.plantuml</code>, <code>.iuml</code></td>
+    <td>Also written as text. Relationship diagrams: components, deployment,
+        simple graphs. Shapes follow the keyword — <code>database</code> becomes
+        a cylinder, <code>cloud</code> a cloud, <code>actor</code> an oval.</td>
+  </tr>
+</table>
+
+<p>
+  For Mermaid, links are set the usual way, with a <code>click</code> line:
+  <code>click A "https://example.com"</code>. A link to a page inside your own
+  Confluence works too.
+</p>
+
+<p>
+  In PlantUML, links are set with a <code>url</code> line:
+  <code>url of PAY is [[https://example.com]]</code>.
+</p>
+
+<div class="note">
+  <b>Not drawn yet:</b> sequence diagrams in either format, and Mermaid class,
+  state, Gantt and pie charts. These are laid out along a time axis rather than
+  as boxes and arrows, which is a different job. The app says so plainly instead
+  of showing a broken picture.
+</div>
+
+<h2 id="links">Linking shapes to Confluence pages</h2>
+
+<p>
+  You can link a shape to a Confluence page from the macro settings, without editing
+  the diagram file at all. Open the settings, find the shape in the list, search for
+  the page and pick it.
+</p>
+
+<div class="note">
+  <b>Why this matters.</b> A link set this way points at the page itself, not at its
+  address. Rename the page or move it to another space — the diagram keeps working.
+  A URL written inside the file would break silently, and nobody would notice for
+  months.
+</div>
+
+<h3>Which shapes appear in the list</h3>
+<ul>
+  <li>shapes that are already links in the file;</li>
+  <li>shapes that have an <code>id</code> — most diagram editors add one automatically;</li>
+  <li>shapes with a title — the title is used as the name in the list.</li>
+</ul>
+
+<p>
+  In draw.io, right-click a shape → <i>Edit Tooltip</i> to give it a title. In
+  Illustrator or Inkscape, name the layer or object.
+</p>
+
+<h3>If a linked page is deleted</h3>
+<p>
+  The diagram still displays. That shape keeps whatever link it had in the file, and
+  nothing breaks — one missing page never takes the whole diagram down.
+</p>
+
+<h2 id="search">Finding things in a large diagram</h2>
+
+<p>
+  A service map with fifty boxes is unreadable by eye. Type a word into the search
+  field above the diagram: matching shapes get outlined, everything else fades, and
+  the diagram scrolls to the match. The arrows step between matches.
+</p>
+
+<p>
+  Search works on every format, including diagrams you did not make yourself.
+  There is also a full-screen button — page macros are narrow, and architecture
+  diagrams are not.
+</p>
+
+<h2 id="safety">Safety</h2>
+
+<p>
+  SVG is not only a picture format — a file can carry scripts inside it. That is
+  exactly why Confluence refuses to render SVG files live and shows them as flat
+  images.
+</p>
+
+<p>This app removes every dangerous element before the diagram is displayed:</p>
+
+<ul>
+  <li>scripts of any kind;</li>
+  <li>event handlers such as <code>onclick</code> or <code>onload</code>;</li>
+  <li>links that execute code (<code>javascript:</code>);</li>
+  <li>embedded HTML and external content;</li>
+  <li>styles that pull resources from other servers — these can be used to track who
+      opened your diagram, and when.</li>
+</ul>
+
+<p>
+  When something is removed, the app says so under the diagram — you always know that
+  what you see differs from the file.
+</p>
+
+<p>
+  For draw.io and Mermaid the question does not arise: the picture is drawn from
+  scratch by the app, so there is nothing to inherit.
+</p>
+
+<h3>Where your data goes</h3>
+<p>
+  Nowhere. The diagram is downloaded and processed inside your own browser, on your
+  own Confluence site. The app has no servers of its own and never contacts any
+  external service. It carries the <b>Runs on Atlassian</b> badge, which means
+  Atlassian verifies this at the platform level.
+</p>
+
+<h2 id="replacing">Replacing an app that is going away</h2>
+
+<p>
+  Atlassian is retiring the Connect platform. Apps built on it can no longer be
+  updated, and during 2026–2027 they stop working. If your diagram app is one of
+  them, these pages explain what breaks and what to do:
+</p>
+
+<div class="cards">
+  <a class="card" href="svg-out-alternative.html">
+    <b>Replacing SVG out</b>
+    <span>Last updated in February 2023. What it did, what is lost, how to move.</span>
+  </a>
+  <a class="card" href="mermaid-confluence-alternative.html">
+    <b>Replacing a Mermaid app</b>
+    <span>Several Mermaid apps for Confluence were abandoned in 2024.</span>
+  </a>
+  <a class="card" href="plantuml-confluence-alternative.html">
+    <b>Replacing a PlantUML app</b>
+    <span>The main PlantUML apps for Confluence have been untouched since 2022.</span>
+  </a>
+  <a class="card" href="connect-end-of-life.html">
+    <b>Connect end of life, in plain words</b>
+    <span>What the deadline actually means for a Confluence admin.</span>
+  </a>
+</div>
+
+<h2 id="limits">Known limits</h2>
+<ul>
+  <li>Files larger than 6 MB are not displayed — such diagrams are slow in any browser.</li>
+  <li>Animation inside SVG is removed: it is one of the ways to hide harmful code.</li>
+  <li>Fonts embedded from external servers are not loaded; the diagram falls back to
+      system fonts.</li>
+  <li>Mermaid: flowcharts only, for now.</li>
+  <li>PlantUML: relationship diagrams only — components, deployment and similar.</li>
+</ul>
+
+<h2 id="support">Support</h2>
+<p>
+  Write to <a href="mailto:xpymik6@gmail.com">xpymik6@gmail.com</a>. Please include
+  your Confluence site address and, if possible, the file that misbehaves — it makes
+  finding the cause much faster. We answer within one business day.
+</p>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:xpymik6@gmail.com">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
