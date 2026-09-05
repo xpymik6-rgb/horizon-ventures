@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Confluence Cloud turns your SVG into a flat image — and what actually works</title>
+<meta name="description" content="Confluence Cloud flattens attached SVG files, so links and interactivity inside them stop working. Here is why it happens, what you lose, what you can do for free, and when you need an app.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-svg-flat-image.html">
+<meta property="og:title" content="Why Confluence Cloud turns your SVG into a flat image">
+<meta property="og:description" content="It is a security decision, not a bug. What you lose, the free workarounds that actually exist in Cloud, and when an app is the only way.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Why Confluence Cloud turns your SVG into a flat image",
+   "description": "Why Confluence Cloud flattens SVG attachments, what interactivity is lost, which free workarounds exist, and when a Marketplace app is the only option.",
+   "url": "https://horizonventures.app/docs/confluence-svg-flat-image.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {
+     "@type": "Organization",
+     "name": "Horizon Ventures E.I.R.L.",
+     "url": "https://horizonventures.app/"
+   },
+   "datePublished": "2026-09-05",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Why does Confluence Cloud convert my SVG to an image?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because an SVG file can contain scripts and external references. Rendering it live inside a page would let an attachment run code in the context of your site, which is a cross-site scripting risk. Confluence Cloud avoids this by rasterising the file before it reaches the page."}},
+    {"@type": "Question", "name": "Can an administrator switch the conversion off?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. There is no setting for it in Confluence Cloud. The HTML macro that older forum answers recommend belongs to Confluence Data Center and Server; Cloud has no native equivalent."}},
+    {"@type": "Question", "name": "What exactly stops working inside the SVG?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Anything that is not paint: hyperlinks on shapes, hover states and tooltips, embedded scripts and animation, and selectable text. The picture still looks right, which is why the loss is often noticed only when someone tries to click a box."}},
+    {"@type": "Question", "name": "Is there a free way to get clickable diagrams in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you are willing to draw the diagram inside a diagramming app such as draw.io, which is free for small teams and keeps links on shapes. The free route does not help when the diagram already exists as an SVG exported from Figma, Illustrator, Inkscape or Visio."}}
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Why Confluence Cloud turns your SVG into a flat image</h1>
+    <p class="sub">It is a deliberate security decision, not a bug or a missing setting. Here is what happens to the file, what you lose, and which of the workarounds people recommend actually exist in Cloud.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> An SVG file is not only a picture: it can carry links, scripts and references to outside resources. Rendering one live inside a page would let an attachment run code on your site, so Confluence Cloud converts it to a raster image before it is displayed. The picture survives. Everything interactive inside it does not, and there is no administrator setting that turns this behaviour off.</p>
+
+  <h2>What actually happens to the file</h2>
+
+  <p>You attach <code>architecture.svg</code> to a page and insert it. Confluence stores your original attachment untouched — you can still download exactly what you uploaded — but the version rendered on the page is a flattened image. That is why the diagram often looks slightly softer than in your editor, and why clicking a box does nothing.</p>
+
+  <p>People usually discover this at the worst moment: after building a navigation map for the documentation, where every service box was supposed to open its own page.</p>
+
+  <h2>Why Atlassian does it this way</h2>
+
+  <p>SVG is an XML format, and the specification allows a file to contain <code>&lt;script&gt;</code> elements, event handlers such as <code>onclick</code>, external references and embedded objects. A diagram that somebody downloaded from the internet and attached to a page is, technically, executable content uploaded by a user.</p>
+
+  <p>If Confluence rendered it inline, that content would run inside your site's origin, with your session. That is textbook cross-site scripting: a malicious attachment could read the page, act as the logged-in user, or quietly send data elsewhere. Rasterising the file removes the entire class of problem in one step.</p>
+
+  <div class="note">
+    <p>This is worth repeating to your security team, because it usually decides the argument: the flattening is not Atlassian being lazy. It is the reason your wiki does not execute files that colleagues upload.</p>
+  </div>
+
+  <h2>What you lose, precisely</h2>
+
+  <table>
+    <thead><tr><th>In the original file</th><th>After Confluence renders it</th></tr></thead>
+    <tbody>
+      <tr><td>Hyperlinks on shapes</td><td>Gone. Clicking does nothing.</td></tr>
+      <tr><td>Hover states and tooltips</td><td>Gone.</td></tr>
+      <tr><td>Scripts and animation</td><td>Removed.</td></tr>
+      <tr><td>Selectable, searchable text</td><td>Becomes pixels. Confluence search cannot see it.</td></tr>
+      <tr><td>Crisp scaling</td><td>Fixed resolution. Zooming softens the image.</td></tr>
+      <tr><td>The picture itself</td><td>Intact.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Careful with advice written for the wrong Confluence</h2>
+
+  <p>Search for this problem and you will find answers recommending the HTML macro, or a custom user macro. Both belong to <strong>Confluence Data Center and Server</strong>. Confluence Cloud has no native HTML macro at all — that is an architectural difference, not something an administrator can enable.</p>
+
+  <p>Many of those threads were written between 2017 and 2021, when Server was the common deployment. If you are on Cloud, the advice does not apply, and following it will cost you an afternoon before you discover why.</p>
+
+  <h2>What works without buying anything</h2>
+
+  <h3>Draw the diagram in a diagramming app instead of importing SVG</h3>
+
+  <p>Tools that render diagrams natively inside Confluence keep links on shapes, because they are not attachments being displayed — they are diagrams being drawn by an app that Confluence trusts. draw.io is the usual choice and is free for small teams. If your diagram does not exist yet, this is the cheapest correct answer, and you should take it.</p>
+
+  <p>The catch is redrawing. If the map already exists as an SVG exported from Figma, Illustrator, Inkscape or Visio, and it is a hundred boxes across four layers, "just redraw it" is a week of somebody's life.</p>
+
+  <h3>Put the links beside the picture, not inside it</h3>
+
+  <p>Unglamorous but honest: insert the image, and under it keep a table of the same items with links. It survives forever, needs no app, and works on mobile. It is worse to use — nobody reads a legend of forty rows — but for a diagram of six boxes it is genuinely enough.</p>
+
+  <h3>Split one big map into several smaller pages</h3>
+
+  <p>If the diagram exists mainly to help people navigate, the navigation can live in Confluence itself: a parent page per area, child pages per service, and a small image on each. You lose the single overview, and you gain something that stays correct when the team reorganises.</p>
+
+  <h2>When free stops being enough</h2>
+
+  <p>Three situations, in the order we see them:</p>
+
+  <div class="cards">
+    <div class="card"><b>The diagram already exists as SVG</b>It came out of a design tool, an architecture tool, or a vendor. Redrawing it inside a diagram editor is not a fix, it is a project.</div>
+    <div class="card"><b>The diagram changes often</b>Someone updates the source file and re-attaches it. Any solution that requires manually rebuilding links after every update will be abandoned within two months.</div>
+    <div class="card"><b>The links must survive a reorganisation</b>Links written as page URLs break the moment a page is renamed or moved to another space, and nobody notices until a reader complains.</div>
+  </div>
+
+  <h2>What an app can do that the platform will not</h2>
+
+  <p>The reason a Marketplace app is allowed to render what Confluence refuses to is that it does not hand your file to the browser as-is. A well-built app parses the SVG, removes scripts, event handlers and external references, and renders only what is left. The dangerous class of content never reaches the page — which is exactly the guarantee Confluence itself was protecting.</p>
+
+  <p>The second thing an app can do is store a link as a reference to the page rather than as a URL. Then renaming the page, or moving it to another space, does not break the diagram, because the address is resolved fresh every time the page is opened.</p>
+
+  <p><strong>Disclosure:</strong> I build one of these apps, <a href="/clickable-svg.html">Clickable SVG</a>. It runs entirely on Atlassian infrastructure under the Runs on Atlassian programme, so diagrams are read and rendered inside your own site and nothing is sent to us. It strips the unsafe parts of the file and tells you what it removed rather than dropping things silently. There is a <a href="/clickable-svg.html#demo">demo you can click through</a> without installing anything, and the <a href="/docs/">documentation</a> is public.</p>
+
+  <p>If your case is one where the free routes above work, take the free route. This page is more useful to me as an honest answer than as an advertisement.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Can I at least keep the text searchable?</h3>
+  <p>Not in the rendered image. A common workaround is to paste the key labels into the page below the diagram, where Confluence search can index them.</p>
+
+  <h3>Does the same happen in Confluence Data Center?</h3>
+  <p>Data Center has the HTML macro and user macros, so an administrator can allow inline rendering. Most security teams keep those disabled for the same reason Cloud does not offer them.</p>
+
+  <h3>Will Atlassian change this?</h3>
+  <p>There are long-standing suggestions asking for native interactive SVG. Given the security model, expect the answer to keep being an app rather than a platform feature.</p>
+
+  <h3>What about Mermaid and PlantUML?</h3>
+  <p>Those are source text rendered into a diagram, not files being displayed, so the security problem is different. Several free renderers exist; some are no longer maintained, which is a separate trap — we wrote about the <a href="/docs/mermaid-confluence-alternative.html">abandoned Mermaid apps</a> and <a href="/docs/plantuml-confluence-alternative.html">the same question for PlantUML</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
