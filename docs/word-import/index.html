@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Import for Confluence — docx files into a ready page tree</title>
+<meta name="description" content="Import Word documents into Confluence. Headings, lists, tables with merged cells and images are kept; long documents are split into a page tree. Read inside your browser.">
+<meta property="og:title" content="Word Import for Confluence">
+<meta property="og:description" content="Drop your Word documents into Confluence and get a ready page tree.">
+<link rel="canonical" href="https://horizonventures.app/docs/word-import/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+</head>
+<body class="doc">
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<header>
+  <svg class="logo" viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5243AA"/><stop offset="100%" stop-color="#8777D9"/>
+    </linearGradient></defs>
+    <rect width="144" height="144" rx="32" fill="url(#g)"/>
+    <path d="M28,30 h34 l16,16 v30 h-50 z" fill="#fff" fill-opacity="0.95"/>
+    <rect x="36" y="52" width="30" height="5" rx="2.5" fill="#5243AA" fill-opacity="0.5"/>
+    <rect x="36" y="63" width="22" height="5" rx="2.5" fill="#5243AA" fill-opacity="0.4"/>
+    <path d="M46,96 h44" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+    <path d="M78,82 L96,96 L78,110" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+  <h1>Word Import for Confluence</h1>
+  <p class="sub">Word documents into a ready page tree — in one drop.</p>
+  <nav style="margin-top:18px">
+    <a href="#start">Getting started</a>
+    <a href="#tree">Page tree</a>
+    <a href="#kept">What is kept</a>
+    <a href="#privacy-short">Where data goes</a>
+    <a href="#support">Support</a>
+  </nav>
+</header>
+
+<p>
+  Your company is moving to Confluence, and a hundred and fifty regulations sit
+  in Word files on a shared drive. Each one has to be opened, copied, pasted,
+  then fixed: headings, tables, images. Twenty minutes per document. Nobody was
+  given a week for this, so the move stalls for years.
+</p>
+
+<h2 id="start">Getting started</h2>
+
+<ol>
+  <li>Edit the page, type <code>/Word Import</code> and pick the macro.</li>
+  <li>Drop <code>.docx</code> files onto the block — or press <b>Add</b> next to
+      a document already attached to the page.</li>
+  <li>Check what the app recognised, choose how deep to split, press Import.</li>
+</ol>
+
+<div class="note">
+  The app tells you what it found before importing anything —
+  «3 headings · 2 paragraphs · 2 list items · 1 table · 1 image». If that line
+  looks wrong, the import will look wrong too, and you know it in advance.
+</div>
+
+<h2 id="tree">A page tree, not one long page</h2>
+
+<p>
+  An eighty-page regulation is not a page, it is a section. The app splits the
+  document by its headings and builds a tree: a heading 2 becomes a child page
+  of the nearest heading 1 above it. You choose the depth — by heading 1, by
+  headings 1 and 2, or keep everything as a single page.
+</p>
+
+<div class="note">
+  <b>If a title is taken.</b> Confluence requires page titles to be unique in a
+  space. When the title already exists, the new page gets a number in brackets —
+  «Safety rules (2)». Nothing existing is ever overwritten or deleted.
+</div>
+
+<h2 id="kept">What survives the import</h2>
+
+<table>
+  <tr><th>In Word</th><th>In Confluence</th></tr>
+  <tr><td>Headings 1–6</td><td>Page headings, and the split points for the tree</td></tr>
+  <tr><td>Bold, italic, underline</td><td>Same</td></tr>
+  <tr><td>Lists, including nested ones</td><td>Lists</td></tr>
+  <tr><td>Tables, including merged cells</td><td>Tables — merged cells are unrolled so columns stay aligned</td></tr>
+  <tr><td>Images</td><td>Page attachments, placed back into the text</td></tr>
+  <tr><td>Line breaks inside a cell</td><td>Kept</td></tr>
+</table>
+
+<div class="warn">
+  <b>Not imported:</b> footnotes, headers and footers, fields, Word's own table
+  of contents, comments and tracked changes. Only <code>.docx</code> is read —
+  the old <code>.doc</code>, ODT and PDF are not.
+</div>
+
+<h3>Lists come out bulleted</h3>
+<p>
+  Word keeps the numbering style in a separate part of the file, and telling a
+  numbered list from a bulleted one reliably is not possible without it. We
+  chose bullets: a missing number is easier to spot and fix than a wrong one.
+</p>
+
+<h2 id="privacy-short">Where your data goes</h2>
+
+<p>
+  The document never leaves your computer. It is unpacked and read inside your
+  browser; only the finished pages and their images go to your own Confluence
+  site, using your own permissions. The app has no servers and makes no outbound
+  request of any kind. It carries the <b>Runs on Atlassian</b> badge, which
+  Atlassian verifies at the platform level.
+</p>
+
+<p>
+  For HR policies, contracts and internal procedures this is usually the
+  deciding argument: the documents you are migrating are exactly the ones you
+  cannot send through a stranger's server.
+</p>
+
+<h2 id="limits">Known limits</h2>
+<ul>
+  <li>Only <code>.docx</code>.</li>
+  <li>Lists are imported as bulleted.</li>
+  <li>Very large documents take a while: everything is done in your browser,
+      and each page is created one by one.</li>
+  <li>Page titles come from headings; a document without headings becomes a
+      single page named after the file.</li>
+</ul>
+
+<h2 id="support">Support</h2>
+<p>
+  Write to <a href="mailto:xpymik6@gmail.com">xpymik6@gmail.com</a>. If a
+  document imports badly, send it — we will tell you why, and usually fix it.
+  We answer within one business day.
+</p>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
