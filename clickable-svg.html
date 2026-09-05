@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="demo.css">
 </head>
 <body>
 
@@ -32,9 +33,140 @@
     <h1>Your diagram is not a picture. It is a map.</h1>
     <p class="lede">Confluence renders SVG as a flat image and kills every link inside it. Clickable SVG brings those links back, so a box in your architecture map opens the runbook behind it.</p>
     <div class="actions">
-      <a class="btn" href="https://xpymik6-rgb.github.io/clickable-svg/">Read the documentation</a>
-      <a class="btn ghost" aria-disabled="true" href="#pricing">Marketplace listing pending review</a>
+      <a class="btn" href="#demo">Try it here, no install</a>
+      <a class="btn ghost" href="https://xpymik6-rgb.github.io/clickable-svg/">Read the documentation</a>
     </div>
+    <p class="note">The Marketplace listing is still in review. The demo below is the real thing, running in your browser.</p>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <h2>A diagram you can actually use</h2>
+    <p>This is a service map of the kind teams keep in Confluence. Click any box to open the page behind it. Type in the search field to find a service. Scroll to zoom, drag to move around.</p>
+
+    <div class="demo-wrap">
+      <div class="demo-bar">
+        <input type="search" id="demo-search" placeholder="Find a service, for example: ledger" aria-label="Search the diagram" autocomplete="off">
+        <span id="demo-count" aria-live="polite"></span>
+        <button type="button" id="demo-next" disabled>Next match</button>
+        <span class="demo-zoom">
+          <button type="button" id="demo-out" aria-label="Zoom out">&minus;</button>
+          <button type="button" id="demo-in" aria-label="Zoom in">+</button>
+          <button type="button" id="demo-reset">Reset</button>
+        </span>
+      </div>
+
+      <div class="demo-stage">
+        <div class="demo-canvas">
+          <div id="demo-tip" hidden></div>
+          <svg id="demo-svg" viewBox="0 0 900 560" role="group" aria-label="Interactive service map: each box opens a page">
+            <defs>
+              <marker id="demo-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#b9c4d0"></path>
+              </marker>
+            </defs>
+
+            <rect class="demo-frame" x="60" y="30" width="790" height="110"></rect>
+            <text class="demo-layer" x="62" y="22">EDGE</text>
+            <rect class="demo-frame" x="60" y="180" width="790" height="200"></rect>
+            <text class="demo-layer" x="62" y="172">CORE SERVICES</text>
+            <rect class="demo-frame" x="60" y="420" width="790" height="110"></rect>
+            <text class="demo-layer" x="62" y="412">DATA</text>
+
+            <path class="demo-wire" d="M190 116 L190 200" marker-end="url(#demo-arrow)"></path>
+            <path class="demo-wire" d="M450 116 L450 152 L230 152 L230 200" marker-end="url(#demo-arrow)"></path>
+            <path class="demo-wire" d="M710 116 L710 168 L250 168 L250 200" marker-end="url(#demo-arrow)"></path>
+            <path class="demo-wire" d="M290 232 L350 232" marker-end="url(#demo-arrow)"></path>
+            <path class="demo-wire" d="M550 232 L610 232" marker-end="url(#demo-arrow)"></path>
+            <path class="demo-wire" d="M190 264 L190 283 L320 283 L320 295" marker-end="url(#demo-arrow)"></path>
+            <path class="demo-wire" d="M710 264 L710 283 L580 283 L580 295" marker-end="url(#demo-arrow)"></path>
+            <path class="demo-wire" d="M420 264 L420 392 L190 392 L190 442" marker-end="url(#demo-arrow)"></path>
+            <path class="demo-wire" d="M370 359 L370 410 L450 410 L450 442" marker-end="url(#demo-arrow)"></path>
+            <path class="demo-wire" d="M520 264 L520 374 L710 374 L710 442" marker-end="url(#demo-arrow)"></path>
+
+            <g class="demo-node" data-page="web-frontend">
+              <rect x="90" y="52" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="90" y="52" width="4" height="64" fill="#5b8def"></rect>
+              <text class="ttl" x="106" y="82">Web frontend</text>
+              <text class="sub" x="106" y="101">React, owned by Web</text>
+            </g>
+            <g class="demo-node" data-page="mobile-app">
+              <rect x="350" y="52" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="350" y="52" width="4" height="64" fill="#5b8def"></rect>
+              <text class="ttl" x="366" y="82">Mobile app</text>
+              <text class="sub" x="366" y="101">iOS and Android</text>
+            </g>
+            <g class="demo-node" data-page="partner-api">
+              <rect x="610" y="52" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="610" y="52" width="4" height="64" fill="#5b8def"></rect>
+              <text class="ttl" x="626" y="82">Partner API</text>
+              <text class="sub" x="626" y="101">External integrations</text>
+            </g>
+
+            <g class="demo-node" data-page="payments-api">
+              <rect x="90" y="200" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="90" y="200" width="4" height="64" fill="#23478f"></rect>
+              <text class="ttl" x="106" y="230">Payments API</text>
+              <text class="sub" x="106" y="249">Go, on-call rota A</text>
+            </g>
+            <g class="demo-node" data-page="ledger">
+              <rect x="350" y="200" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="350" y="200" width="4" height="64" fill="#23478f"></rect>
+              <text class="ttl" x="366" y="230">Ledger</text>
+              <text class="sub" x="366" y="249">Java, finance systems</text>
+            </g>
+            <g class="demo-node" data-page="fraud-check">
+              <rect x="610" y="200" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="610" y="200" width="4" height="64" fill="#23478f"></rect>
+              <text class="ttl" x="626" y="230">Fraud check</text>
+              <text class="sub" x="626" y="249">Python, risk team</text>
+            </g>
+            <g class="demo-node" data-page="notifications">
+              <rect x="220" y="295" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="220" y="295" width="4" height="64" fill="#23478f"></rect>
+              <text class="ttl" x="236" y="325">Notifications</text>
+              <text class="sub" x="236" y="344">Receipts and alerts</text>
+            </g>
+            <g class="demo-node" data-page="identity">
+              <rect x="480" y="295" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="480" y="295" width="4" height="64" fill="#23478f"></rect>
+              <text class="ttl" x="496" y="325">Identity</text>
+              <text class="sub" x="496" y="344">Tokens and sessions</text>
+            </g>
+
+            <g class="demo-node" data-page="postgres">
+              <rect x="90" y="442" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="90" y="442" width="4" height="64" fill="#b5711a"></rect>
+              <text class="ttl" x="106" y="472">PostgreSQL</text>
+              <text class="sub" x="106" y="491">Primary and 2 replicas</text>
+            </g>
+            <g class="demo-node" data-page="kafka">
+              <rect x="350" y="442" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="350" y="442" width="4" height="64" fill="#b5711a"></rect>
+              <text class="ttl" x="366" y="472">Kafka</text>
+              <text class="sub" x="366" y="491">14 topics</text>
+            </g>
+            <g class="demo-node" data-page="s3-archive">
+              <rect x="610" y="442" width="200" height="64" rx="2"></rect>
+              <rect class="band" x="610" y="442" width="4" height="64" fill="#b5711a"></rect>
+              <text class="ttl" x="626" y="472">Archive storage</text>
+              <text class="sub" x="626" y="491">7 year retention</text>
+            </g>
+          </svg>
+        </div>
+
+        <aside class="demo-page" id="demo-page" hidden>
+          <button type="button" class="demo-page-close" aria-label="Close page">&times;</button>
+          <p class="demo-page-kicker">The page behind the shape</p>
+          <h3 class="demo-page-title"></h3>
+          <p class="demo-page-meta"></p>
+          <p class="demo-page-body"></p>
+        </aside>
+      </div>
+    </div>
+
+    <p class="demo-hint">In Confluence the panel on the right is a real page in your wiki, and the link is bound to that page rather than to its address. Rename it or move it to another space and the diagram still works.</p>
   </div>
 </section>
 
@@ -125,5 +257,6 @@
   </div>
 </footer>
 
+<script src="demo.js"></script>
 </body>
 </html>

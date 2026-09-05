@@ -1,0 +1,100 @@
+/* Оформление живого демо: схема, панель страницы, поиск. */
+
+.demo-wrap { margin-top: 30px; }
+
+.demo-bar {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  padding: 12px 14px; border: 1px solid var(--rule); border-bottom: none;
+  border-radius: 3px 3px 0 0; background: var(--sheet);
+}
+.demo-bar input[type="search"] {
+  flex: 1 1 220px; min-width: 160px;
+  font: inherit; font-size: 15px; padding: 8px 11px;
+  border: 1px solid var(--rule); border-radius: 3px; background: #fff; color: var(--ink);
+}
+.demo-bar input[type="search"]::placeholder { color: #8a97a5; }
+.demo-bar button {
+  font: inherit; font-size: 14px; padding: 7px 12px; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 3px; background: #fff; color: var(--ink);
+}
+.demo-bar button:hover:not(:disabled) { border-color: var(--indigo); color: var(--indigo); }
+.demo-bar button:disabled { opacity: .45; cursor: default; }
+.demo-zoom { display: flex; gap: 6px; margin-left: auto; }
+#demo-count { font-size: 14px; color: var(--muted); min-width: 88px; }
+
+.demo-stage {
+  display: grid; grid-template-columns: 1fr;
+  border: 1px solid var(--rule); border-radius: 0 0 3px 3px; overflow: hidden;
+  background: var(--sheet);
+}
+
+/* колонка со страницей появляется только когда страница открыта */
+.demo-stage.is-open { grid-template-columns: 1fr 300px; }
+
+.demo-canvas {
+  position: relative; cursor: grab; touch-action: none;
+  background: #fbfcfd;
+  background-image:
+    linear-gradient(#eef2f6 1px, transparent 1px),
+    linear-gradient(90deg, #eef2f6 1px, transparent 1px);
+  background-size: 24px 24px;
+  min-height: 380px;
+}
+.demo-canvas.is-dragging { cursor: grabbing; }
+.demo-canvas svg { display: block; width: 100%; height: 100%; min-height: 380px; }
+
+/* фигуры схемы */
+.demo-node { cursor: pointer; }
+.demo-node rect {
+  fill: #fff; stroke: #b9c4d0; stroke-width: 1.4;
+  transition: stroke .14s ease, fill .14s ease;
+}
+.demo-node .band { stroke: none; }
+.demo-node .ttl { font-size: 14px; font-weight: 600; fill: var(--ink); }
+.demo-node .sub { font-size: 11.5px; fill: #6a7787; }
+.demo-node:hover rect:not(.band) { stroke: var(--amber); stroke-width: 2.2; fill: #fffaf3; }
+.demo-node:focus-visible { outline: none; }
+.demo-node:focus-visible rect:not(.band) { stroke: var(--indigo); stroke-width: 2.6; }
+.demo-node.is-open rect:not(.band) { stroke: var(--indigo); stroke-width: 2.6; fill: #f3f6fc; }
+
+.demo-node.is-dim { opacity: .28; }
+.demo-node.is-mark rect:not(.band) { stroke: var(--amber); stroke-width: 2.2; }
+.demo-node.is-current rect:not(.band) { stroke: var(--amber); stroke-width: 3.2; fill: #fff6e9; }
+
+.demo-wire { stroke: #b9c4d0; stroke-width: 1.4; fill: none; }
+.demo-layer { font-size: 11.5px; fill: #8a97a5; letter-spacing: .04em; }
+.demo-frame { fill: none; stroke: #dde4ea; stroke-width: 1; stroke-dasharray: 4 4; }
+
+/* подсказка при наведении */
+#demo-tip {
+  position: absolute; pointer-events: none; z-index: 3;
+  background: var(--ink); color: #fff; font-size: 13px;
+  padding: 5px 9px; border-radius: 3px; white-space: nowrap;
+}
+
+/* панель страницы, на которую ведёт фигура */
+.demo-page {
+  border-left: 1px solid var(--rule); padding: 18px 18px 22px;
+  background: #fff; position: relative; overflow-y: auto; max-height: 520px;
+}
+.demo-page-close {
+  position: absolute; top: 10px; right: 10px;
+  border: 1px solid var(--rule); background: #fff; border-radius: 3px;
+  width: 26px; height: 26px; cursor: pointer; font-size: 15px; line-height: 1; color: var(--muted);
+}
+.demo-page-close:hover { border-color: var(--indigo); color: var(--indigo); }
+.demo-page-kicker { font-size: 13px; color: var(--amber); margin: 0 0 10px; }
+.demo-page-title { font-size: 18px; font-weight: 600; margin: 0 0 6px; letter-spacing: -.01em; padding-right: 28px; }
+.demo-page-meta { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.demo-page-body {
+  font-family: "IBM Plex Serif", Georgia, serif; font-size: 15px; line-height: 1.62;
+  color: var(--ink); margin: 0;
+}
+
+.demo-hint { font-size: 14.5px; color: var(--muted); margin: 14px 0 0; max-width: 62ch; }
+
+@media (max-width: 880px) {
+  .demo-stage { grid-template-columns: 1fr; }
+  .demo-page { border-left: none; border-top: 1px solid var(--rule); max-height: none; }
+  .demo-zoom { margin-left: 0; }
+}
