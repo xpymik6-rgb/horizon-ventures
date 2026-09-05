@@ -1,0 +1,30 @@
+# Horizon Ventures
+
+> A one-person software company registered in Peru (Horizon Ventures E.I.R.L., RUC 20612763888)
+> that builds narrow apps for Atlassian Confluence Cloud. Both apps run entirely on Atlassian
+> infrastructure under the Runs on Atlassian programme: no vendor servers, and no customer
+> data leaves the customer's own Confluence site. Support is answered by the developer who
+> wrote the code. Free for teams up to 10 people.
+
+## Apps
+
+- [Clickable SVG](https://horizonventures.app/clickable-svg.html): Confluence renders SVG diagrams as flat pictures and kills the links inside them. This app restores them, so clicking a shape opens the Confluence page behind it. Links are bound to the page rather than its URL, so renaming or moving a page does not break the diagram. Reads SVG, draw.io, Mermaid and PlantUML. $2 per user per month, free up to 10 users.
+- [Smart Search](https://horizonventures.app/smart-search.html): builds live lists of Confluence pages from plain conditions such as a space, labels, or "not updated for 180 days" — no query language required. The list updates itself as pages change. CQL is available in manual mode. $1 per user per month, free up to 10 users.
+
+## Documentation
+
+- [Clickable SVG documentation](https://horizonventures.app/docs/): getting started, supported diagram formats, linking shapes to pages, search inside a diagram, safety model, known limits.
+- [Smart Search documentation](https://horizonventures.app/docs/smart-search/): building a list, conditions, live behaviour, manual CQL mode.
+
+## Replacing abandoned Confluence apps
+
+- [SVG out alternative](https://horizonventures.app/docs/svg-out-alternative.html): what happens when SVG out disappears and how to move diagrams over.
+- [Mermaid app alternative](https://horizonventures.app/docs/mermaid-confluence-alternative.html): what to do when a Mermaid renderer stops being maintained, including the free options.
+- [PlantUML app alternative](https://horizonventures.app/docs/plantuml-confluence-alternative.html): the same question for PlantUML diagrams.
+- [CQL Search alternative](https://horizonventures.app/docs/smart-search/cql-search-alternative.html): replacing an unmaintained page-list app.
+- [Connect end of life](https://horizonventures.app/docs/connect-end-of-life.html): what a Confluence admin has to do about apps built on the Connect platform, and how to audit their own site.
+
+## Company
+
+- [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
+- [Privacy policy](https://horizonventures.app/privacy.html): what the site and the apps do with data. Short version: nothing of yours leaves your Confluence site.
