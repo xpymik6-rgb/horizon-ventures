@@ -112,36 +112,50 @@
   <div class="wrap hero-grid">
     <div>
       <h1>Confluence apps that fix one thing properly.</h1>
-      <p class="lede">Horizon Ventures builds small apps for Confluence Cloud. Two so far: one gives the diagrams on your pages working links, the other builds page lists that keep themselves current.</p>
+      <p class="lede">Horizon Ventures builds small apps for Confluence Cloud. Four so far: diagrams that keep their links, page lists that keep themselves current, tables that leave as spreadsheets, and Word documents that arrive as a page tree.</p>
       <div class="actions">
         <a class="btn" href="clickable-svg.html">See Clickable SVG</a>
-        <a class="btn ghost" href="smart-search.html">See Smart Search</a>
+        <a class="btn ghost" href="#clickable-svg">See all four apps</a>
       </div>
     </div>
 
     <figure class="demo">
       <!-- Схема-демонстрация: каждый блок здесь — настоящая ссылка.
            Ровно то, что делает Clickable SVG внутри Confluence. -->
-      <svg viewBox="0 0 520 288" role="group" aria-label="Diagram where each box links to a section of this site">
-        <path class="wire live" d="M260 96 L260 140 L408 140 L408 176"/>
-        <path class="wire live" d="M260 96 L260 140 L112 140 L112 176"/>
+      <svg viewBox="0 0 520 344" role="group" aria-label="Diagram where each box links to a product page">
+        <path class="wire live" d="M260 84 L260 112 L126 112 L126 140"/>
+        <path class="wire live" d="M260 84 L260 112 L394 112 L394 140"/>
+        <path class="wire" d="M126 212 L126 240 L126 252"/>
+        <path class="wire" d="M394 212 L394 240 L394 252"/>
 
-        <a class="node" href="index.html#about" aria-label="About Horizon Ventures">
-          <rect x="150" y="24" width="220" height="72" rx="2"/>
-          <text x="260" y="58" text-anchor="middle">Horizon Ventures</text>
-          <text class="sub" x="260" y="78" text-anchor="middle">Peru, two apps shipped</text>
+        <a class="node" href="about.html" aria-label="About Horizon Ventures">
+          <rect x="150" y="16" width="220" height="68" rx="2"></rect>
+          <text x="260" y="48" text-anchor="middle">Horizon Ventures</text>
+          <text class="sub" x="260" y="68" text-anchor="middle">Peru, four apps</text>
         </a>
 
         <a class="node" href="clickable-svg.html" aria-label="Clickable SVG">
-          <rect x="8" y="176" width="208" height="88" rx="2"/>
-          <text x="112" y="216" text-anchor="middle">Clickable SVG</text>
-          <text class="sub" x="112" y="238" text-anchor="middle">diagrams keep their links</text>
+          <rect x="8" y="140" width="236" height="72" rx="2"></rect>
+          <text x="126" y="174" text-anchor="middle">Clickable SVG</text>
+          <text class="sub" x="126" y="194" text-anchor="middle">diagrams keep their links</text>
         </a>
 
         <a class="node" href="smart-search.html" aria-label="Smart Search">
-          <rect x="304" y="176" width="208" height="88" rx="2"/>
-          <text x="408" y="216" text-anchor="middle">Smart Search</text>
-          <text class="sub" x="408" y="238" text-anchor="middle">lists that update themselves</text>
+          <rect x="276" y="140" width="236" height="72" rx="2"></rect>
+          <text x="394" y="174" text-anchor="middle">Smart Search</text>
+          <text class="sub" x="394" y="194" text-anchor="middle">lists that update themselves</text>
+        </a>
+
+        <a class="node" href="table-export.html" aria-label="Table Export">
+          <rect x="8" y="252" width="236" height="72" rx="2"></rect>
+          <text x="126" y="286" text-anchor="middle">Table Export</text>
+          <text class="sub" x="126" y="306" text-anchor="middle">tables into one workbook</text>
+        </a>
+
+        <a class="node" href="word-import.html" aria-label="Word Import">
+          <rect x="276" y="252" width="236" height="72" rx="2"></rect>
+          <text x="394" y="286" text-anchor="middle">Word Import</text>
+          <text class="sub" x="394" y="306" text-anchor="middle">documents become pages</text>
         </a>
       </svg>
       <figcaption>Every box above is a working link. Put the same diagram inside Confluence and those links die. That is where the first app came from.</figcaption>
