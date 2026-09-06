@@ -118,6 +118,44 @@
   </div>
 </section>
 
+<section id="demo4">
+  <div class="wrap">
+    <h2>Drop your own document and see the page tree</h2>
+    <p>This runs entirely in your browser: the file is unpacked and read here, on your machine, and nothing is uploaded anywhere. That is also how the app itself works, which is the point of showing it this way.</p>
+
+    <div class="demo-wrap">
+      <div class="wi-bar">
+        <label>Split into pages down to
+          <select id="wi-level">
+            <option value="1">Heading 1</option>
+            <option value="2" selected>Heading 2</option>
+            <option value="3">Heading 3</option>
+          </select>
+        </label>
+        <button type="button" id="wi-example">Use the example document</button>
+        <span id="wi-filename"></span>
+      </div>
+
+      <div class="wi-stage">
+        <div>
+          <div id="wi-drop">
+            <b>Drop a .docx here</b>
+            <span>Or click to choose one. The file stays on your computer: it is unpacked and read in this page.</span>
+          </div>
+          <input type="file" id="wi-file" accept=".docx">
+        </div>
+        <div class="wi-side">
+          <h4>Pages that would be created</h4>
+          <div id="wi-tree"></div>
+          <p id="wi-summary"></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="demo-hint">Headings have to be real heading styles in Word. If the document was written with text simply made bigger and bold, nothing here will find a structure — and neither will any other tool. That is the single thing worth fixing before a migration.</p>
+  </div>
+</section>
+
 <section id="pricing">
   <div class="wrap">
     <h2>Pricing</h2>
@@ -156,5 +194,6 @@
 </footer>
 
 <script src="demo-search.js"></script>
+<script src="demo-word.js"></script>
 </body>
 </html>

@@ -119,6 +119,41 @@
   </div>
 </section>
 
+<section id="demo3">
+  <div class="wrap">
+    <h2>The merged-cell problem, in your browser</h2>
+    <p>Below is an ordinary Confluence table: a budget where the quarter is merged across three rows and the owner across two. Switch between the two ways of getting it into a spreadsheet and watch what happens to the columns.</p>
+
+    <div class="demo-wrap">
+      <div class="te-bar">
+        <button type="button" data-rezhim="copy">Copied by hand</button>
+        <button type="button" data-rezhim="app" class="is-on">With Table Export</button>
+        <span class="te-right"><a class="te-dl" id="te-download">Download this CSV</a></span>
+      </div>
+
+      <div class="te-stage">
+        <div class="te-side">
+          <h4>The table on the page</h4>
+          <table class="te-table">
+            <thead>
+              <tr><th>Quarter</th><th>Item</th><th>Owner</th><th>Plan</th><th>Actual</th></tr>
+            </thead>
+            <tbody id="te-rows"></tbody>
+          </table>
+        </div>
+        <div class="te-side">
+          <h4>What lands in the file</h4>
+          <div id="te-preview"></div>
+          <p class="te-note" id="te-note"></p>
+          <p id="te-summary"></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="demo-hint">The file you download here is real: open it in Excel and the difference is the same one your reports have been living with. This is the whole reason the app exists.</p>
+  </div>
+</section>
+
 <section id="pricing">
   <div class="wrap">
     <h2>Pricing</h2>
@@ -157,5 +192,6 @@
 </footer>
 
 <script src="demo-search.js"></script>
+<script src="demo-table.js"></script>
 </body>
 </html>

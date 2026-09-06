@@ -153,3 +153,113 @@
   .ss-field select { min-width: 130px; }
   .ss-table th:nth-child(2), .ss-table td:nth-child(2) { display: none; }
 }
+
+/* ── демо Table Export: таблица и два способа её выгрузить ─── */
+
+.te-bar {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  padding: 13px 14px; border: 1px solid var(--rule); border-bottom: none;
+  border-radius: 3px 3px 0 0; background: var(--sheet);
+}
+.te-bar button {
+  font: inherit; font-size: 14.5px; padding: 7px 13px; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 3px; background: #fff; color: var(--ink);
+}
+.te-bar button.is-on { border-color: var(--indigo); color: var(--indigo); background: rgba(35,71,143,.06); font-weight: 500; }
+.te-bar .te-right { margin-left: auto; }
+.te-bar a.te-dl {
+  font-size: 14.5px; padding: 7px 13px; border-radius: 3px;
+  background: var(--indigo); color: #fff; text-decoration: none; cursor: pointer; border: none;
+}
+
+.te-stage {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border: 1px solid var(--rule); border-radius: 0 0 3px 3px; background: var(--sheet); overflow: hidden;
+}
+.te-side { padding: 16px; }
+.te-side + .te-side { border-left: 1px solid var(--rule); }
+.te-side h4 { margin: 0 0 12px; font-size: 14px; font-weight: 500; color: var(--muted); }
+
+.te-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.te-table th {
+  text-align: left; font-weight: 500; font-size: 12.5px; color: var(--muted);
+  padding: 7px 9px; border-bottom: 1px solid var(--rule);
+}
+.te-table td { padding: 7px 9px; border-bottom: 1px solid #eef2f6; vertical-align: middle; }
+.te-table .te-merged { background: #f4f7fb; font-weight: 500; }
+.te-table .te-num { text-align: right; font-variant-numeric: tabular-nums; }
+
+#te-preview {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 12.5px; line-height: 1.75; background: #fbfcfd;
+  border: 1px solid var(--rule); border-radius: 3px; padding: 10px 12px;
+  overflow-x: auto; white-space: nowrap;
+}
+.te-line { color: #43505f; }
+.te-line.te-head { color: var(--ink); font-weight: 600; }
+.te-line.te-broken { background: #fdeeee; color: #a33; border-radius: 2px; }
+
+.te-note { font-size: 14.5px; margin: 12px 0 0; max-width: 52ch; }
+.te-note.te-bad { color: #a33; }
+.te-note.te-good { color: #2c6e49; }
+#te-summary { font-size: 14px; color: var(--muted); margin: 8px 0 0; }
+
+@media (max-width: 880px) {
+  .te-stage { grid-template-columns: 1fr; }
+  .te-side + .te-side { border-left: none; border-top: 1px solid var(--rule); }
+  .te-bar .te-right { margin-left: 0; }
+}
+
+/* ── демо Word Import: документ превращается в дерево страниц ─ */
+
+.wi-bar {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  padding: 13px 14px; border: 1px solid var(--rule); border-bottom: none;
+  border-radius: 3px 3px 0 0; background: var(--sheet);
+}
+.wi-bar label { font-size: 13px; color: var(--muted); display: flex; gap: 7px; align-items: center; }
+.wi-bar select {
+  font: inherit; font-size: 14.5px; padding: 6px 9px;
+  border: 1px solid var(--rule); border-radius: 3px; background: #fff; color: var(--ink);
+}
+.wi-bar button {
+  font: inherit; font-size: 14px; padding: 6px 11px; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 3px; background: #fff; color: var(--indigo);
+}
+#wi-filename { font-size: 14px; color: var(--ink); font-weight: 500; margin-left: auto; }
+
+.wi-stage { display: grid; grid-template-columns: 320px 1fr; border: 1px solid var(--rule);
+  border-radius: 0 0 3px 3px; background: var(--sheet); overflow: hidden; }
+
+#wi-drop {
+  margin: 16px; border: 2px dashed var(--rule); border-radius: 4px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 26px 18px; cursor: pointer; color: var(--muted);
+  transition: border-color .15s ease, background .15s ease; min-height: 190px;
+}
+#wi-drop:hover, #wi-drop.is-over { border-color: var(--indigo); background: #f6f8fc; color: var(--indigo); }
+#wi-drop b { display: block; color: var(--ink); font-size: 15.5px; margin-bottom: 6px; }
+#wi-drop span { font-size: 13.5px; line-height: 1.5; max-width: 30ch; }
+#wi-file { display: none; }
+
+.wi-side { padding: 16px; border-left: 1px solid var(--rule); }
+.wi-side h4 { margin: 0 0 12px; font-size: 14px; font-weight: 500; color: var(--muted); }
+
+.wi-node {
+  display: flex; gap: 9px; align-items: baseline;
+  padding: 6px 8px; border-radius: 3px; font-size: 15px;
+}
+.wi-node:hover { background: #f4f7fb; }
+.wi-icon { color: #8fa1b5; font-size: 12px; }
+.wi-l1 { font-weight: 600; }
+.wi-l2 { margin-left: 22px; }
+.wi-l3 { margin-left: 44px; color: #43505f; font-size: 14.5px; }
+.wi-l4 { margin-left: 66px; color: var(--muted); font-size: 14px; }
+.wi-empty { color: var(--muted); font-size: 14.5px; margin: 6px 0; }
+#wi-summary { font-size: 14px; color: var(--muted); margin: 14px 0 0; border-top: 1px solid var(--rule); padding-top: 12px; }
+
+@media (max-width: 880px) {
+  .wi-stage { grid-template-columns: 1fr; }
+  .wi-side { border-left: none; border-top: 1px solid var(--rule); }
+  #wi-filename { margin-left: 0; }
+}
