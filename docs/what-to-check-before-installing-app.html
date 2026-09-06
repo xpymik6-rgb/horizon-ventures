@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What to check before installing a Confluence app</title>
+<meta name="description" content="Where your data goes, what the Marketplace badges actually mean, how to tell an abandoned app from a quiet one, and what happens when you uninstall. A checklist for Confluence admins.">
+<link rel="canonical" href="https://horizonventures.app/docs/what-to-check-before-installing-app.html">
+<meta property="og:title" content="What to check before installing a Confluence app">
+<meta property="og:description" content="Data egress, the badges and what they really mean, abandonment signals, and the uninstall question.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "What to check before installing a Confluence app",
+   "description": "A checklist for Confluence admins: where app data goes, what Runs on Atlassian and Cloud Fortified actually mean, how to spot an abandoned app, and what uninstalling leaves behind.",
+   "url": "https://horizonventures.app/docs/what-to-check-before-installing-app.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-05",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "What does the Runs on Atlassian badge mean?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It means the app runs entirely on Atlassian-hosted compute and storage, keeps data residency matching the host product, and cannot send your data outside your Atlassian instance without your consent. Atlassian applies it automatically to eligible Forge apps, so it is a verified technical fact rather than a vendor claim."}},
+    {"@type": "Question", "name": "Is Cloud Fortified the same thing?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Cloud Fortified is about the vendor's practices: service level objectives, incident management, a named support channel, a 24-hour response guarantee for critical issues, and participation in the bug bounty programme. Atlassian is replacing it with Atlassian Enterprise Certified, with onboarding starting in the third quarter of 2026 and Cloud Fortified phased out by the end of the year."}},
+    {"@type": "Question", "name": "How can I tell whether an app is abandoned?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Check the date of the latest version, whether the vendor replies to reviews, and whether the app is still built on Connect. Connect apps cannot be updated after March 2026, so a Connect app with no migration plan is on a countdown."}},
+    {"@type": "Question", "name": "What happens to my content if I uninstall an app?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It depends on where the app stored things. If it only rendered content that already lived in Confluence, uninstalling removes the macro and leaves your pages and attachments intact. If the app kept data in its own storage, ask the vendor what you get back and in what format before you install."}}
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>What to check before installing a Confluence app</h1>
+    <p class="sub">Four questions decide almost everything: where your data goes, whether the vendor is still alive, what happens when you uninstall, and what the bill looks like when the team grows. Everything else is detail.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Look for the Runs on Atlassian badge, which is a verified technical fact rather than a claim. Check the date of the latest version and whether the vendor answers reviews. Ask what uninstalling leaves behind. Then look at the price for the team size you will have next year, not the one you have today.</p>
+
+  <h2>1. Where does the data go</h2>
+
+  <p>This is the question your security team will ask, so it is worth being able to answer it before they do.</p>
+
+  <p>Apps on Atlassian Cloud are built on one of two platforms. <strong>Forge</strong> apps can run entirely inside Atlassian's own infrastructure. <strong>Connect</strong> apps run on the vendor's servers, which means your page content travels to a machine you know nothing about, in a country you may not have chosen.</p>
+
+  <p>Neither is automatically wrong. A vendor's server is not evil, and plenty of good apps use one because they genuinely need to. But it is a different conversation with your compliance people, and it should be a conscious decision rather than a surprise.</p>
+
+  <h3>What the badges actually mean</h3>
+
+  <table>
+    <thead><tr><th>Badge</th><th>What it tells you</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Runs on Atlassian</strong></td>
+        <td>The app uses only Atlassian-hosted compute and storage, matches the data residency of your product, and cannot send data outside your instance without your consent. Atlassian applies this automatically to eligible Forge apps, so nobody can simply claim it.</td>
+      </tr>
+      <tr>
+        <td><strong>Cloud Fortified</strong></td>
+        <td>About the vendor's practices rather than the architecture: service level objectives, incident process, a named support channel, a 24-hour response promise for critical issues, bug bounty participation. Being replaced by <strong>Atlassian Enterprise Certified</strong>, with onboarding from the third quarter of 2026 and Cloud Fortified phased out by the end of the year.</td>
+      </tr>
+      <tr>
+        <td><strong>No badge</strong></td>
+        <td>Not a verdict. Small vendors often skip programmes with fees and paperwork. It means you ask the questions yourself.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <p>The practical difference: Runs on Atlassian answers "can this app leak my content", Cloud Fortified answers "will anyone pick up the phone at two in the morning". Enterprises usually need both. A ten-person team almost always needs only the first.</p>
+  </div>
+
+  <h2>2. Is the vendor still there</h2>
+
+  <p>Abandonment is the most common way an app hurts you, and it is quiet. Nothing breaks on the day the vendor stops caring — it breaks a year later, during a platform change, when nobody answers the ticket.</p>
+
+  <p>Three signals, in order of usefulness:</p>
+
+  <p><strong>The date of the latest version.</strong> On the Marketplace listing, look at when the app was last updated. Two years of silence for an app on an evolving platform means somebody moved on.</p>
+
+  <p><strong>Replies to reviews.</strong> Open the reviews tab and look for vendor responses, especially to the angry ones. A vendor who answers a one-star review in public is a vendor who will answer your email.</p>
+
+  <p><strong>Whether it is still a Connect app.</strong> Connect apps cannot be updated after March 2026 and stop receiving fixes at the end of that year. An app still on Connect with no migration announcement is on a countdown, whatever its rating says.</p>
+
+  <h2>3. What happens when you uninstall</h2>
+
+  <p>Ask this before installing, not after. There are two very different answers.</p>
+
+  <p>Some apps only display what already exists in Confluence: a diagram that is an attachment on your page, a list built from your pages. Uninstalling removes the macro and leaves your content exactly as it was. The risk is a page that looks broken until somebody edits it, and nothing more.</p>
+
+  <p>Other apps store their own data — configurations, entities, records that live only inside the app. Uninstalling takes that with it. That can be fine, as long as you know it in advance and know what export you get. It is a bad thing to discover during a licence renewal argument.</p>
+
+  <h2>4. The price at the size you will actually be</h2>
+
+  <p>Marketplace pricing is tiered, and the tiers are not linear. An app that costs a few dollars a month for ten people can cost several hundred at a hundred and fifty. Open the pricing tab and look at the row for the team size you expect a year from now.</p>
+
+  <p>Also check the free tier. Most apps are free for teams up to ten users, which is genuinely free rather than a trial, and that is the cheapest way to judge an app: install it, use it for a month, and decide with evidence.</p>
+
+  <h2>The questions worth sending the vendor</h2>
+
+  <div class="cards">
+    <div class="card"><b>Does any of our content leave our Atlassian site?</b>If yes, where does it go and for how long is it kept. A straight answer here tells you a lot about the vendor.</div>
+    <div class="card"><b>What exactly does uninstalling remove?</b>You want the answer in terms of your content, not their architecture.</div>
+    <div class="card"><b>Who answers support and how fast?</b>Small vendors often win this one. A one-person shop can reply the same day; a large one may have a queue.</div>
+    <div class="card"><b>What is the plan for platform changes?</b>Particularly relevant for anything still running on Connect.</div>
+  </div>
+
+  <p><strong>Disclosure:</strong> I build four Confluence apps, and all of them carry the Runs on Atlassian badge, which is precisely why I can write this section without discomfort: the answer to the first question is no, nothing leaves your site, and it is verified by Atlassian rather than promised by me. The apps are <a href="/clickable-svg.html">Clickable SVG</a>, <a href="/smart-search.html">Smart Search</a>, <a href="/table-export.html">Table Export</a> and <a href="/word-import.html">Word Import</a>, all free for teams up to ten.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Does a high rating mean an app is safe?</h3>
+  <p>It means people liked using it, which is a different question from where their data went. Ratings and trust badges answer different things, and the badge is the one your security review cares about.</p>
+
+  <h3>Can I restrict what an app is allowed to do?</h3>
+  <p>App permissions are declared by the app and shown at install time. Read that screen rather than clicking through it: an app asking for far more than its job needs is a signal in itself.</p>
+
+  <h3>Our security team wants a review. What do we send them?</h3>
+  <p>The Marketplace listing's security tab, the vendor's privacy statement, and the answer to the data egress question above. For a Runs on Atlassian app that is usually the whole review.</p>
+
+  <h3>What if the app we already use gets abandoned?</h3>
+  <p>Check what you are actually locked into. Apps that only render your own content leave nothing behind; apps holding their own data need an export before you switch. We wrote about the specific cases of <a href="/docs/svg-out-alternative.html">SVG out</a> and <a href="/docs/connect-end-of-life.html">the Connect end of life</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -33,6 +33,8 @@
 
 - [Getting a Confluence table into Excel](https://horizonventures.app/docs/export-confluence-table-to-excel.html): no native export exists; the free routes, the merged-cell trap, and when a tool is justified.
 
+- [What to check before installing a Confluence app](https://horizonventures.app/docs/what-to-check-before-installing-app.html): Where your data goes, what the Marketplace badges really mean, how to spot an abandoned app, and what uninstalling leaves behind.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
