@@ -31,6 +31,8 @@
 
 - [Importing Word documents into Confluence](https://horizonventures.app/docs/import-word-into-confluence.html): the built-in .docx import step by step, what survives, what breaks, and when an archive needs a dedicated tool.
 
+- [Getting a Confluence table into Excel](https://horizonventures.app/docs/export-confluence-table-to-excel.html): no native export exists; the free routes, the merged-cell trap, and when a tool is justified.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
