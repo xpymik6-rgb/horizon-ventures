@@ -30,6 +30,7 @@ import io, os, re, sys, json, datetime
     ("word-import.html",   "Word Import"),
 ]
 
+ТЕГ_GOOGLE = 'gtag/js?id=AW-18433232021'
 СЧЁТЧИК = 'data-goatcounter="https://horizonventures.goatcounter.com/count"'
 
 
@@ -77,6 +78,16 @@ def починить(только_проверка=False):
         if м and м.group(2).count("<li>") != len(ПРОДУКТЫ):
             s = s[:м.start(2)] + "\n" + подвал_приложения(префикс) + "\n      " + s[м.end(2):]
             исправлено["подвал"] += 1
+
+        # тег Google Рекламы
+        if ТЕГ_GOOGLE not in s:
+            s = s.replace("</head>",
+                          '<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+'
+                          '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+'
+                          "gtag('js', new Date());gtag('config','AW-18433232021');</script>
+</head>", 1)
 
         # счётчик посещений
         if СЧЁТЧИК not in s:
