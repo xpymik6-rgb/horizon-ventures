@@ -35,6 +35,8 @@
 
 - [What to check before installing a Confluence app](https://horizonventures.app/docs/what-to-check-before-installing-app.html): Where your data goes, what the Marketplace badges really mean, how to spot an abandoned app, and what uninstalling leaves behind.
 
+- [Diagrams in Confluence: four approaches compared](https://horizonventures.app/docs/diagrams-in-confluence-compared.html): draw.io, Mermaid, PlantUML or an attached SVG, chosen by the only question that matters: who edits the diagram next year.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

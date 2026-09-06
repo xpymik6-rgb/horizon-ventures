@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagrams in Confluence: draw.io, Mermaid, PlantUML or an attached SVG</title>
+<meta name="description" content="Four ways to keep diagrams in Confluence, compared honestly: who edits them, what survives, what costs money, and which one fits the diagram you actually have.">
+<link rel="canonical" href="https://horizonventures.app/docs/diagrams-in-confluence-compared.html">
+<meta property="og:title" content="Diagrams in Confluence: draw.io, Mermaid, PlantUML or an attached SVG">
+<meta property="og:description" content="Four approaches compared by the only question that matters: who edits the diagram and how often.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Diagrams in Confluence: draw.io, Mermaid, PlantUML or an attached SVG",
+   "description": "An honest comparison of the four ways to keep diagrams in Confluence Cloud, chosen by who edits them and how often.",
+   "url": "https://horizonventures.app/docs/diagrams-in-confluence-compared.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-05",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Does Confluence Cloud support Mermaid natively?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. There is no built-in macro that renders Mermaid syntax in Confluence Cloud, so a Marketplace app is required. Several exist, and some are free."}},
+    {"@type": "Question", "name": "Which approach should a non-technical team use?",
+     "acceptedAnswer": {"@type": "Answer", "text": "A visual editor such as draw.io. Text-based diagrams like Mermaid and PlantUML assume the person editing is comfortable with syntax, which rules out most of the people who actually maintain documentation."}},
+    {"@type": "Question", "name": "Why do links inside an attached SVG stop working?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Confluence Cloud flattens SVG attachments to a raster image before display, because an SVG file can contain scripts. Everything interactive inside it, including links, is lost in that step."}},
+    {"@type": "Question", "name": "Is a plain screenshot ever the right answer?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes, for a diagram that will never be edited again, such as a snapshot of an incident timeline. The mistake is using a screenshot for something that changes, because nobody ever finds the source file a year later."}}
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Diagrams in Confluence: four approaches, honestly compared</h1>
+    <p class="sub">The choice is usually made by whoever draws the first diagram, and then everybody lives with it for years. It is worth five minutes of thought, and the deciding question is not which tool is best but who will edit this thing next.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> A visual editor such as draw.io for diagrams that non-engineers maintain. Mermaid or PlantUML when the diagram belongs with the code and should be reviewed like code. An attached SVG when the picture comes from a design tool and you need it to look exactly right. A screenshot when the diagram will genuinely never change again.</p>
+
+  <h2>The four options</h2>
+
+  <h3>A diagramming app inside Confluence</h3>
+  <p>draw.io is the common choice, and it is free for small teams. The diagram is created and edited inside the page, links on shapes work, and anyone who can use a mouse can maintain it. This is the default answer for architecture maps, process flows and floor plans that live in the documentation and get corrected by whoever notices the mistake.</p>
+  <p>The cost is lock-in of a mild kind: the diagram lives in the app's format, and moving to something else later means exporting and redrawing.</p>
+
+  <h3>Mermaid or PlantUML: diagrams as text</h3>
+  <p>Here the diagram is source code — a few lines describing nodes and arrows, rendered into a picture. The appeal is real: text goes into version control, diffs are readable, and a diagram can be generated by a script from the system it describes.</p>
+  <p>Two things to know before choosing this. Confluence Cloud does not render Mermaid natively, so you need an app for it, and several of them exist including free ones. And the editing audience narrows sharply: a technical writer will not touch a diagram that has to be edited as syntax, so the diagram becomes the property of the engineers, whether you intended that or not.</p>
+
+  <h3>An SVG made somewhere else</h3>
+  <p>The diagram comes from Figma, Illustrator, Inkscape, Visio or an architecture tool, and lands on the page as an attachment. It looks exactly as designed, which is why people do it.</p>
+  <p>The catch is documented and unavoidable: Confluence Cloud flattens an attached SVG into a raster image before showing it, because SVG files can carry scripts. Links inside the diagram stop working, hover states disappear, and the text inside becomes pixels that search cannot see. We wrote about <a href="/docs/confluence-svg-flat-image.html">why this happens and what to do</a> separately.</p>
+
+  <h3>A screenshot</h3>
+  <p>Unfashionable, and sometimes correct. For a diagram that documents a moment — an incident timeline, the state of a system before a migration — a picture is the honest format, because there is nothing to keep up to date.</p>
+  <p>It becomes a problem the moment the thing it shows starts changing. Then the source file is on somebody's laptop, that somebody has left, and the picture on the page is quietly wrong.</p>
+
+  <h2>Side by side</h2>
+
+  <table>
+    <thead>
+      <tr><th></th><th>Visual editor</th><th>Mermaid / PlantUML</th><th>Attached SVG</th><th>Screenshot</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Who can edit</td><td>Anyone</td><td>People comfortable with syntax</td><td>Whoever owns the source file</td><td>Nobody</td></tr>
+      <tr><td>Links on shapes</td><td>Work</td><td>Limited</td><td>Lost on display</td><td>None</td></tr>
+      <tr><td>Searchable text</td><td>Usually</td><td>Yes, the source is text</td><td>No, it becomes pixels</td><td>No</td></tr>
+      <tr><td>Review like code</td><td>No</td><td>Yes, that is the point</td><td>No</td><td>No</td></tr>
+      <tr><td>Looks exactly as designed</td><td>Close enough</td><td>The renderer decides</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Needs an app</td><td>Yes</td><td>Yes</td><td>No, but interactivity needs one</td><td>No</td></tr>
+    </tbody>
+  </table>
+
+  <h2>How to actually choose</h2>
+
+  <p>Ask three questions in this order, and the answer usually falls out.</p>
+
+  <p><strong>Who edits it next year?</strong> If the honest answer is "a writer, a manager, whoever spots the error", pick a visual editor. Text-based diagrams look elegant right up to the moment a non-engineer has to change one box.</p>
+
+  <p><strong>Does it change with the system?</strong> If the diagram describes something that evolves and can be generated from it, text wins. A picture of an architecture is out of date the week it is drawn; a generated one is not.</p>
+
+  <p><strong>Do people need to click through it?</strong> A map that exists to help people navigate documentation is worth nothing if the boxes are not links. That rules out screenshots entirely, and it is the reason an attached SVG needs help.</p>
+
+  <div class="note">
+    <p>One more thing worth checking before you commit: whether the app you are about to standardise on is still maintained. Several diagram apps for Confluence have been abandoned over the last few years, and their users found out the hard way. Our notes on the <a href="/docs/mermaid-confluence-alternative.html">abandoned Mermaid apps</a> and <a href="/docs/plantuml-confluence-alternative.html">the same for PlantUML</a> cover how to tell.</p>
+  </div>
+
+  <p><strong>Disclosure:</strong> I build <a href="/clickable-svg.html">Clickable SVG</a>, which covers the third case — an SVG that already exists and needs its links working inside Confluence, plus rendering for Mermaid and PlantUML source. If your diagram does not exist yet, draw it in a visual editor and you will not need my app at all. That is the honest recommendation and it costs me nothing to make.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Can we mix approaches?</h3>
+  <p>Most teams end up doing so, and that is fine as long as it is by decision rather than by accident. The failure mode is four approaches in one space because four people each picked their favourite.</p>
+
+  <h3>What about diagrams generated from code?</h3>
+  <p>That is the strongest case for the text-based route: the diagram is produced by the build, so it cannot drift from reality. Worth the syntax cost when the system changes weekly.</p>
+
+  <h3>Does exporting to PDF keep the diagrams?</h3>
+  <p>Rendered diagrams appear in exports as images. Interactive behaviour, including links, does not survive a PDF, which is a good reason not to make navigation depend on a document that people print.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
