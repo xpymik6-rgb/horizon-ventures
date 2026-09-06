@@ -34,4 +34,5 @@
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
+- [Support](https://horizonventures.app/support.html): one email address for every app, what to put in the message, answers within one business day.
 - [Privacy policy](https://horizonventures.app/privacy.html): what the site and the apps do with data. Short version: nothing of yours leaves your Confluence site.
