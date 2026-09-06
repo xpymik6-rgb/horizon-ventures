@@ -36,6 +36,7 @@ import io, os, re, sys, json, datetime
 def меню(префикс):
     строки = ['      <a href="%s%s">%s</a>' % (префикс, ф, и) for ф, и in ПРОДУКТЫ]
     строки.append('      <a href="%sarticles.html">Articles</a>' % префикс)
+    строки.append('      <a href="%schanges.html">Changes</a>' % префикс)
     строки.append('      <a href="%sabout.html">About</a>' % префикс)
     return "    <nav>\n" + "\n".join(строки) + "\n    </nav>"
 

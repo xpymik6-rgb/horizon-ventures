@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlassian changes worth knowing</title>
+<meta name="description" content="A weekly note on the Atlassian and Confluence Cloud changes that actually affect admins: deprecations, dates, programme changes, and what each one means in practice.">
+<link rel="canonical" href="https://horizonventures.app/changes.html">
+<meta property="og:title" content="Atlassian changes worth knowing">
+<meta property="og:description" content="Weekly, for Confluence admins: what changed, when it bites, and what to do about it.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://horizonventures.app/changes.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CollectionPage",
+   "name": "Atlassian changes worth knowing",
+   "url": "https://horizonventures.app/changes.html",
+   "description": "A weekly note on Atlassian and Confluence Cloud changes that affect administrators.",
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "hasPart": [
+    {
+     "@type": "BlogPosting",
+     "headline": "Connect is being switched off, and admins are now being told directly",
+     "datePublished": "2026-09-05",
+     "url": "https://horizonventures.app/changes.html#2026-09-05",
+     "author": {"@type": "Person", "name": "Mikhail Klimenko"}
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "When do Connect apps stop working in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Connect apps cannot be updated after March 2026 and stop receiving fixes by the end of 2026. They do not vanish overnight, but any app still on Connect without a migration plan is on a countdown, and Atlassian has started showing migration messages to admins directly."}},
+    {"@type": "Question", "name": "What is replacing Cloud Fortified?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Atlassian Enterprise Certified. Onboarding begins in the third quarter of 2026 and Cloud Fortified is expected to be phased out by the end of the year. The Runs on Atlassian badge is unaffected: it is a separate, automatically verified signal about where app data lives."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="clickable-svg.html">Clickable SVG</a>
+      <a href="smart-search.html">Smart Search</a>
+      <a href="table-export.html">Table Export</a>
+      <a href="word-import.html">Word Import</a>
+      <a href="articles.html">Articles</a>
+      <a href="changes.html">Changes</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Atlassian changes worth knowing</h1>
+    <p class="sub">A weekly note for people who run a Confluence site. Only the changes that make you do something, with the date they start to bite and the shortest sensible answer. Published on Fridays.</p>
+  </header>
+
+  <article id="2026-09-05">
+    <h2>5 September 2026</h2>
+
+    <h3>Connect is being switched off, and admins are now being told directly</h3>
+    <p>Since July, Atlassian has been rolling out migration messages inside the admin interface for sites still running Connect apps. If you have seen a notice about an app needing to move, that is what it is, and it is not a mistake.</p>
+    <p><strong>What it means.</strong> Connect apps cannot be updated after March 2026 and stop receiving fixes by the end of the year. Nothing disappears overnight, but an app in that state is on a countdown, and the vendor either has a Forge version or does not.</p>
+    <p><strong>What to do.</strong> Open your list of installed apps and check each one's platform on its Marketplace listing. For anything still on Connect, look for a migration announcement from the vendor. If there is none and the last update was over a year ago, start looking for a replacement now rather than in December. We wrote a longer piece on <a href="docs/connect-end-of-life.html">what this means for admins</a>.</p>
+
+    <h3>Cloud Fortified is being retired, Enterprise Certified takes its place</h3>
+    <p>Onboarding for the new Atlassian Enterprise Certified programme begins in the third quarter of 2026, and Cloud Fortified is expected to be gone by the end of the year.</p>
+    <p><strong>What it means.</strong> If your app approval process has "must be Cloud Fortified" written into it, that rule is about to point at a badge that no longer exists.</p>
+    <p><strong>What to do.</strong> Update the wording in your internal policy before the badge disappears, and separate two different questions while you are at it: where the app's data lives, and what the vendor promises about support. The <strong>Runs on Atlassian</strong> badge answers the first and is not affected by any of this. Our <a href="docs/what-to-check-before-installing-app.html">checklist for installing an app</a> covers both.</p>
+
+    <h3>App macros will appear in only one category, from February 2027</h3>
+    <p>Announced on 25 August. Today a macro from an app can show up under several categories in the element browser; from 25 February 2027 it will appear in exactly one.</p>
+    <p><strong>What it means.</strong> Mostly a vendor problem, but it lands on your users: a macro your team finds today under two headings will be under one. Nothing breaks, people just look in the wrong place for a week.</p>
+    <p><strong>What to do.</strong> Nothing urgent. If you keep an internal page explaining where to find macros, note it for the January review.</p>
+
+    <h3>Bulk migration of space permissions to roles</h3>
+    <p>Five new endpoints published in June let you move space permissions from the legacy model to role-based access control in bulk, rather than space by space.</p>
+    <p><strong>What it means.</strong> For a site with dozens of spaces, this is the difference between an afternoon and a fortnight of clicking.</p>
+    <p><strong>What to do.</strong> Only relevant if you are moving to roles. If you are, hand this to whoever writes your scripts before they start doing it by hand.</p>
+  </article>
+
+  <div class="note">
+    <p>Written by hand from the Atlassian developer changelog and programme announcements, filtered down to what changes an admin's week. If something important is missing, <a href="mailto:support@horizonventures.app">tell me</a> and it goes into the next one.</p>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="smart-search.html">Smart Search</a></li>
+        <li><a href="table-export.html">Table Export</a></li>
+        <li><a href="word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
