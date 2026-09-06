@@ -11,10 +11,15 @@
 - [Clickable SVG](https://horizonventures.app/clickable-svg.html): Confluence renders SVG diagrams as flat pictures and kills the links inside them. This app restores them, so clicking a shape opens the Confluence page behind it. Links are bound to the page rather than its URL, so renaming or moving a page does not break the diagram. Reads SVG, draw.io, Mermaid and PlantUML. $2 per user per month, free up to 10 users.
 - [Smart Search](https://horizonventures.app/smart-search.html): builds live lists of Confluence pages from plain conditions such as a space, labels, or "not updated for 180 days" — no query language required. The list updates itself as pages change. CQL is available in manual mode. $1 per user per month, free up to 10 users.
 
+- [Table Export](https://horizonventures.app/table-export.html): exports Confluence tables to CSV or Excel. One table, a whole page, or every table in a space collected into a single workbook. Merged cells are expanded so columns stay aligned in the file. $1.50 per user per month, free up to 10 users.
+- [Word Import](https://horizonventures.app/word-import.html): imports Word documents into Confluence and builds a page tree from them, keeping headings, tables and images. Files are read inside your browser, so nothing is uploaded to a third party. $2 per user per month, free up to 10 users.
+
 ## Documentation
 
 - [Clickable SVG documentation](https://horizonventures.app/docs/): getting started, supported diagram formats, linking shapes to pages, search inside a diagram, safety model, known limits.
 - [Smart Search documentation](https://horizonventures.app/docs/smart-search/): building a list, conditions, live behaviour, manual CQL mode.
+- [Table Export documentation](https://horizonventures.app/docs/table-export/): exporting one table, a page or a whole space, and how merged cells are handled.
+- [Word Import documentation](https://horizonventures.app/docs/word-import/): importing .docx files, what is preserved, and how the page tree is built.
 
 ## Replacing abandoned Confluence apps
 
