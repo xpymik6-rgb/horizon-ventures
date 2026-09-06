@@ -29,6 +29,8 @@
 - [CQL Search alternative](https://horizonventures.app/docs/smart-search/cql-search-alternative.html): replacing an unmaintained page-list app.
 - [Connect end of life](https://horizonventures.app/docs/connect-end-of-life.html): what a Confluence admin has to do about apps built on the Connect platform, and how to audit their own site.
 
+- [Importing Word documents into Confluence](https://horizonventures.app/docs/import-word-into-confluence.html): the built-in .docx import step by step, what survives, what breaks, and when an archive needs a dedicated tool.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

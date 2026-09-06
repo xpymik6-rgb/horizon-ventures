@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to import Word documents into Confluence Cloud, and where the built-in import stops</title>
+<meta name="description" content="Confluence Cloud imports .docx out of the box. Here is exactly how, what survives the trip, what breaks, and at what point a document migration stops being a copy-paste job.">
+<link rel="canonical" href="https://horizonventures.app/docs/import-word-into-confluence.html">
+<meta property="og:title" content="How to import Word documents into Confluence Cloud">
+<meta property="og:description" content="The built-in import, step by step. What survives, what breaks, and when a migration needs more than copy-paste.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to import Word documents into Confluence Cloud, and where the built-in import stops",
+   "description": "The built-in .docx import in Confluence Cloud, step by step: what survives, what breaks, how to prepare documents, and when a migration needs a dedicated tool.",
+   "url": "https://horizonventures.app/docs/import-word-into-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-05",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "Import a Word document into Confluence Cloud",
+   "step": [
+    {"@type": "HowToStep", "name": "Create", "text": "Select Create in the top navigation to open a blank page."},
+    {"@type": "HowToStep", "name": "Open the import panel", "text": "Next to the Share button select More actions, then Templates and import, then the Import tab."},
+    {"@type": "HowToStep", "name": "Choose the file", "text": "Select Word document (.docx) and pick the file from your computer."},
+    {"@type": "HowToStep", "name": "Check the result", "text": "Review headings, tables and images on the imported page, then publish it into the right place in the tree."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can Confluence Cloud import Word documents without an app?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. Create a page, then use More actions, Templates and import, and the Import tab, where Word document (.docx) is offered. The import is built in and free."}},
+    {"@type": "Question", "name": "What breaks when importing a Word document?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Shapes and drawing objects are replaced with placeholders. Complex layouts, text boxes, headers and footers, tracked changes and comments do not survive. Tables and images come through, and headings become Confluence headings if the document used real heading styles rather than manually enlarged text."}},
+    {"@type": "Question", "name": "Can one Word document become several Confluence pages?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not with the built-in import: one file becomes one page, however long it is. Splitting a document into a page tree by heading level requires a Marketplace app or manual work."}},
+    {"@type": "Question", "name": "How should a document be prepared before import?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Use real heading styles, keep tables simple and rectangular, replace drawn shapes with images, and remove tracked changes and comments before importing."}}
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to import Word documents into Confluence Cloud</h1>
+    <p class="sub">The import is built in and free. This is where it lives, what survives the trip, what quietly breaks, and the point at which a document migration stops being something you finish in an afternoon.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Create a page, then next to the Share button open <strong>More actions → Templates and import → Import</strong>, choose <strong>Word document (.docx)</strong>, and pick your file. No app required. One file becomes one page: headings, tables and images come across, drawn shapes do not.</p>
+
+  <h2>The built-in import, step by step</h2>
+
+  <ol>
+    <li>Select <strong>Create</strong> in the top navigation to open a blank page.</li>
+    <li>Next to <strong>Share</strong>, open <strong>More actions</strong>, then <strong>Templates and import</strong>, then the <strong>Import</strong> tab.</li>
+    <li>Choose <strong>Word document (.docx)</strong> and select the file.</li>
+    <li>Read the result before publishing, and move the page to where it belongs in the tree.</li>
+  </ol>
+
+  <div class="note">
+    <p>Do this once with a real document from your archive before planning anything bigger. Five minutes here will tell you more about your migration than any estimate.</p>
+  </div>
+
+  <h2>What survives, and what does not</h2>
+
+  <table>
+    <thead><tr><th>In the Word file</th><th>After import</th></tr></thead>
+    <tbody>
+      <tr><td>Heading styles (Heading 1, 2, 3)</td><td>Become Confluence headings, and the page gets a usable outline.</td></tr>
+      <tr><td>Text made large and bold by hand</td><td>Stays large and bold text. Not a heading, so it is invisible to the table of contents.</td></tr>
+      <tr><td>Simple rectangular tables</td><td>Come across intact.</td></tr>
+      <tr><td>Merged cells and nested tables</td><td>Usually survive, but check them: complex layouts are where import problems hide.</td></tr>
+      <tr><td>Images</td><td>Attached to the page and shown in place.</td></tr>
+      <tr><td>Shapes and drawing objects</td><td>Replaced with placeholders. This is documented behaviour, not a bug.</td></tr>
+      <tr><td>Text boxes, headers and footers</td><td>Do not come across in any useful form.</td></tr>
+      <tr><td>Tracked changes and comments</td><td>Do not come across. Accept or reject them in Word first.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Prepare the document, not the import</h2>
+
+  <p>Almost every disappointing import is a document problem rather than a Confluence problem. Three habits fix most of it.</p>
+
+  <p><strong>Use real heading styles.</strong> If your authors made headings by increasing the font size, Confluence has no way to know what is a heading. Applying Heading 1 and Heading 2 in Word before import is ten minutes that saves an hour of cleanup.</p>
+
+  <p><strong>Flatten the drawings.</strong> Anything drawn with Word shapes — a process diagram, a boxed callout, an org chart — will arrive as a placeholder. Screenshot it, or export it as an image, and put the image in the document instead.</p>
+
+  <p><strong>Clean the file.</strong> Accept tracked changes, delete comments, and remove the cover page if it exists only for the printed version. Confluence pages do not need cover pages, and everyone who imports one deletes it afterwards.</p>
+
+  <h2>Where the built-in import stops</h2>
+
+  <p>The import is genuinely good for what it is. It runs into three walls, and all three are the same wall: it was built for a document, not for an archive.</p>
+
+  <div class="cards">
+    <div class="card"><b>One file, one page</b>A 90-page regulation becomes a 90-page Confluence page. Nobody reads that, and nobody can link to a section of it. Splitting it into a tree by heading level is manual work.</div>
+    <div class="card"><b>One file at a time</b>Fine for five documents. For a hundred and fifty, it is a week of somebody clicking through the same four menus, and the week never gets scheduled.</div>
+    <div class="card"><b>No structure across documents</b>Each import lands where you happen to be. Turning a folder of files into a coherent space with parents and children is a separate job, done by hand.</div>
+  </div>
+
+  <p>This is why so many Confluence migrations stall halfway. The tooling handles the document in front of you and has nothing to say about the shared drive behind it.</p>
+
+  <h2>When the archive is the problem</h2>
+
+  <p>The honest test is arithmetic. Count your documents and multiply by fifteen minutes, which is a realistic figure once you include fixing headings and placing the page. Twenty documents is a morning. A hundred and fifty is four working days that nobody has, which is exactly why those files are still sitting on the shared drive two years after the decision to move.</p>
+
+  <p><strong>Disclosure:</strong> I build <a href="/word-import.html">Word Import for Confluence</a>, which exists for that second case: drop a batch of files, get a page tree, with documents split by heading level rather than dumped as one long page. It reads the files inside your browser, so nothing is uploaded to a third party — which matters when the documents are regulations, contracts or HR policies. It is free for teams up to ten people.</p>
+
+  <p>If you have twenty documents and good heading styles, use the built-in import and keep your money. This page is here to help you tell which case you are in.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Does the import work on mobile?</h3>
+  <p>Do it from a desktop browser. The import lives in the page creation menu, which is awkward on a phone, and you will want to check the result on a large screen anyway.</p>
+
+  <h3>What about .doc files from the nineties?</h3>
+  <p>Open them in Word and save as .docx first. The old binary format is not accepted, and converting it also gives you a chance to fix the heading styles.</p>
+
+  <h3>Can I import a PDF the same way?</h3>
+  <p>No. PDF is a layout format with no reliable structure inside, so any conversion is guesswork. If the PDF was generated from a Word file, find the original and import that instead.</p>
+
+  <h3>We are moving from SharePoint. Same story?</h3>
+  <p>Mostly. The files are usually .docx underneath, so the same rules apply — with the extra step of deciding what not to bring. A migration is the one moment when deleting outdated documents is easy, and it is worth pairing this with a look at <a href="/docs/find-stale-pages-confluence.html">what nobody maintains any more</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
