@@ -40,6 +40,8 @@
 - [Atlassian changes worth knowing](https://horizonventures.app/changes.html): a weekly note on Atlassian and Confluence Cloud changes that affect administrators, with what each change means in practice.
 - [All articles](https://horizonventures.app/articles.html): index of every guide and write-up on this site.
 
+- [Cloud Fortified is retiring: what app badges mean now](https://horizonventures.app/docs/cloud-fortified-retiring.html): Submissions closed on 1 September 2026, the programme ends on 31 December, and Atlassian Enterprise Certified takes over.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
