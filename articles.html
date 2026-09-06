@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Articles: Confluence, diagrams and keeping a wiki honest</title>
+<meta name="description" content="Practical write-ups for Confluence admins: why SVG diagrams lose their links, how to find pages nobody maintains, importing Word documents, exporting tables, and what to.">
+<link rel="canonical" href="https://horizonventures.app/articles.html">
+<meta property="og:title" content="Articles for Confluence admins">
+<meta property="og:description" content="Straight answers about diagrams, documents, tables and app trust in Confluence Cloud.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CollectionPage",
+   "name": "Articles about Confluence, diagrams and wiki hygiene",
+   "url": "https://horizonventures.app/articles.html",
+   "publisher": {
+    "@type": "Organization",
+    "name": "Horizon Ventures E.I.R.L.",
+    "url": "https://horizonventures.app/"
+   },
+   "hasPart": [
+    {
+     "@type": "Article",
+     "headline": "Why Confluence Cloud turns your SVG into a flat image — and what actually works",
+     "url": "https://horizonventures.app/docs/confluence-svg-flat-image.html",
+     "description": "Confluence Cloud flattens attached SVG files, so links and interactivity inside them stop working. Here is why it happens, what you lose, what you can do for free, and when you need an app."
+    },
+    {
+     "@type": "Article",
+     "headline": "Connect app end of life — what a Confluence admin actually has to do",
+     "url": "https://horizonventures.app/docs/connect-end-of-life.html",
+     "description": "Atlassian is retiring the Connect platform. What the deadlines mean, how to find which of your Confluence apps are affected, and how to tell an abandoned app from one that is migrating."
+    },
+    {
+     "@type": "Article",
+     "headline": "Diagrams in Confluence: draw.io, Mermaid, PlantUML or an attached SVG",
+     "url": "https://horizonventures.app/docs/diagrams-in-confluence-compared.html",
+     "description": "Four ways to keep diagrams in Confluence, compared honestly: who edits them, what survives, what costs money, and which one fits the diagram you actually have."
+    },
+    {
+     "@type": "Article",
+     "headline": "How to get a Confluence table into Excel",
+     "url": "https://horizonventures.app/docs/export-confluence-table-to-excel.html",
+     "description": "Confluence has no built-in table export. Here are the free ways that actually work, where each one breaks, and the point at which copying by hand stops being reasonable."
+    },
+    {
+     "@type": "Article",
+     "headline": "How to find the Confluence pages nobody maintains any more",
+     "url": "https://horizonventures.app/docs/find-stale-pages-confluence.html",
+     "description": "Every large wiki hides hundreds of pages nobody has touched in years. Here is how to find them in Confluence Cloud with search filters and CQL, what the built-in tools cannot do, and how to run an audit that stays useful."
+    },
+    {
+     "@type": "Article",
+     "headline": "How to import Word documents into Confluence Cloud, and where the built-in import stops",
+     "url": "https://horizonventures.app/docs/import-word-into-confluence.html",
+     "description": "Confluence Cloud imports .docx out of the box. Here is exactly how, what survives the trip, what breaks, and at what point a document migration stops being a copy-paste job."
+    },
+    {
+     "@type": "Article",
+     "headline": "Mermaid for Confluence alternative — abandoned apps and what to use instead",
+     "url": "https://horizonventures.app/docs/mermaid-confluence-alternative.html",
+     "description": "Several Mermaid apps for Confluence were abandoned in 2024 and run on the retiring Connect platform. What your options are, including the free ones, and when a paid app is actually worth it."
+    },
+    {
+     "@type": "Article",
+     "headline": "PlantUML for Confluence alternative — abandoned apps and what to use instead",
+     "url": "https://horizonventures.app/docs/plantuml-confluence-alternative.html",
+     "description": "PlantUML apps for Confluence abandoned since 2022 run on the retiring Connect platform. What your options are, including free ones, and what a Forge app reads today."
+    },
+    {
+     "@type": "Article",
+     "headline": "SVG out alternative for Confluence Cloud — what to use instead",
+     "url": "https://horizonventures.app/docs/svg-out-alternative.html",
+     "description": "SVG out for Confluence has not been updated since February 2023 and runs on the retiring Connect platform. What breaks, what your options are, and how to move your diagrams without losing links."
+    },
+    {
+     "@type": "Article",
+     "headline": "What to check before installing a Confluence app",
+     "url": "https://horizonventures.app/docs/what-to-check-before-installing-app.html",
+     "description": "Where your data goes, what the Marketplace badges actually mean, how to tell an abandoned app from a quiet one, and what happens when you uninstall. A checklist for Confluence admins."
+    }
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="clickable-svg.html">Clickable SVG</a>
+      <a href="smart-search.html">Smart Search</a>
+      <a href="table-export.html">Table Export</a>
+      <a href="word-import.html">Word Import</a>
+      <a href="articles.html">Articles</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Articles</h1>
+    <p class="lede">Written for the person who has the problem open in another tab. Every one of these starts with the answer, says honestly what Confluence does out of the box, and only then mentions where our apps help.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Guides</h2>
+    <ul class="facts">
+      <li>
+        <h3><a href="docs/confluence-svg-flat-image.html">Why Confluence Cloud turns your SVG into a flat image</a></h3>
+        <p>Confluence Cloud flattens attached SVG files, so links and interactivity inside them stop working. Here is why it happens, what you lose, what you can do for free, and when you need an app.</p>
+      </li>
+      <li>
+        <h3><a href="docs/diagrams-in-confluence-compared.html">Diagrams in Confluence: draw.io, Mermaid, PlantUML or an attached SVG</a></h3>
+        <p>Four ways to keep diagrams in Confluence, compared honestly: who edits them, what survives, what costs money, and which one fits the diagram you actually have.</p>
+      </li>
+      <li>
+        <h3><a href="docs/export-confluence-table-to-excel.html">How to get a Confluence table into Excel</a></h3>
+        <p>Confluence has no built-in table export. Here are the free ways that actually work, where each one breaks, and the point at which copying by hand stops being reasonable.</p>
+      </li>
+      <li>
+        <h3><a href="docs/find-stale-pages-confluence.html">How to find the Confluence pages nobody maintains any more</a></h3>
+        <p>Every large wiki hides hundreds of pages nobody has touched in years. Here is how to find them in Confluence Cloud with search filters and CQL, what the built-in tools cannot do, and how to run an audit that stays useful.</p>
+      </li>
+      <li>
+        <h3><a href="docs/import-word-into-confluence.html">How to import Word documents into Confluence Cloud</a></h3>
+        <p>Confluence Cloud imports .docx out of the box. Here is exactly how, what survives the trip, what breaks, and at what point a document migration stops being a copy-paste job.</p>
+      </li>
+      <li>
+        <h3><a href="docs/what-to-check-before-installing-app.html">What to check before installing a Confluence app</a></h3>
+        <p>Where your data goes, what the Marketplace badges actually mean, how to tell an abandoned app from a quiet one, and what happens when you uninstall. A checklist for Confluence admins.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Replacing an app that is going away</h2>
+    <p class="lede">Atlassian is switching off Connect apps, and several well-used Confluence apps have stopped being maintained. These cover the specific cases.</p>
+    <ul class="facts">
+      <li>
+        <h3><a href="docs/connect-end-of-life.html">Connect app end of life</a></h3>
+        <p>Atlassian is retiring the Connect platform. What the deadlines mean, how to find which of your Confluence apps are affected, and how to tell an abandoned app from one that is migrating.</p>
+      </li>
+      <li>
+        <h3><a href="docs/mermaid-confluence-alternative.html">Mermaid for Confluence alternative</a></h3>
+        <p>Several Mermaid apps for Confluence were abandoned in 2024 and run on the retiring Connect platform. What your options are, including the free ones, and when a paid app is actually worth it.</p>
+      </li>
+      <li>
+        <h3><a href="docs/plantuml-confluence-alternative.html">PlantUML for Confluence alternative</a></h3>
+        <p>PlantUML apps for Confluence abandoned since 2022 run on the retiring Connect platform. What your options are, including free ones, and what a Forge app reads today.</p>
+      </li>
+      <li>
+        <h3><a href="docs/svg-out-alternative.html">SVG out alternative for Confluence Cloud</a></h3>
+        <p>SVG out for Confluence has not been updated since February 2023 and runs on the retiring Connect platform. What breaks, what your options are, and how to move your diagrams without losing links.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="smart-search.html">Smart Search</a></li>
+        <li><a href="table-export.html">Table Export</a></li>
+        <li><a href="word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
