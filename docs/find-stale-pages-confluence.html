@@ -38,7 +38,7 @@
     {"@type": "Question", "name": "How do I find pages that have not been updated in a year in Confluence Cloud?",
      "acceptedAnswer": {"@type": "Answer", "text": "Use the search filters: search within a space and set the last modified filter to before your cut-off date. For anything more precise, the CQL query space = KEY AND type = page AND lastModified < now(\"-365d\") can be run through the REST API, or through an app that builds the query for you."}},
     {"@type": "Question", "name": "Can I put the list of stale pages on a Confluence page?",
-     "acceptedAnswer": {"@type": "Answer", "text": "Not with plain search. Search results live in the search screen and cannot be embedded, so teams usually paste a snapshot into a page, and that snapshot is out of date within weeks. Keeping a live list on a page requires a macro from an app."}},
+     "acceptedAnswer": {"@type": "Answer", "text": "Not with plain search: results live in the search screen and cannot be embedded. The filter by label macro can put a live list on a page and accepts a space and a last modified date, but it starts from labels, and the pages nobody maintains are usually the pages nobody labelled. Listing by age across a space, without relying on labels, needs a macro from an app."}},
     {"@type": "Question", "name": "Is an old page the same as an unused page?",
      "acceptedAnswer": {"@type": "Answer", "text": "No. Last modified tells you nobody edited it, not that nobody reads it. A stable policy page can be correct and heavily read after three years, while a project page edited last month can be dead. Treat the date as a shortlist, not a verdict."}},
     {"@type": "Question", "name": "Should stale pages be deleted or archived?",
@@ -110,7 +110,7 @@
   <h2>Where the built-in route runs out</h2>
 
   <div class="cards">
-    <div class="card"><b>Search results cannot live on a page</b>You can find the pages, but you cannot put the finding anywhere. Teams paste a snapshot into a page called "Documentation audit", and the snapshot is wrong within a month.</div>
+    <div class="card"><b>Search results stay in search</b>You can find the pages, but the result lives in the search screen. The filter by label macro does put a live list on a page, and it takes a space and a last modified date, but it starts from labels. Pages nobody maintains are usually the pages nobody labelled.</div>
     <div class="card"><b>CQL is a skill, not a setting</b>The syntax is fine for an engineer and a wall for the technical writer or the office manager who actually owns the space.</div>
     <div class="card"><b>An audit that needs rerunning does not get rerun</b>Anything requiring somebody to remember a quarterly chore will survive exactly two quarters.</div>
   </div>
