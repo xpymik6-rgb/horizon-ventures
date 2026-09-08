@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to sum a column in a Confluence table</title>
+<meta name="description" content="Confluence tables have no formulas. Databases can total a column but cannot calculate per row. What actually works in Cloud, and when exporting to Excel is the honest answer.">
+<link rel="canonical" href="https://horizonventures.app/docs/sum-column-confluence-table.html">
+<meta property="og:title" content="How to sum a column in a Confluence table">
+<meta property="og:description" content="No formulas in tables, aggregates only in databases, nothing per row. The real options for adding up numbers in Confluence Cloud.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to sum a column in a Confluence table",
+   "description": "Confluence Cloud tables have no formulas at all. Databases can show a total at the bottom of a field but cannot calculate a value per row. Here is what works, what it costs in time, and when exporting to a spreadsheet is the honest answer.",
+   "url": "https://horizonventures.app/docs/sum-column-confluence-table.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-08",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can a Confluence table add up a column?",
+     "acceptedAnswer": {"@type": "Answer", "text": "A normal Confluence Cloud table cannot. Tables hold formatted text and numbers, and there is no formula engine behind them. The number you see is the number somebody typed."}},
+    {"@type": "Question", "name": "What about Confluence databases?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Databases can. Each field can show a calculation at the bottom: for number fields Sum, Average, Min, Max, Count values, Count unique values, Count empty and Percent empty, and for other field types the counting ones. The calculation can be saved as part of a view. Note that databases are not available in the Atlassian Government environment."}},
+    {"@type": "Question", "name": "Can I write a formula like price times quantity?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not in Confluence Cloud today, in tables or in databases. Aggregates summarise a whole field; there is no per-row calculated column. This is an open request in Atlassian's tracker, so it may change, but nothing ships today."}},
+    {"@type": "Question", "name": "What are my options then?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Three: convert the table into a database and use the built-in aggregates, install a Marketplace app that adds spreadsheet-style formulas, or take the numbers into a spreadsheet where formulas already exist. Which one is right depends on whether the numbers change every week or once a quarter."}},
+    {"@type": "Question", "name": "Why does copy-paste into Excel go wrong?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Merged cells. A copied table keeps its visual shape, so a cell spanning two columns pushes the values after it sideways and the totals in the spreadsheet come out wrong. On a small table you spot it; on a page with a dozen tables you usually do not."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to sum a column in a Confluence table</h1>
+    <p class="sub">One of those questions that looks like it should have a one-click answer and does not. Here is exactly what Confluence Cloud can and cannot do with numbers, and how to pick between the three ways out.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> A normal Confluence table cannot add anything up: there is no formula engine behind it, and the number on the page is whatever somebody typed. A Confluence <em>database</em> can show a total at the bottom of a field, including Sum and Average. Neither can calculate a value per row, so nothing in Confluence Cloud gives you a column that multiplies price by quantity. You have three ways out, and the right one depends on how often the numbers change.</p>
+
+  <h2>What Confluence actually does</h2>
+
+  <p>It is worth separating two things that look similar on a page, because the answer is different for each.</p>
+
+  <h3>Tables</h3>
+
+  <p>The classic table you get from the editor is a layout element. It stores text, numbers, links and macros in cells, it merges cells, it sorts columns for the reader. It does not compute. There is no cell reference, no formula bar, nothing that recalculates when a value changes. If a total sits in the bottom row, a person put it there, and it stays wrong until a person notices.</p>
+
+  <p>This is not an oversight anyone forgot about. The request to add spreadsheet behaviour to Confluence tables is one of the older open items in Atlassian's public tracker, and it is still open.</p>
+
+  <h3>Databases</h3>
+
+  <p>Databases are the newer structured-data feature, and they do calculate, within limits. Each field can show a calculation at the bottom, and for number fields the list is genuinely useful:</p>
+
+  <table>
+    <thead><tr><th>Field type</th><th>Calculations available</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Number</strong></td>
+        <td>Sum, Average, Min, Max, Count values, Count unique values, Count empty, Percent empty</td>
+      </tr>
+      <tr>
+        <td><strong>Everything else</strong></td>
+        <td>Count values, Count unique values, Count empty, Percent empty</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>The calculation can be saved as part of a view, so the total is there for the next reader rather than something each person switches on. Worth knowing before you plan around them: databases are not available in the Atlassian Government environment.</p>
+
+  <h2>The part that catches people out</h2>
+
+  <p>Everything above is an <em>aggregate</em>: one number summarising a whole field. What most people actually want on the second day is a <em>calculated column</em>: line total equals price times quantity, margin equals revenue minus cost, each row computed on its own.</p>
+
+  <p>Confluence Cloud does not do that. Not in tables, and not in databases either. There is an open request for computed fields in databases, so this may well change, but nothing ships today, and planning a process around a feature that does not exist is how teams end up maintaining numbers by hand for a year.</p>
+
+  <p>So the honest summary of the platform is: totals yes, if you use databases. Per-row arithmetic no, whatever you use.</p>
+
+  <h2>The three ways out</h2>
+
+  <h3>1. Turn the table into a database</h3>
+
+  <p>Free, native, and the right answer when the data is genuinely a list of records: inventory, requests, contacts, anything with the same fields repeating down the page. You get the aggregates above, plus sorting and filtering that survive being reopened.</p>
+
+  <p>It is the wrong answer when the thing on the page is not a list. Budget breakdowns with subtotals, comparison matrices, anything with merged cells and a shape of its own does not become a database without being redesigned first.</p>
+
+  <h3>2. Install an app that adds formulas</h3>
+
+  <p>Several Marketplace apps bring spreadsheet behaviour into the page: calculated columns, grouping with sums per group, charts on top. If your numbers change weekly and people read them inside Confluence, this is the path that actually solves it, and it is worth the licence.</p>
+
+  <p>Price it for the team you will have next year, not the one you have today, because Marketplace pricing steps up by user tiers and a table app is billed for every user on the site, not just the people who use it.</p>
+
+  <h3>3. Take the numbers to a spreadsheet</h3>
+
+  <p>Unfashionable and often correct. If the calculation happens once a quarter, or the result belongs in a report that lives in Excel anyway, moving the data out is cheaper than teaching the wiki to do arithmetic.</p>
+
+  <p>The catch is how the data gets there. Copying a table by hand looks fine until merged cells are involved: the copy keeps the visual shape, a cell spanning two columns pushes later values sideways, and the totals come out wrong in a way nobody notices, because the number still looks like a number.</p>
+
+  <h2>How long the manual way takes</h2>
+
+  <p>Say a quarterly report pulls numbers from eleven tables across a space. Copying one table, fixing the columns that slid, and checking the total takes about four minutes when nothing is merged and closer to ten when something is. Call it an hour and a half, once a quarter, plus the time spent later finding out why the finance figure disagrees with the wiki.</p>
+
+  <p>An hour and a half four times a year is not a crisis. It is, however, six hours of work whose only output is retyping numbers that already exist, and it is the kind of task that quietly grows as the space does.</p>
+
+  <h2>Picking between them</h2>
+
+  <p>If the data is a list of records and you need a total at the bottom, use a database. It is free and it is native. If people need live per-row formulas inside the page, buy an app, because that is a real gap and no amount of cleverness closes it. If the numbers leave Confluence anyway and end up in a spreadsheet, get them out cleanly and do the arithmetic where arithmetic belongs.</p>
+
+  <p>If your case is simpler than all of this, one table with five rows and a total you retype twice a year, retype it. That is a perfectly good answer and it costs nothing.</p>
+
+  <p><strong>Disclosure: I build Confluence apps.</strong> One of ours, <a href="/table-export.html">Table Export</a>, covers only the third option: it takes one table, a page, or every table in a space into Excel or CSV, and it keeps the columns aligned when cells are merged, which is exactly where copying by hand goes wrong. It does not add formulas to your pages, and if that is what you need, one of the table apps above is the honest recommendation instead. There is a demo on the product page that shows the merged-cell problem on a real budget table, no install needed.</p>
+
+  <h2>Questions people ask</h2>
+
+  <h3>Can a Confluence table add up a column?</h3>
+  <p>No. A normal table has no formula engine. The number you see is the number somebody typed, and it stays wrong until somebody notices.</p>
+
+  <h3>What about databases?</h3>
+  <p>Databases can. Number fields offer Sum, Average, Min, Max, Count values, Count unique values, Count empty and Percent empty, and the calculation can be saved as part of a view. Databases are not available in the Atlassian Government environment.</p>
+
+  <h3>Can I write a formula like price times quantity?</h3>
+  <p>Not in Confluence Cloud today, in tables or databases. Aggregates summarise a whole field; there is no per-row calculated column. It is an open request in Atlassian's tracker.</p>
+
+  <h3>Does the total update when the data changes?</h3>
+  <p>In a database, yes: it is calculated from the field, not stored. In a table, no, because there is nothing calculating it in the first place.</p>
+
+  <h3>Why does copy-paste into Excel go wrong?</h3>
+  <p>Merged cells. The copy keeps the visual shape rather than the data shape, so values after a merged cell shift into the wrong columns and any total built on them is quietly wrong.</p>
+
+  <p>Related: <a href="/docs/export-confluence-table-to-excel.html">how to get a Confluence table into Excel</a> and <a href="/docs/what-to-check-before-installing-app.html">what to check before installing a Confluence app</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

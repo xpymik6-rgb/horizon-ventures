@@ -42,6 +42,8 @@
 
 - [Cloud Fortified is retiring: what app badges mean now](https://horizonventures.app/docs/cloud-fortified-retiring.html): Submissions closed on 1 September 2026, the programme ends on 31 December, and Atlassian Enterprise Certified takes over.
 
+- [How to sum a column in a Confluence table](https://horizonventures.app/docs/sum-column-confluence-table.html): Tables have no formulas, databases total a field but never a row. The three real options, and when a spreadsheet is the honest answer.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
