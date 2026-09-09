@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to split a Word document into multiple Confluence pages</title>
+<meta name="description" content="Confluence Cloud imports one page per .docx file and has no split-by-headings. The free route runs through Word's outline view, and here is exactly how it works and where it costs you.">
+<link rel="canonical" href="https://horizonventures.app/docs/split-word-document-confluence-pages.html">
+<meta property="og:title" content="How to split a Word document into multiple Confluence pages">
+<meta property="og:description" content="One file becomes one page in Cloud. Split the document in Word first, or use an app. Both routes explained honestly, with the time each one costs.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to split a Word document into multiple Confluence pages",
+   "description": "Confluence Cloud creates one page per imported .docx file and offers no split by headings. The working free route is to split the document in Word's outline view first, then import the pieces as a batch. Here is the procedure, the limits, and what the manual way costs in hours.",
+   "url": "https://horizonventures.app/docs/split-word-document-confluence-pages.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-08",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "Split a Word document into separate files by heading before importing to Confluence",
+   "description": "Word can cut a long document into one file per heading using the master document tools in outline view. The resulting files import into Confluence Cloud as separate pages.",
+   "totalTime": "PT10M",
+   "step": [
+    {"@type": "HowToStep", "name": "Open outline view", "text": "In Word, go to the View tab and switch to Outline. The Outlining tab appears in the ribbon."},
+    {"@type": "HowToStep", "name": "Collapse to the heading level you want", "text": "Set Show Level to the level you intend to split on, for example Level 2. The body text collapses and only the headings remain visible."},
+    {"@type": "HowToStep", "name": "Select the headings", "text": "Select the headings that should each become their own file."},
+    {"@type": "HowToStep", "name": "Create subdocuments", "text": "In the Master Document group click Show Document, then click Create. Grey boxes appear around each selected heading, marking them as subdocuments."},
+    {"@type": "HowToStep", "name": "Save", "text": "Save the master document into an empty folder. Word writes one file per subdocument into that folder, named after its heading."},
+    {"@type": "HowToStep", "name": "Import the batch into Confluence", "text": "In Confluence Cloud, import the resulting .docx files. Up to 30 files at a time, 50 MB in total, nothing over 10 MB each. Each file becomes its own page."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can Confluence Cloud split a Word document into several pages?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. In Cloud the import creates one page per file. The split-by-heading option exists in Confluence Data Center, where you can choose to create multiple pages based on heading levels, but the Cloud import does not offer it."}},
+    {"@type": "Question", "name": "How many Word files can I import at once?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Up to 30 files at a time, 50 MB in total, and no single file over 10 MB. A single file imported on its own is limited to 5 MB for the document itself, with up to 100 MB of attachments."}},
+    {"@type": "Question", "name": "Where do imported pages end up?",
+     "acceptedAnswer": {"@type": "Answer", "text": "When you import several files at once, Confluence puts them as child items under a restricted placeholder page titled Imported pages with the date and time. You then move them into the right place in the tree yourself. A single imported file becomes a draft or live doc that you publish where you want it."}},
+    {"@type": "Question", "name": "How do I split the document in Word?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Switch to Outline view, set Show Level to the heading level you want to split on, select the headings, then click Show Document and Create in the Master Document group. Saving the file writes one document per heading into the same folder."}},
+    {"@type": "Question", "name": "What gets lost when a Word document is imported?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Shapes drawn in Word are replaced with placeholders. Images in unsupported formats become placeholder text; the supported list is BMP, CUR, DDS, GIF, ICO, JPG, PNG, PSD, SVG and WEBP. Cross references between sections break when the sections become separate pages, because they pointed at bookmarks inside one file."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to split a Word document into multiple Confluence pages</h1>
+    <p class="sub">A 200 page handbook should not land in the wiki as one endless page. Confluence Cloud will make it one anyway. Here is the free way around that, and what it actually costs.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Confluence Cloud imports one page per file. There is no option to split a document by its headings; that option lives in Confluence Data Center, not in Cloud. So you have two working routes: cut the document into separate files in Word first, using the master document tools in outline view, then import the pieces as a batch, or use an app that does the splitting during import. The Word route is free and takes about ten minutes per document once you know where the buttons are.</p>
+
+  <h2>What the built-in import actually does</h2>
+
+  <p>Confluence Cloud has a proper Word importer, and it is better than its reputation. It reads .docx, keeps headings, tables, lists and images, and it handles batches: up to 30 files at a time, 50 MB in total, nothing over 10 MB each. A single file imported on its own can be up to 5 MB for the document, plus up to 100 MB of attachments.</p>
+
+  <p>Two behaviours are worth knowing before you start, because they surprise people on the first run.</p>
+
+  <p><strong>One file becomes one page.</strong> Not one page per chapter, not a tree. The whole document, however long, arrives as a single page with the headings intact inside it.</p>
+
+  <p><strong>Batches land in a holding pen.</strong> Import several files at once and Confluence creates a restricted placeholder page titled "Imported pages" with the date and time, and hangs everything under it. Nothing is lost, but nothing is in the right place either: moving the pages into your actual tree is a separate job you do by hand afterwards.</p>
+
+  <h2>Why there is no split by headings</h2>
+
+  <p>There used to be, and in Data Center there still is: the import screen there lets you choose between one page and multiple pages built from heading levels, with a preview of the resulting outline. In Cloud the import happens in the context of creating a page, and one page is what you get.</p>
+
+  <p>Worth noting that the Data Center feature is not flawless either. Headings get promoted to Heading 1 when they become the top heading of a new page, and the split fails outright if two headings in the document share the same text, because Confluence cannot create two pages with one name. So the grass is greener, but not by as much as the missing button suggests.</p>
+
+  <h2>The free route: split it in Word first</h2>
+
+  <p>Word has carried a feature called master documents for decades, and almost nobody uses it. It cuts a long document into separate files along heading boundaries, which is exactly the shape Confluence wants.</p>
+
+  <ol>
+    <li><strong>View, then Outline.</strong> The Outlining tab appears in the ribbon.</li>
+    <li><strong>Set Show Level</strong> to the level you want to split on, usually Level 1 or Level 2. Body text collapses and you are left looking at the skeleton of the document.</li>
+    <li><strong>Select the headings</strong> that should each become a page.</li>
+    <li><strong>Show Document, then Create.</strong> Both are in the Master Document group. Thin grey boxes appear around each selected heading: those are subdocuments.</li>
+    <li><strong>Save into an empty folder.</strong> Word writes one file per subdocument, named after its heading.</li>
+    <li><strong>Import the folder</strong> into Confluence, 30 files at a time.</li>
+  </ol>
+
+  <p>The result is a flat set of pages, one per heading, sitting under the "Imported pages" placeholder. Dragging them into a hierarchy is still on you.</p>
+
+  <h2>Where this route costs you</h2>
+
+  <p>It works, and for a handful of documents it is the right answer. Three things wear on you at volume.</p>
+
+  <p><strong>Cross references break.</strong> "See section 4.2" pointed at a bookmark inside one file. Once section 4.2 is a different file, and then a different page, the link is a dead phrase. Nothing warns you; the text still reads fine.</p>
+
+  <p><strong>The hierarchy is gone.</strong> Word gives you a flat pile of files. A handbook with chapters and sections under them arrives as one flat layer, and rebuilding the parent and child structure means dragging pages in the tree one at a time.</p>
+
+  <p><strong>Shapes and some images do not survive.</strong> Shapes drawn in Word are replaced with placeholders, and images in formats outside the supported list turn into placeholder text. Supported are BMP, CUR, DDS, GIF, ICO, JPG, PNG, PSD, SVG and WEBP. For a process document full of little flow diagrams drawn with Word shapes, this is the part that hurts.</p>
+
+  <h2>How long a real migration takes</h2>
+
+  <p>Take a typical case: 150 documents on a shared drive, of which 20 are long enough to deserve splitting into chapters.</p>
+
+  <table>
+    <thead><tr><th>Step</th><th>Time</th></tr></thead>
+    <tbody>
+      <tr><td>Split 20 long documents in Word, about 10 minutes each</td><td>3 hours 20 min</td></tr>
+      <tr><td>Import 5 batches of 30 files</td><td>25 min</td></tr>
+      <tr><td>Move roughly 300 resulting pages into the tree, 20 seconds each</td><td>1 hour 40 min</td></tr>
+      <tr><td>Fix broken cross references and shape placeholders</td><td>2 hours, optimistically</td></tr>
+    </tbody>
+  </table>
+
+  <p>Call it a working day and a half. That is not a catastrophe, and if this is a one-time move, spending it is entirely reasonable. It becomes a problem for a different reason: nobody has that day and a half spare, so the migration gets postponed, and the documents stay on the shared drive for another year. That is the actual failure mode, not the hours.</p>
+
+  <h2>Which route to pick</h2>
+
+  <p>If you have a dozen documents and they are already short, skip all of this: import them as they are, one page each, and move on. The built-in importer does that well and it is free.</p>
+
+  <p>If you have a few long documents, use the Word outline route. Ten minutes each is cheap and you keep full control over where the cuts fall.</p>
+
+  <p>If you are moving a whole department off a shared drive, the arithmetic above is your afternoon, and an app that splits on import earns its licence in the first ten documents.</p>
+
+  <p><strong>Disclosure: I build Confluence apps.</strong> One of ours, <a href="/word-import.html">Word Import</a>, does the split during import: you drop the .docx files in, it cuts them along heading levels and builds an actual page tree, parents and children, rather than a flat pile under a placeholder. It reads the files inside your browser, so the documents never leave your machine, which matters when the documents are HR policies. If your case is the first one above, a dozen short files, do not buy anything: the built-in import already covers you.</p>
+
+  <h2>Questions people ask</h2>
+
+  <h3>Can Confluence Cloud split a Word document into several pages?</h3>
+  <p>No. One file becomes one page. The split-by-heading option exists in Data Center, not in Cloud.</p>
+
+  <h3>How many files can I import at once?</h3>
+  <p>Up to 30, 50 MB in total, nothing over 10 MB each. A single file on its own may be up to 5 MB, plus up to 100 MB of attachments.</p>
+
+  <h3>Where do the imported pages go?</h3>
+  <p>Into a restricted placeholder page called "Imported pages" with the date and time, as child items. You move them into the real tree yourself.</p>
+
+  <h3>Does the import keep tables and images?</h3>
+  <p>Tables and normal images yes. Shapes drawn in Word become placeholders, and images in unsupported formats become placeholder text.</p>
+
+  <h3>What happens to my cross references?</h3>
+  <p>They break as soon as the sections become separate pages, because they pointed at bookmarks inside a single file. Confluence does not warn you, so plan to check them.</p>
+
+  <h3>Is there a way to keep the chapter hierarchy?</h3>
+  <p>Not through Word plus the built-in import: that gives you a flat set of pages. Either rebuild the hierarchy by dragging in the page tree, or use an app that constructs it during import.</p>
+
+  <p>Related: <a href="/docs/import-word-into-confluence.html">how to import Word documents into Confluence Cloud</a> and <a href="/docs/what-to-check-before-installing-app.html">what to check before installing a Confluence app</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

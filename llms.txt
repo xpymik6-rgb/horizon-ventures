@@ -44,6 +44,8 @@
 
 - [How to sum a column in a Confluence table](https://horizonventures.app/docs/sum-column-confluence-table.html): Tables have no formulas, databases total a field but never a row. The three real options, and when a spreadsheet is the honest answer.
 
+- [How to split a Word document into multiple Confluence pages](https://horizonventures.app/docs/split-word-document-confluence-pages.html): Cloud makes one page per file. The free way around it runs through Word's outline view, with the hours it costs.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
