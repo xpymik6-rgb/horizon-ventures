@@ -67,9 +67,10 @@ def ссылка_в_указателе(отн, подпись, описание)
     if отн in g:
         шаг("в указателе статей уже есть")
         return
-    имя = отн.split("/")[-1]
+    имя = отн.split("/")[-1]          # статьи бывают и во вложенных папках
     # статьи про уходящие приложения идут во вторую группу, остальные в общую
-    замена = имя.startswith(("connect-", "cloud-fortified", "mermaid-", "plantuml-", "svg-out-"))
+    замена = (имя.startswith(("connect-", "cloud-fortified", "mermaid-", "plantuml-", "svg-out-"))
+              or имя.endswith("-alternative.html"))
 
     блок = ('    {\n'
             '     "@type": "Article",\n'
