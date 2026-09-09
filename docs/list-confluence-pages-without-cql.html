@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to list Confluence pages on a page without writing CQL</title>
+<meta name="description" content="Confluence Cloud has four built-in macros that put a list of pages on a page, and filter by label is stronger than most people think. Here is what each one does and exactly where they stop.">
+<link rel="canonical" href="https://horizonventures.app/docs/list-confluence-pages-without-cql.html">
+<meta property="og:title" content="How to list Confluence pages on a page without writing CQL">
+<meta property="og:description" content="Four native macros, twelve filters, no query language required. And the three walls you hit: relative dates, labels you do not have, and a macro that is being retired.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to list Confluence pages on a page without writing CQL",
+   "description": "Confluence Cloud ships four macros that display a list of pages, and the filter by label macro accepts twelve filters through a form rather than a query language. Here is what each macro does, where each one stops, and when the answer is not a macro at all.",
+   "url": "https://horizonventures.app/docs/list-confluence-pages-without-cql.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-08",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Do I have to learn CQL to list pages in Confluence?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. The filter by label macro builds a CQL query for you from a form: you pick filters from a list and fill in values. Twelve filters are available, including label, title, text, type, space, creator, contributor, mentioned user, date created, last modified, child pages and all subpages."}},
+    {"@type": "Question", "name": "Which macro lists the child pages of the current page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The child items macro, formerly called children display. It lists items under whichever parent you select, to whatever depth you set, and it updates itself when pages are added or renamed."}},
+    {"@type": "Question", "name": "Can I list pages that nobody has touched in six months?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not with the built-in macros. The last modified filter returns items last updated on a date you give it, not items older than a period, so a list built on it goes stale as soon as the date passes. For a one-off audit, use the content manager in space settings, which filters by last active over a chosen period."}},
+    {"@type": "Question", "name": "What is the content manager?",
+     "acceptedAnswer": {"@type": "Answer", "text": "A screen in space settings that lists the content of a space with a Last active filter, defaulting to 180 days. It is the native answer to finding forgotten pages. It lives in space settings rather than on a page, so readers never see it, and bulk actions on the results require Premium or Enterprise."}},
+    {"@type": "Question", "name": "Is the search results macro still supported?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It works, but it belongs to the legacy editor, whose deprecation began in January 2026. Building a new process on it is not a good bet."}},
+    {"@type": "Question", "name": "Why does the page properties report show nothing?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because it only reads pages that carry the content properties macro, and it finds them by label. If the source pages have no such macro, or the label does not match, the report is empty. It reports on a structure you set up in advance, rather than searching the space."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to list Confluence pages on a page without writing CQL</h1>
+    <p class="sub">Putting a live list of pages onto a page is a normal thing to want, and Confluence Cloud does more of it natively than its reputation suggests. Here is each native option, and the exact point where each one stops.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> You do not need to learn a query language. The <em>filter by label</em> macro builds the query for you from a form: you add filters from a list and fill in values, and it accepts twelve of them, including space, title, text, creator, contributor and child pages. For a simple list of pages under this one, the <em>child items</em> macro is two clicks. The walls you eventually hit are these three: no relative dates, so "not touched in six months" is out of reach; anything label-based depends on labels somebody has to apply; and the search results macro belongs to the legacy editor that is being retired.</p>
+
+  <h2>The four native macros</h2>
+
+  <table>
+    <thead><tr><th>Macro</th><th>What it lists</th><th>Good for</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Child items</strong><br>(was children display)</td>
+        <td>Items under a parent you choose, to a depth you set. Updates itself when pages are added or renamed.</td>
+        <td>An index at the top of a section.</td>
+      </tr>
+      <tr>
+        <td><strong>Content tree</strong><br>(was page tree)</td>
+        <td>An expandable tree of a space or a branch of it.</td>
+        <td>Navigation on a landing page.</td>
+      </tr>
+      <tr>
+        <td><strong>Filter by label</strong><br>(was content by label)</td>
+        <td>Anything matching the filters you add: label, title, text, type, space, creator, contributor, mentioned user, date created, last modified, child pages, all subpages.</td>
+        <td>Everything that is not a plain hierarchy.</td>
+      </tr>
+      <tr>
+        <td><strong>Content properties report</strong><br>(was page properties report)</td>
+        <td>A table built from the content properties macro placed on source pages, found by label.</td>
+        <td>Structured registers you planned in advance.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>There is also the <em>search results</em> macro, which runs a search query and prints the hits. It works today, and it is part of the legacy editor whose deprecation started in January 2026, so it is not where a new process should live.</p>
+
+  <h2>Filter by label deserves more credit than it gets</h2>
+
+  <p>The name is misleading and it costs the macro a lot of users. Labels are the first filter offered, not the only one. You add filters from a menu and each one takes plain values; the CQL is assembled behind the form.</p>
+
+  <p>The operators follow simple rules worth knowing before you fight the form:</p>
+
+  <ul>
+    <li><strong>OR</strong>: several values in one filter. Label a, label b, or both.</li>
+    <li><strong>AND</strong>: add the same filter twice, once per value. Only some filters allow this; if a filter cannot be added twice, it does not support AND.</li>
+    <li><strong>NOT</strong>: a minus sign before the value excludes it.</li>
+  </ul>
+
+  <p>With space, contributor and all subpages available, this covers a surprising amount: everything in three spaces written by a particular team, everything below a given page with a given label, everything mentioning a person. If you left this macro alone because you assumed it needed labels, go back and look again.</p>
+
+  <h2>Where the native path stops</h2>
+
+  <h3>Relative dates do not exist</h3>
+
+  <p>This is the big one. The date filters are documented as returning items created on this date and items last updated on this date. A date, not a period. So the question people actually ask, which is "what has nobody touched since last year", cannot be expressed: you can pin a list to a date, but a pinned date is stale the week after you set it, and the list quietly stops meaning what its heading says.</p>
+
+  <h3>Labels are a habit, not a fact</h3>
+
+  <p>Label-based lists work beautifully in spaces where labelling is disciplined, and they are empty in every other space. Nobody labels a page they wrote in a hurry three years ago, which is precisely the page an audit is looking for. A list built on labels shows you the tidy part of the wiki and hides the rest, which is the opposite of useful when you are hunting for neglect.</p>
+
+  <h3>The properties report reports on a structure, not a space</h3>
+
+  <p>The content properties report reads pages that carry the content properties macro and finds them by label. If the pages were not set up that way in advance, the report is empty and no amount of filter-tweaking helps. It is a fine tool for a register you designed, and the wrong tool for finding out what is in a space you inherited.</p>
+
+  <h2>The screen most people never open</h2>
+
+  <p>If the goal is an audit rather than a list on a page, the native answer is not a macro at all. Each space has a <strong>content manager</strong> in its space settings, and it has a <strong>Last active</strong> filter: content nobody has viewed, commented on or updated within a period, defaulting to 180 days. That is exactly the query the macros cannot express, and it is free.</p>
+
+  <p>Two things to know before you plan around it. It lives in space settings, so it is an administrator's screen: readers of the space never see it, and you cannot put its result on a page for a team to work through. And bulk actions on what it finds, archiving or deleting in one go, require Premium or Enterprise. On Standard you get the list and you work through it by hand.</p>
+
+  <h2>So what should you use</h2>
+
+  <table>
+    <thead><tr><th>What you want</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>An index of the pages below this one</td><td>Child items macro</td></tr>
+      <tr><td>Navigation for a whole space</td><td>Content tree macro</td></tr>
+      <tr><td>A live list by author, space, title or label</td><td>Filter by label macro</td></tr>
+      <tr><td>A table of fields you planned in advance</td><td>Content properties report</td></tr>
+      <tr><td>A one-off clean-up of forgotten pages</td><td>Content manager, Last active filter</td></tr>
+      <tr><td>A standing list of neglect, visible to the team</td><td>Nothing native does this</td></tr>
+    </tbody>
+  </table>
+
+  <p>That last row is the honest gap. Everything above it is free and already in your site.</p>
+
+  <h2>What the manual version costs</h2>
+
+  <p>Say you own four spaces and you review neglected documentation each quarter. Opening the content manager per space, setting the filter, exporting nothing because there is no export, and copying the interesting titles into a review page by hand: about forty minutes if the spaces are small, and the result is a snapshot that is out of date by the time anyone reads it.</p>
+
+  <p>Forty minutes a quarter is nothing. The cost is not the minutes; it is that the list lives in a screenshot on a review page, so nobody trusts it, and the pages it names are still there next quarter.</p>
+
+  <p><strong>Disclosure: I build Confluence apps.</strong> One of ours, <a href="/smart-search.html">Smart Search</a>, exists for the gap in that last row: lists defined by relative periods, "not updated in 180 days", built from checkboxes, running across several spaces at once and visible to ordinary readers on an ordinary page rather than only to admins in space settings. If your case is covered by the rows above it, and most cases are, use the native macros: they are free, they are supported, and they will outlive any app.</p>
+
+  <h2>Questions people ask</h2>
+
+  <h3>Do I have to learn CQL?</h3>
+  <p>No. Filter by label builds the query from a form. Twelve filters, values typed in plain text.</p>
+
+  <h3>How do I list the child pages of this page?</h3>
+  <p>The child items macro. Pick the parent, set the depth, done. It updates itself as pages are added or renamed.</p>
+
+  <h3>Can I list pages nobody has touched in six months?</h3>
+  <p>Not with the macros: the date filters take a date, not a period. Use the content manager in space settings, which filters by last active over a period you choose.</p>
+
+  <h3>Can I combine filters with AND?</h3>
+  <p>Yes, by adding the same filter twice with one value each. Filters that cannot be added twice do not support AND. A minus sign before a value excludes it.</p>
+
+  <h3>Why is my page properties report empty?</h3>
+  <p>It only reads pages carrying the content properties macro, matched by label. No macro on the source pages, no rows.</p>
+
+  <h3>Should I use the search results macro?</h3>
+  <p>It works, but it belongs to the legacy editor, whose deprecation began in January 2026. Do not build a process on it.</p>
+
+  <p>Related: <a href="/docs/find-stale-pages-confluence.html">how to find stale pages in Confluence</a> and <a href="/docs/what-to-check-before-installing-app.html">what to check before installing a Confluence app</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
