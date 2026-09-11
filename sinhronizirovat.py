@@ -53,7 +53,8 @@ def все_страницы():
         if ".git" in корень:
             continue
         for имя in sorted(файлы):
-            if имя.endswith(".html"):
+            # служебные файлы подтверждения прав на сайт не страницы: в них нет <head>
+            if имя.endswith(".html") and not имя.startswith("google"):
                 для_обхода.append(os.path.join(корень, имя))
     return для_обхода
 
@@ -82,12 +83,9 @@ def починить(только_проверка=False):
         # тег Google Рекламы
         if ТЕГ_GOOGLE not in s:
             s = s.replace("</head>",
-                          '<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
-'
-                          '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-'
-                          "gtag('js', new Date());gtag('config','AW-18433232021');</script>
-</head>", 1)
+                          '<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>\n'
+                          '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}\n'
+                          "gtag('js', new Date());gtag('config','AW-18433232021');</script>\n</head>", 1)
 
         # счётчик посещений
         if СЧЁТЧИК not in s:

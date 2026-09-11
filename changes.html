@@ -28,6 +28,13 @@
    "hasPart": [
     {
      "@type": "BlogPosting",
+     "headline": "Blocking exports is about to block attachment downloads too",
+     "datePublished": "2026-09-11",
+     "url": "https://horizonventures.app/changes.html#2026-09-11",
+     "author": {"@type": "Person", "name": "Mikhail Klimenko"}
+    },
+    {
+     "@type": "BlogPosting",
      "headline": "Connect is being switched off, and admins are now being told directly",
      "datePublished": "2026-09-05",
      "url": "https://horizonventures.app/changes.html#2026-09-05",
@@ -38,6 +45,10 @@
   {
    "@type": "FAQPage",
    "mainEntity": [
+    {"@type": "Question", "name": "Does blocking data export in Confluence also block attachment downloads?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It is about to. Atlassian is extending the data export rule in data security policies so that it also blocks downloading files attached to Confluence and Jira pages, and the change applies to policies that already block exports. Users lose the download button in attachment lists, macros and file previews. The rule requires Atlassian Guard Standard and is checked under Security, then Data security policies, in admin.atlassian.com."}},
+    {"@type": "Question", "name": "When do Confluence app macros move to a single category?",
+     "acceptedAnswer": {"@type": "Answer", "text": "There are two dates. New element browser categories are expected to begin rolling out on 6 October 2026 in both the slash menu and the modal element browser, which changes the category names users browse. From 25 February 2027 an app macro can appear in only one category, and any macro without a valid category shows up under Other elements."}},
     {"@type": "Question", "name": "When do Connect apps stop working in Confluence Cloud?",
      "acceptedAnswer": {"@type": "Answer", "text": "Connect apps cannot be updated after March 2026 and stop receiving fixes by the end of 2026. They do not vanish overnight, but any app still on Connect without a migration plan is on a countdown, and Atlassian has started showing migration messages to admins directly."}},
     {"@type": "Question", "name": "What is replacing Cloud Fortified?",
@@ -82,6 +93,35 @@
     <h1>Atlassian changes worth knowing</h1>
     <p class="sub">A weekly note for people who run a Confluence site. Only the changes that make you do something, with the date they start to bite and the shortest sensible answer. Published on Fridays.</p>
   </header>
+
+  <article id="2026-09-11">
+    <h2>11 September 2026</h2>
+
+    <h3>Blocking exports is about to block attachment downloads too</h3>
+    <p>Atlassian is extending the data export rule in data security policies so that it also blocks downloading files attached to Confluence and Jira pages. It is rolling out now, and it needs Atlassian Guard Standard.</p>
+    <p><strong>What it means.</strong> This lands on policies you have already written. If a policy of yours blocks data export today, users in the spaces it covers will stop seeing the download button in attachment lists, macros and file previews. Atlassian says the reasoning is that organisations blocking exports usually wanted downloads blocked as well. Often true, and occasionally very much not.</p>
+    <p><strong>What to do.</strong> Go to admin.atlassian.com, then Security, then Data security policies, open each policy and check whether exporting data is blocked. If it is, warn the affected teams before the button disappears, or you will spend a morning on tickets about a broken attachment list. If you needed exports blocked but downloads allowed, that combination is going away, so decide now which of the two you actually care about.</p>
+
+    <h3>The element browser changes in October, not in 2027</h3>
+    <p>On 5 September we wrote that app macros will appear in a single category from 25 February 2027. That date is correct, but it is not the first one. Atlassian expects to start rolling out new element browser categories on <strong>6 October 2026</strong>, in the slash menu as well as the modal browser.</p>
+    <p><strong>What it means.</strong> Two separate things happen. In October the category names change and the slash menu starts showing categories it does not show today: the old Formatting, Confluence content, Navigation, Admin, Reporting, Development, External content, Media and Visuals collapse into structure, media, embed, text-formatting and data-and-charts. Your users' muscle memory for finding a macro goes with them. Then in February 2027 any app macro left without a valid category drops into an "Other elements" heading, which is a place nobody browses.</p>
+    <p><strong>What to do.</strong> Nothing to configure: the work is on vendors. Put 6 October in the calendar, and if you keep an internal page explaining where to find which macro, plan to rewrite it that week. When someone reports in October that a macro has vanished, look under the new categories and under "All" before you open a ticket with the vendor.</p>
+
+    <h3>Apps may send data to analytics tools, and the setting is on by default</h3>
+    <p>A new organisation setting lets admins decide whether the apps they run can send data to third-party analytics tools. Atlassian is explicit about the default: the setting is enabled, which allows data sharing for all new app installations.</p>
+    <p><strong>What it means.</strong> When someone installs an app next month, the question of whether that app may ship usage data to an outside service is already answered, in favour of sharing, unless you have touched the setting. This is the same ground the Runs on Atlassian badge covers, since one of its criteria is that customers control data egress such as analytics and logs.</p>
+    <p><strong>What to do.</strong> Open the Connected apps page and make the decision once for the whole organisation, before the next install rather than after it. You can also set it per app. And if your security review asks where an app's data goes, this setting now belongs in the answer alongside the app's platform and hosting. Our <a href="docs/what-to-check-before-installing-app.html">checklist for installing an app</a> covers the rest of that conversation.</p>
+
+    <h3>Weekly cloud release notes stop on 30 September</h3>
+    <p>The banner is now on every weekly release notes page: "This page will no longer be updated after September 30, 2026." Everything moves to What's new across Atlassian, at <a href="https://community.atlassian.com/release-notes">community.atlassian.com/release-notes</a>, which adds rollout status, search and filtering.</p>
+    <p><strong>What it means.</strong> If your internal change log is fed from the old weekly pages, by a bookmark, a feed or a person who reads them on Monday, it goes quiet in October with nothing to tell you it has. Silence from a source you trust looks exactly like a calm week.</p>
+    <p><strong>What to do.</strong> Move the bookmark now, and open the new place once before you depend on it, so the first time you use it is not the week you urgently need it. One piece of fine print: the developer changelog for Confluence Cloud is a different page and is not moving.</p>
+
+    <h3>Vendors can now keep your macros working when they move to Forge</h3>
+    <p>Published on 11 September: a Forge manifest can map old Connect macro keys onto a Forge macro through a new <code>migratedFrom</code> property, so macros already sitting on your pages keep resolving after the vendor moves the app across.</p>
+    <p><strong>What it means.</strong> This was the quiet risk in every Connect to Forge migration. The vendor ships a Forge version, you upgrade, and a macro used on four hundred pages renders as an error because its key changed underneath. There is now an official way to avoid that, with limits worth knowing: parameter schemas are not converted, so the new macro has to understand the old settings itself, and one legacy key can be claimed by only one Forge macro.</p>
+    <p><strong>What to do.</strong> When a vendor announces a Forge version of an app you use, ask one question before upgrading: do existing macros on existing pages still render? Then check it yourself on a copy of a real page rather than an empty one. The wider timetable is in our piece on <a href="docs/connect-end-of-life.html">the end of Connect</a>.</p>
+  </article>
 
   <article id="2026-09-05">
     <h2>5 September 2026</h2>
