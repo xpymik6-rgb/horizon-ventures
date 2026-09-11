@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can you import a Word document into an existing Confluence page?</title>
+<meta name="description" content="In Confluence Cloud, no: the import always makes a new page. Data Center can do it. Here are the four ways round it and what each one costs you.">
+<link rel="canonical" href="https://horizonventures.app/docs/import-word-existing-confluence-page.html">
+<meta property="og:title" content="Can you import a Word document into an existing Confluence page?">
+<meta property="og:description" content="Cloud always creates a new page. Data Center can import into an existing one. The four workarounds, and what paste from Word quietly breaks.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Can you import a Word document into an existing Confluence page?",
+   "description": "Confluence Cloud has no way to import a .docx into a page that already exists: the import always creates a new page. Data Center can do it. Here are the four practical ways round the limitation, what paste from Word breaks, and which route fits which situation.",
+   "url": "https://horizonventures.app/docs/import-word-existing-confluence-page.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-10",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can I import a Word document into an existing Confluence page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not in Confluence Cloud. The import happens in the context of creating a page, so it always produces a new one. Confluence Data Center can import a Word document into an existing page. In Cloud you import as a new page and move the content, or paste it in by hand."}},
+    {"@type": "Question", "name": "Why does Cloud work this way?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The Cloud import is an entry point to page creation rather than an editing action. A single file becomes a draft or live doc you then publish; several files land under a restricted placeholder page titled Imported pages with the date and time."}},
+    {"@type": "Question", "name": "What breaks when I paste from Word instead?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Word carries hidden markup with it. The paste keeps span and div elements with styles that interfere with the editor, and numbered and bulleted lists are the usual casualty: a well known complaint is that list numbering gets mixed up on paste. Pasting as plain text avoids the mess but throws away all formatting."}},
+    {"@type": "Question", "name": "Is there a cleaner way to paste?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Markdown as a middle step. Confluence Cloud auto-converts pasted Markdown, and headings, bold and italic, ordered and unordered lists, links, images from URLs and simple tables come across reliably. Merged cells and complex alignment still need the table editor afterwards."}},
+    {"@type": "Question", "name": "Does the page keep its history if I replace the content?",
+     "acceptedAnswer": {"@type": "Answer", "text": "If you paste new content into the existing page and publish, yes: it becomes a new version of the same page, and the URL, comments and history stay. If you import as a new page and delete the old one, you lose all three. That is the real argument for pasting rather than re-importing."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Can you import a Word document into an existing Confluence page?</h1>
+    <p class="sub">A short question with a short answer, and a longer list of what to do instead. This one comes up every time a policy document gets its annual revision.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> In Confluence Cloud, no. The import always creates a new page, because it is an entry point to page creation rather than something you do to a page that already exists. Confluence Data Center can import a Word document into an existing page; Cloud cannot. Your practical options are to import as a new page and move the content across, or to paste the content into the existing page, which is uglier but keeps the page's history, comments and URL.</p>
+
+  <h2>Why the button is not where you expect</h2>
+
+  <p>In Cloud you reach the import while creating a page, not while editing one. A single file becomes a draft or live doc that you then publish. Several files at once land as child items under a restricted placeholder page titled "Imported pages" with the date and time. Either way the result is new pages, never an update to an old one.</p>
+
+  <p>This surprises people mostly in one situation: a document that lives in Word, gets revised once or twice a year, and has a Confluence page that everybody links to. You want the new revision on the same page. Confluence wants to give you a new page.</p>
+
+  <h2>The four ways round it</h2>
+
+  <h3>1. Paste into the existing page</h3>
+
+  <p>The only route that genuinely keeps the page. Open the page, select everything, paste the new content, publish. You get a new version of the same page: the URL still works, the comments are still attached, the history shows what changed and when.</p>
+
+  <p>The cost is the paste itself, which is covered below and is not free.</p>
+
+  <h3>2. Import as a new page and move the content</h3>
+
+  <p>Import the document, then copy the rendered content from the new page into the old one and delete the new page. It sounds like a detour, and it is, but the intermediate page is Confluence's own conversion of the document, which is usually cleaner than what the clipboard produces.</p>
+
+  <h3>3. Import as a new page and retire the old one</h3>
+
+  <p>Fastest, and the one people regret. The new page has a new URL, no comments and no history. Every link in other pages, in Jira tickets and in old emails now points at the previous revision or at nothing. Only reasonable when the page is genuinely new work that happens to have an old namesake.</p>
+
+  <h3>4. An app</h3>
+
+  <p>Several Marketplace apps extend importing in various directions. Worth pricing against how often you actually do this: for a document revised twice a year, a licence is hard to justify.</p>
+
+  <h2>What pasting from Word actually does</h2>
+
+  <p>Word does not put plain text on the clipboard. It puts markup, and Confluence keeps it: span and div elements carrying styles that the editor then has to live with. The visible result is usually fine at first glance and wrong in the details.</p>
+
+  <p><strong>Lists are the usual casualty.</strong> Numbered and bulleted lists coming from Word get their numbering mixed up on paste; it is one of the more common complaints in the community. Nested lists fare worst.</p>
+
+  <p><strong>Plain text paste is clean and expensive.</strong> Pasting without formatting gives you a page with no hidden junk and no headings, no bold, no lists and no tables either. For a short document that is a fine trade. For a fifty page handbook it is an afternoon of re-formatting.</p>
+
+  <p><strong>Markdown is the useful middle.</strong> Confluence Cloud auto-converts pasted Markdown, and headings, bold and italic, ordered and unordered lists, links, images from URLs and simple tables come across reliably. Merged cells and fussy alignment still need the table editor afterwards. If your document can go through a Word to Markdown conversion first, this is usually the cleanest paste available.</p>
+
+  <h2>What it costs on a real revision cycle</h2>
+
+  <p>Say forty policy documents, each revised once a year, each with a Confluence page people link to. Pasting and cleaning up one revised document takes fifteen to twenty minutes when lists and tables are involved. That is ten to thirteen hours a year, spread thin enough that nobody counts it, and concentrated enough in one week of the year that it always lands on one person.</p>
+
+  <p>The honest observation is that no tool removes this entirely, because the problem is not the import, it is keeping the same content in two systems.</p>
+
+  <h2>Which route to take</h2>
+
+  <p>If the page matters to other people, paste into it and keep the history. A slightly messy page with its comments and links intact beats a clean page nobody can find.</p>
+
+  <p>If the document is long and full of structure, go through Markdown rather than pasting from Word directly.</p>
+
+  <p>If this happens once, stop optimising and just do it by hand.</p>
+
+  <p><strong>Disclosure: I build Confluence apps, and this is a case ours does not cover.</strong> <a href="/word-import.html">Word Import</a> turns .docx files into new Confluence pages and page trees; it does not update a page that already exists, so for the question at the top of this article it will not help you. If what you actually need is to bring a pile of documents in for the first time, that is the case it is built for. If you need to refresh one existing page, use option one above and keep your history.</p>
+
+  <h2>Questions people ask</h2>
+
+  <h3>Can I import a Word document into an existing page?</h3>
+  <p>Not in Cloud. The import always creates a new page. Data Center can import into an existing page.</p>
+
+  <h3>Why does Cloud work this way?</h3>
+  <p>The import is part of page creation, not editing. One file becomes a draft you publish; several land under a restricted "Imported pages" placeholder.</p>
+
+  <h3>What breaks when I paste from Word?</h3>
+  <p>Hidden markup comes along, and list numbering is the usual victim. Plain text paste avoids it and loses all formatting.</p>
+
+  <h3>Is there a cleaner way to paste?</h3>
+  <p>Convert to Markdown first. Confluence auto-converts it, and headings, lists, links and simple tables survive.</p>
+
+  <h3>Does the page keep its history if I replace the content?</h3>
+  <p>Yes, if you edit the existing page. It becomes a new version, and the URL, comments and history stay. Importing as a new page and deleting the old one loses all three.</p>
+
+  <p>Related: <a href="/docs/import-word-into-confluence.html">how to import Word documents into Confluence Cloud</a> and <a href="/docs/split-word-document-confluence-pages.html">how to split a Word document into multiple pages</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
