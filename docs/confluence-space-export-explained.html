@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What a Confluence space export actually gives you</title>
+<meta name="description" content="Confluence Cloud exports a space to PDF, CSV, HTML or XML. Here is what each format is really for, what it silently leaves behind, and why CSV is not the spreadsheet you expect.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-space-export-explained.html">
+<meta property="og:title" content="What a Confluence space export actually gives you">
+<meta property="og:description" content="Four formats, one admin-only button, and several things that disappear without a warning. A straight look at the built-in space export.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "What a Confluence space export actually gives you",
+   "description": "Confluence Cloud can export a whole space to PDF, CSV, HTML or XML, and the button is easy to miss. Here is what each format is designed for, what disappears from the export without a warning, and why a CSV export of a space is not a spreadsheet of your tables.",
+   "url": "https://horizonventures.app/docs/confluence-space-export-explained.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-10",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "How do I export a whole Confluence space?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Space settings, then the export option. Confluence Cloud offers PDF, CSV, HTML and XML. Space admins can export a space, or a group of pages selected individually inside it. Space and site admins can also export content owned by deactivated accounts."}},
+    {"@type": "Question", "name": "Does the CSV export give me my tables as spreadsheets?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. The CSV export is a dump of space content: by default everything you can view, including attachments and comments. It is built for moving content between systems, not for opening a budget table in Excel. The documentation does not describe its column structure, because it is not designed to be read as a data sheet."}},
+    {"@type": "Question", "name": "What gets left out of an export?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Blog posts are not included when exporting to PDF. Page comments are currently not exported during HTML export. Team Calendars are not included in exports at all. And every export captures published content, so edits somebody has been sitting on without publishing are simply not there."}},
+    {"@type": "Question", "name": "Will I get everything in the space, or only what I can see?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Only content visible to you, with one exception: exporting via CSV or XML as a site admin exports all content. So the same button in two different hands produces two different files, which matters when the export is meant to be a complete record."}},
+    {"@type": "Question", "name": "Can a normal user export a space?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Space export is an admin action. A person without space admin rights can still export a single page to PDF or Word, but cannot take the space."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>What a Confluence space export actually gives you</h1>
+    <p class="sub">There is a button that takes an entire space out of Confluence, and most people never find it. There is also a gap between what it produces and what people assume it produces. Both are worth knowing before a migration or an audit.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Confluence Cloud exports a whole space to <strong>PDF, CSV, HTML or XML</strong> from space settings. It is an administrator's action: space admins can export a space, or a set of pages selected individually inside it. The export is genuinely useful for moving or archiving content. What it is not is a spreadsheet of your data: the CSV option dumps space content, not the tables that live on your pages. And several things leave the export without telling you.</p>
+
+  <h2>The four formats, and what each is for</h2>
+
+  <table>
+    <thead><tr><th>Format</th><th>What it is really for</th></tr></thead>
+    <tbody>
+      <tr><td><strong>PDF</strong></td><td>Giving the content to somebody outside the wiki. A readable document, not a data source.</td></tr>
+      <tr><td><strong>HTML</strong></td><td>A browsable offline copy of the space. Useful as an archive you can still open in five years.</td></tr>
+      <tr><td><strong>XML</strong></td><td>Moving a space into another Confluence site. Machine-readable, faithful, and unpleasant to read.</td></tr>
+      <tr><td><strong>CSV</strong></td><td>Taking content out in a portable form. By default it exports everything you can view, including attachments and comments.</td></tr>
+    </tbody>
+  </table>
+
+  <p>Word is missing from that list on purpose: in Cloud, Word export lives at the page level, not the space level. If somebody tells you to "just export the space to Word", they are describing Data Center or wishful thinking.</p>
+
+  <h2>What quietly does not make it</h2>
+
+  <p>None of these produce an error. The file arrives, it looks complete, and the missing parts are noticed weeks later by somebody who needed them.</p>
+
+  <p><strong>Blog posts are not included when exporting to PDF.</strong> If a team keeps decisions or release notes as blog posts, a PDF export of the space silently drops that entire body of writing.</p>
+
+  <p><strong>Page comments are currently not exported during HTML export.</strong> In wikis where the real reasoning sits in comment threads under a short page, this removes the part that mattered.</p>
+
+  <p><strong>Team Calendars are not included</strong> in exports.</p>
+
+  <p><strong>Unpublished work is not there.</strong> An export takes published content. Edits that somebody has been carrying in a draft for three weeks do not exist as far as the export is concerned, and nothing on screen points this out.</p>
+
+  <p><strong>The result depends on who clicks.</strong> Only content visible to you is exported, with one exception: exporting via CSV or XML as a <em>site</em> admin exports all content. The same button in two pairs of hands produces two different files, which is a problem when the export is supposed to be a complete record for legal or compliance reasons.</p>
+
+  <p>One detail that migrates between versions and confuses people: the limit of the first 50 attached images in a Word export is documented for Confluence Data Center, where it can be raised with a system property. Cloud has no such property, and the Cloud documentation does not state that number, so do not plan around it either way without testing your own pages.</p>
+
+  <h2>Why the CSV option is not the answer to "get my tables into Excel"</h2>
+
+  <p>This is the part that sends people in circles. You have a space full of registers, budgets and checklists kept as tables on pages. You find "export space to CSV", and it sounds like exactly the thing.</p>
+
+  <p>It is not. That export is a dump of the space's content: pages, attachments, comments. Atlassian's documentation does not describe its column layout, because it is not meant to be read as a data sheet. You do not open it and find your budget table with its columns intact; you find the space, flattened into a transport format.</p>
+
+  <p>For actual table data there is still nothing native on the page. Copying a table by hand into a spreadsheet works until merged cells are involved, and then the values after a merged cell shift into the wrong columns while still looking like perfectly good numbers.</p>
+
+  <h2>How long the honest way takes</h2>
+
+  <p>A quarterly report that pulls figures from eleven tables spread across a space: about four minutes per table when nothing is merged, closer to ten when something is, plus the time spent later working out why the finance number disagrees with the wiki. Call it an hour and a half, four times a year.</p>
+
+  <p>The hours are not the problem. The problem is that this is retyping data that already exists, and a number retyped is a number that can be wrong without anyone noticing.</p>
+
+  <h2>What to use when</h2>
+
+  <p>Leaving Confluence, or archiving a space before it is deleted: use the native export, XML for another Confluence site, HTML for an archive a human can open later, PDF for sending outside. It is free and it is the right tool.</p>
+
+  <p>Handing over a single document: export the page to PDF or Word. No admin rights needed.</p>
+
+  <p>Getting numbers out of tables to calculate with: the native export does not do this, and the CSV name is a trap.</p>
+
+  <p><strong>Disclosure: I build Confluence apps.</strong> One of ours, <a href="/table-export.html">Table Export</a>, covers only that last case: one table, a page, or every table in a space into Excel or CSV, each sheet labelled with the page it came from, with merged cells expanded so the columns stay where they belong. It does not replace the space export and it is not trying to: for a migration or an archive, use the built-in one. There is a demo on the product page showing the merged-cell problem on a real budget table, no install needed.</p>
+
+  <h2>Questions people ask</h2>
+
+  <h3>How do I export a whole space?</h3>
+  <p>Space settings, then the export option: PDF, CSV, HTML or XML. Space admins can export a space or a group of individually selected pages. Space and site admins can also export content owned by deactivated accounts.</p>
+
+  <h3>Does the CSV export give me my tables?</h3>
+  <p>No. It exports space content, by default everything you can view including attachments and comments. It is a transport format, not a data sheet.</p>
+
+  <h3>What gets left out?</h3>
+  <p>Blog posts in PDF exports, page comments in HTML exports, Team Calendars everywhere, and anything still sitting unpublished in a draft.</p>
+
+  <h3>Will I get everything, or only what I can see?</h3>
+  <p>Only what you can see, unless you are a site admin exporting via CSV or XML, in which case all content is exported.</p>
+
+  <h3>Can a normal user export a space?</h3>
+  <p>No, it is an admin action. Anyone can still export a single page to PDF or Word.</p>
+
+  <p>Related: <a href="/docs/export-confluence-table-to-excel.html">how to get a Confluence table into Excel</a> and <a href="/docs/sum-column-confluence-table.html">how to sum a column in a Confluence table</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -48,6 +48,8 @@
 
 - [How to list Confluence pages on a page without writing CQL](https://horizonventures.app/docs/list-confluence-pages-without-cql.html): Four native macros, twelve filters and no query language. Where each one stops, and what the content manager does instead.
 
+- [What a Confluence space export actually gives you](https://horizonventures.app/docs/confluence-space-export-explained.html): Four formats, an admin-only button, and several things that vanish without a warning.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
