@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Confluence content manager: what it does and where it stops</title>
+<meta name="description" content="Confluence's native tool for finding and clearing forgotten pages. Where it lives, what it filters, what it can do in bulk, and the two limits that are nowhere on the screen.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-content-manager.html">
+<meta property="og:title" content="The Confluence content manager: what it does and where it stops">
+<meta property="og:description" content="It archives 500 pages in one action, it is Premium only, and its stale-page filter silently skips every page that has children.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "The Confluence content manager: what it does and where it stops",
+   "description": "The content manager is a space settings screen in Confluence Cloud that lists a space's content, filters it by last activity, labels, status, type and contributor, and applies bulk actions such as archiving up to 500 items at once. It is available only on Confluence Premium and Enterprise, and its Last active filter excludes any page that has children.",
+   "url": "https://horizonventures.app/docs/confluence-content-manager.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-11",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Why can I not see Content manager in my space settings?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because it is a paid feature. Atlassian describes the content manager as an admin tool available in Confluence Premium and Enterprise, and states that administrators of Confluence Standard do not have access to it. If your site is on Free or Standard, the screen is not hidden or misplaced, it is simply not part of your plan. You also need to be a space admin of the space you are looking at."}},
+    {"@type": "Question", "name": "Where is the content manager in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Open the space. Next to the space name in the sidebar select More actions, shown as three dots, then Space settings, then Content manager. It works on one space at a time, and it covers all of that space's content except blogs."}},
+    {"@type": "Question", "name": "How far back does the Last active filter go?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It is a dropdown with four settings: over 7 days ago, over 1 month ago, over 3 months ago and over 6 months ago. Six months is as far back as it looks, and you cannot type a number of days of your own. Last active means no views, no updates and no comments in that period."}},
+    {"@type": "Question", "name": "Why are old pages missing from my Last active results?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because the filter deliberately excludes any page that has children. Atlassian describes this as a safety measure: nested content inherits view permissions from its parent, and moving one without the other risks exposing content to an unintended audience. The practical effect is that section landing pages and other parents never appear, so the list is shorter than the real amount of stale content, and nothing on the screen says so."}},
+    {"@type": "Question", "name": "How many pages can the content manager act on at once?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Archive up to 500 items at a time, delete up to 100, and change the owner of up to 100. It can also change status, apply an automation flow, and convert pages to live docs. Archiving moves content to the space archive, where it can still be viewed but no longer clutters the content tree."}},
+    {"@type": "Question", "name": "Does archiving pages break their permissions?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Atlassian states that after a nested group is archived, inherited permissions remain intact in the archive, and again in the content tree if the group is restored."}},
+    {"@type": "Question", "name": "Can I put the content manager's list on an ordinary Confluence page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. It is an administrator's screen inside space settings, not a macro, so the people who wrote the stale pages never see the list. Showing that kind of list to ordinary readers on an ordinary page requires either a different native macro, which cannot express a relative period, or an app."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>The Confluence content manager: what it does and where it stops</h1>
+    <p class="sub">It is the native answer to "what are we no longer maintaining?", and it is also the Confluence feature people most often cannot find. There is a reason for that, and it is not on the screen.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> The content manager is a screen inside a space's settings. It lists everything in that space except blogs, filters the list by last activity, labels, status, type and contributor, and then archives, deletes, re-owns or re-statuses hundreds of items in one action. It is available only on <strong>Confluence Premium and Enterprise</strong>: if it is missing from your Space settings, that is almost always why. Its <em>Last active</em> filter is the fastest native way to find forgotten pages, and it carries one catch the screen never mentions: <strong>it leaves out every page that has children</strong>.</p>
+
+  <h2>Where it is</h2>
+
+  <p>Open the space. Next to the space name in the sidebar choose <strong>More actions</strong>, the three dots, then <strong>Space settings</strong>, then <strong>Content manager</strong>. You need to be a space admin of that space. It works on one space at a time, and Atlassian is specific about the scope: a space admin can use it to organise all of a space's content <em>except blogs</em>.</p>
+
+  <p>That last detail matters more than it sounds. If your team publishes announcements and decisions as blog posts, the content manager will not show you a single one of them, no matter how old.</p>
+
+  <h2>What it can filter</h2>
+
+  <table>
+    <thead><tr><th>Filter</th><th>What you can ask for</th></tr></thead>
+    <tbody>
+      <tr><td>Last active</td><td>Four fixed periods: over 7 days, over 1 month, over 3 months, over 6 months</td></tr>
+      <tr><td>Last updated</td><td>A date range you supply</td></tr>
+      <tr><td>Created</td><td>A date range you supply</td></tr>
+      <tr><td>Labels</td><td>Content carrying particular labels</td></tr>
+      <tr><td>Statuses</td><td>Content with a given page status</td></tr>
+      <tr><td>Types</td><td>Databases, folders, pages, live docs, smart links, whiteboards</td></tr>
+      <tr><td>Contributors</td><td>Content a given person worked on</td></tr>
+      <tr><td>Pages with deactivated owners</td><td>Content owned by people who have left</td></tr>
+    </tbody>
+  </table>
+
+  <p>Notice the shape of that list. <em>Last active</em> is the only filter that thinks in relative time, and it does so in four fixed steps. <em>Last updated</em> and <em>Created</em> want real dates, which is a different question: "updated between March and June" is an investigation, "not touched for six months" is an audit.</p>
+
+  <p>The filter worth knowing precisely is <em>Last active</em>. It means no views, no updates and no comments in the period. That is a better definition of stale than "last edited", because a page nobody edits but everybody reads is not dead, it is finished.</p>
+
+  <h2>What it can do to what it finds</h2>
+
+  <p>This is the half that no macro and no app replaces, and it is genuinely good:</p>
+
+  <ul>
+    <li><strong>Archive</strong> up to 500 items at a time. Archived content stays viewable but stops cluttering the content tree.</li>
+    <li><strong>Delete</strong> up to 100 items at a time, into the trash, where an admin can purge it permanently.</li>
+    <li><strong>Change owner</strong> of up to 100 items at a time. This is the fastest fix after somebody leaves the company.</li>
+    <li><strong>Change status</strong>, <strong>run an automation flow</strong> against the selection, and <strong>convert pages to live docs</strong>.</li>
+  </ul>
+
+  <p>Permissions survive the trip. Atlassian states that after a nested group is archived, inherited permissions remain intact in the archive, and again in the content tree if it is restored. Selecting a parent's checkbox automatically selects everything nested under it; hold Command or Alt to select a parent without its children, and Shift to take a run of rows at once.</p>
+
+  <h2>The catch: your stale list is shorter than the truth</h2>
+
+  <p>Atlassian puts this in a warning box, and it is easy to read past: <em>Last active</em> will not return a complete list, because it specifically filters pages that <strong>do not have children</strong>.</p>
+
+  <p>The reasoning is sound. Nested content inherits view permissions from its parent. If a parent or a child is moved without permissions being set explicitly first, content can be exposed to an audience it was never meant for. Excluding parents from a bulk-action screen is a reasonable way to avoid that.</p>
+
+  <p>The effect on an audit is another matter. Think about which pages actually rot in a real wiki. It is rarely the leaf: it is the section landing page. "Onboarding", with six pages under it, last touched when the process changed two reorganisations ago. "Release process", with a child per environment. Those are all parents, and none of them will appear in your Last active results. You will get the leaves, act on them, and come away believing the space is in better shape than it is.</p>
+
+  <p>There is a way to act on a whole nested group once you have found it by other means: open the parent's <strong>More actions</strong> menu and choose to archive or delete, and you are offered the option to include nested content. Finding them is the part you are on your own for.</p>
+
+  <h2>If you are on Free or Standard</h2>
+
+  <p>Then you do not have this tool at all. Atlassian's wording is blunt: teammates and administrators of Confluence Standard do not have access to it. What Standard does give you is the ability to archive or delete a nested group directly from the content tree, one group at a time.</p>
+
+  <p>That leaves three honest options. Sort a search by last modified and work through it by eye. Use the <em>filter by label</em> macro, which accepts twelve filters from a form and is stronger than its name suggests, but whose date filters point at a fixed date rather than a relative period. Or use an app. We have written up the native routes and where each one stops in <a href="/docs/list-confluence-pages-without-cql.html">how to list Confluence pages without writing CQL</a>.</p>
+
+  <h2>What it is worth in time</h2>
+
+  <p>Take one space with 1,500 pages. Working through a date-sorted list by eye, at three seconds a row to decide whether a page still matters, is about 75 minutes. Do that quarterly and it is five hours a year, for one space. Twelve spaces and it is a job nobody will do twice.</p>
+
+  <p>The content manager collapses the finding part of that to one dropdown, and the acting part to one click on 500 items. That is why it is worth knowing whether your plan includes it before you budget a documentation clean-up as a manual project.</p>
+
+  <h2>The honest summary</h2>
+
+  <p>If you are on Premium or Enterprise and you want to clean up one space, open the content manager and use it. It is native, it is already paid for, its definition of stale is the right one, and its bulk actions are better than anything a macro can do. Just remember that the list in front of you has no parents in it.</p>
+
+  <p>Where it stops is equally clear. It is one space at a time. It is an administrator's screen, so the people who wrote those pages never see the list and never get the nudge. It is not on Free or Standard. And it cannot be put on a page.</p>
+
+  <p><strong>Disclosure: I build Confluence apps.</strong> One of ours, <a href="/smart-search.html">Smart Search</a>, exists for the gap in that last paragraph: a relative period like "not updated in six months", on an ordinary page any reader can open, across several spaces at once, on any plan. What it deliberately does not do is bulk archiving or deleting. If you have Premium and you want a one-off clean-up of a single space, the content manager is the better tool for that job, and you are already paying for it.</p>
+
+  <h2>Questions people actually ask</h2>
+
+  <h3>Why can I not see Content manager in my space settings?</h3>
+  <p>Because it is a paid feature, available on Confluence Premium and Enterprise only. It is not hidden or misplaced. You also need to be a space admin of the space you are looking at.</p>
+
+  <h3>How far back does Last active go?</h3>
+  <p>Four settings: over 7 days, over 1 month, over 3 months, over 6 months. Six months is the limit, and you cannot type a number of your own.</p>
+
+  <h3>Why are old pages missing from my results?</h3>
+  <p>Last active excludes any page that has children, as a safeguard around inherited permissions. Parents never appear, which is why the list looks better than reality.</p>
+
+  <h3>Does it cover blog posts?</h3>
+  <p>No. All of a space's content except blogs.</p>
+
+  <h3>How many items can I act on at once?</h3>
+  <p>Archive 500, delete 100, change owner 100.</p>
+
+  <h3>Does archiving break inherited permissions?</h3>
+  <p>No. They stay intact in the archive, and again if the content is restored.</p>
+
+  <h3>Can I show this list on a normal page?</h3>
+  <p>Not with the content manager. It is an admin screen, not a macro.</p>
+
+  <p>Related: <a href="/docs/find-stale-pages-confluence.html">how to find the Confluence pages nobody maintains any more</a> and <a href="/docs/list-confluence-pages-without-cql.html">how to list Confluence pages without writing CQL</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

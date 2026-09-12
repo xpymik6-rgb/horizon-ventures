@@ -52,6 +52,8 @@
 
 - [Can you import a Word document into an existing Confluence page?](https://horizonventures.app/docs/import-word-existing-confluence-page.html): Cloud always creates a new page. The four workarounds, and what paste from Word quietly breaks.
 
+- [The Confluence content manager: what it does and where it stops](https://horizonventures.app/docs/confluence-content-manager.html): Premium only, archives 500 pages at once, and its stale-page filter silently skips every page that has children.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
