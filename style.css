@@ -154,6 +154,11 @@ p { max-width: var(--measure); }
   border: 1px solid rgba(181,113,26,.35); background: rgba(181,113,26,.07);
   padding: 4px 10px; border-radius: 3px; margin-bottom: 18px;
 }
+/* приложение уже одобрено и продаётся: янтарное предупреждение меняем на зелёное */
+.status.live {
+  color: #1a6b4a;
+  border-color: rgba(26,107,74,.35); background: rgba(26,107,74,.07);
+}
 
 /* ── подвал ─────────────────────────────────────────── */
 
