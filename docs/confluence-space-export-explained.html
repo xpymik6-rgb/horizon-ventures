@@ -31,6 +31,8 @@
   {
    "@type": "FAQPage",
    "mainEntity": [
+    {"@type": "Question", "name": "Is Confluence XML export going away?",
+     "acceptedAnswer": {"@type": "Answer", "text": "XML site export and XML space export in Confluence Cloud reach end of life on 1 December 2026. They keep working after that date, but Atlassian will no longer fix bugs, accept support tickets or provide an SLA for them. CSV export is the fully supported alternative and is available on all plans. The one gap is Cloud to Data Center migration: CSV cannot be imported into Data Center, and Atlassian asks affected customers to contact support about alternatives."}},
     {"@type": "Question", "name": "How do I export a whole Confluence space?",
      "acceptedAnswer": {"@type": "Answer", "text": "Space settings, then the export option. Confluence Cloud offers PDF, CSV, HTML and XML. Space admins can export a space, or a group of pages selected individually inside it. Space and site admins can also export content owned by deactivated accounts."}},
     {"@type": "Question", "name": "Does the CSV export give me my tables as spreadsheets?",
@@ -91,7 +93,7 @@
     <tbody>
       <tr><td><strong>PDF</strong></td><td>Giving the content to somebody outside the wiki. A readable document, not a data source.</td></tr>
       <tr><td><strong>HTML</strong></td><td>A browsable offline copy of the space. Useful as an archive you can still open in five years.</td></tr>
-      <tr><td><strong>XML</strong></td><td>Moving a space into another Confluence site. Machine-readable, faithful, and unpleasant to read.</td></tr>
+      <tr><td><strong>XML</strong></td><td>Moving a space into another Confluence site. Machine-readable, faithful, unpleasant to read, and <strong>reaching end of life on 1 December 2026</strong>: see below.</td></tr>
       <tr><td><strong>CSV</strong></td><td>Taking content out in a portable form. By default it exports everything you can view, including attachments and comments.</td></tr>
     </tbody>
   </table>
@@ -128,9 +130,17 @@
 
   <p>The hours are not the problem. The problem is that this is retyping data that already exists, and a number retyped is a number that can be wrong without anyone noticing.</p>
 
+  <h2>XML export is reaching end of life</h2>
+
+  <p>Atlassian has set <strong>1 December 2026</strong> as the end of life for XML site export and XML space export in Confluence Cloud. The wording is specific: the features keep working, but Atlassian will no longer fix bugs, accept support tickets or provide an SLA for them. CSV export is named as the fully supported alternative, and it is available on all plans.</p>
+
+  <p><strong>What it means.</strong> Nothing stops on 1 December. What stops is anyone helping you when it goes wrong, which is a different thing entirely when the export in question is the one you only run on the day you are leaving, or the day the auditor asks.</p>
+
+  <p><strong>What to do.</strong> If a runbook, a migration plan or a compliance procedure of yours says "export the space as XML", change the wording to CSV before December and test it once on a real space so that the first CSV export you ever run is not the important one. One exception is worth knowing: if you rely on XML export to move content from Cloud to Data Center, CSV cannot be imported into Data Center, and Atlassian asks you to contact support about alternatives rather than offering a replacement path.</p>
+
   <h2>What to use when</h2>
 
-  <p>Leaving Confluence, or archiving a space before it is deleted: use the native export, XML for another Confluence site, HTML for an archive a human can open later, PDF for sending outside. It is free and it is the right tool.</p>
+  <p>Leaving Confluence, or archiving a space before it is deleted: use the native export. HTML for an archive a human can open later, PDF for sending outside, and CSV for a portable copy. XML still moves a space into another Confluence site, but it is on the way out, so treat it as a path with no support behind it rather than the default choice.</p>
 
   <p>Handing over a single document: export the page to PDF or Word. No admin rights needed.</p>
 
@@ -139,6 +149,9 @@
   <p><strong>Disclosure: I build Confluence apps.</strong> One of ours, <a href="/table-export.html">Table Export</a>, covers only that last case: one table, a page, or every table in a space into Excel or CSV, each sheet labelled with the page it came from, with merged cells expanded so the columns stay where they belong. It does not replace the space export and it is not trying to: for a migration or an archive, use the built-in one. There is a demo on the product page showing the merged-cell problem on a real budget table, no install needed.</p>
 
   <h2>Questions people ask</h2>
+
+  <h3>Is Confluence XML export going away?</h3>
+  <p>It reaches end of life on 1 December 2026. It keeps working, but with no bug fixes, no support tickets and no SLA behind it. CSV is the supported replacement and is available on all plans. The exception is moving content from Cloud to Data Center: CSV cannot be imported into Data Center, so Atlassian asks you to contact support about alternatives.</p>
 
   <h3>How do I export a whole space?</h3>
   <p>Space settings, then the export option: PDF, CSV, HTML or XML. Space admins can export a space or a group of individually selected pages. Space and site admins can also export content owned by deactivated accounts.</p>

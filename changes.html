@@ -45,6 +45,8 @@
   {
    "@type": "FAQPage",
    "mainEntity": [
+    {"@type": "Question", "name": "When does Confluence XML export stop being supported?",
+     "acceptedAnswer": {"@type": "Answer", "text": "1 December 2026. XML site export and XML space export in Confluence Cloud keep working after that date, but Atlassian will no longer fix bugs, accept support tickets or provide an SLA for them. CSV export is the fully supported alternative and is available on all plans. CSV cannot be imported into Data Center, so anyone using XML for a Cloud to Data Center migration is asked to contact Atlassian Support about alternatives."}},
     {"@type": "Question", "name": "Does blocking data export in Confluence also block attachment downloads?",
      "acceptedAnswer": {"@type": "Answer", "text": "It is about to. Atlassian is extending the data export rule in data security policies so that it also blocks downloading files attached to Confluence and Jira pages, and the change applies to policies that already block exports. Users lose the download button in attachment lists, macros and file previews. The rule requires Atlassian Guard Standard and is checked under Security, then Data security policies, in admin.atlassian.com."}},
     {"@type": "Question", "name": "When do Confluence app macros move to a single category?",
@@ -96,6 +98,11 @@
 
   <article id="2026-09-11">
     <h2>11 September 2026</h2>
+
+    <h3>XML site and space export is on a clock</h3>
+    <p>Atlassian has set 1 December 2026 as the end of life for XML site export and XML space export in Confluence Cloud. The features keep working after that date; what ends is bug fixes, support tickets and any SLA. CSV export is named as the fully supported alternative, and it is on all plans.</p>
+    <p><strong>What it means.</strong> Nothing breaks on 1 December. What disappears is anybody helping you when it does break, and this is the export you run on the day you are leaving a platform or the day an auditor asks for a record. Those are bad days to be on an unsupported path.</p>
+    <p><strong>What to do.</strong> Search your runbooks and compliance procedures for "XML export" and change the wording to CSV before December, then run a CSV export once on a real space so the first one is not the important one. One exception: if you use XML to move content from Cloud to Data Center, CSV cannot be imported into Data Center, and Atlassian asks you to contact support about alternatives rather than offering a replacement. We updated <a href="docs/confluence-space-export-explained.html">our write-up of space exports</a> with this.</p>
 
     <h3>Blocking exports is about to block attachment downloads too</h3>
     <p>Atlassian is extending the data export rule in data security policies so that it also blocks downloading files attached to Confluence and Jira pages. It is rolling out now, and it needs Atlassian Guard Standard.</p>
