@@ -102,7 +102,8 @@ def собрать_адреса():
         if ".git" in корень:
             continue
         for имя in sorted(файлы):
-            if имя.endswith(".html"):
+            # служебные файлы подтверждения прав на сайт в карту не попадают
+            if имя.endswith(".html") and not имя.startswith("google"):
                 отн = os.path.relpath(os.path.join(корень, имя), ПАПКА).replace("\\", "/")
                 адреса.append(САЙТ + ("" if отн == "index.html" else отн.replace("docs/index.html", "docs/")))
     return sorted(set(адреса))
