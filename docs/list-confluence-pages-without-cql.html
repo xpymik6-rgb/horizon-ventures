@@ -36,9 +36,9 @@
     {"@type": "Question", "name": "Which macro lists the child pages of the current page?",
      "acceptedAnswer": {"@type": "Answer", "text": "The child items macro, formerly called children display. It lists items under whichever parent you select, to whatever depth you set, and it updates itself when pages are added or renamed."}},
     {"@type": "Question", "name": "Can I list pages that nobody has touched in six months?",
-     "acceptedAnswer": {"@type": "Answer", "text": "Not with the built-in macros. The last modified filter returns items last updated on a date you give it, not items older than a period, so a list built on it goes stale as soon as the date passes. For a one-off audit, use the content manager in space settings, which filters by last active over a chosen period."}},
+     "acceptedAnswer": {"@type": "Answer", "text": "Not with the built-in macros. The last modified filter returns items last updated on a date you give it, not items older than a period, so a list built on it goes stale as soon as the date passes. For a one-off audit on Premium or Enterprise, use the content manager in space settings, which filters by last active over a chosen period of up to six months."}},
     {"@type": "Question", "name": "What is the content manager?",
-     "acceptedAnswer": {"@type": "Answer", "text": "A screen in space settings that lists the content of a space with a Last active filter, defaulting to 180 days. It is the native answer to finding forgotten pages. It lives in space settings rather than on a page, so readers never see it, and bulk actions on the results require Premium or Enterprise."}},
+     "acceptedAnswer": {"@type": "Answer", "text": "A screen in space settings that lists the content of a space with a Last active filter offering four periods, the longest being over six months. It is the native answer to finding forgotten pages, but it is an admin tool available only on Confluence Premium and Enterprise: Atlassian states that administrators of Confluence Standard do not have access to it. It also covers one space at a time, it lives in space settings rather than on a page so readers never see it, and its Last active filter excludes any page that has children."}},
     {"@type": "Question", "name": "Is the search results macro still supported?",
      "acceptedAnswer": {"@type": "Answer", "text": "It works, but it belongs to the legacy editor, whose deprecation began in January 2026. Building a new process on it is not a good bet."}},
     {"@type": "Question", "name": "Why does the page properties report show nothing?",
@@ -146,7 +146,7 @@
 
   <h2>The screen most people never open</h2>
 
-  <p>If the goal is an audit rather than a list on a page, the native answer is not a macro at all. Each space has a <strong>content manager</strong> in its space settings, and it has a <strong>Last active</strong> filter: content nobody has viewed, commented on or updated within a period, defaulting to 180 days. That is exactly the query the macros cannot express, and it is free.</p>
+  <p>If the goal is an audit rather than a list on a page, the native answer is not a macro at all. Each space has a <strong>content manager</strong> in its space settings, and it has a <strong>Last active</strong> filter: content nobody has viewed, commented on or updated within a period you pick from a dropdown, as far back as six months. Two caveats that matter: it is available only on Confluence Premium and Enterprise, and it leaves out any page that has children. That is exactly the query the macros cannot express, and it is free.</p>
 
   <p>Two things to know before you plan around it. It lives in space settings, so it is an administrator's screen: readers of the space never see it, and you cannot put its result on a page for a team to work through. And bulk actions on what it finds, archiving or deleting in one go, require Premium or Enterprise. On Standard you get the list and you work through it by hand.</p>
 

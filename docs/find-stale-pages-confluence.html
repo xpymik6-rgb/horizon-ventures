@@ -84,7 +84,7 @@
     <p class="sub">Every wiki older than three years is carrying documentation for systems that no longer exist. Here is how to find it in Confluence Cloud, what the built-in tools genuinely do, and how to run the audit so it does not have to be redone by hand every quarter.</p>
   </header>
 
-  <p><strong>Short answer.</strong> Open the space, then Space settings, then Content manager, and use the <strong>Last active</strong> filter: it lists pages with no views, comments or updates in the period you choose, 180 days by default. That is the fastest honest answer for one space. For a sharper cut across spaces, or for a list that lives on a page instead of an admin screen, keep reading.</p>
+  <p><strong>Short answer.</strong> If your site is on Confluence Premium or Enterprise, open the space, then Space settings, then Content manager, and use the <strong>Last active</strong> filter: it lists pages with no views, comments or updates in the period you pick, as far back as six months. That is the fastest honest answer for one space. Two things to know before you trust the list: the content manager does not exist on Free or Standard, and even on Premium it leaves out every page that has children. For a sharper cut across spaces, or for a list that lives on a page instead of an admin screen, keep reading.</p>
 
   <h2>Why this piles up</h2>
 
@@ -95,9 +95,11 @@
   <h2>What Confluence gives you out of the box</h2>
 
   <h3>The content manager, and start here</h3>
-  <p>Every space has one, and most people have never opened it: next to the space name in the sidebar choose More actions, then Space settings, then <strong>Content manager</strong>. Above the table there is a <strong>Last active</strong> filter, and it does exactly the job this article is about: it shows pages with no views, no comments and no updates in the chosen period, 180 days by default, and the period is yours to change.</p>
+  <p>Every space has one, and most people have never opened it: next to the space name in the sidebar choose More actions, then Space settings, then <strong>Content manager</strong>. Above the table there is a <strong>Last active</strong> filter, and it does exactly the job this article is about: it shows pages with no views, no comments and no updates in the chosen period. The period is a dropdown with four settings: over 7 days, over 1 month, over 3 months, over 6 months. Six months is as far back as it will look.</p>
 
-  <p>Two things to know before you plan around it. It works one space at a time, so a site-wide picture means repeating the exercise per space. And the bulk actions on what you find, archiving, deleting or changing owners in one go, are available on Premium and Enterprise plans; on the lower plans you can see the list and act on pages one by one.</p>
+  <p>Three things to know before you plan around it. First, the whole tool is a paid feature: Atlassian's documentation says that administrators of Confluence Standard do not have access to it, so on Free and Standard this route is closed and the rest of this article is your answer. Second, it works one space at a time, so a site-wide picture means repeating the exercise per space. Third, and least expected, the Last active filter deliberately skips any page that has children. Atlassian does this so that nested pages are not moved out from under their inherited permissions, which is sensible, but the pages most likely to be out of date are often parents with a few children hanging off them. The list you get is therefore shorter than the truth, and nothing on the screen says so.</p>
+
+  <p>When you do act, the limits are generous: archive up to 500 items at once, delete or change the owner of up to 100.</p>
 
   <h3>Search filters</h3>
   <p>The advanced search screen lets you narrow by space, by contributor, by label and by last modified date, including "before" a date you choose. For a first pass this is often enough: pick a space, set the date to two years ago, and look at what comes back.</p>
@@ -157,7 +159,7 @@
   <h2>Frequently asked</h2>
 
   <h3>Is there anything built in that just shows stale pages?</h3>
-  <p>Yes, and it is the place to start: Space settings, Content manager, the Last active filter. It shows pages with no views, comments or updates in the chosen period, 180 days by default. It covers one space at a time, and bulk archiving or deleting what you find is a Premium and Enterprise feature.</p>
+  <p>Yes, if you are on Premium or Enterprise: Space settings, Content manager, the Last active filter. It shows pages with no views, comments or updates in the chosen period, up to six months. It covers one space at a time, it skips pages that have children, and on Confluence Free and Standard the tool is not there at all.</p>
 
 
   <h3>Can I see which pages nobody reads, rather than nobody edits?</h3>

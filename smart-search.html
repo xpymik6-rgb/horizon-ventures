@@ -63,7 +63,7 @@
    "@type": "FAQPage",
    "mainEntity": [
     {"@type": "Question", "name": "Why not just use the Confluence content manager?",
-     "acceptedAnswer": {"@type": "Answer", "text": "For a one-off clean-up of a single space, use it. It is free, native, and its Last active filter is exactly the right question. Three things it does not do: it lives in space settings, so only administrators see the list; bulk actions on the results require Premium or Enterprise; and it works one space at a time. Smart Search puts the same kind of list on an ordinary page, across several spaces, on any plan."}},
+     "acceptedAnswer": {"@type": "Answer", "text": "If you are on Confluence Premium or Enterprise and want a one-off clean-up of a single space, use it: it is native, and its Last active filter is exactly the right question. Four things to know. It is not available on Confluence Free or Standard. It lives in space settings, so only administrators see the list. It works one space at a time. And it excludes any page that has children. Smart Search puts the same kind of list on an ordinary page, across several spaces, on any plan."}},
     {"@type": "Question", "name": "Can the filter by label macro do this?",
      "acceptedAnswer": {"@type": "Answer", "text": "Almost. It accepts twelve filters from a form, including space, title, text, creator, contributor and subpages, so it covers more than its name suggests. What it cannot express is a relative period: its date filters return items last updated on a given date, not items untouched for six months, so a list built on a fixed date stops meaning what its heading says."}},
     {"@type": "Question", "name": "Do I need to know CQL?",
@@ -116,7 +116,7 @@
   <div class="wrap">
     <span class="status live">Available now on the Atlassian Marketplace</span>
     <h1>What are we no longer maintaining?</h1>
-    <p class="lede">Confluence search finds a page when you know what you are looking for. The content manager answers this question, but only for admins, one space at a time, in a screen the rest of the team never opens. Smart Search answers it on an ordinary page, across spaces, and keeps the answer current.</p>
+    <p class="lede">Confluence search finds a page when you know what you are looking for. The content manager answers this question, but only for admins on Premium, one space at a time, in a screen the rest of the team never opens. Smart Search answers it on an ordinary page, across spaces, and keeps the answer current.</p>
     <div class="actions">
       <a class="btn" href="https://marketplace.atlassian.com/apps/1801528247/smart-search-live-page-lists-without-queries">Get it on the Atlassian Marketplace</a>
       <a class="btn ghost" href="#demo2">Try it here first, no install</a>
@@ -216,7 +216,7 @@
     <div class="prose" style="max-width:66ch">
       <h2>What Confluence already does, and where this fits</h2>
       <p>Worth saying plainly, because you will find it yourself in ten minutes and we would rather you heard it from us. Confluence Cloud has two native answers here, and for a lot of teams they are enough.</p>
-      <p><b>The content manager.</b> Every space has one, in space settings, with a Last active filter that defaults to 180 days: content nobody has viewed, commented on or updated in that time. Free, native, and exactly the right question. Three limits: it is an administrator's screen, so the people who wrote those pages never see the list; acting on the results in bulk needs Premium or Enterprise; and it works one space at a time.</p>
+      <p><b>The content manager.</b> Space settings has one, with a Last active filter: content nobody has viewed, commented on or updated in the period you pick, as far back as six months. Native, and exactly the right question. Three limits. It is an admin tool available only on Confluence Premium and Enterprise, so on Free and Standard it is not there at all. It is an administrator's screen, so the people who wrote those pages never see the list. And it works one space at a time. There is also a quieter gap: the Last active filter skips any page that has children, which is a sensible safeguard for permissions and an awkward hole in an audit.</p>
       <p><b>The filter by label macro.</b> Stronger than its name suggests. Twelve filters, including space, title, text, creator, contributor and subpages, all picked from a form rather than written as a query. What it cannot express is a relative period: its date filters return items last updated <em>on a date</em>, so "not touched in six months" has no equivalent, and a list pinned to a fixed date quietly stops meaning what its heading says a month later.</p>
       <p><b>Where this app sits.</b> In the gap between them. A relative period like "not updated in 180 days", on an ordinary page any reader can open, across several spaces at once, refreshing itself, on any plan. If your case is one space and one clean-up, use the content manager: it is free, it is native, and it will outlive us. We wrote up all of it, including the parts that make us look unnecessary, in <a href="/docs/list-confluence-pages-without-cql.html">how to list Confluence pages without writing CQL</a>.</p>
     </div>
@@ -269,7 +269,7 @@
       <h2>Questions people ask</h2>
 
       <h3>Why not just use the Confluence content manager?</h3>
-      <p>For a one-off clean-up of a single space, use it. It is free, native, and its Last active filter asks exactly the right question. Three things it does not do: it lives in space settings, so only administrators see the list; bulk actions on the results require Premium or Enterprise; and it works one space at a time. This app puts the same kind of list on an ordinary page, across several spaces, on any plan.</p>
+      <p>If you are on Confluence Premium or Enterprise and want a one-off clean-up of a single space, use it: it is native, and its Last active filter asks exactly the right question. Four things to know. It is not available on Confluence Free or Standard. It lives in space settings, so only administrators see the list. It works one space at a time. And it excludes any page that has children. This app puts the same kind of list on an ordinary page, across several spaces, on any plan.</p>
 
       <h3>Can the filter by label macro do this?</h3>
       <p>Almost. It accepts twelve filters from a form, including space, title, text, creator, contributor and subpages, so it covers far more than its name suggests. What it cannot express is a relative period: its date filters return items last updated on a given date, not items untouched for six months. A list built on a fixed date stops meaning what its heading says a month later.</p>
