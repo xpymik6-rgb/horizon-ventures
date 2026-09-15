@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to move a Google Doc into Confluence Cloud</title>
+<meta name="description" content="Confluence Cloud imports Google Docs directly, one page per document. Here is the exact path, the places it fails, the .docx detour that rescues it, and what to do with a document too long for one page.">
+<link rel="canonical" href="https://horizonventures.app/docs/import-google-doc-into-confluence.html">
+<meta property="og:title" content="How to move a Google Doc into Confluence Cloud">
+<meta property="og:description" content="The native import, where it breaks, and the detour that works when it does.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to move a Google Doc into Confluence Cloud",
+   "description": "Confluence Cloud imports Google Docs natively, one page per document. The exact path, the failure modes, the .docx detour, and the one-page limit.",
+   "url": "https://horizonventures.app/docs/import-google-doc-into-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-15",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "Import a Google Doc into Confluence Cloud",
+   "description": "Bring a Google Doc into Confluence Cloud using the built-in document import.",
+   "step": [
+    {"@type": "HowToStep", "name": "Start a new page", "text": "Select Create in the top navigation, or the plus next to Content in the sidebar. The import lives inside page creation, not inside an existing page."},
+    {"@type": "HowToStep", "name": "Open the import panel", "text": "Next to the Share button, select More actions, then Templates and import."},
+    {"@type": "HowToStep", "name": "Choose the document type", "text": "Open the Import tab and choose Google Doc. Word documents with a .docx extension and OneDrive documents are the other two options."},
+    {"@type": "HowToStep", "name": "Connect Google and pick the file", "text": "Authorise the Google account that holds the document, then select the file you want."},
+    {"@type": "HowToStep", "name": "Finish", "text": "Select Finish once the import completes. Each imported file becomes its own Confluence page."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can Confluence Cloud import a Google Doc directly?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. Confluence Cloud imports Word (.docx), Google Docs and OneDrive documents through Templates and import, reached from More actions while creating a page. Each imported file becomes its own Confluence page."}},
+    {"@type": "Question", "name": "Why can I only see my personal Google Drive and not the shared drive?",
+     "acceptedAnswer": {"@type": "Answer", "text": "This is a common report from the Atlassian Community: the file picker shows documents from the personal Drive while documents on a shared drive stay invisible. The reliable way round it is to download the document as .docx and import it as a Word file instead."}},
+    {"@type": "Question", "name": "Why does my imported document come in as one enormous page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because Confluence Cloud creates one page per file. The option to split a document into several pages by heading level exists in Confluence Data Center, not in Cloud. In Cloud you either cut the document into separate files first or use an app that splits during import."}},
+    {"@type": "Question", "name": "Why did my heading levels change after the import?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The document title usually becomes the page title, and the headings below it move up a level, so a Heading 2 arrives looking like a Heading 1. It is worth fixing before anyone builds a table of contents on top of the page."}},
+    {"@type": "Question", "name": "What happens to images and shapes?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Images usually survive, but community reports describe images arriving as placeholders instead of pictures. Atlassian documents that shapes inside Word documents are replaced with placeholders in Confluence. Check the imported page before deleting the original."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to move a Google Doc into Confluence Cloud</h1>
+    <p class="sub">There is a native import and most people never find it, because it hides inside page creation rather than anywhere you would look. Here is the path, the three places it goes wrong, and the honest limit nobody mentions until the document is already in.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Confluence Cloud imports Google Docs directly. Start creating a page, open <strong>More actions</strong> next to the Share button, choose <strong>Templates and import</strong>, open the <strong>Import</strong> tab, pick Google Doc and authorise your account. The document arrives as a Confluence page. For a short document that really is the end of it. Shared drives, images and any document long enough to deserve more than one page are where the trouble lives.</p>
+
+  <h2>The path that works</h2>
+
+  <ol>
+    <li><strong>Select Create</strong> in the top navigation, or the plus next to Content in the sidebar. This matters more than it sounds: the import belongs to page creation. If you are sitting in an existing page looking for an import button, you will not find one, and nothing on screen explains why.</li>
+    <li><strong>Next to Share, select More actions</strong>, then <strong>Templates and import</strong>.</li>
+    <li><strong>Open the Import tab</strong> and choose what you are bringing in: a Word document, a Google Doc or a OneDrive document.</li>
+    <li><strong>Authorise Google</strong> and pick the file.</li>
+    <li><strong>Select Finish.</strong> Each file you import becomes its own Confluence page.</li>
+  </ol>
+
+  <p>Several documents can come in at once. Atlassian is explicit that the requirements differ between importing one file and importing a batch, and that they vary by document type, so the sensible move is to test with your own files rather than plan a migration around a number you read somewhere.</p>
+
+  <h2>What the built-in import gets right</h2>
+
+  <p>It deserves credit. There is no download, convert and re-upload dance: Confluence talks to Google directly, and the file never lands on your laptop. Body text, lists and most tables come through in a state you can work with. Bringing in a folder of separate documents, each becoming its own page, is genuinely quick. If your job is "we have forty meeting notes in Drive and they should live in the wiki", this feature does that job and you can stop reading here.</p>
+
+  <h2>Where it breaks</h2>
+
+  <table>
+    <thead><tr><th>Situation</th><th>What actually happens</th></tr></thead>
+    <tbody>
+      <tr><td>Document on a shared drive</td><td>The picker shows your personal Drive and the document simply is not in the list. This one comes up repeatedly in the Atlassian Community and there is no setting on the Confluence side that fixes it.</td></tr>
+      <tr><td>"This file can't be imported"</td><td>A flat refusal with a generic explanation about file type or permissions. Usually the wrong type or a document you have opened through a link without real access to it.</td></tr>
+      <tr><td>Images</td><td>Usually fine, sometimes not: community reports describe pictures arriving as placeholders where the image should be. Always look at the imported page before you delete anything.</td></tr>
+      <tr><td>Heading levels</td><td>The document title becomes the page title, and everything under it shifts up a level. Your Heading 2 sections arrive looking like top-level headings.</td></tr>
+      <tr><td>Shapes and drawings</td><td>Atlassian documents plainly that shapes in Word documents are replaced with placeholders. Diagrams drawn inside the document do not survive as diagrams.</td></tr>
+      <tr><td>Anything long</td><td>One file becomes one page, however long the file was. See below, because this is the limit that costs real time.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <p>The failure that costs money is not the obvious one. A refused import is visible and you deal with it. A page that imported cleanly except for four missing images looks finished, gets linked from three other pages, and the gap is found by the person who needed exactly that diagram.</p>
+  </div>
+
+  <h2>The .docx detour</h2>
+
+  <p>When the Google path refuses, go around it. In Google Docs choose <strong>File, Download, Microsoft Word (.docx)</strong>, then import that file through the same Import tab as a Word document. Only the .docx extension is accepted.</p>
+
+  <p>This is the standard answer in the community for shared drive documents, and it is worth knowing for a second reason: it gives you a file you can edit before importing. If the document needs cutting up, and long ones do, you have to be holding a file to cut it.</p>
+
+  <h2>One file, one page, and why that hurts</h2>
+
+  <p>Confluence Cloud creates a single page per imported document. That is fine for meeting notes and wrong for anything structured. A sixty page handbook arrives as a single page of endless scroll, with no navigation, nothing anyone can link to by section, and a table of contents that is just a list of anchors on one giant page.</p>
+
+  <p>The option to split a document into several pages by heading level does exist in Atlassian's own product line, but in <strong>Confluence Data Center</strong>, where the import screen offers one page or multiple pages built from heading levels. Cloud does not have that screen. People arrive from Data Center, go looking for the choice, and conclude they have missed a setting. They have not.</p>
+
+  <h3>How long the manual way takes</h3>
+
+  <p>Say the handbook has twenty five sections that each deserve a page. Per section: create the page, copy the section across, fix the headings that shifted, put back the images, place it in the right spot in the tree. Six to eight minutes when nothing fights back. That is roughly three hours for the document, and the part that stings is that it comes back on the next revision, because the source of truth is still the document and somebody will rewrite four sections in it next quarter.</p>
+
+  <div class="cards">
+    <div class="card"><b>Notes and one-offs</b>The built-in import is the right tool. One page per document is exactly what you want, and nothing else is needed.</div>
+    <div class="card"><b>Structured documents</b>Handbooks, policies, specifications: the value is in the page tree, and the import does not build one.</div>
+    <div class="card"><b>Documents that keep changing</b>If the same document is imported every quarter, the manual cutting is not a one-off cost. It is a recurring one, and it is the kind of task that gets skipped.</div>
+  </div>
+
+  <h2>What to do with the long ones</h2>
+
+  <p>Two honest options. Cut the document into separate files in Word or Docs first, one per intended page, and import them as a batch: tedious but free, and completely predictable. Or use an app that does the splitting during import, which is worth it only when this happens more than once.</p>
+
+  <p><strong>Disclosure:</strong> I build <a href="/word-import.html">Word Import for Confluence</a>, which reads the headings in a .docx and creates the page tree from them in one pass, instead of one long page. It runs inside Atlassian's own infrastructure, so the file is processed in your site and nothing is sent to me. It is an app for the structured case, and it is currently going through Marketplace review.</p>
+
+  <p>If your case is a folder of meeting notes, use the built-in import and spend nothing. The free path is genuinely good at the job it was built for, and most documents never need more than it.</p>
+
+  <h2>Questions people ask</h2>
+
+  <h3>Where is the import if I am already editing a page?</h3>
+  <p>It is not there. Document import happens while creating a page, through More actions, Templates and import. Editing an existing page gives you no import option, which is the single most common reason people conclude Cloud cannot import at all.</p>
+
+  <h3>Can I import straight from a Google shared drive?</h3>
+  <p>Often not. The picker tends to show the personal Drive only. Download the document as .docx and import it as a Word file.</p>
+
+  <h3>Does the imported page stay connected to the Google Doc?</h3>
+  <p>No. The import is a one-time conversion. Edits made afterwards in Google do not reach Confluence, and edits in Confluence do not reach Google. If you need the document to stay live in its original home, embed it with the Google Drive macro instead of importing it.</p>
+
+  <h3>How many documents can I import at once?</h3>
+  <p>More than one, and the requirements differ between a single import and a bulk import and depend on the document type. Atlassian says so without publishing one number that covers every case, so test on your own files before committing a migration plan to a figure.</p>
+
+  <h3>Can I import a PDF?</h3>
+  <p>Not as page content. The import handles Word, Google Docs and OneDrive documents. A PDF can be attached to a page, which is a different thing: an attachment is a file sitting on a page, not text anyone can edit or search inside the way page content is searched.</p>
+
+  <p class="related">Related: <a href="/docs/import-word-into-confluence.html">how to import a Word document into Confluence</a>, <a href="/docs/split-word-document-confluence-pages.html">how to split a Word document into multiple Confluence pages</a> and <a href="/docs/import-word-existing-confluence-page.html">how to import Word into an existing page</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

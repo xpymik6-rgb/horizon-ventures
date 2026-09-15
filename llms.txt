@@ -58,6 +58,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [The Confluence content manager: what it does and where it stops](https://horizonventures.app/docs/confluence-content-manager.html): Premium only, archives 500 pages at once, and its stale-page filter silently skips every page that has children.
 
+- [How to move a Google Doc into Confluence Cloud](https://horizonventures.app/docs/import-google-doc-into-confluence.html): The native import, where it fails, the .docx detour, and what to do with a document too long for one page.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
