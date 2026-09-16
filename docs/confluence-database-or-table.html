@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confluence databases or a table on a page</title>
+<meta name="description" content="A database gives typed fields, filters and saved views. A table gives layout and lives inside the document. Here is where each one stops, and the question about getting data back out that nobody asks first.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-database-or-table.html">
+<meta property="og:title" content="Confluence databases or a table on a page">
+<meta property="og:description" content="Where each one stops, and the export question nobody checks before committing.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Confluence databases or a table on a page",
+   "description": "What Confluence databases give you, what a plain table gives you, where each one stops, and how the data comes back out.",
+   "url": "https://horizonventures.app/docs/confluence-database-or-table.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-16",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can Confluence databases do formulas like a spreadsheet?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. A database can show a simple aggregate such as a sum or an average at the bottom of a field and save it as part of a view, but there is no per-row calculated field: you cannot make a column that computes amount multiplied by rate. Atlassian has an open suggestion for it, CONFCLOUD-78459. Until it ships, the workaround is to calculate the value elsewhere and type the result into a normal field."}},
+    {"@type": "Question", "name": "How do I export a Confluence database?",
+     "acceptedAnswer": {"@type": "Answer", "text": "A database exports to CSV, HTML or PDF from the database itself. That covers a manual, occasional export. There is no practical way to pull database content through the Cloud REST API, so scheduled or automated exports are not something you can build on today."}},
+    {"@type": "Question", "name": "Can I sort a normal table on a Confluence page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes, readers can sort a table by a column while viewing the page, ascending or descending, using the control in the table header. Sorting is not available while editing, and merged cells switch it off for the whole table."}},
+    {"@type": "Question", "name": "Which should I use for a register of documents or assets?",
+     "acceptedAnswer": {"@type": "Answer", "text": "A database. Registers are lists that people filter, sort and keep adding to, and typed fields with saved views are exactly that. Use a plain table when the rows belong to the text around them, such as a budget inside a proposal or a comparison inside a specification."}},
+    {"@type": "Question", "name": "Do databases have size limits?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Atlassian does not publish a hard row limit, but large databases become slow and unwieldy in practice, and community reports describe imports of a few thousand rows with many columns failing outright. Test with your own data before moving a large register into one."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Confluence databases or a table on a page</h1>
+    <p class="sub">Two things in the same product look like they do the same job. They do not. Here is what each one is actually for, the limits that only show up after the data is already inside, and the question about getting it back out that almost nobody asks first.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Use a <strong>table</strong> when the rows belong to the text around them: a budget inside a proposal, a comparison inside a specification. Use a <strong>database</strong> when the rows are the point and people will filter, sort and keep adding to them: a register of documents, assets, risks, suppliers. And before you commit either way, check how the data comes back out, because that is where both of them disappoint people.</p>
+
+  <h2>What a database actually gives you</h2>
+
+  <p>A Confluence database is a separate piece of content that lives in the space tree, next to pages, with permissions handled at the space level like everything else. You create it from the Create menu, from the plus next to Content in the sidebar, or by typing <code>/database</code>.</p>
+
+  <p>What you get that a table cannot do:</p>
+
+  <ul>
+    <li><strong>Typed fields.</strong> A date is a date, an owner is a person, a link is a link. Confluence knows what the value means instead of treating everything as text.</li>
+    <li><strong>Filters.</strong> Filter by a field with real conditions, is, is not, contains, and work with the result.</li>
+    <li><strong>Saved views.</strong> The same data shown several ways, each view keeping its own filters and sorting, so "open items only" and "everything by owner" are two clicks, not two tables.</li>
+    <li><strong>Aggregates.</strong> A sum or an average at the bottom of a field, saved as part of the view.</li>
+    <li><strong>One source, many pages.</strong> The database can be shown on the pages that need it instead of being copied into each of them.</li>
+  </ul>
+
+  <h2>What a plain table gives you</h2>
+
+  <p>Less, and that is sometimes the right answer. A table sits inside the page, in the flow of the text, and is written and read together with it. It takes any layout you like, including merged cells and mixed content in a cell. Readers can sort it by a column while viewing the page, ascending or descending.</p>
+
+  <p>No setup, no separate object to find, no permissions of its own to think about. For a table that exists to support the paragraph above it, that is the whole requirement.</p>
+
+  <h2>Where the database stops</h2>
+
+  <table>
+    <thead><tr><th>Limit</th><th>What it means in practice</th></tr></thead>
+    <tbody>
+      <tr><td>No per-row formulas</td><td>You cannot make a column that computes amount multiplied by rate. Aggregates at the bottom of a field exist, per-row calculation does not. Atlassian has an open suggestion, CONFCLOUD-78459, and until it ships the workaround is to calculate elsewhere and type the result in.</td></tr>
+      <tr><td>Export is manual</td><td>CSV, HTML or PDF, exported by a person from the database. Fine occasionally. There is no practical way to pull the content through the Cloud REST API, so a scheduled export or a feed into a reporting tool is not something you can build today.</td></tr>
+      <tr><td>Size</td><td>No published row limit, but large databases get slow, and community reports describe imports of a few thousand rows with many columns failing outright. Test with your own data before migrating a big register.</td></tr>
+      <tr><td>It is not a spreadsheet</td><td>People arrive expecting Excel behaviour, cells referring to other cells, and that model does not exist here at all.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <p>The formula gap is the one that catches teams out. A register of invoices where the total has to be quantity times price looks like an obvious fit for a database right until you try to build that column.</p>
+  </div>
+
+  <h2>Where the table stops</h2>
+
+  <ul>
+    <li><strong>No filters.</strong> Sorting by a column exists for readers, filtering does not. A hundred-row table is a hundred rows for everybody.</li>
+    <li><strong>Merged cells switch sorting off</strong> for the whole table, and merged cells are exactly what people use to make a table readable.</li>
+    <li><strong>Nothing is typed.</strong> A date in a cell is a piece of text that looks like a date, which is why the same column ends up holding 16/09/2026, Sep 16 and "next Tuesday".</li>
+    <li><strong>No export at all.</strong> Confluence exports whole pages to PDF and Word, and has no built-in way to send a table to Excel or CSV.</li>
+  </ul>
+
+  <h2>How to choose, in one question</h2>
+
+  <p>Ask what happens if you delete the surrounding page. If the rows should survive, they are a register and belong in a database. If the rows make no sense without the paragraphs around them, they belong in a table on that page.</p>
+
+  <p>A second question worth asking early: who needs this data outside Confluence, and how often. Monthly, by hand, from one place is a different answer from every week, from forty pages, into a finance spreadsheet.</p>
+
+  <div class="cards">
+    <div class="card"><b>Register, list, catalogue</b>Database. Typed fields and saved views are precisely the tools for it, and the export limits rarely bite at this scale.</div>
+    <div class="card"><b>Numbers inside a document</b>Table. It belongs to the text, and a database would scatter the document across two objects.</div>
+    <div class="card"><b>Numbers that leave for Excel</b>Neither one does this well. Databases export by hand, tables do not export at all.</div>
+  </div>
+
+  <h2>Getting the data back out</h2>
+
+  <p>This is the part that decides more cases than any feature comparison. A database exports itself to CSV, HTML or PDF, which covers the occasional manual export and nothing beyond it. A table on a page has no export at all: you select it, copy it, paste it into a spreadsheet, and discover that merged cells shifted the columns after the first merge, silently, while the numbers still look perfectly reasonable.</p>
+
+  <p>For one table today, copy and paste and be done. The arithmetic changes when it is the same tables every month, from pages spread across a space, and when the shifted column ends up in a report that somebody signs.</p>
+
+  <p><strong>Disclosure:</strong> I build <a href="/table-export.html">Table Export for Confluence</a>, which covers that last case: one table, a whole page, or every table in a space into a single Excel workbook, each sheet labelled with the page it came from, with merged cells expanded so the columns stay aligned. It works on tables in pages, not on databases, which export themselves. It runs inside Atlassian's infrastructure, so page content is read in your own site and nothing is sent to me.</p>
+
+  <p>If your data already lives in a database and you export it twice a year, use the built-in CSV and spend nothing. Most cases genuinely are that simple.</p>
+
+  <h2>Questions people ask</h2>
+
+  <h3>Can a database replace a spreadsheet?</h3>
+  <p>Not while there are no per-row formulas. It replaces a list you were keeping in a spreadsheet for lack of anywhere better, which is a large share of such spreadsheets, but it does not replace a model where cells depend on each other.</p>
+
+  <h3>Can I show a database on a page?</h3>
+  <p>Yes, and that is the normal way to use one: the data lives in the database, and the pages that need it show it. That is the main structural advantage over tables, which have to be copied.</p>
+
+  <h3>Do database permissions work separately from the space?</h3>
+  <p>Database access follows Confluence content permissions and is managed at the space level, the same as pages. There is no separate permission system to learn, which also means no per-row visibility.</p>
+
+  <h3>Should I migrate my existing tables into databases?</h3>
+  <p>Only the ones that are registers. Moving a table that explains a document into a database makes the document worse and helps nobody. And test with a copy first if the table is large.</p>
+
+  <p class="related">Related: <a href="/docs/sum-column-confluence-table.html">how to sum a column in a Confluence table</a>, <a href="/docs/export-confluence-table-to-excel.html">how to get a Confluence table into Excel</a> and <a href="/docs/confluence-space-export-explained.html">what a Confluence space export actually gives you</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="/security.html">Security policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

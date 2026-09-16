@@ -60,6 +60,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to move a Google Doc into Confluence Cloud](https://horizonventures.app/docs/import-google-doc-into-confluence.html): The native import, where it fails, the .docx detour, and what to do with a document too long for one page.
 
+- [Confluence databases or a table on a page](https://horizonventures.app/docs/confluence-database-or-table.html): What each one is for, where each stops, and how the data comes back out.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
