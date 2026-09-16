@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security policy — Horizon Ventures</title>
+<meta name="description" content="How Horizon Ventures builds and operates its Confluence apps: no servers of our own, no customer data stored, minimal permissions, and how to report a vulnerability.">
+<link rel="icon" href="img/csvg-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<link rel="canonical" href="https://horizonventures.app/security.html">
+<meta property="og:title" content="Security policy — Horizon Ventures">
+<meta property="og:description" content="How Horizon Ventures builds and operates its Confluence apps, and how to report a vulnerability.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://horizonventures.app/security.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <h1>Security policy</h1>
+
+  <p class="sub">This page describes how Horizon Ventures E.I.R.L. builds, ships and supports its Atlassian Marketplace apps, and how to reach us about a security issue. Last updated 16 September 2026.</p>
+
+  <h2>Where the apps run</h2>
+
+  <p>All of our apps are built on Atlassian Forge and run inside Atlassian's own cloud infrastructure. We operate no servers, no databases and no log storage of our own, and there is no backend of ours for app data to travel to.</p>
+
+  <p>Page content is read in the customer's own Confluence site, in the context of the user who triggered the action, and the result is handed back to that user. Nothing is transmitted to Horizon Ventures.</p>
+
+  <h2>Customer data</h2>
+
+  <ul>
+    <li>We do not store end-user data, inside or outside Atlassian.</li>
+    <li>We do not log end-user data.</li>
+    <li>We do not share any data with third parties, because we hold none to share.</li>
+    <li>Our apps declare no external egress: they call no hosts outside Atlassian at runtime.</li>
+  </ul>
+
+  <p>Each app requests the smallest set of Atlassian scopes that lets it do its job, and every scope is listed with its justification on the app's Privacy and Security tab in the Marketplace.</p>
+
+  <h2>Access control</h2>
+
+  <p>Horizon Ventures is a one-person company. There are no employees, contractors or subprocessors with access to app code, to the Marketplace partner console or to the Atlassian developer console. Access to those consoles requires two-factor authentication, which Atlassian makes mandatory for Marketplace partners.</p>
+
+  <h2>Development and release</h2>
+
+  <p>App code is kept in a private repository. Releases are built and deployed through the Forge CLI to Atlassian's infrastructure, and customers receive updates through the Atlassian platform. We do not distribute binaries by any other channel.</p>
+
+  <h2>Reporting a vulnerability</h2>
+
+  <p>Write to <a href="mailto:support@horizonventures.app">support@horizonventures.app</a> with the word SECURITY in the subject line. The message goes straight to the developer.</p>
+
+  <ul>
+    <li>We acknowledge a report within one working day.</li>
+    <li>We fix confirmed vulnerabilities within the timeframes of the Atlassian Security Bug Fix Policy for Marketplace apps, by severity.</li>
+    <li>We keep the reporter informed until the fix ships, and we credit reporters who want to be credited.</li>
+  </ul>
+
+  <p>Please do not test against other customers' sites. If you need an instance to reproduce an issue on, ask us and we will provide one.</p>
+
+  <h2>Incidents</h2>
+
+  <p>If an incident affects customer sites, we notify the affected customers and Atlassian, describe what happened in plain language, and say what we changed so that it does not happen again. Given the architecture above, our realistic incident surface is the app code itself and access to the partner consoles.</p>
+
+  <h2>Contact</h2>
+
+  <p>Horizon Ventures E.I.R.L., registered in Peru, RUC 20612763888, Calca, Cusco.<br>
+  Security and support: <a href="mailto:support@horizonventures.app">support@horizonventures.app</a>.<br>
+  See also our <a href="/privacy.html">privacy policy</a> and <a href="/terms.html">terms of use</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="/security.html">Security policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
