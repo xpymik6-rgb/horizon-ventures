@@ -62,6 +62,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [Confluence databases or a table on a page](https://horizonventures.app/docs/confluence-database-or-table.html): What each one is for, where each stops, and how the data comes back out.
 
+- [How to make a diagram clickable in Confluence Cloud](https://horizonventures.app/docs/clickable-diagram-confluence.html): Linking the boxes of a diagram: the steps in draw.io and Gliffy, and why an attached SVG loses its links.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

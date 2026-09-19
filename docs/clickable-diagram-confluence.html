@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to make a diagram clickable in Confluence Cloud</title>
+<meta name="description" content="Linking the boxes in a Confluence diagram: how it works in draw.io and Gliffy, why links inside an attached SVG do not, and what the closed Atlassian ticket actually fixed.">
+<link rel="canonical" href="https://horizonventures.app/docs/clickable-diagram-confluence.html">
+<meta property="og:title" content="How to make a diagram clickable in Confluence Cloud">
+<meta property="og:description" content="Clickable shapes work in draw.io and Gliffy, and not in an attached SVG. Here is the exact reason, with the tickets.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to make a diagram clickable in Confluence Cloud",
+   "description": "How to turn the boxes of a Confluence diagram into links: the steps in draw.io and Gliffy, the one-link-per-image limit on plain images, and why an attached SVG loses its links.",
+   "url": "https://horizonventures.app/docs/clickable-diagram-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-19",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "Link a shape in a draw.io diagram on a Confluence page",
+   "totalTime": "PT2M",
+   "step": [
+    {"@type": "HowToStep", "name": "Open the diagram", "text": "Edit the Confluence page and open the draw.io diagram in its editor."},
+    {"@type": "HowToStep", "name": "Select the shape", "text": "Click the shape you want to turn into a link."},
+    {"@type": "HowToStep", "name": "Open Edit Link", "text": "Right-click and choose Edit Link, or use Edit Link in the Arrange tab of the format panel. The keyboard shortcut is Alt+Shift+L."},
+    {"@type": "HowToStep", "name": "Choose the target", "text": "Pick a web link and paste a URL, or pick Page Content to link to a heading on the same Confluence page. Headings only appear in that list once the page has been published."},
+    {"@type": "HowToStep", "name": "Apply and save", "text": "Apply the link, save the diagram and publish the page. Hovering a linked shape outlines it, which is how readers know it is clickable."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can a shape in a Confluence diagram link to another page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes, if the diagram is drawn in a diagramming app. In draw.io you select the shape and use Edit Link, and in Gliffy you link the shape or its text from the link toolbar. Both can point at a Confluence page, an external URL or another diagram."}},
+    {"@type": "Question", "name": "Can I make different parts of one image link to different places?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not with a plain image. Confluence Cloud lets you add one link to an image, which covers the whole picture. Separate links per region require a diagram format that carries links, or an app that renders one."}},
+    {"@type": "Question", "name": "Why do the links inside my SVG stop working when I attach it?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Confluence Cloud shows an attached SVG through its media viewer as a rendered picture rather than as live markup on the page. The suggestion to allow SVG tags in a page storage format, CONFCLOUD-36336, has been open since 2015 and is still marked Gathering Interest."}},
+    {"@type": "Question", "name": "Atlassian closed the SVG ticket as Fixed. Does that mean clickable SVG works now?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. CONFCLOUD-1762 was closed as Fixed in September 2024, but what shipped was a new SVG rendering engine announced in October 2023, which improved how SVG files are displayed. It was about viewing quality, not about links or interactivity inside the file."}},
+    {"@type": "Question", "name": "Do clickable shapes survive a PDF export?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Treat them as lost. Diagrams appear in exports as pictures, so navigation that depends on clicking a box should not be the only way to reach the page behind it."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to make a diagram clickable in Confluence Cloud</h1>
+    <p class="sub">People have been asking this on the Atlassian community for more than a decade, and the answer splits cleanly in two. It is a two-minute job if the diagram was drawn inside Confluence, and it is a different problem entirely if the diagram arrived as a file.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> If the diagram lives in a diagramming app such as draw.io or Gliffy, select a shape and add a link to it: both support links on shapes, pointing at a Confluence page, an external URL or another diagram. If the diagram is a plain image, Confluence can make the whole image one link, but not different parts of it. If the diagram is an SVG file you attached, the links inside it will not work on the page.</p>
+
+  <h2>draw.io: select the shape, Edit Link</h2>
+
+  <p>Open the diagram in the editor, click the shape, then right-click and choose <em>Edit Link</em>. The same command sits in the <em>Arrange</em> tab of the format panel on the right, and the keyboard shortcut is Alt+Shift+L.</p>
+
+  <p>The dialog offers more than a plain URL. A web link opens in a new browser tab. <em>Page Content</em> lists the headings of the Confluence page the diagram sits on, so a box can jump the reader to a section further down. That list is generated from the published page, so if it comes up empty, publish the page first and reopen the dialog.</p>
+
+  <p>Readers get a hint for free: hovering a linked shape outlines it, so people discover the diagram is navigable without being told.</p>
+
+  <h2>Gliffy: link the shape or the text inside it</h2>
+
+  <p>Gliffy does the same job from its link toolbar, on a shape or on a piece of text, pointing at a web address, a Confluence page, an attachment or another Gliffy diagram.</p>
+
+  <p>One detail from their documentation is worth copying as a house rule, because it prevents a class of dead links. When linking to a Confluence page, use the <em>Search</em> option in the Insert Link window rather than pasting the address from the browser. Gliffy then stores the short Atlassian link, the ugly <code>/x/ZygVQ</code> kind, which keeps pointing at the same page after it is renamed or moved to another space. A pasted URL contains the page title and breaks the day somebody rewrites it.</p>
+
+  <h2>A plain image gets one link, not several</h2>
+
+  <p>If what you have is a PNG of a diagram, select it in the editor and use the link icon in the floating toolbar. That turns the picture into a link, the whole picture, as one target. It is the right tool for a banner or an icon that should open one place.</p>
+
+  <p>What it cannot do is give each box its own destination. Confluence Cloud has no hotspot editor for regions of an image, so an architecture map saved as a PNG stays a picture of a map.</p>
+
+  <h2>Why an attached SVG loses its links</h2>
+
+  <p>This is the case that sends people looking for an answer, because an SVG genuinely does contain links. You exported it from Figma, Visio, Inkscape, Graphviz or an architecture tool, the file opens in a browser and every box works. Attach it to a Confluence page and it becomes a flat picture.</p>
+
+  <p>The reason is how the file is displayed. Confluence Cloud shows an attached SVG through its media viewer as a rendered picture, not as live markup inside the page. The separate suggestion to allow SVG tags in a page storage format, <a href="https://jira.atlassian.com/browse/CONFCLOUD-36336">CONFCLOUD-36336, "Allow SVG in Storage Format"</a>, has been open since January 2015 and is still marked <em>Gathering Interest</em>.</p>
+
+  <div class="note">
+    <p><strong>The confusing part, worth knowing before you plan around it.</strong> The ticket most people find is <a href="https://jira.atlassian.com/browse/CONFCLOUD-1762">CONFCLOUD-1762, "Embedding of SVG"</a>, opened in 2004 and carrying 367 votes, and it was closed as <em>Fixed</em> on 10 September 2024. That looks like the answer, and it is not. What shipped was the new SVG rendering engine announced in October 2023, which addressed SVG 1.2 support, text dropping out and poor rendering of Mermaid diagrams. Better viewing, not interactivity. The product manager's note at the time also asked people to reattach existing SVG files so the new engine would redraw them, which is good advice if your diagram looks wrong and beside the point if your problem is that clicking does nothing.</p>
+  </div>
+
+  <h2>The arithmetic, if you are deciding whether to redraw</h2>
+
+  <p>There is a free way out of the SVG case. draw.io imports SVG files, along with VSDX from Visio, Lucidchart files and PNG, through <em>File &rarr; Import from &rarr; Device</em> or by dragging the file onto the canvas. Import the diagram, add the links inside draw.io, and you have a clickable diagram with no extra app.</p>
+
+  <p>Work out whether that is a one-off or a habit. Adding a link to a shape takes twenty to thirty seconds once you know where the dialog is, so a forty-box service map costs fifteen to twenty minutes. Paid once, that is nothing. The question is what happens on the next export.</p>
+
+  <p>If the diagram is drawn by a human and changes twice a year, import it and forget this article. If the SVG is generated, by Graphviz, Structurizr, a Mermaid or PlantUML build step, or any pipeline that redraws the picture from the system it describes, then every regeneration produces a file with the links already in it and no links in your Confluence copy. You are back to fifteen minutes of clicking, on a schedule. That is the case where redrawing is the wrong answer, because you are hand-maintaining something a machine already produced correctly.</p>
+
+  <h2>What to do about the exports</h2>
+
+  <p>Whatever route you take, do not let clicking a box be the only way to reach the page behind it. Diagrams come out of a PDF export as pictures, and a printed runbook whose navigation lived in the diagram is a runbook with no navigation. Put the important destinations in a list under the picture as well. It costs one line, and it also makes those links visible to search, which pixels are not.</p>
+
+  <p><strong>Disclosure: I build <a href="/clickable-svg.html">Clickable SVG</a></strong>, an app for exactly the last case, an SVG that already has its links and needs them working on a Confluence page without being redrawn. If your diagram does not exist yet, or exists once and never changes, draw it in draw.io or Gliffy and link the shapes there. That is free, it is the path the Atlassian ecosystem is built around, and you will not need my app. If your case is simpler, take the simpler option.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Can a shape link to a heading on a different page?</h3>
+  <p>Link to the page and add the anchor to the address yourself. The heading picker in the editor works on the page the diagram sits on, which covers the common case of a diagram acting as a table of contents for a long document.</p>
+
+  <h3>Is there a way to keep one diagram and use it on several pages?</h3>
+  <p>Both diagramming apps support reusing a diagram across pages rather than copying it, which matters more than it sounds. A copied diagram is a diagram that will be updated in one place and stale in three.</p>
+
+  <h3>What about diagrams generated from code?</h3>
+  <p>Text-based diagrams are the strongest option when the picture has to track a system that keeps changing, since the build redraws it. Decide in advance how the links get in, because that is the part the generator usually does and the page usually loses.</p>
+
+  <h3>Does any of this depend on the Confluence plan?</h3>
+  <p>The behaviour described here is about how diagrams and attachments are displayed, not about plan tiers. App pricing is a separate question and changes over time, so check the current listing of whichever diagramming app you are considering.</p>
+
+  <p class="more">Related: <a href="/docs/diagrams-in-confluence-compared.html">the four ways to keep diagrams in Confluence, compared</a>, and <a href="/docs/confluence-svg-flat-image.html">why Confluence Cloud turns your SVG into a flat image</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
