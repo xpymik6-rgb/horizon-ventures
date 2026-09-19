@@ -28,6 +28,13 @@
    "hasPart": [
     {
      "@type": "BlogPosting",
+     "headline": "The community forum is frozen until it moves on 22 September",
+     "datePublished": "2026-09-19",
+     "url": "https://horizonventures.app/changes.html#2026-09-19",
+     "author": {"@type": "Person", "name": "Mikhail Klimenko"}
+    },
+    {
+     "@type": "BlogPosting",
      "headline": "Blocking exports is about to block attachment downloads too",
      "datePublished": "2026-09-11",
      "url": "https://horizonventures.app/changes.html#2026-09-11",
@@ -45,6 +52,10 @@
   {
    "@type": "FAQPage",
    "mainEntity": [
+    {"@type": "Question", "name": "How long can an Atlassian organisation API key last?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No longer than a year. Atlassian is adding scopes to organisation API keys, so a key can be limited to view, write or delete, and the same change states that keys can last no longer than a year. Keys are managed under Settings, then API keys, in Atlassian Administration."}},
+    {"@type": "Question", "name": "Why can I not post on the Atlassian Community right now?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The forums are in read-only mode while the community moves to a new platform, planned to go live on 22 September 2026. Existing posts can be read but comments are closed. Thread addresses are not guaranteed to survive the move, so copy any answer you rely on into your own documentation rather than depending on the link."}},
     {"@type": "Question", "name": "When does Confluence XML export stop being supported?",
      "acceptedAnswer": {"@type": "Answer", "text": "1 December 2026. XML site export and XML space export in Confluence Cloud keep working after that date, but Atlassian will no longer fix bugs, accept support tickets or provide an SLA for them. CSV export is the fully supported alternative and is available on all plans. CSV cannot be imported into Data Center, so anyone using XML for a Cloud to Data Center migration is asked to contact Atlassian Support about alternatives."}},
     {"@type": "Question", "name": "Does blocking data export in Confluence also block attachment downloads?",
@@ -95,6 +106,44 @@
     <h1>Atlassian changes worth knowing</h1>
     <p class="sub">A weekly note for people who run a Confluence site. Only the changes that make you do something, with the date they start to bite and the shortest sensible answer. Published on Fridays.</p>
   </header>
+
+  <article id="2026-09-19">
+    <h2>19 September 2026</h2>
+
+    <h3>The community forum is frozen until it moves on 22 September</h3>
+    <p>community.atlassian.com is running in read-only mode while it moves to a new platform, currently planned to go live on 22 September. New comments are closed on existing posts.</p>
+    <p><strong>What it means.</strong> For most admins the community is the place where an odd Confluence behaviour gets explained, and right now you cannot ask. The part worth planning for is afterwards: a platform move usually renumbers threads, and nobody has promised that today's thread addresses survive it. If your runbooks link to a community answer, those links are the ones at risk.</p>
+    <p><strong>What to do.</strong> Spend ten minutes on the handful of community threads you actually rely on and copy the answer itself into your own space, with the link kept as a reference rather than as the source. If you have a question queued up, hold it until the new site is up rather than losing it in the changeover.</p>
+
+    <h3>Organisation API keys get scopes, and a hard one-year life</h3>
+    <p>Atlassian is adding scopes to organisation API keys, so a key can be limited to view, write or delete. The same note states the limit plainly: "Keys can last no longer than a year." Keys are created under Settings, then API keys.</p>
+    <p><strong>What it means.</strong> Two changes in one. New keys can stop being all-powerful, which is welcome. The other half is a deadline with your name on it: an integration wired to an organisation key now has an expiry date, and the failure will arrive on a date nobody wrote down, usually as a script that quietly stops doing its nightly job.</p>
+    <p><strong>What to do.</strong> List the organisation API keys you have, write down what each one is used by and when it was made, and put a calendar reminder a month before each anniversary. Do that before you need the new scopes, because the expiry hits keys whether or not you use scopes.</p>
+
+    <h3>Watching user API tokens no longer needs a paid subscription</h3>
+    <p>Monitoring user API tokens — when they expire, when they were last used, who created them, and revoking them — is becoming available without an Atlassian Guard Standard subscription. It covers managed accounts, under Security, then User API tokens.</p>
+    <p><strong>What it means.</strong> This is the list where leavers' tokens turn up. Until now it sat behind a subscription that plenty of small sites do not buy, so on those sites nobody had ever looked.</p>
+    <p><strong>What to do.</strong> Open it once and read it properly. Any token that has not been used in months, or belongs to someone who left, gets revoked today rather than at the next audit.</p>
+
+    <h3>Beacon becomes Guard Detect inside the CSVs you parse</h3>
+    <p>For organisations that were in the Beacon beta, the word Beacon is being replaced with Guard Detect in exported CSV files: managed accounts, audit logs, external users, user API tokens and authentication policies. Group names such as beacon-admins are not changing.</p>
+    <p><strong>What it means.</strong> A rename inside a file format is the kind of change that breaks a script silently. If something of yours filters an audit log export on the string "Beacon", it will keep running and start matching nothing, which reads exactly like a quiet month.</p>
+    <p><strong>What to do.</strong> Grep your scripts and saved filters for "Beacon" and make them accept both spellings. The group names are unchanged, so leave those alone.</p>
+
+    <h3>You can now decide which AI tools are allowed to connect</h3>
+    <p>A new control governs which domains may reach your Atlassian apps through the Rovo MCP server: use Atlassian's list of supported domains, block the lot, or allow named domains. It lives under Apps, then AI settings, then Rovo MCP server.</p>
+    <p><strong>What it means.</strong> External AI tools connect to Confluence content through this door, and until now the question of which ones was not really an admin's to answer. It is now, and the honest version of the question is not "do we trust AI" but "which specific tools do we intend to read our documentation".</p>
+    <p><strong>What to do.</strong> Open the setting and make the decision deliberately, once, rather than discovering the default during a security review. Whichever way you go, write the reason next to the answer, because this is the question your auditor asks next year.</p>
+
+    <h3>Cloud Fortified is closing before its replacement opens</h3>
+    <p>As of 17 September, submissions for Atlassian Enterprise Certified had still not opened; the Marketplace changelog said only that they would open "around the end of September". Cloud Fortified stopped accepting new submissions on 1 September and the programme retires on 31 December 2026.</p>
+    <p><strong>What it means.</strong> For a few months there is a gap where the old badge is winding down and the new one does not exist yet. An app that looks less certified this autumn may simply be an app caught between two programmes, and an app still showing Cloud Fortified is showing a badge with an expiry date.</p>
+    <p><strong>What to do.</strong> Stop using the badge as the filter this season and read the app itself: platform, where data lives, and who answers support. Runs on Atlassian is unaffected and remains a real signal, because it is verified automatically rather than applied for. Our notes on <a href="docs/cloud-fortified-retiring.html">what the badges mean now</a> and the <a href="docs/what-to-check-before-installing-app.html">checklist before installing an app</a> cover the rest.</p>
+
+    <h3>A postscript on the release notes move</h3>
+    <p>We wrote on 11 September that the weekly cloud release notes stop on 30 September. One practical detail has emerged since: the new home is a script-driven page, so it comes up empty in anything that reads plain HTML, which includes a fair number of the tools people use to watch a page for changes.</p>
+    <p><strong>What to do.</strong> If you were planning to point a change watcher at the new page, subscribe to the weekly email instead, at preferences.atlassian.com with the Cloud Release Notes box ticked. Check it arrives before the old page stops updating on 30 September.</p>
+  </article>
 
   <article id="2026-09-11">
     <h2>11 September 2026</h2>
