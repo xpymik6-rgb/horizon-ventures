@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to export a Confluence database to Excel</title>
+<meta name="description" content="A Confluence database exports to CSV, HTML or PDF, and there is no XLSX option. The exact path, what the current view checkbox changes, and the date trap on the way back.">
+<link rel="canonical" href="https://horizonventures.app/docs/export-confluence-database-to-excel.html">
+<meta property="og:title" content="How to export a Confluence database to Excel">
+<meta property="og:description" content="CSV, HTML or PDF, and no Excel option. What to do instead, and where the round trip bites.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to export a Confluence database to Excel",
+   "description": "Confluence databases export to CSV, HTML and PDF. There is no direct Excel export, and the way back into a database has a documented date trap.",
+   "url": "https://horizonventures.app/docs/export-confluence-database-to-excel.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-21",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "Export a Confluence database",
+   "totalTime": "PT1M",
+   "step": [
+    {"@type": "HowToStep", "name": "Open the database", "text": "Go to the database you want to export."},
+    {"@type": "HowToStep", "name": "Open the more menu", "text": "Open the more menu, shown as three dots, at the top right corner of the database."},
+    {"@type": "HowToStep", "name": "Choose Export", "text": "Select Export from the menu."},
+    {"@type": "HowToStep", "name": "Pick the format", "text": "Select CSV, HTML or PDF. For a spreadsheet, choose CSV: there is no Excel option."},
+    {"@type": "HowToStep", "name": "Decide on the current view", "text": "Optionally check Export with current view to keep the view settings you are looking at. Left unchecked, the export contains all the data in a table layout."},
+    {"@type": "HowToStep", "name": "Download", "text": "Follow the prompts to download the file, then open the CSV in Excel."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can you export a Confluence database straight to Excel?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Atlassian documents three export formats for a database: CSV, HTML and PDF. There is no XLSX option, so the route to a spreadsheet is CSV, opened in Excel. Atlassian describes CSV as ideal for importing data into other database tools or spreadsheets."}},
+    {"@type": "Question", "name": "What does the Export with current view option do?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It includes the current view settings in the export, so you get the data as you are looking at it. If you leave it unchecked, the export contains all the data in a table layout instead."}},
+    {"@type": "Question", "name": "Why do my dates shift when I import a CSV back into a database?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because Confluence databases read dates month first. Atlassian states that 12/06/2025 will be treated as December 6, 2025 rather than Jun 12, 2025, and that date fields are not supported through autoconversion or autodetection."}},
+    {"@type": "Question", "name": "Do Confluence databases need a paid plan?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The database documentation does not mention plans at all. The only availability limit it states is the environment: databases are not available in the Atlassian Government environment."}},
+    {"@type": "Question", "name": "Are databases included in a space export?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The documentation does not say either way. The space export page lists what is excluded, naming blog posts, comments and Team Calendars, and does not mention databases at all. Test it on one space before relying on it."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to export a Confluence database to Excel</h1>
+    <p class="sub">Short version: you cannot, not directly. The database exports to CSV, and Excel opens the CSV. That is a one-minute job, and everything worth knowing here is about what happens afterwards.</p>
+  </header>
+
+  <p><strong>The steps.</strong> Open the database, open the more menu (the three dots) at its top right, choose <em>Export</em>, and pick a format. Atlassian documents three: CSV, HTML and PDF. CSV is the one for a spreadsheet, and Atlassian describes it as "ideal for importing data into other database tools or spreadsheets". There is no XLSX option anywhere in that menu.</p>
+
+  <p>One checkbox matters: <em>Export with current view</em>. Ticked, the export keeps the view you are looking at. Left alone, you get all the data in a plain table layout. If you spent an afternoon building a filtered view for the finance team, that tick is the difference between sending them their view and sending them the whole database.</p>
+
+  <h2>What the database already does, before you export anything</h2>
+
+  <p>People export to Excel for two different reasons, and only one of them needs Excel.</p>
+
+  <p>If the reason is arithmetic, look under the field first. A Confluence database can show calculations beneath a column: for number fields Sum, Average, Min, Max, Count values, Count unique values, Count empty and Percent empty; for other field types the four counting ones. You turn one on by picking <em>Calculate</em> under the field. A total that lives in the database stays right when the data changes, which a total in last month's spreadsheet does not.</p>
+
+  <p>What the documentation does not describe anywhere is formulas or calculated columns: there is no documented way to make one field compute from another. So if your case is a running cost column, the export to Excel is not a workaround, it is the only route.</p>
+
+  <h2>The trap is on the way back</h2>
+
+  <p>Exporting is easy. Bringing the data home is where people lose an evening, and Atlassian documents exactly why.</p>
+
+  <p>Import into a database takes CSV only. During that import, <strong>dates are read month first</strong>. The documentation is blunt about it: "Confluence databases assume month comes first for dates, so 12/06/2025 will be treated as December 6, 2025" rather than Jun 12, 2025. It also states plainly: "We do not support date field through autoconversion/autodetection." So a European-formatted date column comes back as a different set of dates, quietly, in the rows where the day is twelve or lower. The rows where the day is above twelve are the lucky ones, because those break loudly.</p>
+
+  <p>Two more documented surprises from the same page. Text columns can arrive as tag fields: "String fields in CSV may get converted to tag fields", which happens when most of the values repeat. And the first row of your CSV becomes the field names, with duplicates renamed automatically.</p>
+
+  <p><strong>What to do.</strong> Before a round trip, switch date columns to an unambiguous form, ISO style, year first. Import one copy into an empty test database and look at February before you touch the real one. And when the import offers you a choice between creating new fields, adding to existing fields and replacing the entire database, read that dialog twice: the third option does what it says.</p>
+
+  <h2>The arithmetic, if you do this monthly</h2>
+
+  <p>One database is a minute of clicking. The cost appears when the answer lives in several of them.</p>
+
+  <p>Each database is exported from its own menu, one at a time, and each download lands as its own file. Twelve databases across a space is roughly ten to fifteen minutes of clicking and renaming, plus the merge afterwards, and it repeats every month because the export is a snapshot rather than a link. That is not a disaster, it is a standing appointment with an evening.</p>
+
+  <p>Worth knowing before you plan around it: databases are not available in the Atlassian Government environment, and the documentation lists other things they do not work with, including anonymous access, admin key, Atlassian Analytics, Atlassian Data Lake, data connectors, screen readers and keyboard navigation, and some Marketplace apps. Atlassian says that list is not exhaustive.</p>
+
+  <p>Two questions people expect answered here, and the honest answer to both is that the documentation is silent. It says nothing about which plans include databases: the only availability limit stated is the Government environment one. And it does not say whether databases are included in a space export, in either direction; the space export page lists blog posts, comments and Team Calendars as exclusions and never mentions databases. If either point matters to your migration, test it on one space rather than trusting an article, including this one.</p>
+
+  <h2>If your data is not in a database at all</h2>
+
+  <p>Half the people who search for this do not have a database. They have ordinary tables on ordinary pages, which look similar and behave nothing alike: no export menu, no calculations under the column, and no CSV.</p>
+
+  <p><strong>Disclosure: I build <a href="/table-export.html">Table Export</a></strong>, which covers that second case, taking one table, a page, or every table in a space into a single workbook with a sheet per table. It does not replace the database export: if your data is in a database, the built-in CSV export above already does the job and you do not need my app. That is the honest split, and it costs me nothing to say, because half of these searches genuinely end at the Atlassian menu.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Does the export include the calculations shown under a field?</h3>
+  <p>The documentation does not say. Treat the export as the rows, recreate totals in the spreadsheet, and check the first file you send anyone.</p>
+
+  <h3>Can I get the data out without downloading files by hand?</h3>
+  <p>Not through the documented database export, which is a per-database menu action. If you need it scheduled, the honest answer is that this is a script-and-API job, not a menu one.</p>
+
+  <h3>Why not just use HTML export?</h3>
+  <p>It is genuinely useful for one thing the CSV cannot do: Atlassian notes the HTML export gives you the option to copy the data to the clipboard, which is faster when you only need to paste a small table into an email.</p>
+
+  <p class="more">Related: <a href="/docs/confluence-database-or-table.html">when to use a database and when a plain table</a>, and <a href="/docs/export-confluence-table-to-excel.html">how to get a Confluence table into Excel</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

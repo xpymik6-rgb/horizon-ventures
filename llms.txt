@@ -64,6 +64,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to make a diagram clickable in Confluence Cloud](https://horizonventures.app/docs/clickable-diagram-confluence.html): Linking the boxes of a diagram: the steps in draw.io and Gliffy, and why an attached SVG loses its links.
 
+- [How to export a Confluence database to Excel](https://horizonventures.app/docs/export-confluence-database-to-excel.html): The database exports to CSV, HTML or PDF, there is no Excel option, and the way back has a documented date trap.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
