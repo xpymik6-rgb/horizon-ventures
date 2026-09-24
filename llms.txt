@@ -66,6 +66,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to export a Confluence database to Excel](https://horizonventures.app/docs/export-confluence-database-to-excel.html): The database exports to CSV, HTML or PDF, there is no Excel option, and the way back has a documented date trap.
 
+- [How to find orphaned pages in Confluence Cloud](https://horizonventures.app/docs/find-orphaned-pages-confluence.html): The list is in space settings under Content, and it is called Hidden, not Orphaned. What it contains and where bulk clean-up stops.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

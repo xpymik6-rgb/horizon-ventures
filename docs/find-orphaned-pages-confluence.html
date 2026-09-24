@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to find orphaned pages in Confluence Cloud</title>
+<meta name="description" content="The list lives in Space settings under Content, and it is called Hidden, not Orphaned. What that list actually contains, and why hiding a page does not hide it.">
+<link rel="canonical" href="https://horizonventures.app/docs/find-orphaned-pages-confluence.html">
+<meta property="og:title" content="How to find orphaned pages in Confluence Cloud">
+<meta property="og:description" content="The menu item is called Hidden. Here is where it is, what counts as an orphan, and what the list will not do for you.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to find orphaned pages in Confluence Cloud",
+   "description": "Orphaned pages in Confluence Cloud are listed under Space settings, Content, Hidden. What the list contains, what hiding does and does not do, and where bulk clean-up stops.",
+   "url": "https://horizonventures.app/docs/find-orphaned-pages-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-09-24",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "Find orphaned pages in a Confluence Cloud space",
+   "totalTime": "PT1M",
+   "step": [
+    {"@type": "HowToStep", "name": "Open space settings", "text": "Next to your space's name in the sidebar, select More actions, shown as three dots, then Space settings."},
+    {"@type": "HowToStep", "name": "Open the Content menu", "text": "Open the Content menu in space settings."},
+    {"@type": "HowToStep", "name": "Select Hidden", "text": "Select Hidden. This is the list of orphaned items in the space. The menu item is not called Orphaned, which is why people miss it."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Where are orphaned pages in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "In space settings. Next to the space name in the sidebar select More actions, then Space settings, open the Content menu and select Hidden. Atlassian describes that screen as the place where Confluence lets you see a list of orphaned items in your space. The menu item is called Hidden rather than Orphaned, which is the main reason people cannot find it."}},
+    {"@type": "Question", "name": "What makes a Confluence page an orphan?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No incoming links. Atlassian states that if you do not have any incoming links, your page or live doc will be an orphan. Hiding is a separate thing: an item is hidden when it is moved to the root of the space so it no longer appears in the content tree."}},
+    {"@type": "Question", "name": "Does hiding a page stop people finding it?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Atlassian is explicit that hidden and orphaned items still show up in search results and can be accessed by anyone who has the URL. Hiding removes an item from the content tree, nothing more. To actually keep people out, use restrictions, archiving or deletion."}},
+    {"@type": "Question", "name": "Can I delete orphaned pages in bulk?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Bulk actions live in the content manager, which Atlassian describes as an admin tool available in Confluence Premium and Enterprise, and which archives up to 500 items at a time and deletes up to 100. Its documented filters cover last active, labels, types, contributors and dates, but not orphaned or hidden, so selecting every orphan and clearing them in one pass is not a documented workflow."}},
+    {"@type": "Question", "name": "How do I see which pages link to a page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The Confluence Cloud documentation does not describe a screen that lists incoming links for a page. Incoming links appear in the documentation only as the definition of an orphan. If you need that view, treat it as something to verify in your own site rather than assume."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to find orphaned pages in Confluence Cloud</h1>
+    <p class="sub">The list exists, it is one click deep, and almost nobody finds it. Not because it is hidden, but because of what it is called.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Next to your space's name in the sidebar, select <em>More actions</em> (the three dots), then <em>Space settings</em>. Open the <em>Content</em> menu and select <em>Hidden</em>. That screen is the one Atlassian describes as the place where "Confluence lets you see a list of orphaned items in your space".</p>
+
+  <p>The menu item says Hidden. The thing you were looking for is called orphaned. That single mismatch is why this question has been asked on the Atlassian community for years by people who were, at the time, two clicks away from the answer.</p>
+
+  <h2>Hidden and orphaned are not the same word for the same thing</h2>
+
+  <p>They arrive at the same screen, and they mean different things, which is worth holding straight before you start cleaning anything up.</p>
+
+  <p><strong>Orphaned</strong> is about links. Atlassian's definition is blunt: "If you do not have <em>any</em> incoming links, your page or live doc will be an orphan." Nothing points at it. It is not that the page is broken, it is that nothing in your documentation refers to it.</p>
+
+  <p><strong>Hidden</strong> is about the tree. An item becomes hidden when it is moved to the root of the space, which, as the documentation puts it, "removes the item from your content tree so people can't find it by browsing through the tree". You do it deliberately: space settings, the Content menu, <em>Reorder</em>, then drag the item up to the same level as the home page.</p>
+
+  <p>So one is a consequence of how people wrote, and the other is a choice somebody made. The documentation treats them together and the interface shows them in one list, which is convenient right up to the moment you assume everything in that list got there the same way.</p>
+
+  <div class="note">
+    <p><strong>The dangerous half of the word "hidden".</strong> It does not hide anything from anyone. Atlassian says it plainly: "Hidden (and orphaned) items still show up in search results, and can be accessed if someone has the page or doc URL." If you moved a page out of the tree because it held salary bands or an unfinished policy, it is still in search and still opens for anyone with the link. The documentation offers the honest alternative in one line: "If you don't want anyone to find a page or doc, you don't need to hide it" — use restrictions, archive it, or delete it.</p>
+  </div>
+
+  <h2>Why pages end up orphaned</h2>
+
+  <p>Three ways, and only one of them is anyone's fault.</p>
+
+  <p>A page was created from a link that was later removed or rewritten, so the only thing that pointed at it is gone. A page was moved during a reorganisation and the pointers stayed behind. Or a page was never linked at all: somebody created it from the plus button, wrote it, published it, and moved on. That last one is the most common in practice, because creating a page in Confluence does not require you to say where it belongs.</p>
+
+  <p>The reason to care is not tidiness. An orphan is a page nobody arrives at by reading, which means it never gets corrected. It still comes up in search though, which is the worst combination: invisible to the people who maintain the documentation, visible to the person who searched for it today and believed it.</p>
+
+  <h2>Where the clean-up stops</h2>
+
+  <p>Finding the list is one click. Doing something with it at scale is where Confluence Cloud stops short, and it is better to know that before you promise a clean-up by Friday.</p>
+
+  <p>The bulk tool is the content manager, and Atlassian describes it as "an admin tool available in <strong>Confluence Premium</strong> and <strong>Enterprise</strong>". It is genuinely good at what it does: archive up to 500 items at a time, delete up to 100, change owner or status across a selection. Its documented filters are last active, pages with deactivated owners, statuses, labels, types, contributors, last updated and created dates.</p>
+
+  <p>Read that filter list again and notice what is not in it: orphaned, or hidden. The place that lists your orphans has no documented bulk actions, and the tool with bulk actions has no documented filter for orphans. Selecting every orphaned page in a space and clearing them in one pass is not a workflow the documentation describes, on any plan.</p>
+
+  <p>One more gap worth naming, because people expect it to exist: the Cloud documentation does not describe a screen that lists incoming links for a given page. Incoming links appear in it only as the definition of an orphan. If you remember that view from an older Confluence, check your own site before planning around it rather than trusting a memory or an article, including this one.</p>
+
+  <h2>The arithmetic on a real space</h2>
+
+  <p>A three-year-old space with a few hundred pages usually turns up somewhere between twenty and eighty items in that Hidden list. Opening each one, reading enough to judge it, and deciding between keep, link, archive and delete runs about two minutes an item once you are warmed up. Fifty items is a focused afternoon, and it is an afternoon that does not repeat, because the ones you keep get linked and stop being orphans.</p>
+
+  <p>What does repeat is the trickle: every month adds a few more, created from the plus button by people who were in a hurry. That is the part worth automating, and the honest version of automating it is a list somebody sees, not a report nobody opens.</p>
+
+  <h2>What to do on Monday</h2>
+
+  <p>Open the Hidden list in your busiest space and read the titles, not the pages. Titles alone sort most of it: obvious drafts, duplicates with a number on the end, and the two or three documents that turn out to be load-bearing and simply lost their link. Link those back into the tree first, because that is the change that stops somebody rewriting a policy that already exists.</p>
+
+  <p>Then check the same list against the calendar. A page that is both orphaned and untouched for a year is a safe archive. A page that is orphaned but edited last week is not junk, it is someone working outside the tree, and deleting it will cost you a conversation.</p>
+
+  <p><strong>Disclosure: I build <a href="/smart-search.html">Smart Search</a></strong>, which builds live lists of pages from plain conditions, such as a space, some labels, or pages not updated for six months, and puts that list on an ordinary page on any plan. It is honest to say what it is not: it works from those conditions, not from link structure, so it is the tool for the stale half of this job, not for finding orphans. For orphans specifically, the built-in Hidden list is the right answer and it costs nothing. If that is all you needed, you are done.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Do orphaned pages hurt our search results inside Confluence?</h3>
+  <p>They appear in search like anything else, which is the point of the problem rather than a side effect. The cost is not ranking, it is that outdated pages keep answering questions long after everyone stopped maintaining them.</p>
+
+  <h3>Is archiving better than deleting?</h3>
+  <p>For anything with a trace of institutional memory, yes. Archiving removes an item from the sidebar and search results while keeping it, which is exactly what you want for last year's process that somebody will ask about in March.</p>
+
+  <h3>Can I stop pages becoming orphans in the first place?</h3>
+  <p>Partly, and it is a habit rather than a setting: create pages from the parent page rather than from the plus button, so the tree places them for you. Nothing enforces it, which is why the Hidden list keeps refilling.</p>
+
+  <p class="more">Related: <a href="/docs/find-stale-pages-confluence.html">how to find the pages nobody maintains any more</a>, and <a href="/docs/confluence-content-manager.html">what the content manager does and where it stops</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
