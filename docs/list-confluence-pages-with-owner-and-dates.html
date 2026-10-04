@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to get a list of Confluence pages with owners and dates</title>
+<meta name="description" content="There is no single report. The content manager comes closest and needs Premium, the CSV export exists on any plan but its columns are undocumented. What to use when.">
+<link rel="canonical" href="https://horizonventures.app/docs/list-confluence-pages-with-owner-and-dates.html">
+<meta property="og:title" content="How to get a list of Confluence pages with owners and dates">
+<meta property="og:description" content="No single report exists. Here is what each built-in route actually gives you, and which one fits your plan.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to get a list of Confluence pages with owners and dates",
+   "description": "Confluence Cloud has no single page inventory report. The content manager is the closest thing and requires Premium; the space CSV export works on any plan but its columns are not documented.",
+   "url": "https://horizonventures.app/docs/list-confluence-pages-with-owner-and-dates.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-04",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Is there a report in Confluence Cloud that lists pages with their owner and dates?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not as one export. The closest built-in tool is the content manager, which Atlassian describes as an admin tool available in Confluence Premium and Enterprise. It filters by last active, deactivated owners, statuses, labels, types, contributors, last updated and created date, and it can change owner on up to 100 items at a time."}},
+    {"@type": "Question", "name": "What columns does the space CSV export contain?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The documentation does not say. It states that space admins can export a space to PDF, CSV, HTML or XML, and that for CSV you export everything you can view including attachments and comments, but it does not list the columns. Run it once on a test space and look at the file before planning around it."}},
+    {"@type": "Question", "name": "Can I get this list without Premium?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not from the content manager, which is Premium and Enterprise only. On any plan you still have the space CSV export, which a space admin can run, and the search filters, which show results on screen rather than exporting them."}},
+    {"@type": "Question", "name": "How many items can the content manager act on at once?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Atlassian documents archiving up to 500 items at a time, deleting up to 100 at a time, and changing owner on up to 100 at a time. Those limits shape how you plan a clean-up: a thousand-page space is several passes, not one."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to get a list of Confluence pages with owners and dates</h1>
+    <p class="sub">Somebody asks for "just a list of our pages, who owns them and when they were last touched". It sounds like a five-minute export. It is not, and knowing why saves you an afternoon of looking for a button that does not exist.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Confluence Cloud has no single report that hands you pages, owners and dates in one file. Three routes get you close, and each gives up something: the content manager, which is the real answer but needs Premium; the space CSV export, which any space admin can run but whose contents Atlassian does not document; and search filters, which show you the list on screen without exporting it.</p>
+
+  <h2>The content manager: the closest thing to the report you wanted</h2>
+
+  <p>This is the tool to reach for first, with one condition. Atlassian is explicit: "The content manager is an admin tool available in <strong>Confluence Premium</strong> and <strong>Enterprise</strong>." On Free and Standard it is not there, and no amount of looking will find it.</p>
+
+  <p>What it filters by, in full: last active, pages with deactivated owners, statuses, labels, types, contributors, last updated as a date range, and created as a date range. Types covers more than pages: databases, folders, live docs, smart links and whiteboards.</p>
+
+  <p>The filter list is the useful part, because it answers the question behind the question. People rarely want an inventory for its own sake. They want pages whose owner has left the company, or pages nobody touched since a reorganisation, and both are one filter away.</p>
+
+  <p>Its bulk actions carry documented limits worth knowing before you promise a timeline: archive up to 500 items at a time, delete up to 100 at a time, change owner on up to 100 at a time. A thousand-page space is several passes, not one.</p>
+
+  <h2>The space CSV export: available to everyone, undocumented inside</h2>
+
+  <p>Any space admin can run it: "Space admins can export a space (or a group of individually selected pages in a space) to PDF, CSV, HTML, or XML." And the scope is generous: "For CSV, you will export everything you can view, including attachments and comments by default." A site admin exporting via CSV or XML gets everything, not just what they personally can see.</p>
+
+  <p>Here is the honest gap, and it is the reason this article exists. <strong>The documentation does not list what columns the CSV contains.</strong> It says the export is "best if you want to import a space into another Confluence Cloud instance", which is a statement about purpose, not about structure. Whether your file arrives with an owner column and a created date is something you find out by opening it.</p>
+
+  <p>So do that first, on a small test space, before you build a process on top of it. Ten minutes of checking beats a promise you cannot keep.</p>
+
+  <h2>Search filters: fine for looking, useless for handing over</h2>
+
+  <p>The third route is the one everyone tries first: search with filters, read the results, copy them somewhere. It works for a question you are answering yourself today. It falls apart the moment the answer has to be sent to somebody, kept for an audit, or looked at again next quarter, because nothing about it is saved.</p>
+
+  <p>That is the real split between these three routes, and it is not about features. A screen answers a question once. A file answers it to somebody else. A list that lives on a page answers it again next month without anyone rerunning anything.</p>
+
+  <h2>The arithmetic, when the request is real</h2>
+
+  <p>The usual reason this comes up is not curiosity. Somebody left, somebody is auditing, or a space is being handed to a new team.</p>
+
+  <p>Doing it by hand on a four-hundred-page space means opening pages to see who owns them, because the tree does not show it. At twenty seconds a page that is over two hours, and the result is stale the week after. On Premium the same job is a filter and a bulk action, measured in minutes. That gap, hours against minutes, is what the Premium plan is actually selling here, and it is worth naming when somebody asks why the upgrade exists.</p>
+
+  <p>On Free and Standard the honest plan is different: export the space to CSV once, look at what you actually got, and build the rest around that file rather than around what you hoped it contained.</p>
+
+  <p><strong>Disclosure: I build <a href="/smart-search.html">Smart Search</a></strong>, which puts a live list of pages on an ordinary page, built from plain conditions such as a space, labels, or pages not updated for six months, and it works on any plan. It is a list that keeps itself current, not an export and not an inventory report, so if what you need is a file to send to an auditor, the CSV export above is the right tool and my app is not. If what you need is a page the team actually looks at, that is the case it was built for.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Does the page tree show owners?</h3>
+  <p>No, and that is why this question keeps coming back. The tree shows titles and structure, so ownership and dates have to come from one of the three routes above.</p>
+
+  <h3>What about the API?</h3>
+  <p>It is the right answer for a recurring report, and the wrong answer for a one-off request from somebody who needs it this afternoon. If this is going to be asked quarterly, write the script once. If it is asked once, do not.</p>
+
+  <h3>Why does the content manager include whiteboards and databases?</h3>
+  <p>Because a modern space is not only pages, and a clean-up that ignores the other types leaves half the mess behind. Its Types filter is also the quickest way to see what a space is actually made of.</p>
+
+  <p class="more">Related: <a href="/docs/confluence-content-manager.html">what the content manager does and where it stops</a>, <a href="/docs/confluence-space-export-explained.html">what a space export actually gives you</a>, and <a href="/docs/find-orphaned-pages-confluence.html">how to find orphaned pages</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
