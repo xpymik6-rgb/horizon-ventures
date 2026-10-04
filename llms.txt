@@ -70,6 +70,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to get a list of Confluence pages with owners and dates](https://horizonventures.app/docs/list-confluence-pages-with-owner-and-dates.html): No single report exists: the content manager needs Premium, the CSV export works on any plan but its columns are undocumented.
 
+- [Why can't someone see a Confluence page?](https://horizonventures.app/docs/why-cannot-see-confluence-page.html): Space permissions or page restrictions: which wins, why view restrictions cascade down, and where the list of restricted pages lives.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

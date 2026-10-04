@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why can't someone see a Confluence page?</title>
+<meta name="description" content="Two layers decide it: space permissions and page restrictions. Which one wins, why view restrictions cascade down but edit ones do not, and where the list of restricted pages lives.">
+<link rel="canonical" href="https://horizonventures.app/docs/why-cannot-see-confluence-page.html">
+<meta property="og:title" content="Why can't someone see a Confluence page?">
+<meta property="og:description" content="Space permissions or page restrictions? Check them in this order, and know which one overrides the other.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Why can't someone see a Confluence page?",
+   "description": "Access in Confluence Cloud is decided by two layers: space permissions and page restrictions. How they interact, how view restrictions cascade to child pages, and where to find the list of restricted pages.",
+   "url": "https://horizonventures.app/docs/why-cannot-see-confluence-page.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-05",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "Work out why a person cannot see a Confluence page",
+   "totalTime": "PT5M",
+   "step": [
+    {"@type": "HowToStep", "name": "Check the space first", "text": "Open space settings and look at space permissions. If the person has no view permission on the space, nothing you do on the page will help."},
+    {"@type": "HowToStep", "name": "Check the page restrictions", "text": "Open the page and look at its restrictions. If viewing is restricted to named people or groups, everyone else loses access to that page."},
+    {"@type": "HowToStep", "name": "Check the parent pages", "text": "View restrictions cascade: if the person cannot view a parent item, they cannot view anything under it. The restriction causing the problem may sit several levels above."},
+    {"@type": "HowToStep", "name": "Review the restricted list", "text": "In space settings, open Content and select Restricted to see which pages in the space carry restrictions."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "What wins: space permissions or page restrictions?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Space permissions. Atlassian states that if someone lacks space-level permission to edit content, that person will not be able to edit it even though the content's access is set to Open. Page restrictions narrow access further, they never grant access the space does not already give."}},
+    {"@type": "Question", "name": "Do page restrictions apply to child pages?",
+     "acceptedAnswer": {"@type": "Answer", "text": "View restrictions do. Atlassian puts it plainly: if someone can't view a parent content item or folder, they won't be able to view any child content items under it. Edit restrictions behave differently and do not cascade to children the same way, which is the source of most surprises."}},
+    {"@type": "Question", "name": "Where can I see which pages are restricted?",
+     "acceptedAnswer": {"@type": "Answer", "text": "In space settings: open Content and select Restricted. That screen lists the restricted pages in the space, which is far faster than opening pages one by one."}},
+    {"@type": "Question", "name": "Can an administrator open a page restricted by someone else?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Space admins can see what exists in their space and change restrictions on it. Organisation admins on Premium and Enterprise can use the admin key to bypass restrictions and manage access to any content."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Why can't someone see a Confluence page?</h1>
+    <p class="sub">You sent a link, they got an error, and you are now the support desk. The answer is almost always one of two layers, and checking them in the wrong order is what turns five minutes into an afternoon.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Access is decided in two places: space permissions and page restrictions. Check the space first, because page restrictions can only take access away, never add it. Then check the page, and then check the pages above it, because view restrictions cascade downwards. The list of restricted pages in a space lives in space settings, under Content, in a section called <em>Restricted</em>.</p>
+
+  <h2>The rule that settles most arguments</h2>
+
+  <p>Space permissions win. Atlassian spells it out: "if someone lacks space-level permission to edit content, then that person won't be able to edit this content, even though this content's access is set to Open."</p>
+
+  <p>Read that twice if you manage a wiki, because it explains the most common failure in access requests. Somebody opens the page, sets access to Open, tells the colleague it is fixed, and the colleague still sees nothing. The page was never the problem. Page restrictions narrow what the space already allows; they cannot widen it.</p>
+
+  <p>So the order is not a matter of taste. Space first, page second. Doing it the other way round means you spend your time in the one place that cannot possibly be the cause.</p>
+
+  <h2>The cascade, and the half of it that does not cascade</h2>
+
+  <p>View restrictions flow downhill. In Atlassian's words: "If someone can't view a parent content item or folder, they won't be able to view any child content items under it."</p>
+
+  <p>This is why the page you are staring at can look completely unrestricted while the person still cannot open it. The restriction sits two levels up, on a parent nobody has thought about since last year, and everything underneath inherits the consequence.</p>
+
+  <p>Edit restrictions do not behave the same way: they do not cascade to children. That asymmetry catches people out in the opposite direction. A team locks editing on a section's front page, assumes the whole section is protected, and the pages below stay editable by everyone who has space access.</p>
+
+  <div class="note">
+    <p><strong>What this means in practice.</strong> When someone reports a page they cannot see, walk up the tree rather than around it. The page itself is the least likely place to find the cause, because if its own restrictions were the problem you would usually have noticed when you set them.</p>
+  </div>
+
+  <h2>Finding the restrictions without opening every page</h2>
+
+  <p>There is a list, and most admins never find it because it sits with the other space tools rather than with the page. In space settings, open <em>Content</em> and select <em>Restricted</em>. That gives you the restricted pages in the space in one screen.</p>
+
+  <p>It is the same corner of the interface that holds the list of hidden and orphaned items, which is worth knowing in itself: Content is where Confluence keeps the answers to "what is unusual about this space", and almost nobody opens it.</p>
+
+  <h2>When you are the admin and still cannot get in</h2>
+
+  <p>Space admins can see what exists in their space and change restrictions on it. That covers the ordinary case: somebody left, their page is locked, you need it back.</p>
+
+  <p>The bigger hammer is the admin key, available to organisation admins on Premium and Enterprise, which bypasses restrictions to manage access to any content. If you are on Free or Standard and the only person who could open a page has left the company, that hammer is not in the box, and the honest answer to your colleague is that this is a plan limitation rather than something you are doing wrong.</p>
+
+  <h2>The five-minute diagnosis</h2>
+
+  <p>In order, because each step rules out the one before it.</p>
+
+  <p><strong>One.</strong> Does the person have view permission on the space? If not, stop here and fix that. Nothing on the page matters yet.</p>
+
+  <p><strong>Two.</strong> Are they in the group you think they are in? Access is usually granted to groups, and "I added them" often means "I added them to a group that does not have this space".</p>
+
+  <p><strong>Three.</strong> Is the page itself restricted? If viewing is limited to named people, everyone else is out, including colleagues who have full access to the space.</p>
+
+  <p><strong>Four.</strong> Are any of its parents restricted? This is the step people skip, and it is the one that explains the cases that look impossible.</p>
+
+  <p><strong>Five.</strong> Open space settings, Content, Restricted, and look at the whole picture. If the same few people appear on every restricted page, you do not have an access problem, you have a habit, and that is a conversation rather than a setting.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Does sharing a page by link grant access?</h3>
+  <p>No. A link is an address, not a permission. If the two layers above do not allow it, the link produces exactly the error your colleague reported.</p>
+
+  <h3>Why can they find the page in search but not open it?</h3>
+  <p>Search results and access are different things in several corners of Confluence, which is why a title can surface while the content stays shut. Treat seeing the title as no evidence at all about permissions.</p>
+
+  <h3>We use restrictions a lot. Is that bad?</h3>
+  <p>It is bad when it is accidental. Restrictions set deliberately on a few sensitive pages are fine; restrictions inherited by a hundred pages because of one forgotten parent are how a wiki quietly becomes unusable.</p>
+
+  <p><strong>Disclosure.</strong> I build small apps for Confluence, including <a href="/smart-search.html">Smart Search</a>, which builds live lists of pages from plain conditions. It is worth saying plainly that none of them helps here: permissions and restrictions are not something an app on the Marketplace should be working around, and the built-in screens above do the job. This article exists because the question is common, not because I have something to sell you for it.</p>
+
+  <p class="more">Related: <a href="/docs/find-orphaned-pages-confluence.html">how to find orphaned pages</a>, which lives in the same corner of space settings, and <a href="/docs/list-confluence-pages-with-owner-and-dates.html">how to get a list of pages with owners and dates</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
