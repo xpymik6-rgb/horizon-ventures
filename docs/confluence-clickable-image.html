@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to make an image clickable in Confluence Cloud</title>
+<meta name="description" content="A whole image can be a link in Confluence Cloud with two clicks. Separate clickable areas on one picture cannot be done natively: there is no HTML macro in Cloud. Here are the four honest options.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-clickable-image.html">
+<meta property="og:title" content="How to make an image clickable in Confluence Cloud">
+<meta property="og:description" content="One link on the whole image is built in. Hotspots on parts of it are not. What to do about each case.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to make an image clickable in Confluence Cloud",
+   "description": "Making a whole image a link is built in. Making separate areas of one image clickable is not, because Confluence Cloud has no HTML macro. The four options, and which one fits which picture.",
+   "url": "https://horizonventures.app/docs/confluence-clickable-image.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {
+     "@type": "Organization",
+     "name": "Horizon Ventures E.I.R.L.",
+     "url": "https://horizonventures.app/"
+   },
+   "datePublished": "2026-10-05",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "Make a whole image a link in Confluence Cloud",
+   "step": [
+    {"@type": "HowToStep", "name": "Select the image", "text": "Click the image on the page in the editor so the floating toolbar appears above it."},
+    {"@type": "HowToStep", "name": "Open the link control", "text": "Click the link icon in that floating toolbar."},
+    {"@type": "HowToStep", "name": "Point it somewhere", "text": "Type a URL, or search for a Confluence page in the dropdown that appears, then press Enter."},
+    {"@type": "HowToStep", "name": "Publish", "text": "Publish the page. The whole image is now one link."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can I make an image clickable in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes, for the image as a whole. Select the image in the editor, click the link icon in the floating toolbar, then type a URL or pick a Confluence page. The entire picture becomes one link."}},
+    {"@type": "Question", "name": "Can different parts of one image link to different pages?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not with anything built into Confluence Cloud. That is an image map, and image maps need HTML. Confluence Cloud has no HTML macro, so the classic map and area tags cannot be used. You need either an app that draws hotspots, or a vector diagram that carries its own links."}},
+    {"@type": "Question", "name": "Why do the links in my diagram stop working after I upload it?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because Confluence displays an uploaded SVG as a flat picture. The links are still inside the file, but the viewer does not make them clickable, so a diagram exported from draw.io or Visio with links on the shapes arrives looking right and behaving like a screenshot."}},
+    {"@type": "Question", "name": "What about slicing the picture into pieces and putting them in a table?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It works and it is free, and it breaks the first time anything changes. Each slice is a separate attachment with its own link, table cells add gaps, and the alignment shifts on different screen widths. For a picture that will never change it is acceptable. For a diagram that gets edited it is a trap."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to make an image clickable in Confluence Cloud</h1>
+    <p class="sub">There are two different questions hiding behind this one, and they have completely different answers. One takes two clicks. The other cannot be done with anything Confluence ships with, and the workaround most people reach for is the one that will cost them an afternoon in six months.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> To make the <em>whole</em> image a link: click the image in the editor, click the link icon in the floating toolbar, type a URL or search for a Confluence page, press Enter. Done. To make <em>different parts</em> of one image point at different places: Confluence Cloud cannot do it. That is an image map, image maps are built from HTML, and Cloud has no HTML macro. Your real choices are an app that draws hotspots over the picture, or a vector diagram that carries its own links.</p>
+
+  <h2>Case one: the whole picture is one link</h2>
+
+  <p>This is built in and takes seconds.</p>
+
+  <ol>
+    <li>Click the image on the page in the editor. A small floating toolbar appears above it.</li>
+    <li>Click the link icon in that toolbar.</li>
+    <li>Type a URL, or start typing the name of a Confluence page and pick it from the dropdown.</li>
+    <li>Press Enter and publish.</li>
+  </ol>
+
+  <p>Good for a logo that leads to a space, a screenshot that opens the tool it shows, a cover image that opens the document. If this is what you needed, you are finished.</p>
+
+  <h2>Case two: different areas, different destinations</h2>
+
+  <p>This is what people usually mean by an interactive picture: an architecture diagram where each box opens the runbook for that service, a floor plan where each room opens its own page, a process chart where every step links to its instruction.</p>
+
+  <p>On the open web this is an image map: an <code>&lt;img&gt;</code> tag with <code>&lt;map&gt;</code> and <code>&lt;area&gt;</code> elements marking out rectangles and polygons. In Confluence Data Center you could paste that into the HTML macro and be done. In Confluence Cloud the HTML macro does not exist, and raw markup is not rendered on a page. So the classic answer is simply unavailable, and no amount of searching will produce a setting that turns it on.</p>
+
+  <p>That leaves three real paths.</p>
+
+  <h3>Slicing the picture into a table</h3>
+
+  <p>The free workaround: cut the image into pieces in a graphics editor, upload each piece, put them in a borderless table, link each cell separately.</p>
+
+  <p>It works. It is also the option that quietly costs the most. Each slice is a separate attachment, so a change to the diagram means re-cutting and re-uploading every piece. Table cells introduce gaps and the picture stops looking like one picture. Column widths behave differently on a laptop and on a wide monitor, so the slices drift apart for some readers and overlap for others. And the next person to edit the page has no idea why the diagram is a table.</p>
+
+  <p>Reasonable for a picture that will never change again. A trap for anything that gets edited.</p>
+
+  <h3>An app that draws hotspots</h3>
+
+  <p>There are Marketplace apps built exactly for this, and they are the right answer for photographs and raster images. <a href="https://marketplace.atlassian.com/apps/253/scroll-imagemap-for-confluence">Scroll ImageMap</a> from K15t gives you a graphical editor for drawing circles, rectangles and polygons over an image and pointing each at a page or URL. <a href="https://marketplace.atlassian.com/apps/1225000/smart-images-for-confluence">Smart Images</a> does the same kind of job with rectangles, circles and polygons.</p>
+
+  <p>If your picture is a photo of a machine, a scanned floor plan or a rendered mock-up, this is what you want: there is nothing inside the file to work with, so somebody has to mark out the areas by hand, and these apps make that part pleasant.</p>
+
+  <h3>A diagram that already knows where its links go</h3>
+
+  <p>There is a case where drawing hotspots by hand is wasted work: when the picture is a diagram, and the links are already in it.</p>
+
+  <p>Draw.io, Visio and Mermaid all let you attach a link to a shape. Export that diagram as SVG and the links travel with the file, because SVG is markup rather than pixels. Then you upload it to Confluence and they stop working, because Confluence renders an uploaded SVG as a flat image. The information is in the file; the viewer just will not use it. We wrote that up separately in <a href="/docs/confluence-svg-flat-image.html">why Confluence shows your SVG as a flat picture</a>.</p>
+
+  <p>The annoying part is that this is the case where hand-drawn hotspots are pure duplication: you would be marking out, one by one, the areas the diagram already describes. And then doing it again after every edit, because the boxes have moved.</p>
+
+  <p><em>Disclosure: I build an app for this one.</em> <a href="/clickable-svg.html">Clickable SVG</a> renders the SVG as live markup instead of a flat picture, so the links your diagram already carries keep working: click a box, open the page behind it. Nothing leaves your site, and re-exporting an edited diagram does not mean redrawing anything. It does not help with photographs, where there are no shapes to read — that is what the hotspot apps above are for.</p>
+
+  <p>And if your case is the simple one, use what is already there. One link on the whole image is free, built in, and takes two clicks.</p>
+
+  <h2>Which one fits your picture</h2>
+
+  <ul>
+    <li><strong>Logo, screenshot, cover image, one destination</strong> — the built-in image link. Nothing to install.</li>
+    <li><strong>Photo or scan, several areas, never changes</strong> — a hotspot app, or slicing if you are determined to spend nothing.</li>
+    <li><strong>Diagram from draw.io, Visio or Mermaid with links on the shapes</strong> — keep the diagram vector and render it live, rather than redrawing its structure as hotspots.</li>
+    <li><strong>Diagram that gets edited every month</strong> — anything hand-maintained will lose. Use the format that carries the links.</li>
+  </ul>
+
+  <h2>Questions people actually ask</h2>
+
+  <h3>Is there an HTML macro in Confluence Cloud?</h3>
+  <p>No. It exists in Data Center, not in Cloud, which is why image maps, custom scripts and pasted embed codes do not survive the move. See our note on <a href="/docs/connect-end-of-life.html">what the Connect end of life means for admins</a> for the wider pattern.</p>
+
+  <h3>Can I link an image to an attachment or a file?</h3>
+  <p>Yes. The link control on a selected image accepts a Confluence page, an attachment or an external URL, the same as a text link.</p>
+
+  <h3>My image map worked in Server. Why not now?</h3>
+  <p>Because it was rendered by the HTML macro, and that macro did not come to Cloud. The page will show the image, and the clickable areas simply will not be there.</p>
+
+  <h3>Does a PNG exported from draw.io keep its links?</h3>
+  <p>No. PNG is pixels: whatever the shapes knew about their destinations is gone the moment you export. If you want the links to survive, export SVG.</p>
+
+  <h3>Will the browser's own zoom break the hotspots?</h3>
+  <p>With hand-drawn hotspot coordinates, scaling is exactly where things go wrong, which is why the apps that do this properly store areas in relative terms. With a vector diagram the question does not arise: the shapes scale, and so do their links.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
