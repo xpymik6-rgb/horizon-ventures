@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Live Search macro in Confluence Cloud: what it does and where it breaks</title>
+<meta name="description" content="Confluence Cloud does have a Live Search macro. It puts a search box on a page, but it searches the space, not the page, and partial words only match from the start. Here is what it does, where it breaks, and what to use instead.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-live-search-macro.html">
+<meta property="og:title" content="The Live Search macro in Confluence Cloud: what it does and where it breaks">
+<meta property="og:description" content="A search box on a page is not the same as search within a page. What the macro really does, and when a live list beats a search box.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "The Live Search macro in Confluence Cloud: what it does and where it breaks",
+   "description": "What the Live Search macro in Confluence Cloud actually does, the three things people expect from it and do not get, and when a live list of pages is the better tool.",
+   "url": "https://horizonventures.app/docs/confluence-live-search-macro.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {
+     "@type": "Organization",
+     "name": "Horizon Ventures E.I.R.L.",
+     "url": "https://horizonventures.app/"
+   },
+   "datePublished": "2026-10-04",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Is there a Live Search macro in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. Type /live search in the editor and insert the Live Search macro. It places a search field on the page, and its parameters let you restrict results to a space key, to labels, to a content type, set the field size, the placeholder text, and what is shown under each result."}},
+    {"@type": "Question", "name": "Does the Live Search macro search within the current page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No, and this is the most common misunderstanding. The macro sits on a page but searches the space, or the labels you restrict it to. To search the text of the page you are reading, use the browser's own find on page, Ctrl+F or Command+F."}},
+    {"@type": "Question", "name": "Why does the Live Search macro not find part of a word?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because it uses normal Confluence search, and Confluence does not allow a wildcard at the start of a term. Atlassian's documentation states plainly that you cannot search for *hum* or ?hum*. So budget* finds budgeting, but *budget finds nothing. Typing the middle of a word returns an empty list even though the page exists."}},
+    {"@type": "Question", "name": "What is better than a search box when people do not know what to type?",
+     "acceptedAnswer": {"@type": "Answer", "text": "A list that is already on the page. A search box answers a question the reader has to formulate first. A live list built from conditions, such as a space, a label, or pages not updated for 180 days, shows the answer before anyone types, and it keeps itself current as pages change."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>The Live Search macro: what it does, and where it breaks</h1>
+    <p class="sub">A search box sitting on a page looks like the obvious way to help people find things. It works, but not in the three ways most teams assume. Here is what the macro really does in Confluence Cloud, the limits that are written down in Atlassian's own documentation, and when a list beats a box.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Yes, Confluence Cloud has it. In the editor type <code>/live search</code> and insert the <strong>Live Search</strong> macro. You get a search field on the page, and you can restrict it to a space key, to one or more labels, and to a content type, plus set the field size, the placeholder text, and what appears under each result. What it does not do: it does not search the page it is sitting on, it cannot match the middle of a word, and it shows nothing at all until a reader types something.</p>
+
+  <h2>What the macro actually is</h2>
+
+  <p>The Live Search macro is a search field rendered inside page content. Someone starts typing, and Confluence suggests matching content underneath. The parameters Atlassian documents are these:</p>
+
+  <ul>
+    <li><strong>Restrict to this Space Key</strong> — a space key, case sensitive, or <code>@self</code> for the space the macro lives in.</li>
+    <li><strong>Restrict to label(s)</strong> — limits results to content carrying those labels.</li>
+    <li><strong>Size</strong> — medium or large search field.</li>
+    <li><strong>Placeholder text</strong> — what the empty field says, for example <em>Search this space</em>.</li>
+    <li><strong>Type</strong> — pages, live docs, blogs, comments, space descriptions, or all content.</li>
+    <li><strong>Additional</strong> — whether to show the space name, a content excerpt, or nothing under each result.</li>
+  </ul>
+
+  <p>That is a reasonable feature, and for a space landing page with a clear audience it does its job. The trouble starts where expectation and behaviour part ways.</p>
+
+  <h2>Three things people expect and do not get</h2>
+
+  <h3>It does not search within the page</h3>
+
+  <p>This is the most common misunderstanding, and it is baked into how people search for the feature: <em>live search within page</em>. The macro is placed <em>on</em> a page, but it searches the space, or whatever labels you restricted it to. The text of the page the reader is looking at is not what it looks through.</p>
+
+  <p>If the goal really is to find a word on the current page, nothing in Confluence beats the browser: <kbd>Ctrl</kbd>+<kbd>F</kbd>, or <kbd>Command</kbd>+<kbd>F</kbd> on a Mac. No macro needed, and it searches what is actually on screen.</p>
+
+  <h3>It cannot match the middle of a word</h3>
+
+  <p>The macro uses ordinary Confluence search, so it inherits a rule that surprises people. Atlassian's search syntax documentation puts it plainly: <q>Confluence doesn't allow wildcards at the beginning of your search. For example, you can't search for *hum* or ?hum*, as they begin with a wildcard.</q></p>
+
+  <p>In practice that means <code>budget*</code> finds <em>budgeting</em> and <em>budgets</em>, but there is no way to find <em>annual-budget-2026</em> by typing <em>budget</em> if the word starts somewhere else in the title. The reader types a word they are sure is in the document, gets an empty dropdown, and concludes the page does not exist. It does. The search just cannot start in the middle.</p>
+
+  <p>This hits hardest in spaces where titles follow a convention, because conventions tend to put the useful word last: <em>2026-Q3-Finance-Budget</em>.</p>
+
+  <h3>It shows nothing until someone types</h3>
+
+  <p>A search field is a question waiting for a question. It assumes the reader already knows what they are looking for and can name it in the same words the author used. New joiners, auditors and anyone arriving from a link do not meet that assumption. They look at an empty box and leave.</p>
+
+  <p>There is a second, quieter cost: a search box leaves no trace of what is in the space. A list does. Anyone glancing at a page with twelve linked documents learns the shape of the space in two seconds, without typing anything.</p>
+
+  <h2>When a search box is the wrong tool</h2>
+
+  <p>Use the macro when the reader knows the name of the thing and the space is large: a knowledge base with hundreds of articles and a clear naming scheme is a good home for it.</p>
+
+  <p>Reach for a list instead when any of this is true:</p>
+
+  <ul>
+    <li>the reader does not know what exists and cannot name it;</li>
+    <li>the set of pages is defined by a rule rather than a word, such as everything in a space with a given label, or everything not updated in six months;</li>
+    <li>the page is meant to be an index that someone will link to and cite;</li>
+    <li>you want the page itself to show that the documentation is alive.</li>
+  </ul>
+
+  <h2>The hand-maintained index, and why it dies</h2>
+
+  <p>The usual answer to all this is a page of links written by hand. It works beautifully for about a month.</p>
+
+  <p>Count the real cost. A team space gains and retires maybe eight pages a month, which is modest. Keeping an index honest means checking it roughly every two weeks: fifteen minutes to walk the space, find what is new, drop what has been archived, fix the titles that changed. Call it thirty minutes a month, six hours a year, for one index. Teams that take documentation seriously keep four or five of them.</p>
+
+  <p>What actually happens is that nobody does it. The index drifts for a quarter, somebody notices a dead link in a meeting, and it gets rebuilt from scratch. Then the cycle repeats.</p>
+
+  <h2>A live list instead</h2>
+
+  <p>The alternative is a list defined once by conditions and rebuilt by Confluence every time the page is opened: a space, a label, a content type, an age. Nothing to maintain, nothing to retype, and the page reads as an index rather than an empty box.</p>
+
+  <p><em>Disclosure: I build one of these.</em> Our <a href="/smart-search.html">Smart Search</a> macro puts that list on a page from plain conditions, without anyone writing a query language: choose a space, add labels, say <em>not updated for 180 days</em>, and the list keeps itself current. It is free for up to ten people, and it runs entirely inside your own site.</p>
+
+  <p>If your case is simpler than that, use what you already have. One space, a clear naming convention and readers who know the vocabulary — the Live Search macro is free, it is already in your editor, and it will do the job.</p>
+
+  <h2>Questions people actually ask</h2>
+
+  <h3>Where is the Live Search macro in the new editor?</h3>
+  <p>Type <code>/live search</code> on a page and pick it from the list. It is a standard macro in Confluence Cloud, nothing to install.</p>
+
+  <h3>Can I restrict it to more than one space?</h3>
+  <p>The space parameter takes a single space key, or <code>@self</code> for the current space. Covering several spaces means several macros, or restricting by label instead and labelling consistently across spaces.</p>
+
+  <h3>Why do my results change depending on whether I press Enter or click through?</h3>
+  <p>With two or more labels this used to differ: pressing Enter required all labels to match, while the suggestion list showed pages with any of them. Atlassian tracked that as CONFCLOUD-53716, it collected 27 votes and is now closed as fixed. If you still see something like it, compare the suggestions against the full search results screen before assuming the pages are missing.</p>
+
+  <h3>Can I make the search box appear in the sidebar?</h3>
+  <p>No. The macro lives in page content. The sidebar is built from the space navigation, and macros do not render there.</p>
+
+  <h3>Does any of this change on Premium or Enterprise?</h3>
+  <p>Not for this macro. The search syntax rule about wildcards is the same on every plan, because it comes from the search engine rather than the subscription. What Premium adds is the space <a href="/docs/confluence-content-manager.html">content manager</a>, which is an admin screen rather than something you can put on a page.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

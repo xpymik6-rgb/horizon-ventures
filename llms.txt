@@ -72,6 +72,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [Why can't someone see a Confluence page?](https://horizonventures.app/docs/why-cannot-see-confluence-page.html): Space permissions or page restrictions: which wins, why view restrictions cascade down, and where the list of restricted pages lives.
 
+- [The Live Search macro: what it does, and where it breaks](https://horizonventures.app/docs/confluence-live-search-macro.html): Confluence Cloud has a Live Search macro, but it searches the space rather than the page and cannot match the middle of a word.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
