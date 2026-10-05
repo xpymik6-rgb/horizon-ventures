@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to put a Visio diagram into Confluence Cloud</title>
+<meta name="description" content="Confluence Cloud accepts a .vsdx attachment but will not preview it: the file only downloads. Here are the four ways to get the diagram onto the page, and what each one costs you later.">
+<link rel="canonical" href="https://horizonventures.app/docs/insert-visio-diagram-confluence.html">
+<meta property="og:title" content="How to put a Visio diagram into Confluence Cloud">
+<meta property="og:description" content="A .vsdx attachment downloads instead of showing. Export, convert, or keep it vector: what each route costs.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to put a Visio diagram into Confluence Cloud",
+   "description": "Confluence Cloud will not preview a .vsdx attachment. The four routes onto the page, what each costs when the diagram changes, and which one keeps the links on the shapes.",
+   "url": "https://horizonventures.app/docs/insert-visio-diagram-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {
+     "@type": "Organization",
+     "name": "Horizon Ventures E.I.R.L.",
+     "url": "https://horizonventures.app/"
+   },
+   "datePublished": "2026-10-05",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can Confluence Cloud display a Visio file?",
+     "acceptedAnswer": {"@type": "Answer", "text": "You can attach a .vsdx file, but Confluence Cloud will not render a preview of it: clicking the attachment downloads the file instead of showing it. Atlassian tracked this as CONFCLOUD-68619 and closed it in October 2023 as timed out, without a fix, stating that there is no known workaround. To show the diagram on the page you have to export it to an image format or convert it."}},
+    {"@type": "Question", "name": "What is the best format to export a Visio diagram for Confluence?",
+     "acceptedAnswer": {"@type": "Answer", "text": "SVG if the diagram has text or links, PNG only if it is small and will never change. SVG is vector, so it stays sharp at any zoom and keeps the links that were attached to shapes inside the file. PNG flattens everything to pixels: the text blurs when readers zoom, and any link on a shape is gone."}},
+    {"@type": "Question", "name": "Can I keep editing the diagram after moving it to Confluence?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you import it rather than export it. The draw.io app for Confluence imports .vsdx through File then Import, and the result is an editable diagram inside Confluence. Complex drawings may need small corrections after import."}},
+    {"@type": "Question", "name": "Why do the links on my Visio shapes stop working in Confluence?",
+     "acceptedAnswer": {"@type": "Answer", "text": "If you exported to PNG, they were discarded with everything else that was not pixels. If you exported to SVG, they are still in the file, but Confluence renders an uploaded SVG as a flat picture, so the viewer never makes them clickable."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to put a Visio diagram into Confluence Cloud</h1>
+    <p class="sub">You attach the .vsdx, click it to check, and the browser downloads the file instead of showing the drawing. That is not a permissions problem or a broken upload. Confluence Cloud simply does not preview this format, and it is not going to start.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Attaching the file works; previewing it does not. To get the diagram visible on a page you either export it from Visio as <strong>SVG</strong> and insert that, or import the .vsdx into a diagramming app inside Confluence and keep it editable there. Export to PNG only if the picture is small and finished forever. Which one you want depends on a single question: does the diagram change, and do its shapes carry links?</p>
+
+  <h2>Why the attachment does not show</h2>
+
+  <p>Confluence Cloud previews a long list of formats on the page. The modern Visio format is not on it: a .vsdx attachment downloads rather than opening. Atlassian has a ticket for exactly this, <strong>CONFCLOUD-68619</strong>, and the honest part is how it ended. It was raised in 2019, it says in plain words that there is no known workaround, and in October 2023 it was closed as <em>timed out</em> — not fixed, just expired. The older .vsd format did preview, which is why people with long memories insist this used to work.</p>
+
+  <p>So the decision is not whether to convert, but into what.</p>
+
+  <h2>The four routes, and what each costs later</h2>
+
+  <h3>Export to PNG</h3>
+
+  <p>The fastest and the most common. File, Export, PNG, drag onto the page, done in a minute.</p>
+
+  <p>The cost shows up later. A PNG is pixels, so the text inside the boxes turns to mush the moment somebody zooms to read a label — and architecture diagrams exist to be zoomed into. Any hyperlink you attached to a shape in Visio is gone, because pixels cannot hold a link. And every edit means exporting and re-uploading by hand.</p>
+
+  <h3>Export to PDF</h3>
+
+  <p>Sharper than PNG and it survives printing, which is why audit and compliance teams like it. But a PDF is a document sitting next to the page rather than a picture on it: the reader has to open an attachment, and the diagram stops being part of what they are reading. Fine as a formal record, poor as documentation.</p>
+
+  <h3>Export to SVG</h3>
+
+  <p>SVG is vector: it stays sharp at any zoom, the text stays text, and, crucially, the links attached to shapes travel inside the file. For a diagram with any text at all this is the right export format.</p>
+
+  <p>There is a catch, and it is the thing people write to us about: Confluence renders an uploaded SVG as a flat image. The file still contains everything, but the viewer does not make it live, so your clickable boxes arrive looking perfect and behaving like a screenshot. We wrote that up in <a href="/docs/confluence-svg-flat-image.html">why Confluence shows your SVG as a flat picture</a>.</p>
+
+  <h3>Import into a diagramming app and keep it editable</h3>
+
+  <p>If you want to stop depending on Visio altogether, import rather than export. The draw.io app for Confluence reads .vsdx: open a draw.io diagram, choose File then Import, pick the file. The result is an editable diagram living inside Confluence, so the next change is made where the documentation is, without a round trip through the desktop.</p>
+
+  <p>Two honest caveats. Complex drawings usually need small corrections after import, because Visio stencils and draw.io shapes are not a perfect match. And this is a swap of tools, not a conversion trick: your colleagues who live in Visio will still be working in Visio.</p>
+
+  <h2>The arithmetic nobody does</h2>
+
+  <p>Take one architecture diagram that gets a real edit once a month, which is modest for a system under active development.</p>
+
+  <p>By the export route each change is: open Visio, edit, export, find the Confluence page, delete the old attachment, upload the new one, check the page still looks right. Call it ten minutes if nothing goes wrong, and it goes wrong often enough — somebody uploads the picture but forgets the page still shows the old attachment. Two hours a year per diagram, for a file that in theory you already finished.</p>
+
+  <p>By the import route the edit happens on the page itself, and there is nothing to re-upload.</p>
+
+  <h2>If the shapes have links on them</h2>
+
+  <p>This is the case worth separating out. A Visio diagram where each box links to the runbook, the service page or the owner's documentation is not a picture: it is navigation. Flattening it to PNG destroys exactly the part that made it useful, and nobody notices until a reader clicks a box and nothing happens.</p>
+
+  <p>Export that diagram as SVG and the links survive in the file. Then they stop working in Confluence, for the viewer reason above.</p>
+
+  <p><em>Disclosure: I build the app that fixes this one.</em> <a href="/clickable-svg.html">Clickable SVG</a> renders the SVG as live markup rather than a flat picture, so the links your Visio shapes already carry keep working on the Confluence page: click a box, open the page behind it. Nothing leaves your site, and re-exporting after an edit does not mean redoing anything by hand.</p>
+
+  <p>And if your diagram is a simple drawing with no links and no small text, export it to PNG and move on. It is free, it takes a minute, and this whole article is beside the point for you.</p>
+
+  <h2>Questions people actually ask</h2>
+
+  <h3>Is there a Visio macro in Confluence Cloud?</h3>
+  <p>No. There is no built-in macro that renders Visio files. The request has been open on Atlassian's tracker for years as CONFCLOUD-27877.</p>
+
+  <h3>Can I at least show a thumbnail of the .vsdx?</h3>
+  <p>Not natively. The file downloads rather than previewing, so there is nothing to thumbnail. Some file-preview apps on the Marketplace add Visio support if you need the raw file viewable in place.</p>
+
+  <h3>Does .vsd still preview?</h3>
+  <p>The old binary format behaved differently from .vsdx, which is the source of a lot of confusion in forum threads. Do not plan around it: saving modern diagrams back to a legacy format to win a preview is a bad trade.</p>
+
+  <h3>What about multi-page Visio files?</h3>
+  <p>Export gives you one file per page, so a five-page drawing becomes five images and five uploads. The draw.io import handles multi-page .vsdx in one go, which is the main practical argument for importing when the drawing is large.</p>
+
+  <h3>We are moving off Visio. Does that change the answer?</h3>
+  <p>It simplifies it: import once, keep the diagram editable inside Confluence, and stop exporting anything. The comparison of the diagramming options is in <a href="/docs/diagrams-in-confluence-compared.html">diagrams in Confluence compared</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -76,6 +76,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to make an image clickable in Confluence Cloud](https://horizonventures.app/docs/confluence-clickable-image.html): A whole image can be a link in two clicks. Separate clickable areas cannot be done natively, because Cloud has no HTML macro.
 
+- [How to put a Visio diagram into Confluence Cloud](https://horizonventures.app/docs/insert-visio-diagram-confluence.html): Confluence Cloud will not preview a .vsdx attachment: it downloads instead. The four routes onto the page and what each costs later.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
