@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yana — WhatsApp assistant for wellness and fitness studios</title>
+<style>
+  :root { --text:#172B4D; --muted:#44546F; --line:#DFE1E6; --accent:#0052CC; --soft:#F7F8F9; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0 24px 80px;
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text); background: #fff;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header { padding: 56px 0 28px; border-bottom: 1px solid var(--line); margin-bottom: 36px; }
+  h1, .h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0; }
+  h2 { font-size: 21px; margin: 36px 0 10px; }
+  h3 { font-size: 17px; margin: 22px 0 4px; }
+  ul, ol { padding-left: 22px; }
+  li { margin: 6px 0; }
+  .box { background: var(--soft); border-left: 3px solid var(--accent); padding: 16px 18px; border-radius: 4px; margin: 22px 0; }
+  .lang { margin: 0 0 20px; color: var(--muted); font-size: 15px; }
+  .company { background: var(--soft); padding: 16px 18px; border-radius: 4px; }
+  .company p { margin: 4px 0; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 64px 0 0; }
+  a { color: var(--accent); overflow-wrap: anywhere; }
+  footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+</style>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<meta name="description" content="Yana, the WhatsApp assistant by Horizon Ventures for wellness and fitness studios: answers clients on the studio's own number, books sessions, alerts staff.">
+<link rel="canonical" href="https://horizonventures.app/yana/">
+<meta property="og:title" content="Yana — WhatsApp assistant for studios">
+<meta property="og:description" content="Answers a studio's WhatsApp clients, books sessions and hands requests to staff. Built and operated by Horizon Ventures E.I.R.L., Peru.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://horizonventures.app/yana/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://horizonventures.app/#org",
+      "name": "Horizon Ventures",
+      "legalName": "HORIZON VENTURES E.I.R.L.",
+      "taxID": "20612763888",
+      "url": "https://horizonventures.app/",
+      "email": "support@horizonventures.app",
+      "telephone": "+51 959 246 034",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "OTR. 2do Paradero Arin S/N, Sec. Murunku",
+        "addressLocality": "Calca",
+        "addressRegion": "Cusco",
+        "postalCode": "08120",
+        "addressCountry": "PE"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Yana",
+      "url": "https://horizonventures.app/yana/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, WhatsApp",
+      "description": "WhatsApp assistant for wellness, fitness and therapy studios. Answers clients on the studio's own WhatsApp number, books sessions and passes requests to the studio's staff.",
+      "provider": { "@id": "https://horizonventures.app/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the studio keep its own WhatsApp number?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Yana works on the studio's existing WhatsApp Business number through Meta's official WhatsApp Business Platform. The number stays in the studio's phone and the staff can still reply themselves." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who sees the clients' messages?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Only the studio that owns the number and Yana, which processes them on the studio's behalf. Data is not sold, not used for advertising and not used to train AI models." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Yana write to clients first?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Only with message templates approved by Meta, such as appointment reminders, and only when the studio has set them up. Any client can stop these messages by replying that they do not want them." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is the data stored?",
+          "acceptedAnswer": { "@type": "Answer", "text": "On a dedicated server of Hetzner Online in Helsinki, Finland (European Union), with each studio's data kept separate." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Yana</h1>
+  <p class="sub">WhatsApp assistant for wellness, fitness and therapy studios · by Horizon Ventures</p>
+</header>
+
+<p class="lang"><a href="#es">Leer en español ↓</a></p>
+
+<div class="box">
+  Yana answers a studio's clients on the studio's own WhatsApp number, day and night:
+  explains the services, suggests free times, books sessions and passes anything that needs a
+  person to the studio's staff. The number stays in the studio's phone.
+</div>
+
+<h2>What Yana does for a studio</h2>
+<ul>
+  <li>Replies to new and returning clients on WhatsApp in their language, using the studio's own prices, services and schedule.</li>
+  <li>Offers free times and records bookings in the studio's schedule; the staff confirm or change them.</li>
+  <li>Sends reminders before a session and other messages the studio sets up, using templates approved by Meta.</li>
+  <li>Notifies the studio's staff when a person is needed: a complaint, a payment question, anything unusual.</li>
+  <li>Keeps the client list, packages, payments and conversation history in one web dashboard for the studio.</li>
+</ul>
+
+<h2>How a studio connects</h2>
+<ol>
+  <li>The studio owner connects the studio's WhatsApp Business number to Yana through Meta's official sign-up window. The studio keeps ownership of its number and its WhatsApp Business account.</li>
+  <li>We load the studio's services, prices and schedule.</li>
+  <li>Yana starts answering. The staff can follow every conversation and reply themselves at any time.</li>
+</ol>
+<p>The studio can disconnect Yana whenever it wants; its data is then deleted from our server within 30 days.</p>
+
+<h2>Data</h2>
+<p>
+  For the messages of the studio's clients, the studio is the data controller and Horizon Ventures acts as
+  its service provider. Through Meta's WhatsApp Business Platform we receive only what is needed to deliver
+  and answer messages for the studio's own number. We do not sell data, do not use it for advertising and do
+  not use it to train AI models. Details: <a href="privacy.html">Privacy Policy</a> ·
+  <a href="terms.html">Terms of Service</a> · <a href="data-deletion.html">Data deletion</a>.
+</p>
+
+<h2>Questions</h2>
+<h3>Does the studio keep its own WhatsApp number?</h3>
+<p>Yes. Yana works on the studio's existing WhatsApp Business number through Meta's official WhatsApp Business Platform. The number stays in the studio's phone and the staff can still reply themselves.</p>
+<h3>Who sees the clients' messages?</h3>
+<p>Only the studio that owns the number and Yana, which processes them on the studio's behalf. Data is not sold, not used for advertising and not used to train AI models.</p>
+<h3>Can Yana write to clients first?</h3>
+<p>Only with message templates approved by Meta, such as appointment reminders, and only when the studio has set them up. Any client can stop these messages by replying that they do not want them.</p>
+<h3>Where is the data stored?</h3>
+<p>On a dedicated server of Hetzner Online in Helsinki, Finland (European Union), with each studio's data kept separate.</p>
+
+<h2>Company</h2>
+<div class="company">
+  <p><b>HORIZON VENTURES E.I.R.L.</b> · RUC 20612763888</p>
+  <p>OTR. 2do Paradero Arin S/N, Sec. Murunku, Calca, Cusco 08120, Peru</p>
+  <p><a href="mailto:support@horizonventures.app">support@horizonventures.app</a> · +51 959 246 034</p>
+</div>
+
+<hr id="es">
+
+<header>
+  <p class="h1">Yana</p>
+  <p class="sub">Asistente de WhatsApp para estudios de bienestar, fitness y terapia · de Horizon Ventures</p>
+</header>
+
+<div class="box">
+  Yana responde a los clientes de un estudio en el propio número de WhatsApp del estudio, de día y de noche:
+  explica los servicios, propone horarios libres, agenda sesiones y pasa al personal todo lo que necesita
+  una persona. El número sigue en el teléfono del estudio.
+</div>
+
+<h2>Qué hace Yana para un estudio</h2>
+<ul>
+  <li>Responde por WhatsApp a clientes nuevos y habituales en su idioma, con los precios, servicios y horarios del propio estudio.</li>
+  <li>Ofrece horarios libres y registra las reservas en la agenda del estudio; el personal las confirma o cambia.</li>
+  <li>Envía recordatorios antes de la sesión y otros mensajes que el estudio configure, con plantillas aprobadas por Meta.</li>
+  <li>Avisa al personal cuando hace falta una persona: un reclamo, una consulta de pago, algo fuera de lo común.</li>
+  <li>Reúne clientes, paquetes, pagos e historial de conversaciones en un panel web del estudio.</li>
+</ul>
+
+<h2>Cómo se conecta un estudio</h2>
+<ol>
+  <li>El dueño conecta el número de WhatsApp Business del estudio a Yana desde la ventana oficial de registro de Meta. El estudio sigue siendo dueño de su número y de su cuenta de WhatsApp Business.</li>
+  <li>Cargamos los servicios, precios y horarios del estudio.</li>
+  <li>Yana empieza a responder. El personal puede seguir cada conversación y responder en cualquier momento.</li>
+</ol>
+<p>El estudio puede desconectar Yana cuando quiera; sus datos se eliminan de nuestro servidor en un plazo de 30 días.</p>
+
+<h2>Datos</h2>
+<p>
+  Respecto de los mensajes de los clientes del estudio, el estudio es el responsable del tratamiento y Horizon
+  Ventures actúa como su proveedor de servicios. A través de la plataforma WhatsApp Business de Meta recibimos
+  solo lo necesario para entregar y responder los mensajes del número del estudio. No vendemos datos, no los
+  usamos para publicidad ni para entrenar modelos de IA. Detalles:
+  <a href="privacy.html#es">Política de privacidad</a> · <a href="terms.html#es">Términos del servicio</a> ·
+  <a href="data-deletion.html#es">Eliminación de datos</a>.
+</p>
+
+<h2>Preguntas</h2>
+<h3>¿El estudio mantiene su propio número de WhatsApp?</h3>
+<p>Sí. Yana funciona en el número de WhatsApp Business que el estudio ya tiene, a través de la plataforma oficial de Meta. El número sigue en el teléfono del estudio y el personal puede responder también.</p>
+<h3>¿Quién ve los mensajes de los clientes?</h3>
+<p>Solo el estudio dueño del número y Yana, que los procesa por encargo del estudio. Los datos no se venden, no se usan para publicidad ni para entrenar modelos de IA.</p>
+<h3>¿Yana puede escribir primero a los clientes?</h3>
+<p>Solo con plantillas aprobadas por Meta, como recordatorios de citas, y solo si el estudio las configuró. Cualquier cliente puede dejar de recibirlas respondiendo que no desea más mensajes.</p>
+<h3>¿Dónde se guardan los datos?</h3>
+<p>En un servidor dedicado de Hetzner Online en Helsinki, Finlandia (Unión Europea), con los datos de cada estudio separados.</p>
+
+<h2>Empresa</h2>
+<div class="company">
+  <p><b>HORIZON VENTURES E.I.R.L.</b> · RUC 20612763888</p>
+  <p>OTR. 2do Paradero Arin S/N, Sec. Murunku, Calca, Cusco 08120, Perú</p>
+  <p><a href="mailto:support@horizonventures.app">support@horizonventures.app</a> · +51 959 246 034</p>
+</div>
+
+<footer>
+  HORIZON VENTURES E.I.R.L. · RUC 20612763888 · Calca, Cusco, Peru ·
+  <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a> ·
+  <a href="data-deletion.html">Data deletion</a> · <a href="https://horizonventures.app/">horizonventures.app</a>
+</footer>
+
+</div>
+</body>
+</html>
