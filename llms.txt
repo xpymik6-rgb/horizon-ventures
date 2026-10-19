@@ -80,6 +80,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [CQL Search alternative before Connect ends](https://horizonventures.app/docs/cql-search-alternative.html): CQL Search runs on Connect, which loses support on 31 January 2027: native and app replacements, and how to move saved queries.
 
+- [Table Exporter alternative before Connect ends](https://horizonventures.app/docs/table-exporter-alternative.html): Table Exporter for Confluence runs on Connect, which loses support on 31 January 2027: free routes and Forge replacements for exporting tables to Excel.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
