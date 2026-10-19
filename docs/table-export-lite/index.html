@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Table Export Lite documentation: export a Confluence table</title>
+<meta name="description" content="Table Export Lite is a free Confluence Cloud app that exports any table on a page to CSV or Excel, one table at a time. Merged cells stay aligned.">
+<meta property="og:title" content="Table Export Lite documentation">
+<meta property="og:description" content="Free: export a Confluence table to CSV or Excel, one table at a time.">
+<link rel="canonical" href="https://horizonventures.app/docs/table-export-lite/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"SoftwareApplication","name":"Table Export Lite for Confluence","applicationCategory":"BusinessApplication","operatingSystem":"Confluence Cloud",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+  "publisher":{"@type":"Organization","name":"Horizon Ventures E.I.R.L.","url":"https://horizonventures.app/"}},
+ {"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Is Table Export Lite free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely, for any number of users."}},
+  {"@type":"Question","name":"What is the difference from Table Export?","acceptedAnswer":{"@type":"Answer","text":"Lite exports one table at a time. The full Table Export also exports every table on a page at once and every table in a space into a single Excel workbook."}},
+  {"@type":"Question","name":"Does my data leave Confluence?","acceptedAnswer":{"@type":"Answer","text":"No. The table is read and converted inside your browser, and the app runs on Atlassian infrastructure with no server of its own."}}]}
+]}
+</script>
+</head>
+<body class="doc">
+<header class="top">
+  <div class="wrap">
+
+<header>
+  <svg class="logo" viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00875A"/><stop offset="100%" stop-color="#36B37E"/>
+    </linearGradient></defs>
+    <rect width="144" height="144" rx="32" fill="url(#g)"/>
+    <rect x="26" y="34" width="60" height="14" rx="3" fill="#fff"/>
+    <rect x="26" y="56" width="60" height="12" rx="3" fill="#fff" fill-opacity="0.8"/>
+    <rect x="26" y="76" width="60" height="12" rx="3" fill="#fff" fill-opacity="0.6"/>
+    <rect x="26" y="96" width="60" height="12" rx="3" fill="#fff" fill-opacity="0.45"/>
+    <path d="M104,58 L104,96" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+    <path d="M88,82 L104,100 L120,82" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+  <h1>Table Export Lite for Confluence</h1>
+  <p class="sub">Free. Export any table on a Confluence page to CSV or Excel, one table at a time.</p>
+  <nav style="margin-top:18px">
+    <a href="#start">Getting started</a>
+    <a href="#merged">Merged cells</a>
+    <a href="#privacy-short">Where data goes</a>
+    <a href="#full">Lite and full version</a>
+    <a href="#support">Support</a>
+  </nav>
+</header>
+
+<p>
+  Confluence Cloud exports whole pages to PDF and Word, but it has no export for a single
+  table. Copy and paste works until a table has merged cells; then the columns drift and the
+  numbers stop lining up. Table Export Lite takes a table out properly, and it is free.
+</p>
+
+<h2 id="start">Getting started</h2>
+
+<ol>
+  <li>Edit the page, type <code>/Table Export Lite</code> and pick the macro.</li>
+  <li>Publish. Every table on the page appears in a list, with its size.</li>
+  <li>Press <b>CSV</b>, <b>Excel</b> or <b>Copy</b> next to the table you need.</li>
+</ol>
+
+<div class="note">
+  The macro can sit anywhere on the page: it finds tables above and below itself. A good spot
+  is the very bottom, out of the way of readers.
+</div>
+
+<table>
+  <tr><th>Button</th><th>What you get</th><th>When</th></tr>
+  <tr><td><b>CSV</b></td><td>A plain <code>.csv</code> file</td><td>For importing anywhere: Excel, Google Sheets, Numbers, a database</td></tr>
+  <tr><td><b>Excel</b></td><td>A file Excel opens as a formatted workbook</td><td>When you want the header row and borders to survive</td></tr>
+  <tr><td><b>Copy</b></td><td>The table in the clipboard</td><td>When downloads are blocked by company policy: paste straight into a sheet</td></tr>
+</table>
+
+<h3>Comma or semicolon</h3>
+<p>
+  Pick the separator above the list. Use the semicolon if your Excel treats the comma as a
+  decimal mark, which is the default in most of Europe and Latin America and the reason
+  exported files sometimes land all in one column.
+</p>
+
+<h2 id="merged">Merged cells do not break the file</h2>
+<p>
+  A cell spanning two columns leaves a hole in a naive export, and every column to its right
+  shifts left. The app unrolls merged cells: the value is repeated in every cell it covered,
+  so each row has the same number of columns and the data lines up.
+</p>
+
+<h2 id="privacy-short">Where your data goes</h2>
+<p>
+  Nowhere. The app reads the page with your own Confluence permissions, builds the file inside
+  your browser and hands it to you. It has no server, no database and no analytics, and it runs
+  on Atlassian infrastructure. Details in the <a href="privacy.html">privacy policy</a>.
+</p>
+
+<h2 id="full">Lite and the full version</h2>
+<table>
+  <tr><th></th><th>Lite (free)</th><th>Table Export</th></tr>
+  <tr><td>Export one table to CSV, Excel or clipboard</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Merged cells unrolled</td><td>Yes</td><td>Yes</td></tr>
+  <tr><td>Download every table on the page at once</td><td>No</td><td>Yes</td></tr>
+  <tr><td>Every table in a space in one Excel workbook</td><td>No</td><td>Yes</td></tr>
+  <tr><td>Price</td><td>Free</td><td>Free up to 10 users, then per user</td></tr>
+</table>
+<p>
+  If you export a table now and then, Lite is all you need. If exports are a recurring job across
+  many pages, the full <a href="/docs/table-export/">Table Export</a> collects them in one go.
+</p>
+
+<h2 id="support">Support</h2>
+<p>
+  Write to <a href="mailto:support@horizonventures.app">support@horizonventures.app</a>. If a table
+  does not export the way you expect, a screenshot of it helps us fix it quickly.
+</p>
+
+</div>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
