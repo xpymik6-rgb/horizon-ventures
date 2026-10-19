@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CQL Search alternative for Confluence Cloud before Connect ends</title>
+<meta name="description" content="CQL Search runs on Connect, last updated July 2024. Connect support ends 31 January 2027. The native and app routes that replace it, and how to move.">
+<meta property="og:title" content="CQL Search alternative for Confluence Cloud">
+<meta property="og:description" content="What replaces CQL Search when Connect support ends on 31 January 2027, native routes first.">
+<link rel="canonical" href="https://horizonventures.app/docs/cql-search-alternative.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "CQL Search alternative for Confluence Cloud before Connect ends",
+   "description": "CQL Search runs on Connect and was last updated in July 2024. Connect support ends on 31 January 2027. The native and app routes that replace it, and how to move your saved queries.",
+   "url": "https://horizonventures.app/docs/cql-search-alternative.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-19",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Will CQL Search stop working?",
+     "acceptedAnswer": {"@type": "Answer", "text": "CQL Search is built on Atlassian Connect and its last release was in July 2024. Atlassian ends support for Connect on 31 January 2027, and says breakages will increase after that. Unless the vendor moves it to Forge, expect the macro to degrade rather than switch off on a single day."}},
+    {"@type": "Question", "name": "Can Confluence Cloud embed CQL search results natively?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Partly. The filter by label macro builds a CQL query from a form and puts a live list on a page, but its dates are fixed dates, not periods. The search results macro runs a query but belongs to the legacy editor that is being retired. The Live Search macro is a search box, not a saved list."}},
+    {"@type": "Question", "name": "How do I find the pages that use CQL Search?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Open one page that uses it, note the macro name in the editor, then run a CQL query with macro = \"that-name\" through the REST API. The result is your migration list."}},
+    {"@type": "Question", "name": "Which apps replace CQL Search?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Canned Search for Confluence (CQL utilities, reports and bulk moves), Search Results Macro+ (a configurable results macro) and Smart Search (live lists built from dropdowns, CQL optional, relative dates). All three run on Forge."}}
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Looking for a CQL Search alternative</h1>
+    <p class="sub">CQL Search puts the results of a Confluence query on a page. It runs on a platform Atlassian stops supporting on 31 January 2027. Here is what replaces it, starting with what Confluence already does for free.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> CQL Search is a Connect app with around 980 installations, and its last release was on 11 July 2024. Atlassian ends support for Connect on <strong>31 January 2027</strong> and warns that breakages will grow after that date. For a live list on a page, the native <strong>filter by label</strong> macro covers most simple queries, except anything with a relative date such as "not updated for 180 days". For those, or for a query you want to keep writing in CQL, a Forge app is the replacement: Canned Search, Search Results Macro+ or Smart Search.</p>
+
+  <h2>What is happening to CQL Search</h2>
+
+  <p>Connect is the older way Atlassian apps were built: the app runs on its vendor's servers and talks to your site over the network. Forge is the newer one, where the app runs inside Atlassian's own infrastructure. Since March 2026 Connect apps can no longer ship updates, and Atlassian moved the end of support from December 2026 to 31 January 2027.</p>
+
+  <p>Nothing announces itself on that date. Connect apps degrade: a macro fails on some pages, then on more of them, then shows an error box where the list used to be. The pages that depend on a saved query are usually dashboards and indexes that people open every day, so this is noticed quickly, just not in advance.</p>
+
+  <p>If the vendor ships a Forge version, the problem goes away. The way to check is on the app's Marketplace page: a release dated 2026 and the "Runs on Atlassian" badge mean it has moved. As of October 2026 CQL Search shows neither.</p>
+
+  <h2>What Confluence does natively</h2>
+
+  <h3>Filter by label: the closest native replacement</h3>
+  <p>The name undersells it. Labels are only the first filter; you can add space, title, text, creator, contributor, type, child pages and dates, and the macro assembles the CQL behind the form. The result is a live list on the page, which is most of what CQL Search was used for. Multiple values in one filter mean OR, the same filter added twice means AND, and a minus sign excludes.</p>
+  <p>Where it stops: dates are fixed dates. "Last modified before 1 March" works; "not modified for 180 days" does not exist, and a pinned date makes the list wrong a week later. Queries that lean on labels also inherit a habit problem, because the pages people forget to maintain are the pages nobody labelled.</p>
+
+  <h3>The search results macro</h3>
+  <p>It runs a CQL query and prints the hits, which is exactly CQL Search's job. It belongs to the legacy editor, whose deprecation started in January 2026, so it is a place to keep an old page alive, not to build anything new.</p>
+
+  <h3>Live Search, advanced search and automation</h3>
+  <p>The Live Search macro is a search box: it shows nothing until someone types, so it does not replace a saved list. Advanced search filters by space, contributor, label and last modified date, but its results stay in the search screen. A scheduled automation rule accepts CQL, including relative periods like <code>lastModified &lt; now("-180d")</code>, and can email page owners; it notifies, it does not put a list on a page.</p>
+
+  <h2>Apps that replace it</h2>
+
+  <table>
+    <tr><th>App</th><th>What it is</th><th>Fits when</th></tr>
+    <tr><td>Canned Search for Confluence (Akeles)</td><td>CQL utilities: saved searches, reports, navigation and bulk moves of pages. Around 230 installations, Cloud Fortified.</td><td>Your admins write CQL and also want bulk actions on the results.</td></tr>
+    <tr><td>Search Results Macro+ (Apps+)</td><td>A configurable search results macro for any page. Around 46 installations.</td><td>You want the old search results macro behaviour on the new editor.</td></tr>
+    <tr><td>Smart Search (ours)</td><td>Live page lists built from dropdowns, with relative dates; the generated CQL is visible, and you can write your own.</td><td>The people maintaining the lists do not write CQL, or the query depends on age.</td></tr>
+  </table>
+
+  <h2>How to move, and how long it takes</h2>
+
+  <ul>
+    <li><strong>Find every page that uses it.</strong> Open one page with the macro, note the macro name in the editor, then run <code>macro = "that-name"</code> as a CQL query through the REST API. That list is the whole job.</li>
+    <li><strong>Copy each query out while it still renders.</strong> The query lives inside the macro. If the macro stops loading, reading the parameters back gets harder, so collect them now into one page or spreadsheet.</li>
+    <li><strong>Sort by what the query needs.</strong> Plain filters by space, label or author go to filter by label for free. Anything with a relative date or a complex condition goes to an app.</li>
+  </ul>
+  <p>The arithmetic is gentle: a site with 30 pages using the macro is about 30 queries to copy and rebuild, five minutes each, so two or three hours in total. The cost is not the hours; it is doing it before the dashboards break rather than after.</p>
+
+  <h2>Where Smart Search fits</h2>
+
+  <p>Disclosure: I build Smart Search. It is a Forge macro that keeps a live list of pages on a page, across spaces, from conditions picked in dropdowns: space, labels, words in the text, author, and relative dates such as "not updated for 180 days". It shows in plain English what the list will contain before you save, and the CQL it generated is one click away; if you prefer to write the query yourself, you can. It does not do bulk moves or reports, which is where Canned Search is the better fit. It is free for up to 10 users. <a href="https://marketplace.atlassian.com/apps/1801528247/smart-search-live-page-lists-without-queries">Marketplace listing</a>.</p>
+
+  <p>If filter by label covers your queries, use that. It is free, native, and it will not be retired.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Will CQL Search stop working on 31 January 2027?</h3>
+  <p>Not necessarily that day. 31 January 2027 is when Atlassian ends Connect support; after it, the app gets no fixes when something on the Confluence side changes, and failures accumulate. Plan to have replaced it by then rather than waiting for the first broken page.</p>
+
+  <h3>Can I keep my queries exactly as they are?</h3>
+  <p>The CQL itself is standard Confluence Query Language, so a query written for CQL Search runs anywhere CQL is accepted: the REST API, automation rules, and apps that take raw CQL. What changes is the macro that displays the result.</p>
+
+  <h3>Is there any official migration tool?</h3>
+  <p>No. Atlassian's migration tooling moves content between sites; it does not convert one vendor's macro into another's. Each page is rebuilt by hand or by script.</p>
+
+  <h3>What if the vendor releases a Forge version after all?</h3>
+  <p>Then keep it. Check the listing for a 2026 release and the "Runs on Atlassian" badge before you start moving pages. See also our note on <a href="/docs/connect-end-of-life.html">what the Connect end of life means for admins</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

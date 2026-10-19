@@ -78,6 +78,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to put a Visio diagram into Confluence Cloud](https://horizonventures.app/docs/insert-visio-diagram-confluence.html): Confluence Cloud will not preview a .vsdx attachment: it downloads instead. The four routes onto the page and what each costs later.
 
+- [CQL Search alternative before Connect ends](https://horizonventures.app/docs/cql-search-alternative.html): CQL Search runs on Connect, which loses support on 31 January 2027: native and app replacements, and how to move saved queries.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

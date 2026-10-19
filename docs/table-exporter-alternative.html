@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Table Exporter for Confluence alternative before Connect ends</title>
+<meta name="description" content="Table Exporter for Confluence runs on Connect, last updated January 2024. Connect support ends 31 January 2027. Free and app routes to keep exporting tables to Excel and CSV.">
+<meta property="og:title" content="Table Exporter for Confluence alternative">
+<meta property="og:description" content="How to keep exporting Confluence tables to Excel and CSV when Connect support ends on 31 January 2027.">
+<link rel="canonical" href="https://horizonventures.app/docs/table-exporter-alternative.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Table Exporter for Confluence alternative before Connect ends",
+   "description": "Table Exporter for Confluence runs on Connect and was last updated in January 2024. Connect support ends on 31 January 2027. The free and app routes to keep exporting Confluence tables to Excel and CSV.",
+   "url": "https://horizonventures.app/docs/table-exporter-alternative.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-19",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Will Table Exporter for Confluence stop working?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It is a Connect app last released in January 2024, and Atlassian ends Connect support on 31 January 2027. Its vendor is active and publishes other apps on Forge, so check its Marketplace page for a 2026 release before replacing it."}},
+    {"@type": "Question", "name": "Can Confluence Cloud export a table to Excel without an app?",
+     "acceptedAnswer": {"@type": "Answer", "text": "There is no table export built in. Copy the table and paste it into Excel with Paste Special as text; for a simple table that is enough. Exporting the page to Word first handles merged cells more predictably. The REST API is the only free route that scales to many pages."}},
+    {"@type": "Question", "name": "Which apps export Confluence tables?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Table Filter, Charts & Spreadsheets from Stiltsoft exports a table to CSV once it is wrapped in its macro, among many other features. Table Export exports one table, a page, or every table in a space into one Excel workbook with merged cells expanded."}},
+    {"@type": "Question", "name": "What happens to merged cells when I export?",
+     "acceptedAnswer": {"@type": "Answer", "text": "A plain copy and paste shifts columns left in every row below a merge, which looks like data rather than an error. Any export you rely on should expand merged cells so that every row has the same number of columns."}}
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Looking for a Table Exporter alternative</h1>
+    <p class="sub">Table Exporter for Confluence turns tables on a page into CSV and Excel files. It runs on a platform Atlassian stops supporting on 31 January 2027. Here is how to keep exporting, free routes first.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Table Exporter for Confluence is a Connect app with around 630 installations, last released on 31 January 2024. Atlassian ends support for Connect on <strong>31 January 2027</strong>. Its vendor, Narva Software, is active and publishes other apps on Forge, so first check whether this one gets a Forge version. If it does not: for an occasional table, copy and paste into Excel works; for exports that are part of a regular process, Table Filter from Stiltsoft (if you already own it) or Table Export are the Forge replacements.</p>
+
+  <h2>What is happening to Table Exporter</h2>
+
+  <p>Connect apps run on their vendor's servers and talk to your site over the network; Forge apps run inside Atlassian's own infrastructure. Since March 2026 Connect apps cannot ship updates, and Atlassian moved the end of support from December 2026 to 31 January 2027, warning that breakages will increase afterwards.</p>
+
+  <p>This case is less clear than most abandoned apps. The vendor, formerly Bitwelt and now Narva Software, maintains several Forge apps and released updates to them in 2026. That is a good sign. What decides it is the listing itself: a release dated 2026 and the "Runs on Atlassian" badge mean the exporter has moved. As of October 2026 it shows neither. A second Connect app with a similar name, Table Exporter To CSV/Excel for Confluence, has not been updated since 2022.</p>
+
+  <h2>What Confluence does natively</h2>
+
+  <p>There is no built-in export for a single table. Confluence exports whole pages to PDF and Word, and space exports to CSV and XML carry page content, not tables as rows. The free routes that genuinely work:</p>
+
+  <ul>
+    <li><strong>Copy and paste.</strong> Select the table, copy, and in Excel use Paste Special as text, so Confluence's styling stays behind. For a simple rectangular table, this is the whole answer.</li>
+    <li><strong>Export the page to Word, then copy.</strong> A detour, but Word handles merged cells more predictably than the browser clipboard. Worth it for one complicated table.</li>
+    <li><strong>The REST API.</strong> The only free route that scales to many pages, if someone can script it. Tables produced by macros are stored as the macro, not as rows, so a script finds nothing where the browser shows a neat table.</li>
+  </ul>
+
+  <p>Where copy and paste goes wrong, in order of how much it costs: merged cells shift every column to the left in the rows below, and the file looks fine until someone sums the wrong column; numbers with separators and dates convert by the spreadsheet's locale, so day and month can swap silently; links inside cells arrive as text without the address. More detail in <a href="/docs/export-confluence-table-to-excel.html">how to get a Confluence table into Excel</a>.</p>
+
+  <h2>Apps that replace it</h2>
+
+  <table>
+    <tr><th>App</th><th>What it is</th><th>Fits when</th></tr>
+    <tr><td>Table Filter, Charts &amp; Spreadsheets (Stiltsoft)</td><td>A large table toolkit, around 15,500 installations. Wrap a table in its macro and export it to CSV, alongside filtering, charts and pivots.</td><td>You already own it, or you need filtering and charts as well.</td></tr>
+    <tr><td>Table Export (ours)</td><td>Export one table, every table on a page, or every table in a space into one Excel workbook or CSV, with merged cells expanded.</td><td>Exports are a recurring job across many pages, and you want no macro around the tables.</td></tr>
+  </table>
+
+  <h2>How to move, and how long it takes</h2>
+
+  <p>Table Exporter is used at the moment of export, not stored on pages the way a search macro is, so moving is mostly a change of habit. List the reports that depend on it (the monthly budget table, the asset register, the release log), try each one with the replacement, and compare the file with last month's. Check three things in the output: merged cells, dates, and numbers with separators. That is an hour of work, not a project.</p>
+
+  <p>The arithmetic that decides whether you need an app at all: one table is two minutes by hand, a page with six tables is fifteen, and a quarterly report pulling tables from forty pages is a working day every quarter. The first two do not need anything.</p>
+
+  <h2>Where Table Export fits</h2>
+
+  <p>Disclosure: I build Table Export. It runs on Forge, exports one table, all tables on a page, or every table in a space into a single workbook, expands merged cells so every row lines up, and keeps your data inside your Atlassian site. It does not filter, chart or pivot, which is where Table Filter is the better tool. It is free for up to 10 users. <a href="https://marketplace.atlassian.com/apps/212222352/table-export-whole-space-to-excel-in-one-click">Marketplace listing</a>.</p>
+
+  <p>If you export a table now and then, copy and paste is fine. Keep it.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Will Table Exporter stop working on 31 January 2027?</h3>
+  <p>That is when Connect support ends, not a switch-off. After it, nothing gets fixed when Confluence changes, and failures pile up. Unless the vendor moves it to Forge, plan to have an alternative tested before then.</p>
+
+  <h3>Do I lose anything stored on my pages?</h3>
+  <p>No. Your tables are ordinary Confluence content. An exporter reads them; it does not own them. Removing the app leaves every table where it was.</p>
+
+  <h3>CSV or Excel?</h3>
+  <p>Excel when people will open the file directly: it keeps sheets, and with a good export, numbers and dates stay numbers and dates. CSV when the file feeds another system, which usually wants one plain table.</p>
+
+  <h3>We are on Data Center. Does this apply?</h3>
+  <p>No. Connect end of support concerns Cloud apps. See <a href="/docs/connect-end-of-life.html">what the Connect end of life means for admins</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
