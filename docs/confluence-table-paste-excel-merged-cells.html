@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why a Confluence table breaks when pasted into Excel</title>
+<meta name="description" content="Pasting a Confluence table into Excel creates random merged cells, turns 007 into 7, long IDs into 1.23E+18 and 1-2 into a date. We tested why, and which fixes actually work.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-table-paste-excel-merged-cells.html">
+<meta property="og:title" content="Why a Confluence table breaks when pasted into Excel">
+<meta property="og:description" content="The random merged cells come from multi-line cells. A tested walkthrough of what Excel does to a pasted Confluence table, and how to stop it.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Why a Confluence table breaks when pasted into Excel",
+   "description": "Random merged cells, lost leading zeros, long IDs in scientific notation and values turned into dates: what Excel does to a pasted Confluence table, tested, and which fixes work.",
+   "url": "https://horizonventures.app/docs/confluence-table-paste-excel-merged-cells.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-19",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Why do cells merge randomly when I paste a Confluence table into Excel?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Because some cells contain more than one line or paragraph. Excel splits each line into its own row, then merges every other cell in that row vertically to keep the table aligned. The merges look random, but each one sits next to a multi-line cell."}},
+    {"@type": "Question", "name": "Why did 007 become 7 after pasting into Excel?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Excel converts anything that looks like a number into a number and drops the leading zeros. In Excel for Microsoft 365 and Excel 2024 you can switch this off under File, Options, Data, Automatic Data Conversion."}},
+    {"@type": "Question", "name": "Why did a long order number turn into 1.23E+18?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Excel keeps only 15 significant digits of a number. A 19-digit ID is stored as a number, shown in scientific notation, and every digit after the 15th becomes zero. The digits are lost, not just hidden."}},
+    {"@type": "Question", "name": "Does formatting the column as Text before pasting help?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not with a normal paste. In our test the pasted HTML brought its own formatting, and 007 still became 7 in a column formatted as Text. Format as Text helps when you type or paste plain text, not when you paste a table from a browser."}},
+    {"@type": "Question", "name": "Is there a way to export a Confluence table without these problems?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Confluence Cloud has no built-in single-table export. Either unmerge and clean the table before copying, or use an export app that writes a file Excel reads without guessing: line breaks kept inside the cell, codes and long IDs marked as text, real numbers marked as numbers."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Why a Confluence table breaks when pasted into Excel</h1>
+    <p class="sub">Random merged cells, codes that lose their zeros, order numbers in scientific notation, ranges that turn into dates. None of it is random. We pasted a test table into Excel and watched each step.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> The "random" merged cells come from cells that hold more than one line. Excel turns every line into its own row and then merges the neighbouring cells to keep the table aligned. The other damage comes from Excel guessing types: <code>007</code> becomes 7, a 19-digit ID loses everything after the 15th digit, and <code>1-2</code> becomes a date. Unmerge and flatten the multi-line cells before copying, or export the table to a file that tells Excel what each cell is.</p>
+
+  <p>The question has been sitting on the Atlassian Community for years under titles like <a href="https://community.atlassian.com/forums/Confluence-questions/unable-to-get-very-large-confluence-tables-out-into-excel-cells/qaq-p/2395308">"unable to get very large Confluence tables out into Excel, cells will randomly merge"</a>. Here is what is going on.</p>
+
+  <h2>The test</h2>
+
+  <p>We put a small table on the clipboard exactly the way a browser hands it over when you copy from a Confluence page: as HTML, with one cell spanning two rows, one spanning two columns, and one cell holding two paragraphs. Then we pasted it into a blank sheet in desktop Excel with a plain Ctrl+V.</p>
+
+  <table>
+    <thead><tr><th>In Confluence</th><th>What Excel made of it</th></tr></thead>
+    <tbody>
+      <tr><td>A cell with two paragraphs</td><td>Three rows: the first line, an empty row, the second line. Every other cell in that row merged vertically across all three.</td></tr>
+      <tr><td><code>007</code></td><td>7, stored as a number</td></tr>
+      <tr><td><code>1234567890123456789</code></td><td>1.23E+18, stored as 1234567890123450000. The last four digits are gone.</td></tr>
+      <tr><td><code>1-2</code> and <code>3/4</code></td><td>Dates: 1 February and 3 April with day-first regional settings, 2 January and 4 March with month-first ones</td></tr>
+      <tr><td><code>1200.50</code> with comma-decimal settings</td><td>Text, so <code>SUM</code> skips it, while <code>80</code> in the same column is a number</td></tr>
+      <tr><td>A merged "Total" cell</td><td>A merged cell in Excel too</td></tr>
+    </tbody>
+  </table>
+
+  <p>Then we tried to sort the result by amount. Excel refused: <em>"To do this, all the merged cells need to be the same size."</em> That message is usually where people give up and start fixing rows by hand.</p>
+
+  <div class="note">
+    <p>The worst row is not the one that looks broken. The ID that lost four digits looks like a perfectly normal number. Nobody notices until a lookup against the real system finds nothing.</p>
+  </div>
+
+  <h2>Why it works this way</h2>
+
+  <p>When you copy from a web page, the clipboard carries HTML. Excel reads that HTML the same way it reads an old web-page workbook, and two of its rules cause all the trouble.</p>
+
+  <p>First, a line break inside a cell, whether a <code>&lt;br&gt;</code> or a second paragraph, means "new row" to Excel's HTML reader. To keep the other columns lined up, Excel merges them across the new rows. People have been reporting this in Microsoft's forum <a href="https://learn.microsoft.com/en-us/answers/questions/5045569/excel-breaking-cell-value-into-multiple-rows">since at least 2020</a>, for tables copied from email as well as from the web.</p>
+
+  <p>Second, Excel guesses the type of every value. Microsoft documents the conversions it applies when you paste external data: it removes leading zeros, keeps only the first 15 digits of long numbers, reads digits around the letter E as scientific notation, and turns date-like strings into dates. See <a href="https://support.microsoft.com/en-us/excel/set-automatic-data-conversions">Set automatic data conversions</a>.</p>
+
+  <h2>What Confluence itself offers</h2>
+
+  <p>Confluence Cloud exports whole pages to PDF and Word, and whole spaces to PDF, CSV, HTML or XML. The space CSV is a dump of content for moving between systems, <a href="/docs/confluence-space-export-explained.html">not a spreadsheet of your tables</a>. There is no export for a single table. So for most people the clipboard is the route, and the fixes below are about making the clipboard behave.</p>
+
+  <h2>Fixes that work, and one that does not</h2>
+
+  <h3>1. Flatten multi-line cells before copying</h3>
+  <p>In the Confluence editor, replace line breaks inside cells with a separator such as "; " and unmerge spanned cells, repeating the value in each cell. Then copy. Tedious, but it removes the cause of the merges completely. On a copy of the page, not the original, if other people rely on its layout.</p>
+
+  <h3>2. Turn off Excel's automatic conversions</h3>
+  <p>In Excel for Microsoft 365 and Excel 2024: <strong>File → Options → Data → Automatic Data Conversion</strong>, on a Mac <strong>Excel → Preferences → Edit</strong>. Untick the options you do not want. This is per computer, so everyone who pastes needs to do it, and older Excel versions do not have the setting at all.</p>
+
+  <h3>3. Route a multi-line table through Google Sheets</h3>
+  <p>The accepted answer in that Microsoft thread is to paste into Google Sheets first and copy from there into Excel; according to the people who confirmed it, Sheets keeps the lines inside one cell. We have not tested this route ourselves, but for a one-off it is quick to try.</p>
+
+  <h3>4. Paste into a single cell in edit mode</h3>
+  <p>For one stubborn cell: double-click it, or press F2, and paste. The text stays in that cell. Useless for a whole table, handy for the last two cells that went wrong.</p>
+
+  <h3>What does not help: formatting the column as Text first</h3>
+  <p>This is the most common advice, and with a normal paste it did nothing in our test. We set the whole sheet to Text, pasted, and still got 7, 1.23E+18 and dates. The pasted HTML brings its own formatting and overrides yours. Format as Text works for typing and for plain-text imports, not for a table pasted from a browser.</p>
+
+  <h2>The arithmetic</h2>
+
+  <p>Take a 120-row status table where a third of the rows have a multi-line "Notes" cell. After a plain paste you have roughly 200 rows, about 40 of them blank or half-empty, and a block of merged cells that blocks sorting and filtering. Unmerging, deleting the empty rows and pulling the notes back together is half an hour of careful work, and the IDs that lost digits cannot be repaired at all: you have to copy them again from the source. If the table is exported every month, that is six hours a year spent cleaning the same mess.</p>
+
+  <p>If your table is short, has no line breaks inside cells and no codes with leading zeros, none of this applies. Copy, paste, done. Take the free route.</p>
+
+  <h2>What an export tool has to get right</h2>
+
+  <p>An export file can tell Excel what each cell is instead of letting it guess: keep line breaks inside the cell, mark codes, long IDs and date-like ranges as text, mark real numbers as numbers so sums work under any regional settings, and repeat merged values so every row has the same columns.</p>
+
+  <p><strong>Disclosure:</strong> I build table export apps for Confluence. While writing this article I ran the same test against our own Excel file and found it had the line-break and type problems too, so we fixed them. The free <a href="/docs/table-export-lite/">Table Export Lite</a> now writes the file the way described above; it exports any single table on a page to Excel or CSV, runs inside Atlassian's infrastructure, and is in Marketplace review as I write this. For every table on a page, or every table in a space in one workbook, there is the full <a href="/table-export.html">Table Export</a>, free for teams up to ten people.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Why do cells merge randomly when I paste a Confluence table into Excel?</h3>
+  <p>Because some cells contain more than one line or paragraph. Excel splits each line into its own row and merges the other cells in that row to keep things aligned. Look next to any merged block: there is a multi-line cell.</p>
+
+  <h3>Why did 007 become 7?</h3>
+  <p>Excel treats it as a number and drops the zeros. Turn off "Remove leading zeros and convert to number" under Automatic Data Conversion, or make sure the value arrives marked as text.</p>
+
+  <h3>Why did a long order number turn into 1.23E+18?</h3>
+  <p>Excel stores at most 15 significant digits. A longer number is rounded, and the digits after the 15th become zeros. Widening the column will not bring them back.</p>
+
+  <h3>Does Paste Special → Text avoid all this?</h3>
+  <p>It avoids the formatting and the merged cells, which is why our <a href="/docs/export-confluence-table-to-excel.html">guide to getting a table into Excel</a> recommends it for simple tables. The type guessing still applies to plain text, so codes and long IDs can still be converted.</p>
+
+  <h3>Does Google Sheets have the same problems?</h3>
+  <p>Users in Microsoft's forum report that Sheets keeps multi-line cells in one cell, which is why it works as a stepping stone. Sheets also guesses types for numbers and dates, so check codes and IDs there too.</p>
+
+  <p class="more">Related: <a href="/docs/export-confluence-table-to-excel.html">how to get a Confluence table into Excel</a>, <a href="/docs/sum-column-confluence-table.html">how to sum a column in a Confluence table</a>, and <a href="/docs/table-exporter-alternative.html">what to use now that Table Exporter is ending</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
