@@ -109,7 +109,7 @@
   </tr>
   <tr>
     <td>"Runs on Atlassian" badge</td>
-    <td class="good">Present — it is on Forge, safe</td>
+    <td class="good">Present: it is on Forge, and nothing leaves your site</td>
     <td class="bad">Absent and no recent releases</td>
   </tr>
 </table>
@@ -118,6 +118,26 @@
   <b>The single most useful signal:</b> a release in 2026. It means somebody is
   still there. An app last touched in 2023 with no Forge version is not going to be
   rescued in the time left.
+</div>
+
+<div class="note">
+  <b>The badge is not the platform test.</b> "Runs on Atlassian" is a subset of
+  Forge, not a synonym for it: one of its conditions is that the app does not send
+  your data out, so a Forge app that declares external domains carries no badge and
+  is still unaffected by the Connect deadline. Read the two signals separately. The
+  release date answers "is this still maintained and off Connect", because Connect
+  apps have not been able to ship updates since March 2026. The badge answers a
+  different question: whether anything of yours leaves your site.
+</div>
+
+<div class="note">
+  <b>Also check the version on your own site, not only the listing.</b> App updates
+  normally apply silently, but an update that asks for new permissions waits for an
+  admin. In Atlassian Administration, under Site settings, Connected apps shows an
+  UPDATE status next to such an app; View app details, then Update, shows the
+  changed capabilities before you accept. So an app can look at risk on your site
+  while its listing is already Forge. Clear those pending updates before you start
+  shopping for replacements.
 </div>
 
 <h3>3. Ask the vendor, once</h3>
