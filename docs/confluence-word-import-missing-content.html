@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Confluence's Word import drops text and images</title>
+<meta name="description" content="Imported a Word file into Confluence Cloud and got only the title, placeholders instead of pictures, or images at the wrong size? The known causes, Atlassian's own workarounds, and what to fix in the document first.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-word-import-missing-content.html">
+<meta property="og:title" content="Why Confluence's Word import drops text and images">
+<meta property="og:description" content="Only the title came through, images became placeholders, pictures arrived at full size. Known causes, Atlassian's workarounds, and what to check in the .docx.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Why Confluence's Word import drops text and images",
+   "description": "The known reasons Confluence Cloud's Import from Word loses body text, images and shapes, Atlassian's documented workarounds, and what to fix in the .docx before importing.",
+   "url": "https://horizonventures.app/docs/confluence-word-import-missing-content.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-22",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Why does Confluence import only the title of my Word document?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Atlassian has not published a cause, and the Community thread reporting it since March 2026 has no official answer. Check whether the body sits inside content controls or text boxes, which is typical for documents made from templates: remove the content controls in Word (the text stays), save a copy and import that. If the copy still comes in empty, report it to Atlassian support with the file."}},
+    {"@type": "Question", "name": "Why do some images become placeholders after a Word import?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Confluence Cloud imports only BMP, CUR, DDS, GIF, ICO, JPG, PNG, PSD, SVG and WEBP images, and replaces shapes with placeholders. Charts pasted from Excel are usually embedded charts, and pictures pasted from Excel or Visio are often EMF or WMF, none of which is on the list. Save them as PNG with Save as Picture and re-insert them before importing."}},
+    {"@type": "Question", "name": "Why does the import fail with many images?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Atlassian tracks this as CONFCLOUD-76949: documents with many images can fail partially, with different images missing on each attempt. Atlassian's suggested workaround is to split the document into smaller ones, import them separately, and combine them on one page."}},
+    {"@type": "Question", "name": "Why are inline images the wrong size after importing from Word?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Atlassian tracks this as CONFCLOUD-82098: images set to inline in Word can import at their original size. The only known workaround is to resize and realign them by hand after import."}},
+    {"@type": "Question", "name": "What are the size limits for importing Word into Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "According to Atlassian's documentation: 5 MB for the document text excluding attachments, 100 MB for attachments, and for bulk imports up to 30 files, 50 MB in total, with no single file over 10 MB."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Why Confluence's Word import drops text and images</h1>
+    <p class="sub">The page comes in with only a title. Or the text is there but half the pictures are grey placeholders. Or every screenshot arrives at full size and breaks the layout. Here is what is known about each, what Atlassian itself recommends, and what to fix in the document before you try again.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> There are four separate problems that look alike. Images in formats Confluence does not support, and all Word shapes and SmartArt, become placeholders by design. Documents with many images can fail partially, which Atlassian tracks as a known issue. Inline images can arrive at their original size, also a known issue. And since March 2026 people report imports that bring in only the title, with no official explanation yet. Most of it is fixed in the .docx, before importing, in a few minutes.</p>
+
+  <h2>What the built-in import accepts</h2>
+
+  <p>Confluence Cloud imports a .docx as a new page, keeping headings, lists, tables and images. Atlassian's <a href="https://support.atlassian.com/confluence-cloud/docs/import-content-into-confluence-cloud/">import documentation</a> sets the limits:</p>
+
+  <table>
+    <thead><tr><th>Limit</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Document text, without attachments</td><td>5 MB</td></tr>
+      <tr><td>Attachments (images) in the document</td><td>100 MB</td></tr>
+      <tr><td>Bulk import</td><td>Up to 30 files, 50 MB in total, no file over 10 MB</td></tr>
+      <tr><td>Image formats</td><td>BMP, CUR, DDS, GIF, ICO, JPG, PNG, PSD, SVG, WEBP</td></tr>
+      <tr><td>Shapes drawn in Word</td><td>Replaced with placeholders</td></tr>
+    </tbody>
+  </table>
+
+  <p>The last two rows explain most "missing image" reports. Anything outside the format list is replaced with placeholder text, and so is every shape.</p>
+
+  <h2>Problem 1: images became placeholders</h2>
+
+  <p>The usual culprit is not a photo but a pasted object. A chart pasted from Excel usually lands in Word as an embedded chart rather than a picture, and a range pasted as a picture or a diagram copied from Visio is often stored as an EMF or WMF vector image. None of these is on Atlassian's list. The same goes for shapes, arrows and SmartArt drawn directly in Word.</p>
+
+  <p>The fix is in Word, before importing. Right-click the chart, diagram or SmartArt and choose <strong>Save as Picture</strong>, save it as PNG, then delete the original and insert the PNG in its place. Microsoft documents this for Word for Microsoft 365 in <a href="https://support.microsoft.com/office/graphics-visuals/save-a-picture-or-other-graphic-as-a-separate-file">Save a picture or other graphic as a separate file</a>. For a document with ten diagrams that is ten minutes, and you know exactly what will arrive.</p>
+
+  <h2>Problem 2: many images, different ones missing each time</h2>
+
+  <p>Atlassian tracks this as <a href="https://jira.atlassian.com/browse/CONFCLOUD-76949">CONFCLOUD-76949</a>: a document with many images imports partially with "Some images couldn't be imported", and the reporter saw different images fail on each attempt with the same file. The ticket is unresolved, and Atlassian's suggested workaround is to split the document into smaller ones, import them one by one, and combine the results on a single page.</p>
+
+  <p>If the document is long anyway, splitting it is often what you want: a 60-page manual reads better as a page tree than as one page. We wrote up <a href="/docs/split-word-document-confluence-pages.html">how to split a Word document into Confluence pages</a> separately.</p>
+
+  <h2>Problem 3: inline images at the wrong size</h2>
+
+  <p>Tracked as <a href="https://jira.atlassian.com/browse/CONFCLOUD-82098">CONFCLOUD-82098</a>: images set to "In line with text" in Word sometimes import at their original pixel size instead of the size shown in the document. It sits in Atlassian's long-term backlog, and the only workaround listed is to resize and realign the images by hand after import. Before importing, it helps to crop and resize screenshots in an image editor rather than in Word, so the original size is already the size you want.</p>
+
+  <h2>Problem 4: only the title came through</h2>
+
+  <p>Since March 2026 there is a Community thread, <a href="https://community.atlassian.com/forums/Confluence-questions/Urgent-Confluence-Import-function-broken-Pls-fix/qaq-p/3207198">"[Urgent] Confluence Import function broken"</a>, where documents that used to import fine now produce a page with the title and nothing else. A reply from April 2026 reports the same after weeks of working imports. There is no official answer in the thread, and Atlassian has not published a cause. So what follows is not a diagnosis of Atlassian's converter, which we cannot see, but the cheap checks to run on the document.</p>
+
+  <ul>
+    <li><strong>Content controls.</strong> Documents made from corporate templates often keep whole sections inside content controls, the boxes with "Click here to enter text". A converter that reads only plain paragraphs skips them, section headings included. In Word, right-click each control and choose <strong>Remove Content Control</strong>: the box goes, the text stays. If the option is missing, the control is locked; unlock it in the control's Properties on the Developer tab.</li>
+    <li><strong>Text boxes.</strong> Text inside a text box is not part of the normal flow. Move it into ordinary paragraphs.</li>
+    <li><strong>A fresh copy.</strong> Save the cleaned document as a new .docx, choosing the ordinary "Word Document" type, and import the copy.</li>
+  </ul>
+
+  <p>If a clean copy still comes in empty, the problem is on Atlassian's side, and a support ticket with the file attached is the way to get it looked at.</p>
+
+  <div class="note">
+    <p>We know the content-control case from our own code. While preparing this article we ran a test document through our importer and found it skipped sections inside content controls in exactly this way. We fixed it, but it shows how easily a converter drops a section without any error.</p>
+  </div>
+
+  <h2>The arithmetic</h2>
+
+  <p>Take a 40-page policy with 25 images, eight of them charts pasted from Excel. A plain import gives you eight placeholders, possibly a partial failure on the images, and screenshots at full width. Finding which picture belongs where, re-exporting the charts and resizing the rest on the page takes an hour or more. The same work done in Word before importing takes about fifteen minutes, because in Word you can still see what each picture was.</p>
+
+  <p>If your document is short, uses real heading styles and has ordinary JPG or PNG pictures, the built-in import handles it. Use it, it is free.</p>
+
+  <h2>Where a separate importer helps</h2>
+
+  <p><strong>Disclosure:</strong> I build <a href="/word-import.html">Word Import &amp; Page Tree Builder for Confluence</a>. It reads the .docx in your browser and splits it by headings into a page tree, which the built-in import does not do. It takes sections out of content controls and text boxes, keeps images in their place in the text and in table cells, keeps links, and runs inside Atlassian's infrastructure, so the file is not sent to us. It is free for teams up to ten people.</p>
+
+  <p>It has the same hard limits as anyone: browsers cannot display EMF or WMF, so convert those pictures to PNG first, and SmartArt needs Save as Picture whichever importer you use.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Why does Confluence import only the title of my Word document?</h3>
+  <p>No official cause has been published. Check content controls and text boxes first, remove the controls in Word, save a fresh copy and import that. If it still fails, open a ticket with Atlassian and attach the file.</p>
+
+  <h3>Why do some images become placeholders?</h3>
+  <p>Their format is not supported, or they are shapes. Pictures pasted from Excel and Visio are often EMF or WMF. Save them as PNG and re-insert them.</p>
+
+  <h3>Can I import into an existing page?</h3>
+  <p>Not with the built-in import, which always creates a new page. We covered <a href="/docs/import-word-existing-confluence-page.html">the workarounds for importing into an existing page</a>.</p>
+
+  <h3>Are comments and tracked changes imported?</h3>
+  <p>Do not count on it. Accept or reject tracked changes and delete comments before importing, so the page shows exactly the text you agreed on.</p>
+
+  <p class="more">Related: <a href="/docs/import-word-into-confluence.html">how to import a Word document into Confluence</a>, <a href="/docs/split-word-document-confluence-pages.html">splitting a Word document into pages</a>, and <a href="/docs/import-google-doc-into-confluence.html">importing a Google Doc</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

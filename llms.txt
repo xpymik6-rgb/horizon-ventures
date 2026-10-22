@@ -84,6 +84,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [Why a Confluence table breaks when pasted into Excel](https://horizonventures.app/docs/confluence-table-paste-excel-merged-cells.html): Random merged cells, lost leading zeros, long IDs in scientific notation and ranges turned into dates: tested causes and fixes.
 
+- [Why Confluence's Word import drops text and images](https://horizonventures.app/docs/confluence-word-import-missing-content.html): Only the title came through, images became placeholders or arrived at full size: known causes, Atlassian's workarounds, what to fix in the .docx.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
