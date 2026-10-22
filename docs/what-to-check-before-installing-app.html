@@ -132,7 +132,9 @@
 
   <p>Some apps only display what already exists in Confluence: a diagram that is an attachment on your page, a list built from your pages. Uninstalling removes the macro and leaves your content exactly as it was. The risk is a page that looks broken until somebody edits it, and nothing more.</p>
 
-  <p>Other apps store their own data — configurations, entities, records that live only inside the app. Uninstalling takes that with it. That can be fine, as long as you know it in advance and know what export you get. It is a bad thing to discover during a licence renewal argument.</p>
+  <p>Other apps store their own data: configurations, entities, records that live only inside the app. Uninstalling cuts the app off from that data. That can be fine, as long as you know it in advance and know what export you get. It is a bad thing to discover during a licence renewal argument.</p>
+
+  <p>Cut off is not the same as destroyed. For a Forge app that keeps data in Atlassian's hosted storage, uninstalling soft-deletes the data, Atlassian keeps it for its retention period, and a reinstall within 21 days can be relinked to it, according to Atlassian's <a href="https://developer.atlassian.com/platform/forge/storage-reference/hosted-storage-data-lifecycle/">hosted storage data lifecycle</a>. An accidental uninstall is therefore recoverable for a few weeks, and a compliance review should ask how long the retention actually is instead of assuming the data is gone the moment someone clicks Uninstall. (Thanks to a reader on dev.to for pointing this out.)</p>
 
   <h2>4. The price at the size you will actually be</h2>
 
