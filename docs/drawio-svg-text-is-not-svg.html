@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>"Text is not SVG - cannot display": draw.io labels</title>
+<meta name="description" content="Why an exported draw.io SVG shows cut-off labels, 'Text is not SVG - cannot display' or dead links, what foreignObject has to do with it, and the export settings that fix it, including for labels with links.">
+<link rel="canonical" href="https://horizonventures.app/docs/drawio-svg-text-is-not-svg.html">
+<meta property="og:title" content="&quot;Text is not SVG - cannot display&quot;: why draw.io labels break in SVG">
+<meta property="og:description" content="draw.io stores labels as HTML inside the SVG. Where that HTML is not rendered, you get truncated text and lost links. What to change in the export, and when it cannot be changed.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "\"Text is not SVG - cannot display\": why draw.io labels break in SVG",
+   "description": "Why exported draw.io SVGs show truncated labels, the 'Text is not SVG - cannot display' warning or dead links, and which export settings fix it.",
+   "url": "https://horizonventures.app/docs/drawio-svg-text-is-not-svg.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-22",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "What does 'Text is not SVG - cannot display' mean?",
+     "acceptedAnswer": {"@type": "Answer", "text": "draw.io stores most labels as HTML inside foreignObject elements of the SVG. A viewer that cannot or will not render that HTML falls back to a short plain-text copy of the label and shows this warning. The diagram is fine; the viewer is not rendering the HTML part."}},
+    {"@type": "Question", "name": "How do I export a draw.io diagram to SVG with real SVG text?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Select the shapes and, in the Text tab under Advanced, tick Convert Labels to SVG. Alternatively untick Formatted Text and Word Wrap for the selected shapes. Both produce native SVG text that any viewer can show."}},
+    {"@type": "Question", "name": "Why can't I convert some labels to SVG text?",
+     "acceptedAnswer": {"@type": "Answer", "text": "According to draw.io's documentation, labels containing tables, lists, links or elements with background colours cannot be converted, and the checkbox is disabled for them. A label with a link has to stay HTML, so it needs a viewer that renders foreignObject safely."}},
+    {"@type": "Question", "name": "Why do the links in my draw.io SVG not work in Confluence?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Confluence Cloud shows an attached SVG as a plain image, and images cannot have working links. Links in shape properties and links inside HTML labels are both lost. You need the diagram rendered as live SVG by a macro, either the draw.io app with the source file or an app that renders the exported SVG."}},
+    {"@type": "Question", "name": "Does Embed Fonts help?",
+     "acceptedAnswer": {"@type": "Answer", "text": "It helps when the text renders in the wrong font. It does not help when the label is not rendered at all, because the problem there is the foreignObject, not the font."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>"Text is not SVG - cannot display": why draw.io labels break in SVG</h1>
+    <p class="sub">The diagram looked perfect in draw.io. In the exported SVG the labels are cut off with three dots, a small warning sits at the bottom, and the links inside the labels do nothing. Here is why, and what to change.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> draw.io writes most labels as HTML inside <code>foreignObject</code> elements of the SVG, with a short plain-text copy next to each one as a fallback. Wherever that HTML is not rendered, you see the fallback: one line, cut off, no formatting, no links, plus the warning "Text is not SVG - cannot display". Fix it in the export with <strong>Convert Labels to SVG</strong>, or by turning off formatted text. Labels with links cannot be converted, so for those you need a viewer that renders the HTML.</p>
+
+  <h2>What is inside the file</h2>
+
+  <p>Open an exported <code>.svg</code> in a text editor and look at one shape. You will find a <code>&lt;switch&gt;</code> with two children: a <code>&lt;foreignObject&gt;</code> holding a few nested <code>&lt;div&gt;</code> elements with your label, its line breaks, bold text and links, and after it a plain <code>&lt;text&gt;</code> element with a shortened copy. A viewer that renders foreignObject shows the first; anything else falls through to the second.</p>
+
+  <p>draw.io documents this in <a href="https://www.drawio.com/doc/faq/svg-export-text-problems">Why text in exported SVG images may not display correctly</a>: it uses foreignObject "to allow complex HTML labels on shapes", and viewers that cannot render them show a shortened label and the "Text is not SVG - cannot display" message.</p>
+
+  <h2>Who renders it and who does not</h2>
+
+  <table>
+    <thead><tr><th>Where the SVG ends up</th><th>What you see</th></tr></thead>
+    <tbody>
+      <tr><td>Modern browser opening the file</td><td>Full labels, working links</td></tr>
+      <tr><td>Inkscape, some editors and converters</td><td>Fallback text, warning</td></tr>
+      <tr><td>Some tools that sanitize SVG for safety</td><td>Strip foreignObject entirely, because HTML inside an SVG can carry scripts, so you get the fallback</td></tr>
+      <tr><td>Confluence Cloud, SVG attached and shown on the page</td><td>Shown as a flat image: labels may look fine, but no link works</td></tr>
+    </tbody>
+  </table>
+
+  <p>The Confluence case is the most confusing, because the labels look right and only the clicks fail. That one is about how Confluence displays images, which we covered in <a href="/docs/confluence-svg-flat-image.html">why Confluence turns your SVG into a flat image</a>.</p>
+
+  <h2>Fixes in draw.io, from simplest</h2>
+
+  <h3>1. Convert Labels to SVG</h3>
+  <p>Select the shapes, open the <strong>Text</strong> tab, and under <strong>Advanced</strong> tick <strong>Convert Labels to SVG</strong>. The labels become native SVG text that every viewer shows. The catch, from draw.io's own documentation: "Labels containing tables, lists, links, or elements with background colours are not supported", and the checkbox is disabled for them.</p>
+
+  <h3>2. Turn off Formatted Text and Word Wrap</h3>
+  <p>Select all, then untick <strong>Formatted Text</strong> and <strong>Word Wrap</strong> in the Text tab. Plain labels are written as SVG text. You lose bold and colours inside labels and may need to add line breaks by hand.</p>
+
+  <h3>3. Embed Fonts</h3>
+  <p>Useful when the text shows up in the wrong typeface. It does nothing for labels that are not rendered at all: there the problem is the foreignObject, not the font.</p>
+
+  <h3>4. Through PDF</h3>
+  <p>draw.io also suggests exporting to PDF and converting that to SVG in a tool like Inkscape, which turns every label into real text or outlines. It works, and it is a lot of steps for a diagram that changes every month.</p>
+
+  <h3>What does not help</h3>
+  <p>The <code>svg-warning=0</code> URL parameter hides the warning. The labels stay broken.</p>
+
+  <div class="note">
+    <p>The trade-off people hit: a label with a link cannot be converted, and converting the rest gives a diagram where some labels are SVG text and the linked ones still depend on foreignObject. If links are the point of the diagram, conversion is not the answer.</p>
+  </div>
+
+  <h2>The arithmetic</h2>
+
+  <p>An architecture diagram with 40 shapes, a dozen of them linking to runbooks. Converting the plain labels takes a minute. Rewriting the twelve linked labels so they carry the link on the shape instead of inside the text takes about half an hour, and the next person who edits the diagram will put links back into labels, because that is the natural way to do it in draw.io. Choosing a viewer that renders the HTML safely is usually cheaper than fighting the format.</p>
+
+  <p>If your diagrams have no links in labels, Convert Labels to SVG is free and solves it. Use that.</p>
+
+  <h2>Showing these diagrams in Confluence with links working</h2>
+
+  <p>Two routes keep the links. The draw.io app for Confluence renders from the source file, so nothing is lost, at the price of the app. Or an app that renders the exported SVG as live SVG on the page.</p>
+
+  <p><strong>Disclosure:</strong> I build <a href="/clickable-svg.html">Clickable SVG for Confluence</a>, which does the second. Honest detail: until 22 October 2026 our own sanitizer removed foreignObject completely, for the safety reason above, so draw.io labels showed as the cut-off fallback and links inside labels were lost. It now keeps the HTML of the labels through an allowlist (text, formatting and links only; scripts, forms and frames are removed), so labels and their links come through. It runs inside Atlassian's infrastructure and is free for teams up to ten people.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>What does "Text is not SVG - cannot display" mean?</h3>
+  <p>The viewer did not render the HTML part of the labels and fell back to the plain-text copies. The diagram itself is fine.</p>
+
+  <h3>Why is the Convert Labels to SVG checkbox greyed out?</h3>
+  <p>The selected label contains a link, a list, a table or a background colour. draw.io cannot express those as plain SVG text.</p>
+
+  <h3>Why do links work when I open the SVG in a browser but not in Confluence?</h3>
+  <p>The browser renders the file as a live document. Confluence shows an attached SVG as an image, and an image cannot have clickable parts.</p>
+
+  <h3>Can I stop draw.io from creating foreignObject at all?</h3>
+  <p>In self-hosted or embedded draw.io, the editor configuration option <code>simpleLabels</code> makes it write plain labels. On the hosted editor, untick Formatted Text instead.</p>
+
+  <p class="more">Related: <a href="/docs/clickable-diagram-confluence.html">how to make a diagram clickable in Confluence Cloud</a>, <a href="/docs/confluence-svg-flat-image.html">why Confluence turns your SVG into a flat image</a>, and <a href="/docs/diagrams-in-confluence-compared.html">diagram tools in Confluence compared</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
