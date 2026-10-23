@@ -92,6 +92,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to find unpublished drafts in Confluence Cloud](https://horizonventures.app/docs/find-unpublished-drafts-confluence.html): Where Confluence Cloud shows a page you never published, and why search and CQL will not find it.
 
+- [How to see your starred pages in Confluence Cloud](https://horizonventures.app/docs/confluence-starred-pages.html): Where Confluence Cloud lists your starred pages, the Ctrl+Alt+F shortcut and the CQL query for them.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

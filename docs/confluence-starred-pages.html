@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to see your starred pages in Confluence Cloud</title>
+<meta name="description" content="Where Confluence Cloud lists the pages you starred, how to star a page (including the Ctrl+Alt+F shortcut), the CQL query for starred pages, and why you cannot see a colleague's stars.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-starred-pages.html">
+<meta property="og:title" content="How to see your starred pages in Confluence Cloud">
+<meta property="og:description" content="Starred in the sidebar, the full list at /wiki/home/starred, the star shortcut and the CQL query. Checked on a live Confluence Cloud site.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to see your starred pages in Confluence Cloud",
+   "description": "Where Confluence Cloud lists starred pages, how to star a page, and the CQL query for starred pages.",
+   "url": "https://horizonventures.app/docs/confluence-starred-pages.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-23",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "See your starred pages in Confluence Cloud",
+   "step": [
+    {"@type": "HowToStep", "name": "Open Starred", "text": "On the Confluence home, open Starred in the left sidebar. It lists your starred pages."},
+    {"@type": "HowToStep", "name": "Open the full list", "text": "Click View all starred items at the bottom of the menu, or go to /wiki/home/starred, to get the full list with a filter box."},
+    {"@type": "HowToStep", "name": "Star more pages", "text": "On a page, open the More actions menu (three dots) and choose Star, or press Ctrl+Alt+F."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Where are my starred pages in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Open Starred in the left sidebar of the Confluence home. The full list with a filter is at https://your-site.atlassian.net/wiki/home/starred."}},
+    {"@type": "Question", "name": "How do I star a page in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Open the page's More actions menu (three dots) and choose Star, or press Ctrl+Alt+F. Pages can also be starred from the Recent list."}},
+    {"@type": "Question", "name": "Can I see which pages a colleague has starred?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Stars are personal, and Atlassian documents that the favourite condition in CQL only returns the logged-in user's favourites."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to see your starred pages in Confluence Cloud</h1>
+    <p class="sub">Stars are the closest thing Confluence has to bookmarks. Here is where they are, how to add them without hunting for an icon, and how to get them as a list you can reuse. Checked on a live Confluence Cloud site.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> On the Confluence home, open <strong>Starred</strong> in the left sidebar. It lists the pages you starred. At the bottom, <strong>View all starred items</strong> opens the full list with a filter box, at <code>https://your-site.atlassian.net/wiki/home/starred</code>. To star a page, open its <strong>More actions</strong> menu (three dots) and choose <strong>Star</strong>, or press <strong>Ctrl+Alt+F</strong>.</p>
+
+  <h2>Where the list is</h2>
+
+  <p>The Starred menu in the sidebar is the quick view: click it and your starred pages drop down right there, without leaving the page you are on.</p>
+
+  <p>Spaces have their own stars. Starred spaces appear in a separate section of the same sidebar, not in the Starred pages menu.</p>
+
+  <p>For a list you can bookmark in the browser or share with yourself on another device, use the full page at <code>/wiki/home/starred</code>. Typing in its search box narrows the list as you type.</p>
+
+  <h2>How to star a page</h2>
+
+  <ul>
+    <li>On the page: <strong>More actions</strong> (three dots at the top right) &rarr; <strong>Star</strong>.</li>
+    <li>Keyboard: <strong>Ctrl+Alt+F</strong> on the page.</li>
+    <li>From the full <strong>Recent</strong> list: each row has its own Star button, handy when you want to star several pages you visited today.</li>
+  </ul>
+
+  <h2>Starred pages as a query</h2>
+
+  <p>The same list is available through CQL, the query language behind Confluence search:</p>
+
+  <pre><code>favourite = currentUser()</code></pre>
+
+  <p>The American spelling <code>favorite</code> works too. On our test site the query returned exactly the page we had starred a minute earlier. You can combine it with other conditions, for example your starred pages in one space that nobody has edited for half a year:</p>
+
+  <pre><code>favourite = currentUser() AND space = DEV AND lastmodified &lt; now("-26w")</code></pre>
+
+  <p>More ready-made queries in our <a href="/docs/confluence-cql-cheat-sheet.html">CQL cheat sheet</a>.</p>
+
+  <h2>What you cannot do</h2>
+
+  <p>See someone else's stars. Stars are personal, and Atlassian's CQL documentation states that the favourite condition only returns the favourites of the person running the query. If a team needs a shared list of important pages, a label works better than stars: everyone can see it, and a page list built on a label updates itself.</p>
+
+  <p><strong>Disclosure:</strong> I build <a href="/smart-search.html">Smart Search for Confluence</a>, which shows a live list of pages by label, space or "not updated for N days" right on a page, so a team list does not depend on anyone's personal stars. For your own bookmarks, the built-in Starred list above is all you need.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Where are my starred pages?</h3>
+  <p>Starred in the left sidebar of the Confluence home, or the full list at <code>/wiki/home/starred</code>.</p>
+
+  <h3>Is there a keyboard shortcut to star a page?</h3>
+  <p>Yes, Ctrl+Alt+F on the page. It is also in the More actions menu.</p>
+
+  <h3>Can I see what a colleague starred?</h3>
+  <p>No. Stars are visible only to the person who set them.</p>
+
+  <p class="more">Related: <a href="/docs/find-unpublished-drafts-confluence.html">how to find unpublished drafts</a>, <a href="/docs/confluence-cql-cheat-sheet.html">Confluence CQL cheat sheet</a>, and <a href="/docs/find-stale-pages-confluence.html">finding pages nobody maintains</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
