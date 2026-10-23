@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CQL Search alternative for Confluence Cloud — what to use instead</title>
+<title>CQL Search alternative for Confluence Cloud: what to use instead</title>
 <meta name="description" content="CQL Search for Confluence has not been updated since July 2024 and runs on the retiring Connect platform.">
 <meta property="og:title" content="CQL Search alternative for Confluence Cloud">
 <meta property="og:description" content="Keep your live page lists working when CQL Search stops.">
@@ -46,7 +46,7 @@
 
 <header>
   <h1>Looking for a CQL Search alternative</h1>
-  <p class="sub">Keep your live page lists working — without writing CQL.</p>
+  <p class="sub">Keep your live page lists working, without writing CQL.</p>
 </header>
 
 <h2>What is happening to CQL Search</h2>
@@ -54,7 +54,7 @@
 <p>
   <b>CQL Search</b> lets you put a live list of pages into a Confluence page by
   writing a CQL query. It has around 1000 installations. Its last update was
-  <b>July 2024</b>, and it is built on <b>Connect</b> — the platform Atlassian is
+  <b>July 2024</b>, and it is built on <b>Connect</b>, the platform Atlassian is
   retiring through 2026 and 2027.
 </p>
 
@@ -69,7 +69,7 @@
 
 <table>
   <tr><th>What you had</th><th>After it stops</th></tr>
-  <tr><td>Live list of pages on a page</td><td>Gone — the macro no longer renders</td></tr>
+  <tr><td>Live list of pages on a page</td><td>Gone: the macro no longer renders</td></tr>
   <tr><td>Your CQL queries</td><td>Stored in the page as macro parameters. Not lost, but you have to open each page to read them out</td></tr>
   <tr><td>The pages themselves</td><td><b>Untouched.</b> This app never stored your content, only queries</td></tr>
 </table>
@@ -77,10 +77,10 @@
 <div class="note">
   <b>Before anything breaks, list the pages that use it.</b> Confluence advanced
   search understands <code>macro = "cql-search"</code>. Do this while the macro
-  still renders — it is much harder to reconstruct intent from a broken page.
+  still renders: it is much harder to reconstruct intent from a broken page.
 </div>
 
-<h2>Smart Search — the same job, without the query language</h2>
+<h2>Smart Search: the same job, without the query language</h2>
 
 <p>
   Built on <b>Forge</b>, so the end-of-life problem does not apply. Same idea: a
@@ -91,7 +91,7 @@
 
 <p>
   CQL Search assumed you know the query language. That is fine for the person who
-  set it up and useless for everyone else — which is why these lists rot: the one
+  set it up and useless for everyone else, which is why these lists rot: the one
   person who could edit them left the company.
 </p>
 
@@ -103,7 +103,7 @@
 
 <div class="note">
   <b>CQL is still there for those who want it.</b> There is a manual mode where you
-  paste a query directly — so your existing CQL from the old macro can be carried
+  paste a query directly, so your existing CQL from the old macro can be carried
   over as-is. Nothing forces you to rebuild it with checkboxes.
 </div>
 
@@ -112,18 +112,18 @@
 <table>
   <tr><th>Feature</th><th>Detail</th></tr>
   <tr><td>Excerpts</td><td>A line of text from each document, so you can tell which one you want without opening it</td></tr>
-  <tr><td>Grouping</td><td>By space, by who edited last, or by month — a flat list of forty pages is unreadable</td></tr>
+  <tr><td>Grouping</td><td>By space, by who edited last, or by month: a flat list of forty pages is unreadable</td></tr>
   <tr><td>Show more</td><td>Confluence returns results in batches; the button loads the next one</td></tr>
   <tr><td>Works out of the box</td><td>Dropped on a page with no configuration, it shows the recently updated documents of that space instead of an empty "please configure me" screen</td></tr>
   <tr><td>Permissions</td><td>The list is built as the person reading it. Nobody sees a page they could not already open</td></tr>
-  <tr><td>Where it runs</td><td>In the reader's browser, on your own site. Runs on Atlassian — no vendor servers involved</td></tr>
+  <tr><td>Where it runs</td><td>In the reader's browser, on your own site. Runs on Atlassian: no vendor servers involved</td></tr>
 </table>
 
 <h2>The thing these lists are actually best at</h2>
 
 <p>
   Finding documents nobody has touched in years. Every large wiki has hundreds of
-  them, and nobody knows which — that is the whole problem. A list built on
+  them, and nobody knows which. That is the whole problem. A list built on
   "in this space, not updated for 365 days, sorted oldest first" turns an unknowable
   mess into a work queue, and it keeps itself current.
 </p>
@@ -134,7 +134,7 @@
   <li>Install Smart Search. Both apps can be installed at once.</li>
   <li>Find your pages with <code>macro = "cql-search"</code> in advanced search.</li>
   <li>On each page, open the old macro, copy the query, add the new macro and paste
-      it into manual mode. Or rebuild it with checkboxes — usually faster.</li>
+      it into manual mode. Or rebuild it with checkboxes, usually faster.</li>
   <li>Check the list looks right, remove the old macro.</li>
 </ol>
 

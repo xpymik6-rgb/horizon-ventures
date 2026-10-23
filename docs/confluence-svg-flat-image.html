@@ -88,7 +88,7 @@
 
   <h2>What actually happens to the file</h2>
 
-  <p>You attach <code>architecture.svg</code> to a page and insert it. Confluence stores your original attachment untouched — you can still download exactly what you uploaded — but the version rendered on the page is a flattened image. That is why the diagram often looks slightly softer than in your editor, and why clicking a box does nothing.</p>
+  <p>You attach <code>architecture.svg</code> to a page and insert it. Confluence stores your original attachment untouched (you can still download exactly what you uploaded), but the version rendered on the page is a flattened image. That is why the diagram often looks slightly softer than in your editor, and why clicking a box does nothing.</p>
 
   <p>People usually discover this at the worst moment: after building a navigation map for the documentation, where every service box was supposed to open its own page.</p>
 
@@ -118,7 +118,7 @@
 
   <h2>Careful with advice written for the wrong Confluence</h2>
 
-  <p>Search for this problem and you will find answers recommending the HTML macro, or a custom user macro. Both belong to <strong>Confluence Data Center and Server</strong>. Confluence Cloud has no native HTML macro at all — that is an architectural difference, not something an administrator can enable.</p>
+  <p>Search for this problem and you will find answers recommending the HTML macro, or a custom user macro. Both belong to <strong>Confluence Data Center and Server</strong>. Confluence Cloud has no native HTML macro at all. That is an architectural difference, not something an administrator can enable.</p>
 
   <p>Many of those threads were written between 2017 and 2021, when Server was the common deployment. If you are on Cloud, the advice does not apply, and following it will cost you an afternoon before you discover why.</p>
 
@@ -126,13 +126,13 @@
 
   <h3>Draw the diagram in a diagramming app instead of importing SVG</h3>
 
-  <p>Tools that render diagrams natively inside Confluence keep links on shapes, because they are not attachments being displayed — they are diagrams being drawn by an app that Confluence trusts. draw.io is the usual choice and is free for small teams. If your diagram does not exist yet, this is the cheapest correct answer, and you should take it.</p>
+  <p>Tools that render diagrams natively inside Confluence keep links on shapes, because they are not attachments being displayed; they are diagrams being drawn by an app that Confluence trusts. draw.io is the usual choice and is free for small teams. If your diagram does not exist yet, this is the cheapest correct answer, and you should take it.</p>
 
   <p>The catch is redrawing. If the map already exists as an SVG exported from Figma, Illustrator, Inkscape or Visio, and it is a hundred boxes across four layers, "just redraw it" is a week of somebody's life.</p>
 
   <h3>Put the links beside the picture, not inside it</h3>
 
-  <p>Unglamorous but honest: insert the image, and under it keep a table of the same items with links. It survives forever, needs no app, and works on mobile. It is worse to use — nobody reads a legend of forty rows — but for a diagram of six boxes it is genuinely enough.</p>
+  <p>Unglamorous but honest: insert the image, and under it keep a table of the same items with links. It survives forever, needs no app, and works on mobile. It is worse to use (nobody reads a legend of forty rows), but for a diagram of six boxes it is genuinely enough.</p>
 
   <h3>Split one big map into several smaller pages</h3>
 
@@ -150,7 +150,7 @@
 
   <h2>What an app can do that the platform will not</h2>
 
-  <p>The reason a Marketplace app is allowed to render what Confluence refuses to is that it does not hand your file to the browser as-is. A well-built app parses the SVG, removes scripts, event handlers and external references, and renders only what is left. The dangerous class of content never reaches the page — which is exactly the guarantee Confluence itself was protecting.</p>
+  <p>The reason a Marketplace app is allowed to render what Confluence refuses to is that it does not hand your file to the browser as-is. A well-built app parses the SVG, removes scripts, event handlers and external references, and renders only what is left. The dangerous class of content never reaches the page, which is exactly the guarantee Confluence itself was protecting.</p>
 
   <p>The second thing an app can do is store a link as a reference to the page rather than as a URL. Then renaming the page, or moving it to another space, does not break the diagram, because the address is resolved fresh every time the page is opened.</p>
 
@@ -170,7 +170,7 @@
   <p>There are long-standing suggestions asking for native interactive SVG. Given the security model, expect the answer to keep being an app rather than a platform feature.</p>
 
   <h3>What about Mermaid and PlantUML?</h3>
-  <p>Those are source text rendered into a diagram, not files being displayed, so the security problem is different. Several free renderers exist; some are no longer maintained, which is a separate trap — we wrote about the <a href="/docs/mermaid-confluence-alternative.html">abandoned Mermaid apps</a> and <a href="/docs/plantuml-confluence-alternative.html">the same question for PlantUML</a>.</p>
+  <p>Those are source text rendered into a diagram, not files being displayed, so the security problem is different. Several free renderers exist; some are no longer maintained, which is a separate trap. We wrote about the <a href="/docs/mermaid-confluence-alternative.html">abandoned Mermaid apps</a> and <a href="/docs/plantuml-confluence-alternative.html">the same question for PlantUML</a>.</p>
 
   <p class="more">Related: <a href="/docs/drawio-svg-text-is-not-svg.html">why draw.io labels break in an exported SVG</a>.</p>
 

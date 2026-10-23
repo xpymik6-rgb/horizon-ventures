@@ -71,7 +71,7 @@
 <p>
   Confluence renders a diagram as a flat picture. The links inside it are dead, and
   nobody can click a box to reach the page behind it. This app brings those links
-  back — and reads four diagram formats, not one.
+  back, and reads four diagram formats, not one.
 </p>
 
 <h2 id="start">Getting started</h2>
@@ -100,7 +100,7 @@
   <tr>
     <td><b>draw.io</b></td>
     <td><code>.drawio</code>, <code>.drawio.svg</code></td>
-    <td>Read directly and drawn by the app. You do not have to export anything —
+    <td>Read directly and drawn by the app. You do not have to export anything:
         keep drawing in draw.io as usual.</td>
   </tr>
   <tr>
@@ -113,7 +113,7 @@
     <td><b>PlantUML</b></td>
     <td><code>.puml</code>, <code>.plantuml</code>, <code>.iuml</code></td>
     <td>Also written as text. Relationship diagrams: components, deployment,
-        simple graphs. Shapes follow the keyword — <code>database</code> becomes
+        simple graphs. Shapes follow the keyword: <code>database</code> becomes
         a cylinder, <code>cloud</code> a cloud, <code>actor</code> an oval.</td>
   </tr>
 </table>
@@ -146,7 +146,7 @@
 
 <div class="note">
   <b>Why this matters.</b> A link set this way points at the page itself, not at its
-  address. Rename the page or move it to another space — the diagram keeps working.
+  address. Rename the page or move it to another space: the diagram keeps working.
   A URL written inside the file would break silently, and nobody would notice for
   months.
 </div>
@@ -154,8 +154,8 @@
 <h3>Which shapes appear in the list</h3>
 <ul>
   <li>shapes that are already links in the file;</li>
-  <li>shapes that have an <code>id</code> — most diagram editors add one automatically;</li>
-  <li>shapes with a title — the title is used as the name in the list.</li>
+  <li>shapes that have an <code>id</code> (most diagram editors add one automatically);</li>
+  <li>shapes with a title: the title is used as the name in the list.</li>
 </ul>
 
 <p>
@@ -166,7 +166,7 @@
 <h3>If a linked page is deleted</h3>
 <p>
   The diagram still displays. That shape keeps whatever link it had in the file, and
-  nothing breaks — one missing page never takes the whole diagram down.
+  nothing breaks: one missing page never takes the whole diagram down.
 </p>
 
 <h2 id="search">Finding things in a large diagram</h2>
@@ -179,14 +179,14 @@
 
 <p>
   Search works on every format, including diagrams you did not make yourself.
-  There is also a full-screen button — page macros are narrow, and architecture
+  There is also a full-screen button: page macros are narrow, and architecture
   diagrams are not.
 </p>
 
 <h2 id="safety">Safety</h2>
 
 <p>
-  SVG is not only a picture format — a file can carry scripts inside it. That is
+  SVG is not only a picture format: a file can carry scripts inside it. That is
   exactly why Confluence refuses to render SVG files live and shows them as flat
   images.
 </p>
@@ -198,12 +198,12 @@
   <li>event handlers such as <code>onclick</code> or <code>onload</code>;</li>
   <li>links that execute code (<code>javascript:</code>);</li>
   <li>embedded HTML and external content;</li>
-  <li>styles that pull resources from other servers — these can be used to track who
+  <li>styles that pull resources from other servers: these can be used to track who
       opened your diagram, and when.</li>
 </ul>
 
 <p>
-  When something is removed, the app says so under the diagram — you always know that
+  When something is removed, the app says so under the diagram: you always know that
   what you see differs from the file.
 </p>
 
@@ -224,7 +224,7 @@
 
 <p>
   Atlassian is retiring the Connect platform. Apps built on it can no longer be
-  updated, and during 2026–2027 they stop working. If your diagram app is one of
+  updated, and during 2026-2027 they stop working. If your diagram app is one of
   them, these pages explain what breaks and what to do:
 </p>
 
@@ -249,18 +249,18 @@
 
 <h2 id="limits">Known limits</h2>
 <ul>
-  <li>Files larger than 6 MB are not displayed — such diagrams are slow in any browser.</li>
+  <li>Files larger than 6 MB are not displayed: such diagrams are slow in any browser.</li>
   <li>Animation inside SVG is removed: it is one of the ways to hide harmful code.</li>
   <li>Fonts embedded from external servers are not loaded; the diagram falls back to
       system fonts.</li>
   <li>Mermaid: flowcharts only, for now.</li>
-  <li>PlantUML: relationship diagrams only — components, deployment and similar.</li>
+  <li>PlantUML: relationship diagrams only (components, deployment and similar).</li>
 </ul>
 
 <h2 id="support">Support</h2>
 <p>
   Write to <a href="mailto:support@horizonventures.app">support@horizonventures.app</a>. Please include
-  your Confluence site address and, if possible, the file that misbehaves — it makes
+  your Confluence site address and, if possible, the file that misbehaves. It makes
   finding the cause much faster. We answer within one business day.
 </p>
 
