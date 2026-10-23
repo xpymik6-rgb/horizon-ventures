@@ -44,6 +44,9 @@ for откуда, куда, текст in СВЯЗИ:
     else:
         конец = s.rfind('</div>\n</main>')
         if конец < 0:
+            # старые статьи про схемы свёрстаны без <main>: ставим перед подвалом
+            конец = s.rfind('\n<footer>') + 1 or -1
+        if конец < 0:
             print('НЕ НАШЁЛ МЕСТО:', откуда); continue
         s = s[:конец] + f'  <p class="more">Related: {ссылка}.</p>\n\n' + s[конец:]
     open(п, 'w', encoding='utf-8').write(s)
