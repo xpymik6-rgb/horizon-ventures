@@ -17,6 +17,10 @@ import os, re
     ('confluence-clickable-image', 'drawio-svg-text-is-not-svg', 'why draw.io labels break in an exported SVG'),
     ('diagrams-in-confluence-compared', 'drawio-svg-text-is-not-svg', 'why draw.io labels break in an exported SVG'),
     ('clickable-diagram-confluence', 'drawio-svg-text-is-not-svg', 'why draw.io labels break in an exported SVG'),
+    ('list-confluence-pages-without-cql', 'confluence-cql-cheat-sheet', 'a CQL cheat sheet with tested queries'),
+    ('find-stale-pages-confluence', 'confluence-cql-cheat-sheet', 'the CQL queries for stale pages, tested'),
+    ('cql-search-alternative', 'confluence-cql-cheat-sheet', 'a CQL cheat sheet with tested queries'),
+    ('confluence-live-search-macro', 'confluence-cql-cheat-sheet', 'a CQL cheat sheet with tested queries'),
 ]
 
 for откуда, куда, текст in СВЯЗИ:

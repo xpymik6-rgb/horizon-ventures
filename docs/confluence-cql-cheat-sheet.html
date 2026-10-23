@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confluence CQL cheat sheet: queries you can copy</title>
+<meta name="description" content="Tested Confluence Cloud CQL queries for real tasks: stale pages, pages with all of several labels, your starred pages, mentions, a page tree, pages with a macro. Plus the traps that return wrong results.">
+<link rel="canonical" href="https://horizonventures.app/docs/confluence-cql-cheat-sheet.html">
+<meta property="og:title" content="Confluence CQL cheat sheet: queries you can copy">
+<meta property="og:description" content="Copy-paste CQL for Confluence Cloud, every query tested: stale pages, labels, starred pages, mentions, page trees, macros, page status. And why label IN does not mean what most people think.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Confluence CQL cheat sheet: queries you can copy",
+   "description": "Tested Confluence Cloud CQL queries for common tasks and the traps that return wrong results.",
+   "url": "https://horizonventures.app/docs/confluence-cql-cheat-sheet.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-23",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "How do I find Confluence pages not updated in 6 months with CQL?",
+     "acceptedAnswer": {"@type": "Answer", "text": "type = page AND lastmodified < now(\"-26w\") ORDER BY lastmodified ASC. Add AND space = KEY to limit it to one space. now() accepts offsets such as -180d, -26w or -6M. Careful: lowercase -6m means six minutes, not months."}},
+    {"@type": "Question", "name": "How do I find pages that have two labels at once?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Use one condition per label: label = \"policy\" AND label = \"hr\". The form label IN (\"policy\", \"hr\") means any of them, so it also returns pages with only one of the labels."}},
+    {"@type": "Question", "name": "How do I list my starred pages with CQL?",
+     "acceptedAnswer": {"@type": "Answer", "text": "favourite = currentUser(). The American spelling favorite works too. It only ever returns the starred pages of the person running the query."}},
+    {"@type": "Question", "name": "What is the difference between ancestor and parent in CQL?",
+     "acceptedAnswer": {"@type": "Answer", "text": "parent = ID returns only the direct children of a page. ancestor = ID returns the whole tree below it, children of children included."}},
+    {"@type": "Question", "name": "Where can I run a CQL query in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Atlassian documents CQL as part of the REST API. The quickest way is to open https://your-site.atlassian.net/wiki/rest/api/content/search?cql= followed by the query in a browser where you are logged in; you get the results as JSON with your own permissions. Apps and scripts use the same endpoint."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Confluence CQL cheat sheet: queries you can copy</h1>
+    <p class="sub">CQL is the query language behind Confluence search. Below are the queries people actually need, each one run against a live Confluence Cloud site before it went on this page, plus the few traps that quietly return the wrong pages.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> A CQL query is <code>field operator value</code>, joined with <code>AND</code>, <code>OR</code> and <code>NOT</code>, optionally followed by <code>ORDER BY</code>. Pages nobody touched in six months: <code>type = page AND lastmodified &lt; now("-26w")</code>. Pages with two labels at once: <code>label = "policy" AND label = "hr"</code>, not <code>label IN (...)</code>, which means "any of". Your starred pages: <code>favourite = currentUser()</code>.</p>
+
+  <h2>Where to run it</h2>
+
+  <p>Atlassian documents CQL as part of the Confluence REST API (<a href="https://developer.atlassian.com/cloud/confluence/advanced-searching-using-cql/">Advanced searching using CQL</a>). The quickest way to try a query, with your own permissions, is to open this address in a browser where you are logged in to Confluence, with your query at the end:</p>
+
+  <pre><code>https://your-site.atlassian.net/wiki/rest/api/content/search?cql=type = page AND space = DEV</code></pre>
+
+  <p>The browser fills in the encoding. You get JSON: titles, IDs and links in <code>results</code>, the total in <code>totalSize</code>. Scripts and apps use the same endpoint, which is why a query that works here works there too.</p>
+
+  <h2>The building blocks</h2>
+
+  <table>
+    <thead><tr><th>Field</th><th>What it matches</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><code>type</code></td><td>page, blogpost, comment, attachment, whiteboard, database, folder</td><td><code>type IN (page, blogpost)</code></td></tr>
+      <tr><td><code>space</code></td><td>Space key</td><td><code>space = DEV</code></td></tr>
+      <tr><td><code>title</code></td><td>Title, exact or contains</td><td><code>title ~ "policy"</code></td></tr>
+      <tr><td><code>text</code></td><td>Words anywhere in the content</td><td><code>text ~ "vacation policy"</code></td></tr>
+      <tr><td><code>label</code></td><td>Labels</td><td><code>label = "onboarding"</code></td></tr>
+      <tr><td><code>created</code>, <code>lastmodified</code></td><td>Dates, with functions</td><td><code>lastmodified &lt; now("-180d")</code></td></tr>
+      <tr><td><code>creator</code>, <code>contributor</code></td><td>Who created or edited</td><td><code>contributor = currentUser()</code></td></tr>
+      <tr><td><code>favourite</code>, <code>watcher</code>, <code>mention</code></td><td>Starred by, watched by, mentioning a user</td><td><code>mention = currentUser()</code></td></tr>
+      <tr><td><code>parent</code>, <code>ancestor</code></td><td>Direct children, whole tree below a page</td><td><code>ancestor = 123456</code></td></tr>
+      <tr><td><code>macro</code></td><td>Pages using a macro</td><td><code>macro = "drawio"</code></td></tr>
+      <tr><td><code>pageStatus</code></td><td>The status lozenge on a page</td><td><code>pageStatus = "Verified"</code></td></tr>
+    </tbody>
+  </table>
+
+  <p>Operators: <code>=</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> (dates), <code>IN</code>, <code>NOT IN</code>, and <code>~</code>, <code>!~</code> (contains, for title and text). Date functions: <code>now("-4w")</code>, <code>startOfDay()</code>, <code>startOfWeek("-1w")</code>, <code>startOfMonth()</code>, <code>startOfYear()</code> and their <code>endOf</code> pairs. User functions: <code>currentUser()</code>.</p>
+
+  <h2>Queries for real tasks</h2>
+
+  <h3>Stale content</h3>
+  <pre><code>type = page AND lastmodified &lt; now("-26w") ORDER BY lastmodified ASC
+type = page AND space = DEV AND lastmodified &lt; now("-180d")
+type = page AND lastmodified &lt; startOfYear()
+type = page AND lastmodified &lt; now("-180d") AND NOT label = "archived"</code></pre>
+  <p>Oldest first is the useful order: the top of the list is where the forgotten pages are. More on what to do with them in <a href="/docs/find-stale-pages-confluence.html">how to find the Confluence pages nobody maintains</a>.</p>
+
+  <h3>Labels</h3>
+  <pre><code>label = "policy" AND label = "hr"          (both labels)
+label IN ("policy", "hr")                  (either label)
+type = page AND label NOT IN ("archived")</code></pre>
+
+  <h3>You and your colleagues</h3>
+  <pre><code>favourite = currentUser()                  (your starred pages)
+creator = currentUser() AND type = page    (pages you created)
+contributor = currentUser() ORDER BY lastmodified DESC
+mention = currentUser()                    (pages that @mention you)
+watcher = currentUser()</code></pre>
+  <p>For another person, use their account ID instead of <code>currentUser()</code>: names do not work in Confluence Cloud, which only matches users by account ID.</p>
+
+  <h3>A section of the tree</h3>
+  <pre><code>parent = 123456      (direct children only)
+ancestor = 123456    (everything below, at any depth)</code></pre>
+  <p>The number is the page ID, the digits in the page address after <code>/pages/</code>.</p>
+
+  <h3>By content</h3>
+  <pre><code>title ~ "policy" AND type = page
+text ~ "vacation policy"
+macro = "drawio"                 (pages with a draw.io diagram)
+type = attachment AND title ~ "docx"
+pageStatus = "Rough draft"</code></pre>
+
+  <h3>Recent activity</h3>
+  <pre><code>created &gt;= startOfWeek("-1w") AND type = blogpost
+type IN (page, blogpost) AND space IN (DEV, OPS) ORDER BY created DESC</code></pre>
+
+  <h2>Traps that return the wrong pages</h2>
+
+  <ul>
+    <li><strong><code>m</code> is minutes, <code>M</code> is months.</strong> On our test site <code>lastmodified &gt; now("-6m")</code> returned nothing and <code>now("-6M")</code> returned every page. Use <code>d</code> or <code>w</code> if you want to avoid the question.</li>
+    <li><strong>A name returns nothing, without an error.</strong> <code>creator = "Mikhail"</code> came back empty while <code>creator = currentUser()</code> found every page of the same person. In Confluence Cloud user fields take account IDs; a name is not rejected, it just matches no one.</li>
+    <li><strong><code>label IN</code> means any, not all.</strong> We checked on two test pages, one with labels A and B, one with only A: <code>label IN ("A", "B")</code> returned both pages, <code>label = "A" AND label = "B"</code> returned one. Label case does not matter.</li>
+    <li><strong>A query cannot start with a negative clause.</strong> Atlassian's documentation says so: put <code>NOT label = "archived"</code> after a positive condition such as <code>type = page AND</code>.</li>
+    <li><strong>Without parentheses, conditions are read left to right.</strong> Mixing AND and OR without brackets gives surprising results; bracket every OR group.</li>
+    <li><strong>Not every field can be sorted.</strong> Ordering by a field a page can have several values of, labels for example, is not supported.</li>
+    <li><strong>Brand new pages show up a little later.</strong> In our test a page created a minute earlier did not appear yet; after about a minute it did. Search runs on an index.</li>
+    <li><strong>Results are capped when you ask for page bodies.</strong> Atlassian notes that with <code>expand=body.storage.value</code> the endpoint returns at most 50 results, whatever limit you ask for.</li>
+  </ul>
+
+  <h2>The arithmetic</h2>
+
+  <p>Writing a query takes a minute once you know the fields. The cost is elsewhere: CQL results live in a JSON response or a script, not on a page your colleagues read. A monthly "pages not updated in six months" list for five teams means someone runs five queries, turns JSON into something readable and posts it, every month. That is roughly an hour a month for one person, and it stops the month that person is busy.</p>
+
+  <p>If you only need an answer for yourself once, the browser address above is free and enough.</p>
+
+  <h2>When the list should live on a page</h2>
+
+  <p><strong>Disclosure:</strong> I build <a href="/smart-search.html">Smart Search for Confluence</a>. It builds the CQL for you from simple settings (space, labels, words, "not updated for N days") and shows the result as a live list on a Confluence page, so readers see it without running anything. Several labels mean all of them, as most people expect. It runs inside Atlassian's infrastructure and is free for teams up to ten people.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>How do I find pages not updated in 6 months?</h3>
+  <p><code>type = page AND lastmodified &lt; now("-26w") ORDER BY lastmodified ASC</code>. Offsets like <code>-180d</code> or <code>-6M</code> work too; lowercase <code>-6m</code> is six minutes.</p>
+
+  <h3>How do I find pages with two labels at once?</h3>
+  <p>One condition per label, joined with AND. <code>label IN</code> returns pages with any of them.</p>
+
+  <h3>How do I list my starred pages?</h3>
+  <p><code>favourite = currentUser()</code>. It only ever shows your own starred pages, never someone else's.</p>
+
+  <h3>What is the difference between ancestor and parent?</h3>
+  <p><code>parent</code> gives direct children, <code>ancestor</code> the whole tree below a page.</p>
+
+  <h3>Can I search by a person's name?</h3>
+  <p>Not in Confluence Cloud: user fields take account IDs. <code>currentUser()</code> covers the common case of searching for yourself.</p>
+
+  <p class="more">Related: <a href="/docs/list-confluence-pages-without-cql.html">how to list Confluence pages on a page without writing CQL</a>, <a href="/docs/find-stale-pages-confluence.html">finding pages nobody maintains</a>, and <a href="/docs/cql-search-alternative.html">what to use now that CQL Search is ending</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

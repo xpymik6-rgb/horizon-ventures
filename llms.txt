@@ -88,6 +88,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [Text is not SVG - cannot display: why draw.io labels break](https://horizonventures.app/docs/drawio-svg-text-is-not-svg.html): draw.io stores labels as HTML inside the SVG; where it is not rendered you get cut-off text and dead links. The export settings that fix it.
 
+- [Confluence CQL cheat sheet: queries you can copy](https://horizonventures.app/docs/confluence-cql-cheat-sheet.html): Tested CQL queries for stale pages, labels, starred pages, mentions and page trees, plus the traps that return wrong results.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
