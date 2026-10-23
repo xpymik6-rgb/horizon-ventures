@@ -26,6 +26,10 @@ def шаг(текст):
 
 def проверить_razmetku(путь):
     s = io.open(путь, encoding="utf-8").read()
+    # Главное правило текстов: никаких длинных тире (читаются как почерк ИИ)
+    тире = s.count("—") + s.count("–")
+    if тире:
+        raise SystemExit(f"СТОП: в статье {тире} длинных тире (— или –). Заменить по смыслу и повторить")
     куски = re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S)
     if not куски:
         raise SystemExit("СТОП: в статье нет машинной разметки, поисковики её не поймут")
