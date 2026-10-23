@@ -23,6 +23,11 @@ import os, re
     ('confluence-live-search-macro', 'confluence-cql-cheat-sheet', 'a CQL cheat sheet with tested queries'),
     ('confluence-cql-cheat-sheet', 'confluence-starred-pages', 'how to see your starred pages'),
     ('find-unpublished-drafts-confluence', 'confluence-starred-pages', 'how to see your starred pages'),
+    ('plantuml-confluence-alternative', 'graphviz-confluence-cloud', 'Graphviz in Confluence Cloud'),
+    ('mermaid-confluence-alternative', 'graphviz-confluence-cloud', 'Graphviz in Confluence Cloud'),
+    ('diagrams-in-confluence-compared', 'graphviz-confluence-cloud', 'Graphviz in Confluence Cloud: apps and prices'),
+    ('confluence-svg-flat-image', 'graphviz-confluence-cloud', 'why Graphviz node links stop working in Confluence'),
+    ('clickable-diagram-confluence', 'graphviz-confluence-cloud', 'clickable Graphviz diagrams in Confluence'),
 ]
 
 for откуда, куда, текст in СВЯЗИ:
