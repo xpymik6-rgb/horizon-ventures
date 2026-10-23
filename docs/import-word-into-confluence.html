@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to import Word documents into Confluence Cloud</title>
-<meta name="description" content="Confluence Cloud imports .docx out of the box. Here is exactly how, what survives the trip, what breaks, and at what point a document migration stops being a copy-paste job.">
+<title>Import a Word document into Confluence Cloud: formatting and images</title>
+<meta name="description" content="Confluence Cloud has a built-in Word to Confluence converter. How to import a .docx with its formatting and images, what survives, what breaks, and when a migration stops being copy-paste.">
 <link rel="canonical" href="https://horizonventures.app/docs/import-word-into-confluence.html">
-<meta property="og:title" content="How to import Word documents into Confluence Cloud">
-<meta property="og:description" content="The built-in import, step by step. What survives, what breaks, and when a migration needs more than copy-paste.">
+<meta property="og:title" content="Import a Word document into Confluence Cloud: formatting and images">
+<meta property="og:description" content="Confluence Cloud has a built-in Word to Confluence converter. How to import a .docx with its formatting and images, what survives, what breaks, and when a migration stops being copy-paste.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +86,7 @@
 <div class="wrap">
 
   <header>
-    <h1>How to import Word documents into Confluence Cloud</h1>
+    <h1>Import a Word document into Confluence Cloud: formatting and images</h1>
     <p class="sub">The import is built in and free. This is where it lives, what survives the trip, what quietly breaks, and the point at which a document migration stops being something you finish in an afternoon.</p>
   </header>
 
@@ -127,7 +127,7 @@
 
   <p><strong>Use real heading styles.</strong> If your authors made headings by increasing the font size, Confluence has no way to know what is a heading. Applying Heading 1 and Heading 2 in Word before import is ten minutes that saves an hour of cleanup.</p>
 
-  <p><strong>Flatten the drawings.</strong> Anything drawn with Word shapes — a process diagram, a boxed callout, an org chart — will arrive as a placeholder. Screenshot it, or export it as an image, and put the image in the document instead.</p>
+  <p><strong>Flatten the drawings.</strong> Anything drawn with Word shapes (a process diagram, a boxed callout, an org chart) will arrive as a placeholder. Screenshot it, or export it as an image, and put the image in the document instead.</p>
 
   <p><strong>Clean the file.</strong> Accept tracked changes, delete comments, and remove the cover page if it exists only for the printed version. Confluence pages do not need cover pages, and everyone who imports one deletes it afterwards.</p>
 
@@ -147,7 +147,7 @@
 
   <p>The honest test is arithmetic. Count your documents and multiply by fifteen minutes, which is a realistic figure once you include fixing headings and placing the page. Twenty documents is a morning. A hundred and fifty is four working days that nobody has, which is exactly why those files are still sitting on the shared drive two years after the decision to move.</p>
 
-  <p><strong>Disclosure:</strong> I build <a href="/word-import.html">Word Import for Confluence</a>, which exists for that second case: drop a batch of files, get a page tree, with documents split by heading level rather than dumped as one long page. It reads the files inside your browser, so nothing is uploaded to a third party — which matters when the documents are regulations, contracts or HR policies. It is free for teams up to ten people.</p>
+  <p><strong>Disclosure:</strong> I build <a href="/word-import.html">Word Import for Confluence</a>, which exists for that second case: drop a batch of files, get a page tree, with documents split by heading level rather than dumped as one long page. It reads the files inside your browser, so nothing is uploaded to a third party, which matters when the documents are regulations, contracts or HR policies. It is free for teams up to ten people.</p>
 
   <p>If you have twenty documents and good heading styles, use the built-in import and keep your money. This page is here to help you tell which case you are in.</p>
 
@@ -163,7 +163,7 @@
   <p>No. PDF is a layout format with no reliable structure inside, so any conversion is guesswork. If the PDF was generated from a Word file, find the original and import that instead.</p>
 
   <h3>We are moving from SharePoint. Same story?</h3>
-  <p>Mostly. The files are usually .docx underneath, so the same rules apply — with the extra step of deciding what not to bring. A migration is the one moment when deleting outdated documents is easy, and it is worth pairing this with a look at <a href="/docs/find-stale-pages-confluence.html">what nobody maintains any more</a>.</p>
+  <p>Mostly. The files are usually .docx underneath, so the same rules apply, with the extra step of deciding what not to bring. A migration is the one moment when deleting outdated documents is easy, and it is worth pairing this with a look at <a href="/docs/find-stale-pages-confluence.html">what nobody maintains any more</a>.</p>
 
   <p class="more">Related: <a href="/docs/confluence-word-import-missing-content.html">why the built-in Word import drops text and images</a>.</p>
 

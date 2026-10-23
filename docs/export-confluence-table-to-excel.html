@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to get a Confluence table into Excel</title>
-<meta name="description" content="Confluence has no built-in table export. Here are the free ways that actually work, where each one breaks, and the point at which copying by hand stops being reasonable.">
+<title>How to export a Confluence table to Excel or CSV</title>
+<meta name="description" content="Confluence Cloud has no built-in table export. The free ways to get a table into Excel or CSV, where each one breaks, and when copying by hand stops being reasonable.">
 <link rel="canonical" href="https://horizonventures.app/docs/export-confluence-table-to-excel.html">
-<meta property="og:title" content="How to get a Confluence table into Excel">
-<meta property="og:description" content="No native export exists. The free workarounds, their failure modes, and when a tool is worth it.">
+<meta property="og:title" content="How to export a Confluence table to Excel or CSV">
+<meta property="og:description" content="Confluence Cloud has no built-in table export. The free ways to get a table into Excel or CSV, where each one breaks, and when copying by hand stops being reasonable.">
 <meta property="og:type" content="article">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
  "@graph": [
   {
    "@type": "Article",
-   "headline": "How to get a Confluence table into Excel",
+   "headline": "How to export a Confluence table to Excel or CSV",
    "description": "Confluence has no native table export. The free workarounds that work, where each breaks, and when a dedicated tool is justified.",
    "url": "https://horizonventures.app/docs/export-confluence-table-to-excel.html",
    "author": {"@type": "Person", "name": "Mikhail Klimenko"},
@@ -31,6 +31,7 @@
   {
    "@type": "FAQPage",
    "mainEntity": [
+    {"@type": "Question", "name": "How do I export a Confluence table to CSV?", "acceptedAnswer": {"@type": "Answer", "text": "Confluence Cloud has no CSV export for a table. Copy the table into Excel or Google Sheets, then save it as CSV: in Excel choose CSV UTF-8 so non-English characters survive, and check which separator your regional settings use, because European settings write semicolons."}},
     {"@type": "Question", "name": "Does Confluence have a built-in table export to Excel?",
      "acceptedAnswer": {"@type": "Answer", "text": "No. Confluence exports whole pages to PDF and Word, but there is no native way to export a single table to Excel or CSV. The usual free route is selecting the table and pasting it into a spreadsheet."}},
     {"@type": "Question", "name": "Why do columns shift when I paste a Confluence table into Excel?",
@@ -76,7 +77,7 @@
 <div class="wrap">
 
   <header>
-    <h1>How to get a Confluence table into Excel</h1>
+    <h1>How to export a Confluence table to Excel or CSV</h1>
     <p class="sub">There is no native export, and that surprises people every time. Here are the free routes that genuinely work, the exact places each one falls apart, and the arithmetic for deciding whether you need anything else.</p>
   </header>
 
@@ -105,6 +106,12 @@
     <p>The merged-cell problem is the one that costs money. A shifted column does not look like an error, it looks like data, and it goes into a report that somebody signs.</p>
   </div>
 
+  <h2>Getting CSV instead of Excel</h2>
+
+  <p>There is no CSV button either, so CSV is one more step after the paste. Paste the table into Excel or Google Sheets first, check it, then save it as CSV: in Excel <strong>File &rarr; Save As &rarr; CSV UTF-8 (Comma delimited)</strong>, in Google Sheets <strong>File &rarr; Download &rarr; Comma-separated values</strong>.</p>
+
+  <p>Two things break CSV files more often than anything else. Pick the <em>UTF-8</em> variant in Excel, or accented letters and anything outside plain English turn into question marks for whoever opens the file next. And Excel writes CSV with the list separator from your regional settings: with European settings that is a semicolon, so a file that looks fine to you arrives in one column for someone in the US, and the other way round. Agree on the separator with whoever receives the file.</p>
+
   <h2>Route two: export the page to Word, then to Excel</h2>
 
   <p>From the page menu choose <strong>Export → Word</strong>, open the file, and copy the table from there. It sounds like a detour, and it is, but Word handles merged cells more predictably than the browser clipboard, and for a single complicated table it sometimes saves the day.</p>
@@ -119,7 +126,7 @@
 
   <h2>When copying stops being reasonable</h2>
 
-  <p>Same arithmetic as always. One table is two minutes. A page with six tables is fifteen. A quarterly report that pulls tables from forty pages is a day of somebody's life, every quarter, forever — and it is the kind of task that quietly gets skipped, after which the report is out of date.</p>
+  <p>Same arithmetic as always. One table is two minutes. A page with six tables is fifteen. A quarterly report that pulls tables from forty pages is a day of somebody's life, every quarter, forever. And it is the kind of task that quietly gets skipped, after which the report is out of date.</p>
 
   <div class="cards">
     <div class="card"><b>The table is a source, not a picture</b>If people export the same table every month, the export is part of a process, and manual steps in a process fail on the month somebody is on holiday.</div>
@@ -147,7 +154,7 @@
   <p>Colours and fonts are presentation, and any sane export drops them. What matters is that values, numbers and dates survive intact.</p>
 
   <h3>The table comes from a macro. Will it export?</h3>
-  <p>Copying from the browser works, because you are copying what is rendered. Scripts reading stored page content usually see the macro instead of the rows — worth checking before building anything on that route.</p>
+  <p>Copying from the browser works, because you are copying what is rendered. Scripts reading stored page content usually see the macro instead of the rows, so check that before building anything on that route.</p>
 
   <p class="more">Related: <a href="/docs/export-confluence-database-to-excel.html">how to export a Confluence database to Excel</a>, which is a different menu and a different set of traps, and <a href="/docs/confluence-database-or-table.html">when to use a database instead of a table</a>. Also: <a href="/docs/confluence-table-paste-excel-merged-cells.html">why a pasted table breaks in Excel, tested step by step</a>.</p>
 
