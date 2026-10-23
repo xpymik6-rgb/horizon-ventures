@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to find unpublished drafts in Confluence Cloud</title>
+<meta name="description" content="Where Confluence Cloud keeps a page you never published: Recent, the space content tree and the home page. Why search and CQL will not find it, and what we could not find a way to do.">
+<link rel="canonical" href="https://horizonventures.app/docs/find-unpublished-drafts-confluence.html">
+<meta property="og:title" content="How to find unpublished drafts in Confluence Cloud">
+<meta property="og:description" content="Search will not find a page you never published. Three places that do show it, checked on a live Confluence Cloud site.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to find unpublished drafts in Confluence Cloud",
+   "description": "Where Confluence Cloud shows a page that was never published, and why search does not find it.",
+   "url": "https://horizonventures.app/docs/find-unpublished-drafts-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-23",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Where do I find my unpublished draft in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Open Recent in the left sidebar of the Confluence home: drafts are listed there with a Draft label. The draft also appears in the space content tree under its parent page with the same label, and on the Confluence home page in the block for picking up recent work."}},
+    {"@type": "Question", "name": "Why doesn't Confluence search find my draft?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Search and CQL return published content. In our test a fresh draft did not appear in CQL results even after the index had caught up, and CQL has no condition for draft status."}},
+    {"@type": "Question", "name": "Can an admin see other people's unpublished drafts?",
+     "acceptedAnswer": {"@type": "Answer", "text": "We found no screen and no search query in Confluence Cloud that lists other people's drafts, and Atlassian's Cloud documentation does not describe one. The practical route is to ask the author to publish or share the draft."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to find unpublished drafts in Confluence Cloud</h1>
+    <p class="sub">You started a page last week, closed the tab, and now search cannot find it. That is normal: search only covers published content. Here are the three places where Confluence Cloud does show a draft, checked on a live site with a test draft.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Open <strong>Recent</strong> in the left sidebar of the Confluence home. Unpublished pages are listed there with a <strong>Draft</strong> label. The same draft also sits in the space's content tree under the page you created it from, again with a Draft label, and on the Confluence home page in the block for picking up where you left off. Search and CQL will not return it.</p>
+
+  <h2>Where the draft shows up</h2>
+
+  <h3>1. Recent</h3>
+  <p>The Recent menu lists what you touched lately, newest first; a page that was never published carries a <strong>Draft</strong> label next to its title. At the bottom of the menu there is a link to all recent items, a full page with tabs that narrow the list to pages you worked on or own. There is no separate "drafts only" filter, so on a busy week the label is what you scan for.</p>
+
+  <h3>2. The space content tree</h3>
+  <p>In our test the draft appeared in the sidebar tree of its space, in the place where it will be published, with the same Draft label. If you remember roughly where you created the page, this is the quickest way back to it.</p>
+
+  <h3>3. The home page</h3>
+  <p>Confluence home has a block at the top for continuing recent work. A fresh draft showed up there first, above published pages.</p>
+
+  <div class="note">
+    <p>The draft opens from these places through an address of the form <code>/wiki/pages/resumedraft.action?draftId=…</code>. Bookmark it if you will come back to a long draft over several days.</p>
+  </div>
+
+  <h2>Why search does not find it</h2>
+
+  <p>Confluence search, and CQL behind it, return published content. We created a draft with a unique word in its title, waited for the search index to catch up (about a minute, which is enough for published pages), and searched for that word: no result. CQL also has no condition for draft status; a query with <code>status = draft</code> is rejected as invalid. So "it must be somewhere, let me search harder" does not help. Use the places above instead.</p>
+
+  <h2>What we could not find a way to do</h2>
+
+  <p>Listing <em>other people's</em> unpublished drafts. We found no screen and no search query in Confluence Cloud for it, and Atlassian's Cloud documentation does not describe one; the pages about drafts in Atlassian's documentation that describe a Drafts list in the profile are written for Confluence Data Center. If a colleague has a page you need that was never published, the practical route is to ask them to publish it or share the draft with you.</p>
+
+  <p>If you know a way that works in Cloud, write to <a href="mailto:support@horizonventures.app">support@horizonventures.app</a> and we will update this page.</p>
+
+  <h2>Keeping drafts from piling up</h2>
+
+  <p>Drafts do not show up in search, so they are easy to forget: the procedure someone started rewriting in March is still a draft in October, and the published version is still the old one. Two habits help. Publish early with a "work in progress" status on the page rather than keeping a private draft for weeks. And once a month, open Recent and either publish or delete every Draft you see.</p>
+
+  <p>The published side of the same problem, pages nobody has updated in a year, is easier to catch, because those pages are searchable. That is covered in <a href="/docs/find-stale-pages-confluence.html">how to find the Confluence pages nobody maintains</a> and in the <a href="/docs/confluence-cql-cheat-sheet.html">CQL cheat sheet</a>.</p>
+
+  <p><strong>Disclosure:</strong> I build <a href="/smart-search.html">Smart Search for Confluence</a>, which shows live lists of published pages, including "not updated for N days". It uses the same search as Confluence, so it cannot list drafts either; for drafts, Recent is the answer.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Where is my unpublished draft?</h3>
+  <p>In Recent with a Draft label, in the space content tree under its parent page, and on the home page.</p>
+
+  <h3>Why can't I find my draft with search?</h3>
+  <p>Search only covers published content. A draft will not show up however long you wait.</p>
+
+  <h3>Can an admin see other people's drafts?</h3>
+  <p>We found no way to do it in Confluence Cloud. Ask the author to publish or share the draft.</p>
+
+  <p class="more">Related: <a href="/docs/confluence-cql-cheat-sheet.html">Confluence CQL cheat sheet</a>, <a href="/docs/find-orphaned-pages-confluence.html">finding orphaned pages</a>, and <a href="/docs/find-stale-pages-confluence.html">finding pages nobody maintains</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -90,6 +90,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [Confluence CQL cheat sheet: queries you can copy](https://horizonventures.app/docs/confluence-cql-cheat-sheet.html): Tested CQL queries for stale pages, labels, starred pages, mentions and page trees, plus the traps that return wrong results.
 
+- [How to find unpublished drafts in Confluence Cloud](https://horizonventures.app/docs/find-unpublished-drafts-confluence.html): Where Confluence Cloud shows a page you never published, and why search and CQL will not find it.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
