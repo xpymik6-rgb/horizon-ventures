@@ -21,6 +21,8 @@ import os, re
     ('find-stale-pages-confluence', 'confluence-cql-cheat-sheet', 'the CQL queries for stale pages, tested'),
     ('cql-search-alternative', 'confluence-cql-cheat-sheet', 'a CQL cheat sheet with tested queries'),
     ('confluence-live-search-macro', 'confluence-cql-cheat-sheet', 'a CQL cheat sheet with tested queries'),
+    ('confluence-cql-cheat-sheet', 'confluence-starred-pages', 'how to see your starred pages'),
+    ('find-unpublished-drafts-confluence', 'confluence-starred-pages', 'how to see your starred pages'),
 ]
 
 for откуда, куда, текст in СВЯЗИ:
