@@ -94,6 +94,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to see your starred pages in Confluence Cloud](https://horizonventures.app/docs/confluence-starred-pages.html): Where Confluence Cloud lists your starred pages, the Ctrl+Alt+F shortcut and the CQL query for them.
 
+- [Graphviz in Confluence Cloud: free and paid options](https://horizonventures.app/docs/graphviz-confluence-cloud.html): The apps that render Graphviz DOT in Confluence Cloud, what they cost, and how to keep node links clickable in an attached SVG.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

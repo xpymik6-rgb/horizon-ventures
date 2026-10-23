@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graphviz in Confluence Cloud: free and paid options</title>
+<meta name="description" content="How to show Graphviz (DOT) diagrams in Confluence Cloud: the apps that render DOT on a page, which are free for small teams, and how to keep node links clickable when the SVG is generated outside Confluence.">
+<link rel="canonical" href="https://horizonventures.app/docs/graphviz-confluence-cloud.html">
+<meta property="og:title" content="Graphviz in Confluence Cloud: free and paid options">
+<meta property="og:description" content="Confluence Cloud has no built-in Graphviz macro. The apps that fill the gap, what they cost, and what happens to node links in an attached SVG. Tested on a live site.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Graphviz in Confluence Cloud: free and paid options",
+   "description": "The apps that render Graphviz DOT diagrams in Confluence Cloud, their prices, and how to keep node links clickable in an SVG generated outside Confluence.",
+   "url": "https://horizonventures.app/docs/graphviz-confluence-cloud.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-23",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Does Confluence Cloud support Graphviz natively?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. Confluence Cloud has no built-in macro that renders DOT source. You need an app such as Graphviz Diagrams for Confluence by Appfire, or a general diagram renderer that includes Graphviz."}},
+    {"@type": "Question", "name": "Is there a free Graphviz app for Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Several Graphviz renderers on the Atlassian Marketplace are free for sites with up to 10 users, including Graphviz Diagrams for Confluence by Appfire. Above 10 users they are priced per user."}},
+    {"@type": "Question", "name": "Do Graphviz node links work in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Inside Appfire's Graphviz macros, yes: their Cloud documentation shows URL and tooltip attributes on nodes and edges. If you attach an SVG exported by Graphviz and insert it as an ordinary image, Confluence shows it as a flat picture and the links do not work; we confirmed this on a live Confluence Cloud site."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Graphviz in Confluence Cloud: free and paid options</h1>
+    <p class="sub">Confluence Cloud does not render DOT on its own. Which apps do, what they cost for a small team, and the one case none of them covers well: a diagram generated outside Confluence whose node links must stay clickable. Checked on a live Confluence Cloud site on 23 October 2026.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Confluence Cloud has no built-in Graphviz macro, so you need an app. If you want to write DOT directly on the page, install <strong>Graphviz Diagrams for Confluence</strong> by Appfire: it is the long-standing Graphviz app, runs on Atlassian's current Forge platform, was updated in September 2026, and is free for sites with up to 10 users. If your diagrams are generated somewhere else (a script, a build pipeline, a docs-as-code repository) and you only need to show the resulting SVG with working links, read the section on attached SVG files below.</p>
+
+  <h2>The apps that render DOT in Confluence Cloud</h2>
+
+  <p>Figures are from the Atlassian Marketplace on 23 October 2026. "Free up to 10" means the app costs nothing on a site with 10 users or fewer and is priced per user above that.</p>
+
+  <table>
+    <thead><tr><th>App</th><th>What it is</th><th>Installs</th><th>Price</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Graphviz Diagrams for Confluence (Appfire)</td><td>Dedicated Graphviz app: digraph, graph, flowchart, graph-from-table and space graph macros</td><td>610</td><td>Free up to 10, then $1.20 per user per month on sites up to 100 users</td><td>Forge, updated September 2026. The default choice.</td></tr>
+      <tr><td>Just Add+ (Modus Create)</td><td>Renders many formats from text or Git: Markdown, PlantUML, Mermaid, Graphviz and more</td><td>8,085 (all formats)</td><td>Free up to 10</td><td>Forge, updated October 2026. Good if you also need Markdown or code from Git.</td></tr>
+      <tr><td>Kroki Diagrams for Confluence</td><td>Renders many text diagram languages through Kroki, Graphviz among them</td><td>45</td><td>Free up to 10</td><td>Forge, updated March 2026.</td></tr>
+      <tr><td>PlantUML, Mermaid UML, Graphviz for Confluence (Fulstech)</td><td>Three languages in one app</td><td>88</td><td>Free up to 10</td><td>Runs on Connect, the older platform Atlassian is retiring.</td></tr>
+      <tr><td>Graphviz Cloud (Addteq)</td><td>Dedicated Graphviz app</td><td>35</td><td>$3 a month up to 10, then per user</td><td>Connect, last updated March 2022. We would not start with it today.</td></tr>
+    </tbody>
+  </table>
+
+  <p>For most teams the choice is between the first two. Appfire's app is the Graphviz specialist, with macros that build a graph from a Confluence table or from the page tree of a space. Just Add+ makes sense if Graphviz is one of several text formats you want on your pages.</p>
+
+  <h2>Clickable nodes</h2>
+
+  <p>Graphviz can attach a link to any node, edge or cluster with the <code>URL</code> attribute, and a hover text with <code>tooltip</code>:</p>
+
+  <pre><code>digraph services {
+  rankdir=LR;
+  node [shape=box, style="rounded,filled", fillcolor="#eef3fb"];
+  web [label="Web app",  URL="https://example.com/web", tooltip="Web app runbook"];
+  api [label="API",      URL="https://example.com/api", tooltip="API docs"];
+  db  [label="Database", URL="https://example.com/db",  tooltip="Schema"];
+  web -&gt; api -&gt; db;
+}</code></pre>
+
+  <p>Inside Appfire's macros this works in Cloud: their Cloud documentation, <a href="https://support.appfire.com/space/GVIZ/70224107">How to add links to graphviz images</a>, shows <code>URL</code> and <code>tooltip</code> on nodes and edges, and even Confluence-style links such as <code>[Page title|SPACE]</code> as targets. For the other apps in the table we did not test whether node links stay clickable, so try it on one diagram before you rely on it.</p>
+
+  <h2>When the SVG is made outside Confluence</h2>
+
+  <p>Many teams do not write DOT in Confluence at all. The diagram is generated: a script draws the service map from a config file, a build job runs <code>dot -Tsvg services.dot -o services.svg</code>, a tool exports its dependency graph. The SVG then gets attached to a Confluence page, and the links Graphviz put on every node are the whole point of it.</p>
+
+  <p>We tested exactly that. We rendered the DOT above with real Graphviz, confirmed that the SVG contains three links with their tooltips, attached it to a page on a Confluence Cloud test site and inserted it the normal way, as an image. Confluence displayed it as a flat picture (an <code>&lt;img&gt;</code> element): the diagram looks right, but none of the nodes can be clicked and the tooltips are gone. This is the same behaviour we describe in <a href="/docs/confluence-svg-flat-image.html">why Confluence Cloud turns your SVG into a flat image</a>, and it is how browsers treat any SVG shown as an image, not a Graphviz problem.</p>
+
+  <p>Your options here:</p>
+  <ul>
+    <li>Keep the DOT source and paste it into one of the apps above, so the app renders it on the page with links. Fine if the diagram changes rarely.</li>
+    <li>Link to the SVG file itself under the image, so people who need the links open it in a new tab. Free, but most readers will not.</li>
+    <li>Show the attached SVG with an app that keeps its links.</li>
+  </ul>
+
+  <p><strong>Disclosure:</strong> I build <a href="/clickable-svg.html">Clickable SVG for Confluence</a>, which does the third. In the same test, the same attached file shown through our macro kept all three node links and their tooltips, and the reader can zoom and search inside the diagram. It does not render DOT: it shows an SVG you already have. It is free for teams of up to 10 people, then $2 per user per month. If you write your diagrams on the page, Appfire's Graphviz app is the better fit, and if your case is simpler than clickable nodes, take the free option.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Does Confluence Cloud support Graphviz natively?</h3>
+  <p>No. There is no built-in macro for DOT source in Confluence Cloud. You need an app.</p>
+
+  <h3>Is there a free Graphviz app for Confluence Cloud?</h3>
+  <p>Yes, for small sites. Appfire's Graphviz app, Just Add+ and Kroki Diagrams are free for sites with up to 10 users.</p>
+
+  <h3>Why are the links in my Graphviz SVG not clickable in Confluence?</h3>
+  <p>Because Confluence shows an attached SVG as an ordinary image, and an image cannot contain working links. Render the DOT with a Graphviz app, or show the SVG with an app that keeps links.</p>
+
+  <p class="more">Related: <a href="/docs/plantuml-confluence-alternative.html">PlantUML in Confluence Cloud</a>, <a href="/docs/mermaid-confluence-alternative.html">Mermaid in Confluence Cloud</a>, <a href="/docs/diagrams-in-confluence-compared.html">diagram apps for Confluence compared</a>, and <a href="/docs/clickable-diagram-confluence.html">how to make a diagram clickable</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
