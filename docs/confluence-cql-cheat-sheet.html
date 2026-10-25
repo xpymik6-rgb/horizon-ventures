@@ -40,7 +40,9 @@
     {"@type": "Question", "name": "What is the difference between ancestor and parent in CQL?",
      "acceptedAnswer": {"@type": "Answer", "text": "parent = ID returns only the direct children of a page. ancestor = ID returns the whole tree below it, children of children included."}},
     {"@type": "Question", "name": "Where can I run a CQL query in Confluence Cloud?",
-     "acceptedAnswer": {"@type": "Answer", "text": "Atlassian documents CQL as part of the REST API. The quickest way is to open https://your-site.atlassian.net/wiki/rest/api/content/search?cql= followed by the query in a browser where you are logged in; you get the results as JSON with your own permissions. Apps and scripts use the same endpoint."}}
+     "acceptedAnswer": {"@type": "Answer", "text": "Atlassian documents CQL as part of the REST API. The quickest way is to open https://your-site.atlassian.net/wiki/rest/api/content/search?cql= followed by the query in a browser where you are logged in; you get the results as JSON with your own permissions. Apps and scripts use the same endpoint."}},
+    {"@type": "Question", "name": "How do I find pages that use a Forge app's macro with CQL?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Use the module key, the last part of the extension key after static/ in the page storage format: macro = \"module-key\". In our test the full extension key and the app ID both returned zero results without an error, while the module key found every page with the macro."}}
    ]
   }
  ]
@@ -156,6 +158,7 @@ type IN (page, blogpost) AND space IN (DEV, OPS) ORDER BY created DESC</code></p
   <ul>
     <li><strong><code>m</code> is minutes, <code>M</code> is months.</strong> On our test site <code>lastmodified &gt; now("-6m")</code> returned nothing and <code>now("-6M")</code> returned every page. Use <code>d</code> or <code>w</code> if you want to avoid the question.</li>
     <li><strong>A name returns nothing, without an error.</strong> <code>creator = "Mikhail"</code> came back empty while <code>creator = currentUser()</code> found every page of the same person. In Confluence Cloud user fields take account IDs; a name is not rejected, it just matches no one.</li>
+    <li><strong>A Forge app's macro is found only by its module key.</strong> In the storage format a Forge macro carries a key like <code>&lt;app-id&gt;/&lt;environment-id&gt;/static/&lt;module-key&gt;</code>. On our test site, with one of our own Forge macros on nine pages, <code>macro = "&lt;module-key&gt;"</code> found all nine; the full key and the app ID returned zero, again without an error. Worth knowing before you conclude that nobody uses an app you are about to uninstall. The module key is chosen by the vendor, so two apps can share one; open a couple of hits.</li>
     <li><strong><code>label IN</code> means any, not all.</strong> We checked on two test pages, one with labels A and B, one with only A: <code>label IN ("A", "B")</code> returned both pages, <code>label = "A" AND label = "B"</code> returned one. Label case does not matter.</li>
     <li><strong>A query cannot start with a negative clause.</strong> Atlassian's documentation says so: put <code>NOT label = "archived"</code> after a positive condition such as <code>type = page AND</code>.</li>
     <li><strong>Without parentheses, conditions are read left to right.</strong> Mixing AND and OR without brackets gives surprising results; bracket every OR group.</li>
@@ -187,6 +190,9 @@ type IN (page, blogpost) AND space IN (DEV, OPS) ORDER BY created DESC</code></p
 
   <h3>What is the difference between ancestor and parent?</h3>
   <p><code>parent</code> gives direct children, <code>ancestor</code> the whole tree below a page.</p>
+
+  <h3>How do I find pages that use a Forge app's macro?</h3>
+  <p><code>macro = "module-key"</code>, where the module key is the part after <code>static/</code> in the macro's extension key in the page storage format. The full key and the app ID return nothing.</p>
 
   <h3>Can I search by a person's name?</h3>
   <p>Not in Confluence Cloud: user fields take account IDs. <code>currentUser()</code> covers the common case of searching for yourself.</p>
