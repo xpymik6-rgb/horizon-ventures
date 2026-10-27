@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find every Confluence Cloud page that uses a macro</title>
+<meta name="description" content="How to find which Confluence Cloud pages use an app's macro before you uninstall it: the Macro usage report, the CQL macro query, why macroName: does not work in Cloud, and the Forge and built-in macros that CQL silently misses. Tested on a live site.">
+<link rel="canonical" href="https://horizonventures.app/docs/find-pages-using-macro-confluence.html">
+<meta property="og:title" content="Find every Confluence Cloud page that uses a macro">
+<meta property="og:description" content="Macro usage report for counts, CQL for the page list, and four cases where the search returns zero without an error. Tested on a live Confluence Cloud site.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Find every Confluence Cloud page that uses a macro",
+   "description": "The Macro usage report, the CQL macro query, and the Forge and built-in macros that CQL misses. Tested on a live Confluence Cloud site.",
+   "url": "https://horizonventures.app/docs/find-pages-using-macro-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-27",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "HowTo",
+   "name": "Find the Confluence Cloud pages that use an app's macro",
+   "step": [
+    {"@type": "HowToStep", "name": "Get the macro name and the count", "text": "As a Confluence admin open Settings, Data management, Macro usage. The All macros list shows each app with its macro names and the number of content items that use them."},
+    {"@type": "HowToStep", "name": "List the pages", "text": "Run the CQL query type = page AND macro = \"macro-name\" in the REST search endpoint, adding AND space = KEY to narrow it to one space."},
+    {"@type": "HowToStep", "name": "Check the counts match", "text": "Compare the number of CQL results with the Macro usage count. If CQL returns zero for a Forge app, use the module key, the part after static/ in the macro's extension key."}
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "How do I find all pages that use a macro in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Use the CQL query type = page AND macro = \"macro-name\", run through the REST search endpoint, optionally with AND space = KEY. For the overall count per app, Confluence admins have the Macro usage report under Settings, Data management."}},
+    {"@type": "Question", "name": "Does macroName: work in Confluence Cloud search?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. macroName: is a Data Center search feature. In our Cloud test, searching for macroName:drawio matched files and pages with the word drawio in their text, not pages with the draw.io macro."}},
+    {"@type": "Question", "name": "Why does the CQL macro query return nothing for a Forge app?",
+     "acceptedAnswer": {"@type": "Answer", "text": "A Forge macro is matched only by its module key, the last part of its extension key after static/. In our test the full extension key and the app ID both returned zero results without an error, while the module key found every page."}},
+    {"@type": "Question", "name": "Can CQL find info panels, status lozenges or code blocks?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not by their old macro names. In Confluence Cloud the info, note, tip and warning panels are stored as one native panel element, so macro = \"panel\" finds all of them together. Status and code blocks were not found by any macro query in our test."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Find every Confluence Cloud page that uses a macro</h1>
+    <p class="sub">Before you uninstall an app, or replace one that runs on Connect before Atlassian ends support on 31 January 2027, you need the list of pages that still use its macros. Confluence Cloud has two tools for it, and four cases where the search comes back empty without telling you anything is wrong. Everything below was tested on a live Confluence Cloud site in October 2026.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> For the count, a Confluence admin opens <strong>Settings &rarr; Data management &rarr; Macro usage</strong>: it lists every app, the names of its macros and how many content items use each. For the list of pages, run the CQL query <code>type = page AND macro = "macro-name"</code> through the REST search endpoint, adding <code>AND space = KEY</code> to narrow it to one space. Use the macro name exactly as the Macro usage report shows it. For apps built on Forge that name is the module key, and anything else returns zero.</p>
+
+  <h2>1. The Macro usage report: how many</h2>
+
+  <p>The report sits in Confluence administration under Data management, at <code>/wiki/admin/macro-usage</code>. It has two parts.</p>
+
+  <ul>
+    <li><strong>All macros</strong> lists each app, bundled or installed, with its macro names and the number of content items that contain them. On our test site it showed our own Forge app as <code>clickable-svg(9)</code>, which matched the nine pages we knew had it.</li>
+    <li><strong>Unused macros</strong> lists macros from installed apps that appear nowhere. The report itself says what this is for: checking that an app is not used before you disable or remove it.</li>
+  </ul>
+
+  <p>Three limits, the first two stated on the report page itself. It only counts content you are allowed to see, so pages with restrictions you are not part of are missing from the numbers. Archived spaces are left out. And on our site it gave counts per macro, not links to the pages, with no space filter or export; an admin on the community forum <a href="https://community.atlassian.com/forums/discussion/3175473/macro-usage-search-in-confluence-cloud">described the same</a> when trying to count one macro in one space. For the page list you need search.</p>
+
+  <h2>2. CQL: which pages</h2>
+
+  <pre><code>type = page AND macro = "drawio"
+type = page AND macro = "drawio" AND space = DEV
+type = page AND macro IN ("drawio", "gliffy")</code></pre>
+
+  <p>The quickest way to run it is in a browser where you are logged in: <code>https://your-site.atlassian.net/wiki/rest/api/content/search?cql=</code> followed by the query. The response is JSON; <code>totalSize</code> is the count and each result has the page title and link. It returns pages, not macros: a page with five old diagrams is one result, which matters when you estimate how much replacing is left. Change <code>type = page</code> to <code>type IN (page, blogpost)</code> if blogs use the macro too.</p>
+
+  <h2>Four cases where the result is zero and should not be</h2>
+
+  <h3>macroName: in the search box</h3>
+  <p>Many answers, including old Atlassian pages, suggest typing <code>macroName:drawio</code> into search. That is Data Center syntax. In Cloud it is treated as ordinary text: on our site it returned files with "drawio" in their names and not the page that actually had the draw.io macro. Use the CQL <code>macro</code> field instead.</p>
+
+  <h3>A Forge app's macro under its full key</h3>
+  <p>In the page storage format a Forge macro carries a key like <code>&lt;app-id&gt;/&lt;environment-id&gt;/static/&lt;module-key&gt;</code>. CQL matches only the module key, the part after <code>static/</code>. With our own Forge macro on nine pages, <code>macro = "clickable-svg"</code> found all nine; the full key and the app ID returned zero, with no error. The module key is also what the Macro usage report shows, so copy it from there. Vendors choose module keys themselves, so two apps can share one; open a couple of results to be sure.</p>
+
+  <h3>Info, note, tip and warning panels</h3>
+  <p>These used to be four separate macros, and the old names still appear in the storage format. In Cloud they are stored as one native panel element. On a fresh test page with an info panel, <code>macro = "info"</code> returned nothing and <code>macro = "panel"</code> found it, together with every other coloured panel on the site. The Macro usage report goes the same way: on our site it listed info, note, tip and warning under Unused macros while info and warning panels were in use. These macros ship with Confluence, so you will not uninstall them, but it shows that an "unused" verdict is only as good as the names behind it.</p>
+
+  <h3>Status lozenges and code blocks</h3>
+  <p>Same story, without a workaround in CQL. On the same test page <code>macro = "status"</code> and <code>macro = "code"</code> both returned zero while the page had both elements; <code>toc</code> and <code>expand</code> on that page were found within seconds. We did not find a CQL condition that lists pages with a status or a code block.</p>
+
+  <h2>A ten-minute check before you uninstall</h2>
+
+  <ol>
+    <li>Open Macro usage and write down the app's macro names and counts.</li>
+    <li>For each macro, run the CQL query and compare <code>totalSize</code> with the count. A large gap means restricted pages you cannot see, archived spaces, or a wrong name.</li>
+    <li>Ask someone with access to restricted content to run the same query, or check with your space admins, before you rely on a zero.</li>
+    <li>Only then disable the app, and leave it disabled for a week or two before you uninstall it, so anyone who finds a broken page can tell you while it is still easy to switch back.</li>
+  </ol>
+
+  <p>For the wider audit of apps that run on Connect, see <a href="/docs/connect-end-of-life.html">what a Confluence admin actually has before Connect end of life</a>, and the <a href="/docs/confluence-cql-cheat-sheet.html">CQL cheat sheet</a> for the rest of the query syntax.</p>
+
+  <p><strong>Disclosure:</strong> I build Forge replacements for three Connect-era apps: <a href="/docs/svg-out-alternative.html">SVG out</a>, <a href="/docs/table-exporter-alternative.html">Table Exporter</a> and <a href="/docs/cql-search-alternative.html">CQL Search</a>. The pages behind those links explain what each old app did and what to use instead, ours included. Finding the pages, as described above, needs nothing but Confluence itself.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>How do I find all pages that use a macro?</h3>
+  <p><code>type = page AND macro = "macro-name"</code> in CQL, with the name taken from the Macro usage report.</p>
+
+  <h3>Does macroName: work in Confluence Cloud?</h3>
+  <p>No. It is Data Center syntax; in Cloud it searches for the words as text.</p>
+
+  <h3>Why does CQL return nothing for a Forge app?</h3>
+  <p>You probably used the full extension key or the app name. Use the module key, the part after <code>static/</code>.</p>
+
+  <h3>Can I find pages with info panels or status lozenges?</h3>
+  <p>Panels yes, all colours together, with <code>macro = "panel"</code>. Status and code blocks, not with CQL as far as we could find.</p>
+
+  <p class="more">Related: <a href="/docs/connect-end-of-life.html">Connect app end of life</a>, <a href="/docs/confluence-cql-cheat-sheet.html">Confluence CQL cheat sheet</a>, and <a href="/docs/what-to-check-before-installing-app.html">what to check before installing a Confluence app</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

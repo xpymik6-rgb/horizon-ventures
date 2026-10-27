@@ -96,6 +96,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [Graphviz in Confluence Cloud: free and paid options](https://horizonventures.app/docs/graphviz-confluence-cloud.html): The apps that render Graphviz DOT in Confluence Cloud, what they cost, and how to keep node links clickable in an attached SVG.
 
+- [Find every Confluence Cloud page that uses a macro](https://horizonventures.app/docs/find-pages-using-macro-confluence.html): How to find the pages that use an app's macro before you uninstall it, and the four cases where search returns zero.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
