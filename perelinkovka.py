@@ -28,6 +28,12 @@ import os, re
     ('diagrams-in-confluence-compared', 'graphviz-confluence-cloud', 'Graphviz in Confluence Cloud: apps and prices'),
     ('confluence-svg-flat-image', 'graphviz-confluence-cloud', 'why Graphviz node links stop working in Confluence'),
     ('clickable-diagram-confluence', 'graphviz-confluence-cloud', 'clickable Graphviz diagrams in Confluence'),
+    ('connect-end-of-life', 'find-pages-using-macro-confluence', 'how to find every page that uses an app\'s macro'),
+    ('confluence-cql-cheat-sheet', 'find-pages-using-macro-confluence', 'finding pages that use a macro, and when CQL misses them'),
+    ('svg-out-alternative', 'find-pages-using-macro-confluence', 'how to find the pages that still use SVG out'),
+    ('table-exporter-alternative', 'find-pages-using-macro-confluence', 'how to find the pages that still use Table Exporter'),
+    ('cql-search-alternative', 'find-pages-using-macro-confluence', 'how to find the pages that still use CQL Search'),
+    ('what-to-check-before-installing-app', 'find-pages-using-macro-confluence', 'how to check where an app is used before removing it'),
 ]
 
 for откуда, куда, текст in СВЯЗИ:
