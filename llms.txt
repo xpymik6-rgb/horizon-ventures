@@ -49,7 +49,7 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to split a Word document into multiple Confluence pages](https://horizonventures.app/docs/split-word-document-confluence-pages.html): Cloud makes one page per file. The free way around it runs through Word's outline view, with the hours it costs.
 
-- [How to list Confluence pages on a page without writing CQL](https://horizonventures.app/docs/list-confluence-pages-without-cql.html): Four native macros, twelve filters and no query language. Where each one stops, and what the content manager does instead.
+- [Confluence page list: show a list of pages without writing CQL](https://horizonventures.app/docs/list-confluence-pages-without-cql.html): Four native macros, twelve filters and no query language. Where each one stops, and what the content manager does instead.
 
 - [What a Confluence space export actually gives you](https://horizonventures.app/docs/confluence-space-export-explained.html): Four formats, an admin-only button, and several things that vanish without a warning.
 
@@ -69,13 +69,13 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to get a list of Confluence pages with owners and dates](https://horizonventures.app/docs/list-confluence-pages-with-owner-and-dates.html): No single report exists: the content manager needs Premium, the CSV export works on any plan but its columns are undocumented.
 
-- [Why can't someone see a Confluence page?](https://horizonventures.app/docs/why-cannot-see-confluence-page.html): Space permissions or page restrictions: which wins, why view restrictions cascade down, and where the list of restricted pages lives.
+- [Confluence page restrictions: why someone can't see a page](https://horizonventures.app/docs/why-cannot-see-confluence-page.html): Space permissions or page restrictions: which wins, why view restrictions cascade down, and where the list of restricted pages lives.
 
 - [The Live Search macro: what it does, and where it breaks](https://horizonventures.app/docs/confluence-live-search-macro.html): Confluence Cloud has a Live Search macro, but it searches the space rather than the page and cannot match the middle of a word.
 
 - [How to make an image clickable in Confluence Cloud](https://horizonventures.app/docs/confluence-clickable-image.html): A whole image can be a link in two clicks. Separate clickable areas cannot be done natively, because Cloud has no HTML macro.
 
-- [How to put a Visio diagram into Confluence Cloud](https://horizonventures.app/docs/insert-visio-diagram-confluence.html): Confluence Cloud will not preview a .vsdx attachment: it downloads instead. The four routes onto the page and what each costs later.
+- [Visio to Confluence Cloud: how to insert a Visio diagram](https://horizonventures.app/docs/insert-visio-diagram-confluence.html): Confluence Cloud will not preview a .vsdx attachment: it downloads instead. The four routes onto the page and what each costs later.
 
 - [CQL Search alternative before Connect ends](https://horizonventures.app/docs/cql-search-alternative.html): CQL Search runs on Connect, which loses support on 31 January 2027: native and app replacements, and how to move saved queries.
 
