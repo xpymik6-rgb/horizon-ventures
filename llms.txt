@@ -97,6 +97,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [Find every Confluence Cloud page that uses a macro](https://horizonventures.app/docs/find-pages-using-macro-confluence.html): How to find the pages that use an app's macro before you uninstall it, and the four cases where search returns zero.
 
+- [How to export multiple Confluence pages to Word](https://horizonventures.app/docs/export-multiple-confluence-pages-to-word.html): Confluence exports one page at a time to Word; the free route through a multi-page PDF and the apps that export a page tree.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

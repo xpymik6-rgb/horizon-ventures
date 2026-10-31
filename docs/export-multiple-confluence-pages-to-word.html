@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to export multiple Confluence pages to Word</title>
+<meta name="description" content="Confluence Cloud exports one page at a time to Word, and the space export has no Word option. The free route through a multi-page PDF, and the apps that export a whole page tree into one Word document. Tested on a live site.">
+<link rel="canonical" href="https://horizonventures.app/docs/export-multiple-confluence-pages-to-word.html">
+<meta property="og:title" content="How to export multiple Confluence pages to Word">
+<meta property="og:description" content="Word export takes one page, the space export has no Word option. What does work, free and paid, checked on a live Confluence Cloud site.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to export multiple Confluence pages to Word",
+   "description": "Confluence Cloud exports one page at a time to Word. The free route through a multi-page PDF, and the apps that export a page tree into one Word document.",
+   "url": "https://horizonventures.app/docs/export-multiple-confluence-pages-to-word.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-31",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Can Confluence Cloud export several pages to one Word document?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Not natively. The Word export on a page exports that page only, without its child pages, and the space export offers PDF, HTML, XML and CSV but not Word. To get several pages into one Word file you either export them to one PDF and open it in Word, or use an app such as Scroll Word Exporter or Content Exporter."}},
+    {"@type": "Question", "name": "Does exporting a parent page to Word include its child pages?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. In our test the Word export of a page with two child pages contained only the parent page."}},
+    {"@type": "Question", "name": "Can I choose which pages go into a Confluence PDF export?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes. The space PDF export offers either all pages or a selection you pick, and produces one PDF."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to export multiple Confluence pages to Word</h1>
+    <p class="sub">A handbook, a set of procedures for an auditor, a page tree someone wants "as one Word file". Confluence Cloud makes the single page easy and the many pages surprisingly hard. Here is what it does and does not do, checked on a live Confluence Cloud site in October 2026, and the routes that work.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> Confluence Cloud has no built-in way to put several pages into one Word document. The Word export on a page exports that page only, and the space export offers PDF, HTML, XML and CSV but not Word. The free route is to export the pages you need into <strong>one PDF</strong> (the space PDF export lets you pick them) and open that PDF in Word. If the document has to look right or is produced regularly, use an app that exports a page tree straight to Word.</p>
+
+  <h2>What Confluence does natively</h2>
+
+  <h3>Word export: one page, no children</h3>
+  <p>Every page has an Export to Word option in its actions menu; the same export sits at <code>/wiki/exportword?pageId=</code> followed by the page ID. We tested it on a parent page with two child pages: the file contained the parent page and nothing from either child. The file Confluence produces has a <code>.doc</code> extension but is a web page archive inside, which is worth knowing if your company's document templates or macros expect a real <code>.docx</code>; save it as <code>.docx</code> from Word before you pass it on.</p>
+
+  <h3>Space export: no Word option</h3>
+  <p>The space export page offers four formats on our site: PDF, HTML, XML and CSV. Word is not among them.</p>
+
+  <h3>PDF export: you can choose the pages</h3>
+  <p>The space PDF export gives two options: export everything, or <strong>choose what to export</strong> and tick the pages you want. The result is one PDF. This is the only native way we found to get a chosen set of pages into a single file.</p>
+
+  <h2>The free route: one PDF, then Word</h2>
+  <ol>
+    <li>Open the space PDF export and choose the pages you need.</li>
+    <li>Download the PDF.</li>
+    <li>Open the PDF in Microsoft Word with File, Open. Word converts it into an editable document.</li>
+  </ol>
+  <p>Microsoft says the conversion <a href="https://support.microsoft.com/en-us/word/training/edit-a-pdf">works best with documents that are mostly text</a>; complex layouts may not line up exactly. We did not test the Word side of this ourselves, so check tables and images in the result before you send it. For a document that is mostly headings, paragraphs and simple tables it is a reasonable free answer, and it costs about five minutes.</p>
+
+  <p>Two other free routes, both slower: export each page to Word and paste them into one document, which is fine for three pages and painful for thirty; or use the HTML space export and open the files in Word one by one.</p>
+
+  <h2>When an app is worth it</h2>
+  <p>If someone needs the same handbook as a Word file every month, or the document must follow a corporate template with a title page and numbered headings, an exporter app saves the manual work. Figures from the Atlassian Marketplace on 31 October 2026:</p>
+
+  <table>
+    <thead><tr><th>App</th><th>Installs</th><th>What it exports</th><th>Price</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Scroll Word Exporter (K15t)</td><td>4,537</td><td>Single pages, page trees or whole spaces to Word, with templates</td><td>$5 a month up to 10 users, then per user</td><td>Forge, updated October 2026. The established choice.</td></tr>
+      <tr><td>Content Exporter (META-INF)</td><td>1,079</td><td>Pages or whole page trees to PDF, Word and HTML, with page selection</td><td>$6 a month up to 10 users, then per user</td><td>Forge, updated August 2026.</td></tr>
+      <tr><td>PDF, HTML and Word exporter (miniOrange)</td><td>183</td><td>Pages to PDF and Word with templates</td><td>$4 a month up to 10 users</td><td>Runs on Connect, last updated January 2024; Connect support ends 31 January 2027.</td></tr>
+    </tbody>
+  </table>
+
+  <p>Both of the first two describe exporting a whole page tree into one document in their listings. We have not run either of them, so try the free trial on a real page tree of yours before you commit.</p>
+
+  <p><strong>Disclosure:</strong> I build <a href="/word-import.html">Word Import for Confluence</a>, which does the opposite job: it turns a long Word document into a tree of Confluence pages. If your situation is the reverse of this article, that is where to look; for exporting to Word, the routes above are the honest answer.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Can Confluence export several pages to one Word file?</h3>
+  <p>Not natively. Export the pages to one PDF and open it in Word, or use an exporter app.</p>
+
+  <h3>Does exporting a parent page to Word include its children?</h3>
+  <p>No. Only the page you export ends up in the file.</p>
+
+  <h3>Can I pick which pages go into a PDF export?</h3>
+  <p>Yes, the space PDF export lets you choose the pages and gives you one PDF.</p>
+
+  <p class="more">Related: <a href="/docs/confluence-space-export-explained.html">what a Confluence space export actually gives you</a>, <a href="/docs/import-word-into-confluence.html">importing Word documents into Confluence</a>, and <a href="/docs/split-word-document-confluence-pages.html">splitting a Word document into several pages</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
