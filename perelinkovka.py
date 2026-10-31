@@ -37,6 +37,10 @@ import os, re
     ('confluence-space-export-explained', 'export-multiple-confluence-pages-to-word', 'how to get several pages into one Word document'),
     ('import-word-into-confluence', 'export-multiple-confluence-pages-to-word', 'the opposite direction: several pages out to Word'),
     ('split-word-document-confluence-pages', 'export-multiple-confluence-pages-to-word', 'exporting a page tree back to one Word file'),
+    ('confluence-svg-flat-image', 'broken-image-confluence', 'what a broken image placeholder means'),
+    ('confluence-clickable-image', 'broken-image-confluence', 'why an image shows as a grey box'),
+    ('confluence-word-import-missing-content', 'broken-image-confluence', 'fixing broken images on a page'),
+    ('find-unpublished-drafts-confluence', 'broken-image-confluence', 'restoring a deleted image from the trash'),
 ]
 
 for откуда, куда, текст in СВЯЗИ:
