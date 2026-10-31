@@ -41,6 +41,10 @@ import os, re
     ('confluence-clickable-image', 'broken-image-confluence', 'why an image shows as a grey box'),
     ('confluence-word-import-missing-content', 'broken-image-confluence', 'fixing broken images on a page'),
     ('find-unpublished-drafts-confluence', 'broken-image-confluence', 'restoring a deleted image from the trash'),
+    ('why-cannot-see-confluence-page', 'find-restricted-pages-confluence', 'how to list every restricted page, inherited ones included'),
+    ('confluence-cql-cheat-sheet', 'find-restricted-pages-confluence', 'finding restricted pages, which CQL cannot do'),
+    ('find-stale-pages-confluence', 'find-restricted-pages-confluence', 'finding all restricted pages'),
+    ('list-confluence-pages-with-owner-and-dates', 'find-restricted-pages-confluence', 'listing restricted pages with a script'),
 ]
 
 for откуда, куда, текст in СВЯЗИ:
