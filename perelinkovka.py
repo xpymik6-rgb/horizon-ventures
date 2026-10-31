@@ -34,6 +34,9 @@ import os, re
     ('table-exporter-alternative', 'find-pages-using-macro-confluence', 'how to find the pages that still use Table Exporter'),
     ('cql-search-alternative', 'find-pages-using-macro-confluence', 'how to find the pages that still use CQL Search'),
     ('what-to-check-before-installing-app', 'find-pages-using-macro-confluence', 'how to check where an app is used before removing it'),
+    ('confluence-space-export-explained', 'export-multiple-confluence-pages-to-word', 'how to get several pages into one Word document'),
+    ('import-word-into-confluence', 'export-multiple-confluence-pages-to-word', 'the opposite direction: several pages out to Word'),
+    ('split-word-document-confluence-pages', 'export-multiple-confluence-pages-to-word', 'exporting a page tree back to one Word file'),
 ]
 
 for откуда, куда, текст in СВЯЗИ:
