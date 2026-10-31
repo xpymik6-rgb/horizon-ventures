@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Confluence CQL cheat sheet: queries you can copy</title>
-<meta name="description" content="Tested Confluence Cloud CQL queries for real tasks: stale pages, pages with all of several labels, your starred pages, mentions, a page tree, pages with a macro. Plus the traps that return wrong results.">
+<meta name="description" content="Tested Confluence Cloud CQL queries for real tasks: stale pages, pages with all of several labels, your starred pages, mentions, a page tree, pages with a macro. Plus the traps that return wrong results. Free PDF download.">
 <link rel="canonical" href="https://horizonventures.app/docs/confluence-cql-cheat-sheet.html">
 <meta property="og:title" content="Confluence CQL cheat sheet: queries you can copy">
 <meta property="og:description" content="Copy-paste CQL for Confluence Cloud, every query tested: stale pages, labels, starred pages, mentions, page trees, macros, page status. And why label IN does not mean what most people think.">
@@ -82,6 +82,7 @@
   <header>
     <h1>Confluence CQL cheat sheet: queries you can copy</h1>
     <p class="sub">CQL is the query language behind Confluence search. Below are the queries people actually need, each one run against a live Confluence Cloud site before it went on this page, plus the few traps that quietly return the wrong pages.</p>
+    <p><a href="/docs/confluence-cql-cheat-sheet.pdf"><strong>Download this cheat sheet as a PDF</strong></a> (6 pages, free, no sign-up).</p>
   </header>
 
   <p><strong>Short answer.</strong> A CQL query is <code>field operator value</code>, joined with <code>AND</code>, <code>OR</code> and <code>NOT</code>, optionally followed by <code>ORDER BY</code>. Pages nobody touched in six months: <code>type = page AND lastmodified &lt; now("-26w")</code>. Pages with two labels at once: <code>label = "policy" AND label = "hr"</code>, not <code>label IN (...)</code>, which means "any of". Your starred pages: <code>favourite = currentUser()</code>.</p>
