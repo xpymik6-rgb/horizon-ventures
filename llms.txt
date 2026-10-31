@@ -101,6 +101,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [Broken image in Confluence Cloud: what the placeholder tells you](https://horizonventures.app/docs/broken-image-confluence.html): Three kinds of broken image placeholder in Confluence Cloud, the cause behind each, and how to restore a deleted image.
 
+- [How to find all restricted pages in Confluence Cloud](https://horizonventures.app/docs/find-restricted-pages-confluence.html): The per-space restricted pages report, the inherited restrictions it misses, why CQL cannot help, and a script for the whole site.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.

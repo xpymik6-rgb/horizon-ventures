@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to find all restricted pages in Confluence Cloud</title>
+<meta name="description" content="The per-space report of restricted pages in Confluence Cloud, the pages it misses, why CQL cannot help, and a short script for the whole site.">
+<link rel="canonical" href="https://horizonventures.app/docs/find-restricted-pages-confluence.html">
+<meta property="og:title" content="How to find all restricted pages in Confluence Cloud">
+<meta property="og:description" content="The built-in report lists pages restricted directly, but not their child pages that inherit the restriction. Tested on a live Confluence Cloud site, with a script that finds both.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "How to find all restricted pages in Confluence Cloud",
+   "description": "The per-space restricted pages report, what it misses, why CQL cannot help, and a script for the whole site.",
+   "url": "https://horizonventures.app/docs/find-restricted-pages-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-31",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "How do I see all restricted pages in a Confluence Cloud space?",
+     "acceptedAnswer": {"@type": "Answer", "text": "There is a per-space report called Restricted in space settings. Its direct address is /wiki/pages/listpermissionpages.action?key=SPACEKEY. It lists pages that carry a view or edit restriction, with the allowed users or groups."}},
+    {"@type": "Question", "name": "Does the restricted pages report show child pages of a restricted page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. In our test a child page under a view-restricted page was hidden by its parent's restriction but did not appear in the report, because the restriction is not set on the child itself."}},
+    {"@type": "Question", "name": "Can CQL find restricted pages?",
+     "acceptedAnswer": {"@type": "Answer", "text": "No. CQL has no field for restrictions; every variant we tried was rejected with an error that no such field exists. Use the space report or the REST API."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>How to find all restricted pages in Confluence Cloud</h1>
+    <p class="sub">A security review, a departing manager, a page someone cannot open: sooner or later you need the list of pages that are locked down. Confluence Cloud has a report for one space at a time, and it misses a whole class of pages. We set up view and edit restrictions on a live Confluence Cloud site in October 2026 and checked what each route shows.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> For one space, open the space's <strong>Restricted</strong> report, which sits in space settings; the direct address is <code>/wiki/pages/listpermissionpages.action?key=SPACEKEY</code>. It lists every page with a view or edit restriction and who is allowed in. It does <strong>not</strong> list child pages that are hidden only because their parent is restricted. For the whole site, including those inherited cases, use the REST API; a short script is below. CQL cannot do it: it has no field for restrictions.</p>
+
+  <h2>The space report</h2>
+
+  <p>The report describes itself as showing all pages and live docs whose access is restricted at the content level and allowed only to specific users or groups. On our test space it listed, for each restricted page, the title, the type of restriction (view or edit), the allowed user or group, the author and the creation date. A page restricted for viewing appeared with both its view and its edit restriction; a page restricted only for editing appeared once, as edit.</p>
+
+  <p>Three limits:</p>
+  <ul>
+    <li><strong>One space at a time.</strong> There is no site-wide version; for fifty spaces you open it fifty times.</li>
+    <li><strong>Inherited restrictions are missing.</strong> View restrictions cascade: a child page under a view-restricted page is hidden from the same people. In our test that child page did not appear in the report at all, because nothing is set on the child itself. These are exactly the pages that confuse people, since the page looks unrestricted when you open its own settings.</li>
+    <li><strong>It lives in space settings</strong>, so in practice it is a tool for space admins.</li>
+  </ul>
+
+  <h2>Why CQL cannot help</h2>
+  <p>CQL, the query language behind Confluence search, has no condition for restrictions. We tried <code>restriction</code>, <code>restricted</code>, <code>content.restriction</code> and <code>hasRestrictions</code>; each was rejected with an error saying the field does not exist. Any answer that offers a CQL query for this is guessing. More on what CQL can do in our <a href="/docs/confluence-cql-cheat-sheet.html">CQL cheat sheet</a>.</p>
+
+  <h2>The whole site, including inherited restrictions</h2>
+
+  <p>The REST API returns the restrictions of any page: <code>GET /wiki/rest/api/content/{id}/restriction?expand=restrictions.user,restrictions.group</code> gives a list of operations (read for view, update for edit) with the users and groups on each. For the child page in our test it returned nothing, which matches the report: the restriction lives on the parent. So a complete list needs one more step, checking each page's ancestors.</p>
+
+  <p>This Python script does both. It needs only Python 3 and an <a href="https://id.atlassian.com/manage-profile/security/api-tokens">Atlassian API token</a>; we ran it against our test site and it found all three test pages, the child one included:</p>
+
+<pre><code># List every page in Confluence Cloud that is restricted directly or through a parent.
+# Usage: python restricted_pages.py https://your-site.atlassian.net you@example.com API_TOKEN
+import base64, json, sys, urllib.request
+
+site, email, token = sys.argv[1:4]
+auth = 'Basic ' + base64.b64encode(f'{email}:{token}'.encode()).decode()
+
+def get(path):
+    req = urllib.request.Request(site + path, headers={'Authorization': auth, 'Accept': 'application/json'})
+    return json.loads(urllib.request.urlopen(req).read())
+
+def restrictions(page_id):
+    data = get(f'/wiki/rest/api/content/{page_id}/restriction'
+               '?expand=restrictions.user,restrictions.group')
+    found = {}
+    for item in data.get('results', []):
+        r = item.get('restrictions', {})
+        who = [u.get('displayName', u.get('accountId')) for u in r.get('user', {}).get('results', [])]
+        who += [g.get('name') for g in r.get('group', {}).get('results', [])]
+        if who:
+            found[item['operation']] = who
+    return found
+
+pages, url = [], '/wiki/api/v2/pages?limit=250'
+while url:
+    data = get(url)
+    pages += data['results']
+    nxt = data['_links'].get('next')
+    url = ('/wiki' + nxt if nxt and not nxt.startswith('/wiki') else nxt)
+
+direct = {p['id']: restrictions(p['id']) for p in pages}
+for p in pages:
+    own = direct[p['id']]
+    if own:
+        print(f"{p['title']} | restricted here | {own}")
+        continue
+    ancestors = get(f"/wiki/api/v2/pages/{p['id']}/ancestors")['results']
+    locked = [a['id'] for a in ancestors if 'read' in direct.get(a['id'], {})]
+    if locked:
+        print(f"{p['title']} | view restricted through parent page {locked[-1]}")</code></pre>
+
+  <p>On our test site the output was:</p>
+  <pre><code>Restriction probe: view restricted | restricted here | {'read': [...], 'update': [...]}
+Restriction probe: child of restricted | view restricted through parent page 26378267
+Restriction probe: edit restricted | restricted here | {'update': [...]}</code></pre>
+
+  <p>Two things to know before you run it on a large site. It makes one or two requests per page, so a site with ten thousand pages takes a while; run it overnight rather than during a review meeting. And it can only see what the account behind the token can see: a page restricted to people other than you will not appear. Run it with an account that is part of the restrictions you need to audit, or ask each space admin to run the space report.</p>
+
+  <h2>What we could not test</h2>
+  <p>Our test site has a single user, so we could not check what someone outside a restriction sees in the report, or whether the report shows pages that are restricted from the admin running it. Higher Confluence plans also list a permission inspection tool among their admin features; we have not tested it.</p>
+
+  <p>If the question is why one person cannot open one page, start with <a href="/docs/why-cannot-see-confluence-page.html">how space permissions and page restrictions interact</a>.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>How do I see all restricted pages in a space?</h3>
+  <p>Open the Restricted report in space settings, directly at <code>/wiki/pages/listpermissionpages.action?key=SPACEKEY</code>.</p>
+
+  <h3>Does the report show child pages of a restricted page?</h3>
+  <p>No. Pages hidden only through a restricted parent are not listed. Use the REST API with an ancestor check.</p>
+
+  <h3>Can CQL find restricted pages?</h3>
+  <p>No. CQL has no field for restrictions.</p>
+
+  <p class="more">Related: <a href="/docs/why-cannot-see-confluence-page.html">Confluence page restrictions: why someone can't see a page</a>, <a href="/docs/confluence-cql-cheat-sheet.html">Confluence CQL cheat sheet</a>, and <a href="/docs/find-stale-pages-confluence.html">finding pages nobody maintains</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
