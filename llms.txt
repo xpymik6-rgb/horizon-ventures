@@ -30,7 +30,6 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 - [SVG out alternative](https://horizonventures.app/docs/svg-out-alternative.html): what happens when SVG out disappears and how to move diagrams over.
 - [Mermaid app alternative](https://horizonventures.app/docs/mermaid-confluence-alternative.html): what to do when a Mermaid renderer stops being maintained, including the free options.
 - [PlantUML app alternative](https://horizonventures.app/docs/plantuml-confluence-alternative.html): the same question for PlantUML diagrams.
-- [CQL Search alternative](https://horizonventures.app/docs/smart-search/cql-search-alternative.html): replacing an unmaintained page-list app.
 - [Connect end of life](https://horizonventures.app/docs/connect-end-of-life.html): what a Confluence admin has to do about apps built on the Connect platform, and how to audit their own site.
 
 - [Importing Word documents into Confluence](https://horizonventures.app/docs/import-word-into-confluence.html): the built-in .docx import step by step, what survives, what breaks, and when an archive needs a dedicated tool.

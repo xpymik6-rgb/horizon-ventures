@@ -109,7 +109,13 @@ def собрать_адреса():
             # служебные файлы подтверждения прав на сайт в карту не попадают
             if имя.endswith(".html") and not имя.startswith("google"):
                 отн = os.path.relpath(os.path.join(корень, имя), ПАПКА).replace("\\", "/")
-                адреса.append(САЙТ + ("" if отн == "index.html" else отн.replace("docs/index.html", "docs/")))
+                адрес = САЙТ + ("" if отн == "index.html" else отн.replace("docs/index.html", "docs/"))
+                # дубль, у которого главная версия указана на другой странице, в карту не идёт
+                текст = io.open(os.path.join(корень, имя), encoding="utf-8", errors="ignore").read()
+                канон = re.search(r'<link rel="canonical" href="([^"]+)"', текст)
+                if канон and канон.group(1) != адрес:
+                    continue
+                адреса.append(адрес)
     return sorted(set(адреса))
 
 
