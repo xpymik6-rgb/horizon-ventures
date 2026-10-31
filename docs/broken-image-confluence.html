@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Broken image in Confluence Cloud: what the placeholder tells you</title>
+<meta name="description" content="A broken image in Confluence Cloud shows one of three placeholders. Each points to a different cause, and two of them can be undone from the space trash.">
+<link rel="canonical" href="https://horizonventures.app/docs/broken-image-confluence.html">
+<meta property="og:title" content="Broken image in Confluence Cloud: what the placeholder tells you">
+<meta property="og:description" content="Deleted attachment, dead external link or a deleted source page: how to tell them apart and fix each. Tested on a live Confluence Cloud site.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/docs.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Broken image in Confluence Cloud: what the placeholder tells you",
+   "description": "Three kinds of broken image placeholder in Confluence Cloud, the cause behind each, and how to fix it.",
+   "url": "https://horizonventures.app/docs/broken-image-confluence.html",
+   "author": {"@type": "Person", "name": "Mikhail Klimenko"},
+   "publisher": {"@type": "Organization", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/"},
+   "datePublished": "2026-10-31",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {"@type": "Question", "name": "Why is an image broken on my Confluence page?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Usually one of three reasons: the image file was deleted from the page attachments, the image is linked from an external address that no longer works, or it was taken from another page that has been deleted. Each shows a different placeholder."}},
+    {"@type": "Question", "name": "Can I restore a deleted image attachment in Confluence Cloud?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes, if the trash has not been emptied. A deleted attachment goes to the space trash, listed with the page it came from and a Restore action. In our test the image was back on the page after restoring."}},
+    {"@type": "Question", "name": "What does unknown attachment mean in Confluence?",
+     "acceptedAnswer": {"@type": "Answer", "text": "The image points to an attachment on another page, and that page is gone. Restore the page from the space trash, or upload the image to the current page and insert it again."}}
+   ]
+  }
+ ]
+}
+</script>
+<script data-goatcounter="https://horizonventures.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18433232021"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18433232021');
+</script>
+</head>
+<body class="doc">
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">Horizon <span>Ventures</span></a>
+    <nav>
+      <a href="/clickable-svg.html">Clickable SVG</a>
+      <a href="/smart-search.html">Smart Search</a>
+      <a href="/table-export.html">Table Export</a>
+      <a href="/word-import.html">Word Import</a>
+      <a href="/articles.html">Articles</a>
+      <a href="/changes.html">Changes</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <header>
+    <h1>Broken image in Confluence Cloud: what the placeholder tells you</h1>
+    <p class="sub">An image that used to be there is now a grey box. Confluence does not say why, but the box itself is a clue: there are three different placeholders, and each one points to a different cause. We built a test page with every case on a live Confluence Cloud site in October 2026 and looked at what each one shows.</p>
+  </header>
+
+  <p><strong>Short answer.</strong> A grey box with a <strong>file icon</strong> and a "preview unavailable" message means the image's attachment is missing from the page, usually because someone deleted it; restore it from the space trash. The same box with a <strong>picture icon</strong> means the image is linked from an outside address that no longer answers; upload the image to the page instead. A small grey <strong>"unknown attachment"</strong> label means the image came from another page that has been deleted; restore that page from the trash or re-upload the image here.</p>
+
+  <h2>The three placeholders</h2>
+
+  <table>
+    <thead><tr><th>What you see</th><th>Cause</th><th>Fix</th></tr></thead>
+    <tbody>
+      <tr><td>Grey box, file icon, preview unavailable</td><td>The attachment is not on the page: deleted, or never uploaded</td><td>Restore it from the space trash, or upload the file again</td></tr>
+      <tr><td>Grey box, picture icon, preview unavailable</td><td>The image is an external link and the address no longer returns an image</td><td>Save the image and upload it to the page as an attachment</td></tr>
+      <tr><td>Small grey "unknown attachment" label</td><td>The image is an attachment of another page, and that page was deleted</td><td>Restore the other page from the trash, or upload the image to this page</td></tr>
+    </tbody>
+  </table>
+
+  <p>Our test site runs in Russian, so the English wording of the messages may differ slightly; the icons and the shape of each placeholder are what to go by.</p>
+
+  <p>Two details from the test that save time. A deleted attachment and one that was never uploaded look exactly the same, so the trash is the only way to tell them apart. And a working external image displays normally, so a picture icon in the box really does mean the outside address is the problem, not Confluence.</p>
+
+  <h2>Getting a deleted image back</h2>
+
+  <p>Deleting an attachment does not destroy it straight away. In our test the deleted file appeared in the <strong>space trash</strong>, listed by name together with the page it came from, with a Restore action next to it. Confluence asks for a confirmation, and after that the image was back on the page in place of the grey box. The deleted page behind an "unknown attachment" label was in the same list. The trash for a space is at:</p>
+
+  <pre><code>https://your-site.atlassian.net/wiki/pages/viewtrash.action?key=SPACEKEY</code></pre>
+
+  <p>Replace <code>SPACEKEY</code> with the space key from the page address. Once someone empties the trash, the file is gone for good, and the only way back is a site backup or the original file.</p>
+
+  <p>If you have many pages and want to know which ones lost an image, the REST API lists a page's trashed attachments with <code>GET /wiki/api/v2/pages/{id}/attachments?status=trashed</code>; on our test page it returned exactly the deleted file.</p>
+
+  <h2>Why external images break</h2>
+
+  <p>An image inserted from a web address is not copied into Confluence; every reader's browser fetches it from that address each time. When the other site moves the file, takes it down or blocks outside use, the picture disappears from your page, and nobody on your side changed anything. For anything that has to stay, download the image and upload it to the page: then it lives in Confluence with the page.</p>
+
+  <h2>What we could not test</h2>
+
+  <p>Images on pages with restrictions. Our test site is on the Free plan, which has no page restrictions, so we could not check what a reader without access to the source page sees. If an image is broken for one colleague and fine for you, permissions are the first thing to look at.</p>
+
+  <p>For SVG files that show up as a flat picture with dead links rather than a broken one, see <a href="/docs/confluence-svg-flat-image.html">why Confluence Cloud turns your SVG into a flat image</a>. That one is not a fault but how Confluence shows SVG.</p>
+
+  <h2>Frequently asked</h2>
+
+  <h3>Why is an image broken on my Confluence page?</h3>
+  <p>The attachment was deleted, the external address died, or the image came from a page that was deleted. The placeholder tells you which.</p>
+
+  <h3>Can I restore a deleted image?</h3>
+  <p>Yes, from the space trash, until someone empties it.</p>
+
+  <h3>What does "unknown attachment" mean?</h3>
+  <p>The image belongs to another page that no longer exists. Restore that page or upload the image again.</p>
+
+  <p class="more">Related: <a href="/docs/confluence-svg-flat-image.html">why Confluence turns SVG into a flat image</a>, <a href="/docs/confluence-clickable-image.html">how to make an image clickable</a>, and <a href="/docs/find-unpublished-drafts-confluence.html">where unpublished drafts go</a>.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Horizon Ventures E.I.R.L.</h3>
+      <p class="legal">Registered in Peru, RUC 20612763888. Calca, Cusco.</p>
+    </div>
+    <div>
+      <h3>Apps</h3>
+      <ul>
+        <li><a href="/clickable-svg.html">Clickable SVG</a></li>
+        <li><a href="/smart-search.html">Smart Search</a></li>
+        <li><a href="/table-export.html">Table Export</a></li>
+        <li><a href="/word-import.html">Word Import</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy.html">Privacy policy</a></li>
+        <li><a href="mailto:support@horizonventures.app">Support</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

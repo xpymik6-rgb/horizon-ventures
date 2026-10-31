@@ -99,6 +99,8 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 
 - [How to export multiple Confluence pages to Word](https://horizonventures.app/docs/export-multiple-confluence-pages-to-word.html): Confluence exports one page at a time to Word; the free route through a multi-page PDF and the apps that export a page tree.
 
+- [Broken image in Confluence Cloud: what the placeholder tells you](https://horizonventures.app/docs/broken-image-confluence.html): Three kinds of broken image placeholder in Confluence Cloud, the cause behind each, and how to restore a deleted image.
+
 ## Company
 
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
