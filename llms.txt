@@ -108,6 +108,7 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 - [About](https://horizonventures.app/about.html): who builds the apps, how support works, time zone and languages.
 - [Support](https://horizonventures.app/support.html): one email address for every app, what to put in the message, answers within one business day.
 - [Privacy policy](https://horizonventures.app/privacy.html): what the site and the apps do with data. Short version: nothing of yours leaves your Confluence site.
+- [Yana product website](https://aiadmin.app/): AI receptionist for beauty salons, clinics and studios: answers clients on the salon's own WhatsApp, books them, plus a booking and CRM workspace set up for each owner. Run by HORIZON VENTURES E.I.R.L. (RUC 20612763888), Peru.
 - [Yana](https://horizonventures.app/yana/): WhatsApp assistant by Horizon Ventures for wellness, fitness and therapy studios. Answers clients on the studio's own WhatsApp number, books sessions, sends Meta-approved reminders and passes requests to staff. Operated by HORIZON VENTURES E.I.R.L. (RUC 20612763888), Peru.
 - [Yana privacy policy](https://horizonventures.app/yana/privacy.html): Yana is our WhatsApp assistant for wellness and fitness studios; it answers messages on the studio's own WhatsApp number and passes bookings to staff. Data is processed on the studio's behalf and stored in the EU.
 - [Yana terms of service](https://horizonventures.app/yana/terms.html): terms for businesses that connect their WhatsApp number to Yana.
