@@ -13,7 +13,7 @@
     color: var(--text); background: #fff;
   }
   .wrap { max-width: 760px; margin: 0 auto; }
-  header { padding: 56px 0 28px; border-bottom: 1px solid var(--line); margin-bottom: 36px; }
+  header { padding: 28px 0 28px; border-bottom: 1px solid var(--line); margin-bottom: 36px; }
   h1 { font-size: 32px; letter-spacing: -0.5px; margin: 0 0 8px; }
   .sub { color: var(--muted); margin: 0; }
   h2 { font-size: 21px; margin: 36px 0 10px; }
@@ -24,7 +24,18 @@
   hr { border: 0; border-top: 1px solid var(--line); margin: 64px 0 0; }
   a { color: var(--accent); }
   footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  /* 09.11.2026: переключатель языка RU · EN · ES. Без JavaScript видны все три версии подряд */
+  .yazyki { display: flex; justify-content: flex-end; gap: 6px; padding: 24px 0 0; }
+  .yazyki a {
+    display: inline-block; min-width: 44px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
+    text-align: center; text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 600;
+  }
+  .yazyki a[aria-current="true"] { background: var(--text); border-color: var(--text); color: #fff; }
+  section.versiya + section.versiya { margin-top: 64px; border-top: 1px solid var(--line); }
+  .js section.versiya { display: none; }
+  .js section.versiya.vidna { display: block; border-top: 0; margin-top: 0; }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 <script data-goatcounter="https://horizonventures.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 <meta name="description" content="Privacy policy of Yana, the WhatsApp assistant by Horizon Ventures for wellness and fitness studios: what data it processes, why, where it is stored and how to delete it.">
@@ -37,12 +48,18 @@
 <body>
 <div class="wrap">
 
+<nav class="yazyki" aria-label="Language">
+  <a href="#ru" data-yazyk="ru" lang="ru">RU</a>
+  <a href="#en" data-yazyk="en" lang="en">EN</a>
+  <a href="#es" data-yazyk="es" lang="es">ES</a>
+</nav>
+
+<section class="versiya" id="en" lang="en">
 <header>
   <h1>Privacy Policy</h1>
   <p class="sub">Yana — WhatsApp assistant for studios · last updated 14 October 2026</p>
 </header>
 
-<p class="lang"><a href="#es">Leer en español ↓</a></p>
 
 <div class="box">
   <b>Short version:</b> Yana answers a studio's WhatsApp messages and helps book appointments.
@@ -112,9 +129,9 @@
 
 <h2>8. Changes</h2>
 <p>If this policy changes, we will update this page and the date at the top.</p>
+</section>
 
-<hr id="es">
-
+<section class="versiya" id="es" lang="es">
 <header>
   <h1>Política de privacidad</h1>
   <p class="sub">Yana — asistente de WhatsApp para estudios · actualizada el 14 de octubre de 2026</p>
@@ -181,6 +198,82 @@
   eliminarlos, y dejar de recibir mensajes respondiendo que no desea más mensajes. Escriba al
   estudio o a <a href="mailto:support@horizonventures.app">support@horizonventures.app</a>.
 </p>
+</section>
+
+<section class="versiya" id="ru" lang="ru">
+<header>
+  <h1>Политика конфиденциальности</h1>
+  <p class="sub">Yana, WhatsApp-ассистент для студий · обновлено 14 октября 2026 г.</p>
+</header>
+
+<div class="box">
+  <b>Коротко:</b> Yana отвечает на сообщения студии в WhatsApp и помогает записывать клиентов. Переписку она
+  обрабатывает только для того, чтобы обслужить студию и её клиентов. Мы не продаём данные, не используем их
+  для рекламы и для обучения моделей искусственного интеллекта.
+</div>
+
+<h2>1. Кто мы</h2>
+<p>
+  Yana работает под управлением <b>HORIZON VENTURES E.I.R.L.</b> (RUC 20612763888), Калька, Куско, Перу.
+  Мы предоставляем Yana компаниям, например студиям велнеса, фитнеса и терапии («студия»). В отношении
+  сообщений клиентов студии <b>оператором данных является студия</b>, а Horizon Ventures действует как её
+  <b>обработчик</b> и следует её указаниям.
+</p>
+
+<h2>2. Какие данные обрабатывает Yana</h2>
+<ul>
+  <li>Номер телефона, имя профиля или имя пользователя WhatsApp того, кто пишет студии.</li>
+  <li>Содержание этой переписки в WhatsApp, включая голосовые сообщения и изображения, которые присылает человек.</li>
+  <li>Сведения о записях: дата, время, услуга, специалист, абонементы и оплаты, которые фиксирует студия.</li>
+  <li>Заметки, которые студия добавляет в карточку клиента.</li>
+  <li>Откуда пришла переписка (например, из рекламы или с сайта студии).</li>
+</ul>
+<p>
+  Через платформу WhatsApp Business от Meta мы получаем только те данные, которые нужны, чтобы доставлять
+  сообщения на собственный номер WhatsApp студии и отвечать на них.
+</p>
+
+<h2>3. Зачем мы их используем</h2>
+<ul>
+  <li>Отвечать клиенту от имени студии и передавать запросы на запись сотрудникам студии.</li>
+  <li>Отправлять сообщения, которые настроила студия, например напоминания о записи, по шаблонам, одобренным Meta.</li>
+  <li>Хранить в одном месте список клиентов, расписание и историю переписки студии.</li>
+  <li>Сообщать сотрудникам студии, когда нужен человек.</li>
+</ul>
+<p>Мы не продаём персональные данные, не передаём их для рекламы и не используем их для обучения моделей ИИ.</p>
+
+<h2>4. Где они хранятся</h2>
+<p>
+  На выделенном сервере Hetzner Online в Хельсинки, Финляндия (Европейский союз), с ограниченным доступом и
+  регулярными зашифрованными резервными копиями. Данные каждой студии хранятся отдельно от данных других студий.
+</p>
+
+<h2>5. Поставщики услуг</h2>
+<ul>
+  <li><b>Meta Platforms</b>: отправка и получение сообщений WhatsApp (платформа WhatsApp Business).</li>
+  <li><b>Anthropic</b>: языковая модель, которая составляет ответы. Переписка, которая ей передаётся, не используется для обучения её моделей.</li>
+  <li><b>Hetzner Online</b>: размещение сервера.</li>
+  <li><b>Telegram</b>: короткие уведомления сотрудникам студии о запросах, которым нужен человек.</li>
+</ul>
+
+<h2>6. Сколько мы их храним</h2>
+<p>
+  Пока студия пользуется Yana. Если студия перестаёт пользоваться сервисом, её данные удаляются с нашего
+  сервера в течение 30 дней; до этого студия может их выгрузить. Любой человек может в любой момент попросить
+  удалить свои данные, см. <a href="data-deletion.html#ru">как удалить свои данные</a>.
+</p>
+
+<h2>7. Ваши права</h2>
+<p>
+  Любой, кто писал студии, которая пользуется Yana, может запросить копию своих данных, исправить их или
+  удалить. Кроме того, вы можете в любой момент перестать получать сообщения, ответив, что больше не хотите
+  их получать. Напишите в студию или нам:
+  <a href="mailto:support@horizonventures.app">support@horizonventures.app</a>.
+</p>
+
+<h2>8. Изменения</h2>
+<p>Если политика изменится, мы обновим эту страницу и дату вверху.</p>
+</section>
 
 <footer>
   HORIZON VENTURES E.I.R.L. · RUC 20612763888 · Calca, Cusco, Peru ·
@@ -189,5 +282,38 @@
 </footer>
 
 </div>
+<script>
+// 09.11.2026: какой язык показать. Порядок: адрес (#ru, #en, #es — старые ссылки terms.html#es работают),
+// выбор человека в прошлый раз, язык браузера, иначе английский
+(function () {
+  var ЯЗЫКИ = ['ru', 'en', 'es'];
+  function показать(я, запомнить) {
+    if (ЯЗЫКИ.indexOf(я) < 0) я = 'en';
+    document.querySelectorAll('section.versiya').forEach(function (с) { с.classList.toggle('vidna', с.id === я); });
+    document.querySelectorAll('.yazyki a').forEach(function (а) { а.setAttribute('aria-current', а.dataset.yazyk === я ? 'true' : 'false'); });
+    document.documentElement.lang = я;
+    var з = document.querySelector('section.versiya.vidna h1');
+    if (з) document.title = з.textContent + ' — Yana';
+    if (запомнить) { try { localStorage.setItem('yana-yazyk', я); } catch (e) {} }
+  }
+  var изАдреса = location.hash.replace('#', '');
+  var сохранён = null;
+  try { сохранён = localStorage.getItem('yana-yazyk'); } catch (e) {}
+  var браузер = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  показать(ЯЗЫКИ.indexOf(изАдреса) >= 0 ? изАдреса : (сохранён || браузер), false);
+  document.querySelectorAll('.yazyki a').forEach(function (а) {
+    а.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      показать(а.dataset.yazyk, true);
+      history.replaceState(null, '', '#' + а.dataset.yazyk);
+      window.scrollTo(0, 0);
+    });
+  });
+  // ссылка с #ru/#en/#es: браузер прокрутил бы к разделу и спрятал кнопки языка — остаёмся наверху
+  function наверх() { if (ЯЗЫКИ.indexOf(location.hash.replace('#', '')) >= 0) window.scrollTo(0, 0); }
+  window.addEventListener('load', function () { setTimeout(наверх, 0); });
+  window.addEventListener('hashchange', function () { показать(location.hash.replace('#', ''), false); наверх(); });
+})();
+</script>
 </body>
 </html>

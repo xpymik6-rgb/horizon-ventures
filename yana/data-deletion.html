@@ -13,7 +13,7 @@
     color: var(--text); background: #fff;
   }
   .wrap { max-width: 760px; margin: 0 auto; }
-  header { padding: 56px 0 28px; border-bottom: 1px solid var(--line); margin-bottom: 36px; }
+  header { padding: 28px 0 28px; border-bottom: 1px solid var(--line); margin-bottom: 36px; }
   h1 { font-size: 32px; letter-spacing: -0.5px; margin: 0 0 8px; }
   .sub { color: var(--muted); margin: 0; }
   h2 { font-size: 21px; margin: 36px 0 10px; }
@@ -24,7 +24,18 @@
   hr { border: 0; border-top: 1px solid var(--line); margin: 64px 0 0; }
   a { color: var(--accent); }
   footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  /* 09.11.2026: переключатель языка RU · EN · ES. Без JavaScript видны все три версии подряд */
+  .yazyki { display: flex; justify-content: flex-end; gap: 6px; padding: 24px 0 0; }
+  .yazyki a {
+    display: inline-block; min-width: 44px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
+    text-align: center; text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 600;
+  }
+  .yazyki a[aria-current="true"] { background: var(--text); border-color: var(--text); color: #fff; }
+  section.versiya + section.versiya { margin-top: 64px; border-top: 1px solid var(--line); }
+  .js section.versiya { display: none; }
+  .js section.versiya.vidna { display: block; border-top: 0; margin-top: 0; }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 <script data-goatcounter="https://horizonventures.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 <meta name="description" content="How to delete your data from Yana, the WhatsApp assistant used by studios: send a message or an email, and your record, conversation and appointment history are deleted within 30 days.">
@@ -37,12 +48,18 @@
 <body>
 <div class="wrap">
 
+<nav class="yazyki" aria-label="Language">
+  <a href="#ru" data-yazyk="ru" lang="ru">RU</a>
+  <a href="#en" data-yazyk="en" lang="en">EN</a>
+  <a href="#es" data-yazyk="es" lang="es">ES</a>
+</nav>
+
+<section class="versiya" id="en" lang="en">
 <header>
   <h1>How to delete your data</h1>
   <p class="sub">Yana — WhatsApp assistant for studios · last updated 14 October 2026</p>
 </header>
 
-<p class="lang"><a href="#es">Leer en español ↓</a></p>
 
 <p>
   Yana is the WhatsApp assistant that answers messages and helps book appointments for a studio.
@@ -76,9 +93,9 @@
   "No more messages" and the assistant will stop writing to you. Appointments already booked stay
   as they are.
 </div>
+</section>
 
-<hr id="es">
-
+<section class="versiya" id="es" lang="es">
 <header>
   <h1>Cómo eliminar sus datos</h1>
   <p class="sub">Yana — asistente de WhatsApp para estudios · actualizado el 14 de octubre de 2026</p>
@@ -114,6 +131,45 @@
   <b>¿Solo quiere dejar de recibir mensajes?</b> No hace falta borrar nada: responda
   «No deseo más mensajes» y el asistente deja de escribirle. Sus citas ya agendadas se mantienen.
 </div>
+</section>
+
+<section class="versiya" id="ru" lang="ru">
+<header>
+  <h1>Как удалить свои данные</h1>
+  <p class="sub">Yana, WhatsApp-ассистент для студий · обновлено 14 октября 2026 г.</p>
+</header>
+
+<p>
+  Yana это WhatsApp-ассистент, который отвечает на сообщения и помогает записывать клиентов в студию. Если вы
+  писали в студию, которая пользуется Yana, мы храним от имени студии ваше имя, номер телефона, переписку и
+  историю ваших записей. Вы можете попросить нас удалить всё это.
+</p>
+
+<h2>Как попросить</h2>
+<ol>
+  <li>Отправьте сообщение <b>«Удалите мои данные»</b> на номер WhatsApp студии, или</li>
+  <li>напишите на <a href="mailto:support@horizonventures.app">support@horizonventures.app</a>, указав своё имя
+      и номер телефона, с которого вы писали в студию.</li>
+</ol>
+
+<h2>Что будет дальше</h2>
+<ul>
+  <li>Мы убедимся, что запрос пришёл от владельца этого номера.</li>
+  <li>Мы удалим вашу карточку, переписку и историю записей в течение <b>30 дней</b>.</li>
+  <li>Мы сообщим вам, когда всё будет сделано.</li>
+</ul>
+
+<h2>Что может сохраниться и почему</h2>
+<p>
+  Если вы оплачивали услуги студии, по законам Перу студия обязана хранить бухгалтерскую запись об оплате
+  (сумму и дату) в течение установленного срока. В эту запись не входят переписка и заметки о вашем здоровье.
+</p>
+
+<div class="box">
+  <b>Хотите только перестать получать сообщения?</b> Ничего удалять не нужно: ответьте «Больше не пишите», и
+  ассистент перестанет вам писать. Уже назначенные записи останутся в силе.
+</div>
+</section>
 
 <footer>
   HORIZON VENTURES E.I.R.L. · RUC 20612763888 · Calca, Cusco, Peru ·
@@ -122,5 +178,38 @@
 </footer>
 
 </div>
+<script>
+// 09.11.2026: какой язык показать. Порядок: адрес (#ru, #en, #es — старые ссылки terms.html#es работают),
+// выбор человека в прошлый раз, язык браузера, иначе английский
+(function () {
+  var ЯЗЫКИ = ['ru', 'en', 'es'];
+  function показать(я, запомнить) {
+    if (ЯЗЫКИ.indexOf(я) < 0) я = 'en';
+    document.querySelectorAll('section.versiya').forEach(function (с) { с.classList.toggle('vidna', с.id === я); });
+    document.querySelectorAll('.yazyki a').forEach(function (а) { а.setAttribute('aria-current', а.dataset.yazyk === я ? 'true' : 'false'); });
+    document.documentElement.lang = я;
+    var з = document.querySelector('section.versiya.vidna h1');
+    if (з) document.title = з.textContent + ' — Yana';
+    if (запомнить) { try { localStorage.setItem('yana-yazyk', я); } catch (e) {} }
+  }
+  var изАдреса = location.hash.replace('#', '');
+  var сохранён = null;
+  try { сохранён = localStorage.getItem('yana-yazyk'); } catch (e) {}
+  var браузер = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  показать(ЯЗЫКИ.indexOf(изАдреса) >= 0 ? изАдреса : (сохранён || браузер), false);
+  document.querySelectorAll('.yazyki a').forEach(function (а) {
+    а.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      показать(а.dataset.yazyk, true);
+      history.replaceState(null, '', '#' + а.dataset.yazyk);
+      window.scrollTo(0, 0);
+    });
+  });
+  // ссылка с #ru/#en/#es: браузер прокрутил бы к разделу и спрятал кнопки языка — остаёмся наверху
+  function наверх() { if (ЯЗЫКИ.indexOf(location.hash.replace('#', '')) >= 0) window.scrollTo(0, 0); }
+  window.addEventListener('load', function () { setTimeout(наверх, 0); });
+  window.addEventListener('hashchange', function () { показать(location.hash.replace('#', ''), false); наверх(); });
+})();
+</script>
 </body>
 </html>
