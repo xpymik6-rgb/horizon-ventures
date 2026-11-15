@@ -21,7 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://horizonventures.app/gorod/en/", "url": "https://horizonventures.app/gorod/en/", "name": "Mikhail's City: a live map of AI agents", "inLanguage": "en", "description": "A live 3D map of Mikhail Klimenko's AI agents: districts, agent buildings and “done today” counters. A 50-second tour with his voice and subtitles.", "author": {"@type": "Person", "name": "Михаил Клименко"}, "publisher": {"@id": "https://horizonventures.app/#org"}}, {"@type": "Organization", "@id": "https://horizonventures.app/#org", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/", "taxID": "20612763888", "address": {"@type": "PostalAddress", "addressCountry": "PE"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Mikhail's City?", "acceptedAnswer": {"@type": "Answer", "text": "A live map of Mikhail Klimenko's AI agents. Each district is a line of work, each lit building is one agent, and the board shows what got done today."}}, {"@type": "Question", "name": "What are AI agents?", "acceptedAnswer": {"@type": "Answer", "text": "AI programs that do their own work: they answer clients, edit videos, run a channel, track deadlines. Mikhail explains the task like he would to a new employee."}}, {"@type": "Question", "name": "Can I get an agent like this for my salon?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. An AI receptionist answers your salon's clients on WhatsApp, books appointments and sends reminders. Send DEMO on WhatsApp +51 959 246 034 to get a demo with your services."}}]}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://horizonventures.app/gorod/en/", "url": "https://horizonventures.app/gorod/en/", "name": "Mikhail's City: a live map of AI agents", "inLanguage": "en", "description": "A live 3D map of Mikhail Klimenko's AI agents: districts, agent buildings and “done today” counters. A 50-second tour with his voice and subtitles.", "author": {"@type": "Person", "name": "Михаил Клименко"}, "publisher": {"@id": "https://horizonventures.app/#org"}}, {"@type": "Organization", "@id": "https://horizonventures.app/#org", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/", "taxID": "20612763888", "address": {"@type": "PostalAddress", "addressCountry": "PE"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is Mikhail's City?", "acceptedAnswer": {"@type": "Answer", "text": "A live map of Mikhail Klimenko's AI agents. Each district is a line of work, each lit building is one agent, and the board shows what got done today."}}, {"@type": "Question", "name": "What are AI agents?", "acceptedAnswer": {"@type": "Answer", "text": "AI programs that do their own work: they answer clients, edit videos, run a channel, track deadlines. Mikhail explains the task like he would to a new employee."}}, {"@type": "Question", "name": "What does a salon's AI receptionist do at night?", "acceptedAnswer": {"@type": "Answer", "text": "It answers clients using the salon's prices and the specialists' free time, books and reschedules visits within the salon's cancellation rule, and passes any question it has no answer for to the owner. In the morning the bookings are already in the log and the calendar. One night at a test salon, with a real conversation, is shown in the Salons district."}}, {"@type": "Question", "name": "Can I get an agent like this for my salon?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. An AI receptionist answers your salon's clients on WhatsApp, books appointments and sends reminders. Send DEMO on WhatsApp +51 959 246 034 to get a demo with your services."}}]}]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -190,6 +190,68 @@ body:not(.tur) #vyhodTur{display:none}
   body.vnutri .shapka{display:none}
   .vyv b{font-size:22px}
 }
+
+#noch{position:fixed;inset:0;z-index:12;display:none;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  background:#0b1020;color:#f2f4fa;font:500 17px/1.5 Manrope,system-ui,sans-serif;-webkit-user-select:text;user-select:text}
+#noch.vidno{display:block}
+body.noch-otkr .knopki,body.noch-otkr #turBol,body.noch-otkr #waKn,body.noch-otkr .rajony,body.noch-otkr .panel,body.noch-otkr .shapka{visibility:hidden}
+#noch .kol{max-width:480px;margin:0 auto;padding:0 16px}
+#noch .nVerh{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:max(10px,env(safe-area-inset-top)) 16px 10px;margin:0 -16px;background:#0b1020;box-shadow:0 1px 0 rgba(255,255,255,.08)}
+#noch .nMetka{font:800 13px/1.2 Inter,Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#f6dfae}
+#noch .nYaz{display:flex;gap:2px;margin-left:auto}
+#noch .nYaz a{min-width:44px;height:44px;display:grid;place-items:center;font:800 13px Inter,sans-serif;color:#b9c2d8;text-decoration:none;border-radius:12px}
+#noch .nYaz a.tek{color:#0b1020;background:#f6dfae}
+#noch .nZakr{width:44px;height:44px;flex:0 0 44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;font:700 18px Inter,sans-serif;cursor:pointer}
+#noch .nVyv{margin:8px 0 6px;padding:18px 18px 16px;border-radius:18px;border:1.5px solid #f5b942;background:linear-gradient(180deg,#141b33,#0e1428);text-align:center}
+#noch .nVyv b{display:block;font:800 30px/1.1 Inter,Manrope,sans-serif;color:#fff;word-break:break-word}
+#noch .nVyv span{display:block;margin-top:8px;font-size:15px;color:#c9d1e4}
+#noch .nSc{margin-top:34px}
+#noch .nVr{font:900 30px/1 Inter,sans-serif;color:#f6dfae;letter-spacing:-.01em}
+#noch .nVr small{font:700 15px Inter,sans-serif;color:#9fb0d6;margin-left:10px;letter-spacing:0}
+#noch .nTx{margin-top:8px;font-size:17px;color:#e3e8f4}
+#noch .nChat{margin-top:14px;padding:14px 12px;border-radius:18px;background:#0e1a24;display:flex;flex-direction:column;gap:8px}
+#noch .m{max-width:86%;padding:9px 12px 7px;border-radius:14px;font-size:16px;line-height:1.42;white-space:pre-wrap;word-wrap:break-word}
+#noch .m i{display:block;font:500 12.5px Manrope,sans-serif;font-style:normal;opacity:.72;text-align:right;margin-top:3px}
+#noch .m.kl{align-self:flex-start;background:#202c33;color:#e9edef;border-top-left-radius:4px}
+#noch .m.bot{align-self:flex-end;background:#005c4b;color:#e9edef;border-top-right-radius:4px}
+#noch .m.bot::before{content:attr(data-kto);display:block;font:800 12.5px Inter,sans-serif;color:#7fe0b8;margin-bottom:2px}
+#noch .m .per{display:block;margin-top:6px;padding-top:6px;border-top:1px dashed rgba(255,255,255,.22);font-size:14.5px;color:#c6d3d8}
+#noch .m .per::before{content:attr(data-p);display:block;font:700 12px Inter,sans-serif;color:#9fb8c0;text-transform:uppercase;letter-spacing:.06em}
+#noch .sob{align-self:center;font:700 14px Inter,sans-serif;color:#0b1f12;background:#9ef0c4;border-radius:999px;padding:6px 12px;text-align:center}
+#noch .sob.zhd{background:#f6dfae;color:#2a1d05}
+#noch .nBez .nChat{background:#151a26}
+#noch .nBez .m.kl{background:#262c3a;color:#c3c9d6}
+#noch .nBez .m.kl i::after{content:" ✓";color:#8a93a6}
+#noch .nBez .pusto{align-self:center;font-size:14px;color:#8f99b0;padding:4px 0}
+#noch .nUtro{margin:40px -16px 0;padding:28px 16px 24px;background:#f7f4ee;color:#1d1d1b;border-radius:24px 24px 0 0}
+#noch .nUtro .nVr{color:#7a4a00}
+#noch .nUtro .nVr small{color:#6b6458}
+#noch .nUtro .nTx{color:#2a2823}
+#noch .nUtro ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:10px}
+#noch .nUtro li{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:#fff;border:1px solid #e6dfd0;border-radius:14px;font-size:16.5px;line-height:1.4}
+#noch .nUtro li b{flex:0 0 26px;height:26px;border-radius:50%;background:#1d7a4c;color:#fff;display:grid;place-items:center;font:800 14px Inter,sans-serif;margin-top:1px}
+#noch .nUtro li.zhd b{background:#c98a12}
+#noch .nUtro .nMolch{margin-top:14px;padding:14px;border-radius:14px;background:#efe8da;font-size:16px;color:#2a2823}
+#noch .nFin{margin:0 -16px;padding:6px 16px calc(40px + env(safe-area-inset-bottom));background:#f7f4ee;color:#1d1d1b}
+#noch .nFin h3{font:800 28px/1.12 Inter,Manrope,sans-serif;color:#1d1d1b}
+#noch .nFin p{margin-top:8px;font-size:17px;color:#2a2823}
+#noch .nFin .nVopr{margin-top:16px;font:800 15px Inter,sans-serif;color:#4a4438}
+#noch .nBol{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+#noch .nBol button{min-height:44px;padding:8px 14px;border-radius:12px;border:1.5px solid #cfc6b4;background:#fff;color:#1d1d1b;font:700 15px Manrope,sans-serif;cursor:pointer;text-align:left}
+#noch .nBol button.vkl{border-color:#1d7a4c;background:#e3f5ea}
+#noch .nDemo{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;margin-top:16px;border-radius:16px;background:#25D366;color:#0b1f12;
+  font:800 18px Inter,sans-serif;text-decoration:none;border:0;cursor:pointer;box-shadow:0 8px 24px rgba(37,211,102,.25)}
+#noch .nPeresl{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;margin-top:10px;border-radius:16px;background:#fff;color:#1d1d1b;
+  border:1.5px solid #1d1d1b;font:800 16px Inter,sans-serif;cursor:pointer}
+#noch .nGorod{display:block;width:100%;min-height:48px;margin-top:8px;background:none;border:0;color:#5a5346;font:700 15px Manrope,sans-serif;text-decoration:underline;cursor:pointer}
+#noch .nSnoska{margin-top:18px;font-size:14px;line-height:1.45;color:#5f5848}
+#noch .nTost{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#1d1d1b;color:#fff;padding:10px 16px;border-radius:12px;font:700 15px Inter,sans-serif;opacity:0;transition:opacity .2s;pointer-events:none;z-index:3}
+#noch .nTost.vidno{opacity:1}
+#noch .nNiz{position:fixed;left:50%;bottom:0;transform:translateX(-50%);z-index:2;width:min(480px,100%);padding:14px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(11,16,32,0),rgba(11,16,32,.92) 35%);transition:opacity .25s}
+#noch .nNiz.skryt{opacity:0;pointer-events:none}
+#noch .nNiz .nDemo{margin-top:0}
+.kn.noch-kn{display:block;width:calc(100% - 16px);margin:12px 8px 4px;text-align:center;font:800 15px var(--udar);padding:13px 16px}
 </style>
 </head>
 <body>
@@ -230,6 +292,7 @@ body:not(.tur) #vyhodTur{display:none}
   <div id="faq" style="margin-top:14px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px">
     <p><b>Что это?</b> Живая карта моих ИИ-агентов. Район = направление работы, светящийся дом = один агент, табло = что сделано сегодня.</p>
     <p style="margin-top:8px"><b>Кто такие агенты?</b> Программы на ИИ, которые сами делают свою работу: отвечают клиентам, монтируют ролики, ведут канал. Я объясняю задачу как новому сотруднику.</p>
+    <p style="margin-top:8px"><b>Что делает ИИ-администратор салона ночью?</b> Отвечает клиенткам по прайсу, записывает и переносит визиты по правилу отмены, а вопрос, ответа на который нет в настройках, передаёт владелице. Утром записи уже в календаре. Посмотреть одну ночь: квартал Салонов, кнопка «Ночь салона».</p>
     <p style="margin-top:8px"><b>Можно такого агента для салона?</b> Да: ИИ-администратор отвечает клиентам в WhatsApp, записывает и напоминает о визите. <a href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E" style="color:#f6dfae">Напиши ДЕМО в WhatsApp</a>, соберу демо на твоих услугах.</p>
   </div>
   <button class="kn" style="margin-top:16px" id="oZakr">Понятно</button>
@@ -251,12 +314,14 @@ body:not(.tur) #vyhodTur{display:none}
 </div></div>
 <div id="bezGL"><h2>Город Михаила</h2><p>Живая карта ИИ-агентов. Здесь браузер не показывает трёхмерную графику.</p>
   <a class="kn wa" style="text-decoration:none;font:800 16px Inter,sans-serif;padding:14px 22px" href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E%20%D0%93%D0%9E%D0%A0%D0%9E%D0%94" target="_blank" rel="noopener">Написать ДЕМО в WhatsApp</a></div>
+<div id="noch" role="dialog" aria-modal="true" aria-label="Ночь салона"><div class="kol" id="nochKol"></div></div>
 <div id="pil"><div class="p"><b id="pilB"></b><span id="pilS"></span></div><span class="k" id="pilK"></span></div>
 <div id="klyuch"><span id="klyuchT"></span></div>
 
 <script src="dannye.js"></script>
 <script src="golos.js"></script>
 <script src="perevody.js"></script>
+<script src="noch.js"></script>
 <script src="three.min.js"></script>
 <script>
 if (!window.THREE) document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
@@ -309,7 +374,8 @@ document.querySelectorAll("#waKn, #posleTura a.kn, #bezGL a, #demoKn").forEach(a
 if (LANG !== "ru" && document.getElementById("faq")) document.getElementById("faq").innerHTML = TF("@faq", {wa: WA_DEMO});
 document.querySelector("#turBol").childNodes.forEach(n => { if (n.nodeType === 3 && n.textContent.trim()) n.textContent = " " + T(n.textContent.trim()) + " "; });
 if (GOST){ const y = document.createElement("span"); y.id = "yazyki";
-  y.innerHTML = ["en","es","ru"].map(l => `<a href="?lang=${l}"${l === LANG ? ' class="tek"' : ""}>${l.toUpperCase()}</a>`).join("");
+  const sohr = ["k", "n"].filter(x => PAR.get(x)).map(x => "&" + x + "=" + encodeURIComponent(PAR.get(x))).join("");
+  y.innerHTML = ["en","es","ru"].map(l => `<a href="?lang=${l}${sohr}"${l === LANG ? ' class="tek"' : ""}>${l.toUpperCase()}</a>`).join("");
   document.querySelector(".knopki").prepend(y); }
 const rajonyEl = document.getElementById("rajony");
 D.rajony.forEach(r => {
@@ -320,10 +386,112 @@ D.rajony.forEach(r => {
 if (TIHIJ.length){ const b = document.createElement("button"); b.className = "chip";
   b.innerHTML = `<i style="color:#9fc3e0"></i>${T("Тихий квартал")}<small>${TIHIJ.filter(x => !(GOST && x.klient)).length}</small>`;
   b.onclick = () => kKvartalu(); rajonyEl.appendChild(b); }
-function pixel(s){ if (!GOST) return; try { new Image().src = "https://aiadmin.app/px/gorod.gif?s=" + encodeURIComponent(s) + "&r=" + Date.now(); } catch(e){} }
+function pixel(s){ if (!GOST) return; try { const k = typeof NK === "string" && NK ? "~" + NK : ""; if (/^noch/.test(s)) s += "-" + LANG;
+  new Image().src = "https://aiadmin.app/px/gorod.gif?s=" + encodeURIComponent(s + k) + "&r=" + Date.now(); } catch(e){} }
 if (GOST) document.body.classList.add("gost");
+const NK = /^S\d{1,4}$/i.test(PAR.get("k") || "") ? PAR.get("k").toUpperCase() : "";
+const NN = (PAR.get("n") || "").replace(/[<>"'`\\{}]/g, "").replace(/\s+/g, " ").trim().slice(0, 24);
+const NOCH_AVTO = !!(NK || NN || PAR.get("noch") === "1");
+const NOCH_D = (window.NOCH || {})[LANG] || (window.NOCH || {}).ru || null;
+let NOCH_OTKR = false, nochGotova = false, nochBol = "";
+const nochBylo = {};
+function nochPix(s){ if (nochBylo[s]) return; nochBylo[s] = 1; pixel(s); }
+function nochEsc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c])); }
+function nochF(s, v){ Object.entries(v || {}).forEach(([a, b]) => { s = String(s).split("{" + a + "}").join(b); }); return s; }
+function nochAdres(yaz, dlya){
+  const q = new URLSearchParams(); q.set("noch", "1"); if (NK) q.set("k", NK); if (NN) q.set("n", NN); if (dlya === "peresl") q.set("ot", "p");
+  const alt = document.querySelector(`link[rel="alternate"][hreflang="${yaz}"]`);
+  if (alt) return alt.href + "?" + q.toString();
+  q.set("lang", yaz); return location.href.split("?")[0].split("#")[0] + "?" + q.toString();
+}
+function nochWa(){
+  const u = NOCH_D.ui; let t = nochF(NN ? u.wa_n : u.wa, {k: NK ? " " + NK : "", n: NN});
+  if (nochBol) t += nochF(u.wa_bol, {v: nochBol.charAt(0).toLowerCase() + nochBol.slice(1)});
+  return "https://wa.me/51959246034?text=" + encodeURIComponent(t);
+}
+function nochChat(repliki, t0, opts){
+  const u = NOCH_D.ui; let [h, m] = t0.split(":").map(Number); const vr = () => { const s = `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`; m += 1; if (m >= 60){ m -= 60; h = (h + 1) % 24; } return s; };
+  return `<div class="nChat">` + repliki.map(r => {
+    let s = `<div class="m kl">${nochEsc(r.kl)}${r.kl_per ? `<span class="per" data-p="${nochEsc(u.perevod)}">${nochEsc(r.kl_per)}</span>` : ""}<i>${vr()}</i></div>`;
+    if (opts && opts.bez) return s;
+    s += `<div class="m bot" data-kto="${nochEsc(u.kto)}">${nochEsc(r.bot)}${r.bot_per ? `<span class="per" data-p="${nochEsc(u.perevod)}">${nochEsc(r.bot_per)}</span>` : ""}<i>${vr()}</i></div>`;
+    (r.sob || []).forEach(e => { const tx = {booking: u.sob_zapis, reschedule: u.sob_perenos, escalation: u.sob_peredano}[e]; if (tx) s += `<div class="sob${e === "escalation" ? " zhd" : ""}">${nochEsc(tx)}</div>`; });
+    return s;
+  }).join("") + (opts && opts.bez ? `<div class="pusto">${nochEsc(u.bez_pusto)}</div>` : "") + `</div>`;
+}
+function nochSobrat(){
+  if (nochGotova || !NOCH_D) return; nochGotova = true;
+  const u = NOCH_D.ui, S = NOCH_D.sceny, imya = NN || u.vash;
+  const yaz = ["ru", "es", "en"].map(l => `<a href="${nochEsc(nochAdres(l))}"${l === LANG ? ' class="tek"' : ""} onclick="pixel('noch-yazyk-${l}')">${l.toUpperCase()}</a>`).join("");
+  const sc = (vr, pod, tx, chat, pix, kl) => `<section class="nSc${kl ? " " + kl : ""}" data-pix="${pix}"><div class="nVr">${vr}${pod ? `<small>${nochEsc(pod)}</small>` : ""}</div><p class="nTx">${tx}</p>${chat || ""}</section>`;
+  const perv = r => [{kl: r[0].kl, kl_per: r[0].kl_per}];
+  document.getElementById("nochKol").innerHTML =
+    `<div class="nVerh"><span class="nMetka">${nochEsc(u.metka)}</span><span class="nYaz">${yaz}</span><button class="nZakr" id="nochZakr" aria-label="${nochEsc(u.zakryt)}">✕</button></div>` +
+    `<div class="nVyv"><b>${nochEsc(imya)}</b><span>${nochEsc(nochF(NN ? u.primer_n : u.primer, {n: NN}))}</span></div>` +
+    sc("21:00", u.s21_pod, nochEsc(u.s21), "", "noch-21") +
+    sc("23:40", u.s2340_pod, nochEsc(u.s2340), nochChat(S.a, "23:40"), "noch-2340") +
+    sc("01:15", u.s0115_pod, nochEsc(u.s0115), nochChat(S.b, "01:15"), "noch-0115") +
+    sc("02:30", u.s0230_pod, nochEsc(u.s0230), nochChat(S.c, "02:30"), "noch-0230") +
+    sc(nochEsc(u.bez_vr), "", nochEsc(u.bez), nochChat(perv(S.a), "23:40", {bez: 1}) + nochChat(perv(S.b), "01:15", {bez: 1}) + nochChat(perv(S.c), "02:30", {bez: 1}) + `<p class="nTx">${nochEsc(u.bez_itog)}</p>`, "noch-bez", "nBez") +
+    `<section class="nUtro" data-pix="noch-utro"><div class="nVr">09:00<small>${nochEsc(u.utro_pod)}</small></div><p class="nTx">${nochEsc(u.utro_h)}</p>` +
+      `<ul>${NOCH_D.utro.map(x => `<li${x.zhd ? ' class="zhd"' : ""}><b>${x.zhd ? "!" : "✓"}</b><span>${nochEsc(x.t)}</span></li>`).join("")}</ul>` +
+      `<div class="nMolch">${nochEsc(u.molchit)}</div></section>` +
+    `<section class="nFin" id="nochFin" data-pix="noch-fin"><h3>${nochEsc(u.fin_h)}</h3><p>${nochEsc(u.fin_p)}</p>` +
+      `<div class="nVopr">${nochEsc(u.vazhno)}</div><div class="nBol" id="nochBol">${u.boli.map(b => `<button type="button">${nochEsc(b)}</button>`).join("")}</div>` +
+      `<a class="nDemo" id="nochDemo" target="_blank" rel="noopener">${nochEsc(u.demo)}</a>` +
+      `<button class="nPeresl" id="nochPeresl" type="button">${nochEsc(u.pereslat)}</button>` +
+      `<button class="nGorod" id="nochGorod" type="button">${nochEsc(EST_GL_NOCH ? u.gorod : u.zakryt)}</button>` +
+      `<p class="nSnoska">${nochEsc(u.snoska)}</p></section>` +
+    `<div class="nNiz" id="nochNiz"><a class="nDemo" id="nochDemo2" target="_blank" rel="noopener">${nochEsc(u.demo)}</a></div>` +
+    `<div class="nTost" id="nochTost"></div>`;
+  const obnovitDemo = () => ["nochDemo", "nochDemo2"].forEach(id => document.getElementById(id).href = nochWa());
+  obnovitDemo();
+  document.querySelectorAll("#nochBol button").forEach(b => b.onclick = () => {
+    const vkl = !b.classList.contains("vkl"); document.querySelectorAll("#nochBol button").forEach(x => x.classList.remove("vkl"));
+    if (vkl) b.classList.add("vkl"); nochBol = vkl ? b.textContent : ""; obnovitDemo(); if (vkl) pixel("noch-bol-" + [...b.parentNode.children].indexOf(b));
+  });
+  document.getElementById("nochDemo").addEventListener("click", () => pixel("noch-demo" + (nochBol ? "-bol" : "")));
+  document.getElementById("nochDemo2").addEventListener("click", () => pixel("noch-demo-niz"));
+  document.getElementById("nochZakr").onclick = () => nochZakryt("krestik");
+  document.getElementById("nochGorod").onclick = () => nochZakryt("gorod");
+  document.getElementById("nochPeresl").onclick = nochPereslat;
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) nochPix(e.target.dataset.pix); }), {root: document.getElementById("noch"), threshold: .15});
+    document.querySelectorAll("#noch [data-pix]").forEach(el => io.observe(el));
+    const niz = document.getElementById("nochNiz");
+    new IntersectionObserver(es => es.forEach(e => niz.classList.toggle("skryt", e.isIntersecting)), {root: document.getElementById("noch"), threshold: .05}).observe(document.getElementById("nochFin"));
+  }
+}
+function nochTost(t){ const el = document.getElementById("nochTost"); el.textContent = t; el.classList.add("vidno"); setTimeout(() => el.classList.remove("vidno"), 2600); }
+function nochPereslat(){
+  const u = NOCH_D.ui, url = nochAdres(LANG, "peresl"), tekst = u.peresl_tekst;
+  pixel("noch-pereslat");
+  if (navigator.share){ navigator.share({title: u.metka, text: tekst, url}).then(() => pixel("noch-pereslal")).catch(() => {}); return; }
+  const zapas = () => window.open("https://wa.me/?text=" + encodeURIComponent(tekst + " " + url), "_blank", "noopener");
+  if (navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(url).then(() => { nochTost(u.skopirovano); pixel("noch-skopiroval"); }, zapas); }
+  else zapas();
+}
+function nochOtkryt(otkuda){
+  if (!NOCH_D) return; nochSobrat(); NOCH_OTKR = true;
+  const el = document.getElementById("noch"); el.classList.add("vidno"); el.scrollTop = 0; document.body.classList.add("noch-otkr");
+  nochPix("noch-otkryl-" + (otkuda || "knopka"));
+}
+function nochZakryt(kak){
+  NOCH_OTKR = false; document.getElementById("noch").classList.remove("vidno"); document.body.classList.remove("noch-otkr");
+  pixel("noch-zakryl-" + kak);
+}
+addEventListener("keydown", e => { if (NOCH_OTKR && e.key === "Escape"){ e.stopImmediatePropagation(); nochZakryt("esc"); } });
+if (GOST && PAR.get("ot") === "p") pixel("otkryl-pereslano");
+if (GOST && NOCH_D){
+  const b = document.createElement("button"); b.className = "kn glavnaya"; b.textContent = NOCH_D.ui.knopka;
+  b.onclick = () => { document.getElementById("posleTura").classList.remove("vidno"); nochOtkryt("posle-tura"); };
+  document.querySelector("#posleTura .niz").prepend(b);
+  const g = document.createElement("button"); g.className = "kn glavnaya"; g.style.cssText = "margin-bottom:10px;font:800 16px Inter,sans-serif;padding:14px 22px"; g.textContent = NOCH_D.ui.knopka;
+  g.onclick = () => nochOtkryt("bez-3d"); document.getElementById("bezGL").insertBefore(g, document.querySelector("#bezGL a"));
+}
 const EST_GL = (() => { try { const c = document.createElement("canvas"); return !!(c.getContext("webgl2") || c.getContext("webgl")); } catch(e){ return false; } })();
-if (!EST_GL){ document.getElementById("bezGL").classList.add("vidno"); pixel("bez-webgl"); throw new Error("нет WebGL"); }
+const EST_GL_NOCH = EST_GL;
+if (!EST_GL){ document.getElementById("bezGL").classList.add("vidno"); pixel("bez-webgl"); if (NOCH_AVTO) nochOtkryt("avto"); throw new Error("нет WebGL"); }
 pixel("otkryl-" + LANG);
 const holst = document.getElementById("scena");
 const renderer = new THREE.WebGLRenderer({canvas: holst, antialias: !GLYANEC, preserveDrawingBuffer: ZAPIS, powerPreference: "high-performance"});
@@ -1069,8 +1237,9 @@ function zapolnitPanel(r){
   const eks = r.id === "sovet" ? `<div class="ag"><span class="t" style="background:${r.cvet}"></span><div><div class="n">${T("За столом")}</div><div class="c">${(D.eksperty||[]).map(T).join(", ")}</div></div></div>` : "";
   const agenty = GOST && r.id === "yana" ? `<div class="ag"><span class="t" style="background:${r.cvet}"></span><div><div class="n">${agentovStr(r.agentov)}</div><div class="c">${T("отвечают клиентам, записывают, следят, чтобы никто не ждал")}</div></div></div>`
     : r.agenty.map(a => `<div class="ag${a.pauza?' pauza':''}"><span class="t" style="background:${a.pauza?'#555':r.cvet}"></span><div><div class="n">${T(a.imya)}</div><div class="c">${T(a.chto)}</div>${a.segodnya?`<div class="s">${T(a.segodnya)}</div>`:""}${a.pauza?`<div class="c">${T("на паузе")}</div>`:""}</div><span class="v">${T(a.vid)}</span></div>`).join("");
+  const nochKn = GOST && r.id === "yana" && NOCH_D ? `<button class="kn glavnaya noch-kn" onclick="nochOtkryt('panel')">${nochEsc(NOCH_D.ui.knopka)}</button>` : "";
   const wa = GOST && r.id === "yana" ? `<a class="kn wa" style="display:block;text-align:center;margin:12px 8px 4px;text-decoration:none" href="https://wa.me/51959246034?text=${encodeURIComponent(LANG === "ru" ? "ДЕМО ГОРОД. Хочу такого администратора для своего бизнеса" : TF("@wa_salony"))}" target="_blank" rel="noopener" onclick="pixel('wa-salony')">${T("Хочу такого администратора")}</a>` : "";
-  document.getElementById("pSpisok").innerHTML = wa + eks + agenty;
+  document.getElementById("pSpisok").innerHTML = nochKn + wa + eks + agenty;
 }
 function zapolnitKvartal(){
   if (GOST){
@@ -1379,6 +1548,7 @@ function risovat(t){
 }
 function cikl(){
   requestAnimationFrame(cikl);
+  if (NOCH_OTKR) return;
   const t = (performance.now() - t00) / 1000;
   if (tur.vkl){ const tt = (performance.now() - tur.start)/1000; if (GOST && tt >= PLAN.dlina - .05){ posleTura(); } else { kadrTura(tt); risovat(t); return; } }
   TEK = t;
@@ -1401,7 +1571,8 @@ Promise.race([shrifty, new Promise(r => setTimeout(r, 5000))]).catch(() => {}).t
   VYVESKI.forEach(v => v.w = 0);
   window.__gotovo = true;
   if (ZAPIS){ document.body.classList.add("zapis"); vklTur(); kadrTura(0); risovat(0); }
-  else { if (TUR_SRAZU) vklTur(); cikl(); }
+  else { if (TUR_SRAZU) vklTur(); cikl();
+    if (NOCH_AVTO && !TUR_SRAZU){ svetitSalony(); setTimeout(() => nochOtkryt("avto"), 1900); } }
 });
 </script>
 </body>
