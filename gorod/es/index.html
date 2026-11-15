@@ -1,0 +1,1383 @@
+<!doctype html>
+<html lang="es">
+<head>
+<base href="/gorod/">
+<script>window.LANG_PO_UMOLCH = "es";</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Ciudad de Mikhail: mapa en vivo de agentes de IA</title>
+<meta name="description" content="Mapa 3D en vivo de los agentes de IA de Mikhail Klimenko: barrios, edificios-agentes y contadores de “hecho hoy”. Recorrido de 50 segundos con subtítulos.">
+<link rel="canonical" href="https://horizonventures.app/gorod/es/">
+<link rel="alternate" hreflang="ru" href="https://horizonventures.app/gorod/">
+<link rel="alternate" hreflang="en" href="https://horizonventures.app/gorod/en/">
+<link rel="alternate" hreflang="es" href="https://horizonventures.app/gorod/es/">
+<link rel="alternate" hreflang="x-default" href="https://horizonventures.app/gorod/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="La Ciudad de Mikhail: mapa en vivo de agentes de IA">
+<meta property="og:description" content="115 agentes de IA en una ciudad: quién hace qué hoy. Recorrido guiado de 50 segundos.">
+<meta property="og:url" content="https://horizonventures.app/gorod/es/">
+<meta property="og:image" content="https://horizonventures.app/gorod/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://horizonventures.app/gorod/es/", "url": "https://horizonventures.app/gorod/es/", "name": "La Ciudad de Mikhail: mapa en vivo de agentes de IA", "inLanguage": "es", "description": "Mapa 3D en vivo de los agentes de IA de Mikhail Klimenko: barrios, edificios-agentes y contadores de “hecho hoy”. Recorrido de 50 segundos con subtítulos.", "author": {"@type": "Person", "name": "Михаил Клименко"}, "publisher": {"@id": "https://horizonventures.app/#org"}}, {"@type": "Organization", "@id": "https://horizonventures.app/#org", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/", "taxID": "20612763888", "address": {"@type": "PostalAddress", "addressCountry": "PE"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué es la Ciudad de Mikhail?", "acceptedAnswer": {"@type": "Answer", "text": "Un mapa en vivo de los agentes de IA de Mikhail Klimenko. Cada barrio es un área de trabajo, cada edificio encendido es un agente y el tablero muestra lo que se hizo hoy."}}, {"@type": "Question", "name": "¿Qué son los agentes de IA?", "acceptedAnswer": {"@type": "Answer", "text": "Programas con inteligencia artificial que hacen su trabajo solos: responden a clientes, editan videos, llevan un canal, cuidan los plazos. Mikhail les explica la tarea como a un empleado nuevo."}}, {"@type": "Question", "name": "¿Puedo tener un agente así en mi salón?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Una recepcionista con IA responde a las clientas de tu salón por WhatsApp, agenda citas y les recuerda la visita. Escribe DEMO al WhatsApp +51 959 246 034 y te armamos una demo con tus servicios."}}]}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fon:#04060d; --steklo:rgba(10,14,28,.72); --steklo2:rgba(16,22,42,.88);
+  --zoloto:#f5b942; --zoloto2:#f6dfae; --tekst:#eef1f8; --tusk:#a4adc4; --liniya:rgba(245,185,66,.3);
+  --serif:"Cormorant Garamond", Georgia, serif; --sans:Manrope, system-ui, sans-serif; --udar:Inter, Manrope, system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--fon);color:var(--tekst);font-family:var(--sans);overflow:hidden;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+#scena{position:fixed;inset:0;display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#scena.ruka{cursor:pointer}
+#vspyshka{position:fixed;inset:0;background:#fff6e4;opacity:0;pointer-events:none;z-index:8}
+.ten{position:fixed;left:0;right:0;top:0;height:220px;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(3,4,10,.78),rgba(3,4,10,0))}
+body.tur .ten{display:none}
+
+
+.shapka{position:fixed;left:16px;top:max(16px,env(safe-area-inset-top));z-index:6;max-width:min(560px,calc(100% - 32px))}
+.kiker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--zoloto);font-weight:700}
+.zag{font-family:var(--serif);font-weight:700;font-size:clamp(34px,5.4vw,60px);line-height:.95;margin-top:6px;
+  background:linear-gradient(180deg,#fff 0%,var(--zoloto2) 60%,var(--zoloto) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.itog{margin-top:10px;font-size:14px;color:var(--tusk);line-height:1.5}
+.itog b{color:var(--tekst);font-weight:700}
+.itog .chislo{font-family:var(--serif);font-size:26px;color:var(--zoloto2);font-weight:700;margin-right:4px}
+
+
+.knopki{position:fixed;right:16px;top:max(16px,env(safe-area-inset-top));z-index:6;display:flex;gap:8px}
+.kn{font:600 13px var(--sans);color:var(--tekst);background:var(--steklo);border:1px solid var(--liniya);border-radius:999px;
+  padding:10px 16px;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:border-color .2s,background .2s}
+.kn:hover{border-color:var(--zoloto)}
+.kn.glavnaya{background:linear-gradient(180deg,#f8d68d,#e0a43c);color:#1b1408;border-color:transparent}
+.kn.vkl{border-color:var(--zoloto);color:var(--zoloto2)}
+#turBol{position:fixed;left:50%;bottom:calc(max(14px,env(safe-area-inset-bottom)) + 62px);transform:translateX(-50%);z-index:6;display:flex;align-items:center;gap:12px;white-space:nowrap;
+  font:800 18px var(--udar);color:#1a1206;background:linear-gradient(180deg,#f8d68d,#e0a43c);border:0;border-radius:999px;padding:15px 28px 15px 20px;cursor:pointer;
+  box-shadow:0 0 0 6px rgba(245,185,66,.18),0 14px 40px rgba(0,0,0,.5);animation:dyh 2.6s ease-in-out infinite}
+#turBol i{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#1a1206;color:#f8d68d;font-style:normal;font-size:15px;padding-left:3px}
+#turBol small{font:700 13px var(--udar);opacity:.75}
+@keyframes dyh{0%,100%{box-shadow:0 0 0 6px rgba(245,185,66,.18),0 14px 40px rgba(0,0,0,.5)}50%{box-shadow:0 0 0 12px rgba(245,185,66,.08),0 14px 40px rgba(0,0,0,.5)}}
+body.tur #turBol,body.vnutri #turBol,body.zapis #turBol{display:none}
+
+
+.rajony{position:fixed;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));z-index:6;display:flex;gap:8px;overflow-x:auto;
+  padding:4px 16px;scrollbar-width:none}
+.rajony::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;display:flex;align-items:center;gap:8px;font:600 13px var(--sans);color:var(--tekst);background:var(--steklo);
+  border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:9px 13px;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.chip:hover{border-color:var(--liniya)}
+.chip i{width:9px;height:9px;border-radius:50%;box-shadow:0 0 10px currentColor;background:currentColor}
+.chip small{color:var(--tusk);font-weight:500}
+
+
+.panel{position:fixed;z-index:7;right:16px;top:86px;bottom:16px;width:min(400px,calc(100% - 32px));background:var(--steklo2);
+  border:1px solid var(--liniya);border-radius:22px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  display:flex;flex-direction:column;transform:translateX(calc(100% + 40px));transition:transform .5s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.panel.otkryta{transform:none}
+.panel .verh{padding:20px 20px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
+.panel .imya{font-family:var(--serif);font-size:32px;font-weight:700;line-height:1}
+.panel .pod{color:var(--tusk);font-size:13px;margin-top:6px}
+.schet{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.sch{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:10px 12px}
+.sch b{display:block;font-family:var(--serif);font-size:30px;line-height:1;color:var(--zoloto2)}
+.sch span{font-size:12px;color:var(--tusk);line-height:1.3;display:block;margin-top:4px}
+.spisok{overflow-y:auto;padding:10px 12px 16px;flex:1}
+.ag{display:flex;gap:10px;align-items:flex-start;padding:9px 8px;border-radius:12px}
+.ag:hover{background:rgba(255,255,255,.03)}
+.ag .t{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:0 0 auto}
+.ag .n{font-weight:700;font-size:14px}
+.ag .c{font-size:12px;color:var(--tusk);margin-top:2px}
+.ag .s{font-size:12px;color:var(--zoloto);margin-top:2px}
+.ag .v{margin-left:auto;font-size:10.5px;color:var(--tusk);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:2px 8px;white-space:nowrap;flex:0 0 auto}
+.ag.pauza{opacity:.5}
+.vyjti{margin:0 20px 16px;align-self:flex-start}
+
+
+.okno{position:fixed;inset:0;z-index:9;display:none;align-items:center;justify-content:center;background:rgba(2,3,8,.6);padding:16px}
+.okno.vidno{display:flex}
+.okno .karta{max-width:520px;background:var(--steklo2);border:1px solid var(--liniya);border-radius:20px;padding:22px;line-height:1.55;font-size:14px;color:#d8deec}
+.okno h3{font-family:var(--serif);font-size:28px;color:var(--zoloto2);margin-bottom:10px}
+.okno code{font-size:12px;background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px}
+
+
+#sloj{position:fixed;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+.vyv{position:absolute;left:0;top:0;transform-origin:50% 100%;text-align:center;white-space:nowrap;opacity:0;will-change:transform,opacity;
+  padding:9px 16px 10px;border-radius:16px;background:linear-gradient(180deg,rgba(9,12,24,.86),rgba(6,8,16,.78));
+  border:1.5px solid var(--c,#f5b942);box-shadow:0 0 22px -6px var(--c,#f5b942),0 10px 30px rgba(0,0,0,.45)}
+.vyv b{display:block;font:700 26px/1.02 var(--serif);color:#fff;letter-spacing:.01em}
+.vyv span{display:block;font:700 17px/1.2 var(--udar);color:var(--c,#f1d59c);margin-top:4px;letter-spacing:.02em}
+.vyv.tih{border-style:dashed;background:rgba(10,14,26,.8)}
+.vyv.tih b{font:800 22px/1.1 var(--udar)}
+.vyv.tih span{font-size:17px}
+.vyv::after{content:"";position:absolute;left:50%;bottom:-7px;width:12px;height:12px;margin-left:-6px;transform:rotate(45deg);
+  background:rgba(6,8,16,.9);border-right:1.5px solid var(--c,#f5b942);border-bottom:1.5px solid var(--c,#f5b942)}
+
+
+#pil{position:fixed;left:0;right:0;top:12.5%;z-index:6;text-align:center;pointer-events:none;opacity:0}
+#pil .p{display:inline-flex;align-items:baseline;gap:12px;padding:10px 26px 14px;border-radius:999px;
+  background:linear-gradient(180deg,rgba(248,214,141,.97),rgba(224,164,60,.97));color:#1a1206;box-shadow:0 0 40px rgba(245,185,66,.45),0 14px 40px rgba(0,0,0,.45)}
+#pil .p b{font:900 58px/1 var(--udar);letter-spacing:-.02em}
+#pil .p span{font:800 26px/1 var(--udar)}
+#pil .k{display:block;margin-top:12px;font:800 14px/1 var(--udar);letter-spacing:.34em;text-transform:uppercase;color:var(--zoloto2);text-shadow:0 2px 14px rgba(0,0,0,.9)}
+#klyuch{position:fixed;left:16px;right:16px;top:64.5%;z-index:6;text-align:center;pointer-events:none;opacity:0}
+#klyuch span{display:inline-block;max-width:100%;padding:12px 24px 14px;border-radius:18px;background:rgba(250,240,220,.96);color:#14100a;
+  font:800 31px/1.08 var(--udar);letter-spacing:-.01em;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+
+
+.kn.wa,#waKn{background:#1fa855;color:#fff;border-color:transparent}
+#waKn{position:fixed;right:16px;bottom:calc(max(14px,env(safe-area-inset-bottom)) + 62px);z-index:6;display:none;align-items:center;gap:8px;font:800 15px var(--udar);
+  border-radius:999px;padding:13px 18px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+body.gost #waKn{display:flex}
+body.gost #turBol{left:16px;transform:none}
+body.tur #waKn,body.vnutri #waKn{display:none}
+@media (max-width:700px){ body.gost #turBol{bottom:calc(max(14px,env(safe-area-inset-bottom)) + 120px);left:16px} body.gost #waKn{left:16px;right:auto} }
+.karta2{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;background:rgba(2,3,8,.66);padding:16px}
+.karta2.vidno{display:flex}
+.karta2 .k{width:min(460px,100%);background:var(--steklo2);border:1px solid var(--liniya);border-radius:22px;padding:22px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.karta2 h3{font-family:var(--serif);font-size:30px;color:var(--zoloto2);line-height:1.05}
+.karta2 p{color:#d8deec;font-size:14px;line-height:1.5;margin-top:8px}
+.karta2 .shag{font:700 12px var(--udar);letter-spacing:.2em;text-transform:uppercase;color:var(--zoloto)}
+.vybor{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.vybor button,.karta2 .kn{font:700 14px var(--udar)}
+.vybor button{color:var(--tekst);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;cursor:pointer}
+.vybor button:hover{border-color:var(--zoloto)}
+.karta2 .niz{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.karta2 a.kn{text-decoration:none}
+#bezGL{position:fixed;inset:0;z-index:20;display:none;flex-direction:column;align-items:center;justify-content:flex-end;padding:24px 16px 40px;
+  background:#04060d url(og.jpg) center/cover no-repeat;text-align:center}
+#bezGL.vidno{display:flex}
+#bezGL h2{font-family:var(--serif);font-size:40px;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.8)}
+#bezGL p{color:#eef1f8;margin:8px 0 16px;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+#klyuch.sub span{font:700 21px/1.28 var(--udar);max-width:min(600px,100%)}
+#yazyki{display:flex;gap:4px;background:var(--steklo);border:1px solid var(--liniya);border-radius:999px;padding:4px;backdrop-filter:blur(10px)}
+#yazyki a{font:800 12px var(--udar);color:var(--tusk);text-decoration:none;padding:6px 9px;border-radius:999px}
+#yazyki a.tek{background:linear-gradient(180deg,#f8d68d,#e0a43c);color:#1a1206}
+body.tur #yazyki{display:none}
+body.tur .shapka,body.tur .rajony,body.tur .panel,body.tur #kak,body.tur #turKn{display:none}
+body.zapis .knopki{display:none}
+body:not(.tur) #vyhodTur{display:none}
+@media (max-width:700px){
+  .shapka{max-width:calc(100% - 140px)}
+  .itog{font-size:12.5px}
+  .itog .chislo{font-size:22px}
+  .knopki{flex-direction:column;align-items:flex-end}
+  .panel{top:auto;left:16px;right:16px;width:auto;height:60vh;bottom:max(12px,env(safe-area-inset-bottom));transform:translateY(calc(100% + 30px))}
+  .panel.otkryta{transform:none}
+  .panel .imya{font-size:27px}
+  body.vnutri .shapka{display:none}
+  .vyv b{font-size:22px}
+}
+</style>
+</head>
+<body>
+<canvas id="scena"></canvas>
+<div class="ten"></div>
+<div id="sloj"></div>
+<div id="vspyshka"></div>
+
+<div class="shapka">
+  <div class="kiker">Живая карта ИИ-агентов</div>
+  <div class="zag">Город Михаила</div>
+  <div class="itog" id="itog"></div>
+</div>
+<div class="knopki">
+  <button class="kn glavnaya" id="turKn">Экскурсия</button>
+  <button class="kn" id="zvukKn">Звук</button>
+  <button class="kn" id="kak">Как устроено</button>
+  <a class="kn" id="demoKn" href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E" target="_blank" rel="noopener" style="text-decoration:none">Демо для салона</a>
+  <button class="kn" id="vyhodTur">Выйти из экскурсии</button>
+</div>
+<button id="turBol"><i>▶</i>Экскурсия <small id="turBolS">50 с · со звуком</small></button>
+<div class="rajony" id="rajony"></div>
+
+<aside class="panel" id="panel">
+  <div class="verh">
+    <div class="imya" id="pImya"></div>
+    <div class="pod" id="pPod"></div>
+    <div class="schet" id="pSchet"></div>
+  </div>
+  <div class="spisok" id="pSpisok"></div>
+  <button class="kn vyjti" id="pVyjti">← На улицу</button>
+</aside>
+
+<div class="okno" id="okno"><div class="karta">
+  <h3>Как устроено</h3>
+  <div id="oTekst"></div>
+  <div id="faq" style="margin-top:14px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px">
+    <p><b>Что это?</b> Живая карта моих ИИ-агентов. Район = направление работы, светящийся дом = один агент, табло = что сделано сегодня.</p>
+    <p style="margin-top:8px"><b>Кто такие агенты?</b> Программы на ИИ, которые сами делают свою работу: отвечают клиентам, монтируют ролики, ведут канал. Я объясняю задачу как новому сотруднику.</p>
+    <p style="margin-top:8px"><b>Можно такого агента для салона?</b> Да: ИИ-администратор отвечает клиентам в WhatsApp, записывает и напоминает о визите. <a href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E" style="color:#f6dfae">Напиши ДЕМО в WhatsApp</a>, соберу демо на твоих услугах.</p>
+  </div>
+  <button class="kn" style="margin-top:16px" id="oZakr">Понятно</button>
+</div></div>
+
+<a id="waKn" href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E%20%D0%93%D0%9E%D0%A0%D0%9E%D0%94" target="_blank" rel="noopener" onclick="pixel('wa')">WhatsApp: хочу демо</a>
+<div class="karta2" id="posleTura"><div class="k">
+  <h3>Хочешь такой отдел у себя?</h3>
+  <p>Агент отвечает клиентам в WhatsApp, записывает и напоминает о визите. Соберу демо на твоих услугах, попробуешь сам.</p>
+  <div class="niz"><button class="kn glavnaya" id="ptKvartal">Собрать мой квартал</button>
+  <a class="kn wa" href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E%20%D0%93%D0%9E%D0%A0%D0%9E%D0%94" target="_blank" rel="noopener" onclick="pixel('wa-posle-tura')">Написать ДЕМО</a>
+  <button class="kn" id="ptZakr">Посмотреть город</button></div>
+</div></div>
+<div class="karta2" id="kvartal3"><div class="k">
+  <div class="shag" id="k3Shag">Шаг 1 из 3</div>
+  <h3 id="k3Vopros">Какой у тебя бизнес?</h3>
+  <div class="vybor" id="k3Vybor"></div>
+  <div class="niz"><button class="kn" id="k3Zakr">Закрыть</button></div>
+</div></div>
+<div id="bezGL"><h2>Город Михаила</h2><p>Живая карта ИИ-агентов. Здесь браузер не показывает трёхмерную графику.</p>
+  <a class="kn wa" style="text-decoration:none;font:800 16px Inter,sans-serif;padding:14px 22px" href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E%20%D0%93%D0%9E%D0%A0%D0%9E%D0%94" target="_blank" rel="noopener">Написать ДЕМО в WhatsApp</a></div>
+<div id="pil"><div class="p"><b id="pilB"></b><span id="pilS"></span></div><span class="k" id="pilK"></span></div>
+<div id="klyuch"><span id="klyuchT"></span></div>
+
+<script src="dannye.js"></script>
+<script src="golos.js"></script>
+<script src="perevody.js"></script>
+<script src="three.min.js"></script>
+<script>
+if (!window.THREE) document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
+</script>
+<script src="lib/CopyShader.js"></script>
+<script src="lib/LuminosityHighPassShader.js"></script>
+<script src="lib/EffectComposer.js"></script>
+<script src="lib/RenderPass.js"></script>
+<script src="lib/ShaderPass.js"></script>
+<script src="lib/UnrealBloomPass.js"></script>
+<script src="lib/Reflector.js"></script>
+<script>
+"use strict";
+const D = window.DANNYE || {itogo:{agentov:0,umenij:0,zadach:0,smen:0}, rajony:[], eksperty:[], kak_schitali:"", tihij:[]};
+const TIHIJ = D.tihij || [];
+const PAR = new URLSearchParams(location.search);
+const TUR_SRAZU = PAR.get("tur") === "1";
+const ZAPIS = PAR.get("zapis") === "1";
+const GOST = true;
+const PODPISI = PAR.get("podpisi") !== "0";
+const MSAA = PAR.get("msaa") !== "0";
+const GLYANEC = PAR.get("glyanec") !== "0";
+const PER = window.PEREVOD || {};
+const LANG = (() => { const q = (PAR.get("lang") || "").toLowerCase(); if (["ru","en","es"].includes(q)) return q;
+  if (window.LANG_PO_UMOLCH) return window.LANG_PO_UMOLCH;
+  if (!GOST) return "ru"; const n = (navigator.language || "").toLowerCase(); return n.startsWith("es") ? "es" : n.startsWith("ru") ? "ru" : "en"; })();
+function T(s){ if (LANG === "ru" || s == null || s === "") return s; const d = PER[LANG] || {}; return d[s] ?? s; }
+function TF(k, v){ let s = (PER[LANG] || {})[k] || ""; Object.entries(v || {}).forEach(([a, b]) => { s = s.split("{" + a + "}").join(b); }); return s; }
+function agentovStr(n){ return LANG === "ru" ? `${n} ${mnozh(n,"агент","агента","агентов")}` : TF(n === 1 ? "@agent1" : "@agentov", {n}); }
+const WA_SLOVO = LANG === "ru" ? "ДЕМО ГОРОД" : TF("@wa");
+const WA_DEMO = "https://wa.me/51959246034?text=" + encodeURIComponent(WA_SLOVO);
+function mnozh(n, a, b, c){ n=Math.abs(n)%100; const m=n%10; if(n>10&&n<20) return c; if(m>1&&m<5) return b; if(m===1) return a; return c; }
+const R = {}; D.rajony.forEach(r => R[r.id] = r);
+const it = D.itogo;
+const AGENTOV = agentovStr(it.agentov);
+document.getElementById("itog").innerHTML =
+  `<span class="chislo">${it.agentov}</span><b>${mnozh(it.agentov,"агент","агента","агентов")}</b> в ${D.rajony.length} районах · сегодня работали ${it.rabotali_segodnya ?? "—"}<br>` +
+    `<span style="opacity:.75">обновлено ${D.sobrano || "—"}</span>`;
+document.getElementById("oTekst").innerHTML =
+  `<p>${D.kak_schitali}</p><p style="margin-top:10px">Сейчас <b>${it.agentov}</b> агентов, сегодня работали ${it.rabotali_segodnya ?? "—"}.</p>` +
+  `<p style="margin-top:10px">Каждый светящийся дом в районе = один агент. Тихий квартал за кольцом: проекты на паузе, замороженные и закрытые (${TIHIJ.length}).</p>`;
+if (LANG !== "ru"){
+  document.getElementById("itog").innerHTML = TF("@itog", {n: it.agentov, r: D.rajony.length, w: it.rabotali_segodnya ?? "—", d: D.sobrano || "—"});
+  document.getElementById("oTekst").innerHTML = TF("@kak", {k: T(D.kak_schitali), n: it.agentov, w: it.rabotali_segodnya ?? "—"});
+  document.documentElement.lang = LANG; if (PER[LANG] && PER[LANG]["@title"]) document.title = PER[LANG]["@title"];
+}
+[".kiker", ".zag", "#turKn", "#kak", "#vyhodTur", "#demoKn", "#pVyjti", "#oZakr", "#waKn", ".okno h3", "#posleTura h3", "#posleTura p", "#ptKvartal",
+ "#posleTura a.kn", "#ptZakr", "#k3Zakr", "#bezGL h2", "#bezGL p", "#bezGL a"].forEach(s => document.querySelectorAll(s).forEach(el => { el.textContent = T(el.textContent.trim()); }));
+document.querySelectorAll("#waKn, #posleTura a.kn, #bezGL a, #demoKn").forEach(a => a.href = WA_DEMO);
+if (LANG !== "ru" && document.getElementById("faq")) document.getElementById("faq").innerHTML = TF("@faq", {wa: WA_DEMO});
+document.querySelector("#turBol").childNodes.forEach(n => { if (n.nodeType === 3 && n.textContent.trim()) n.textContent = " " + T(n.textContent.trim()) + " "; });
+if (GOST){ const y = document.createElement("span"); y.id = "yazyki";
+  y.innerHTML = ["en","es","ru"].map(l => `<a href="?lang=${l}"${l === LANG ? ' class="tek"' : ""}>${l.toUpperCase()}</a>`).join("");
+  document.querySelector(".knopki").prepend(y); }
+const rajonyEl = document.getElementById("rajony");
+D.rajony.forEach(r => {
+  const b = document.createElement("button"); b.className = "chip";
+  b.innerHTML = `<i style="color:${r.cvet}"></i>${T(r.nazvanie)}<small>${r.agentov}</small>`;
+  b.onclick = () => zajti(r.id); rajonyEl.appendChild(b);
+});
+if (TIHIJ.length){ const b = document.createElement("button"); b.className = "chip";
+  b.innerHTML = `<i style="color:#9fc3e0"></i>${T("Тихий квартал")}<small>${TIHIJ.filter(x => !(GOST && x.klient)).length}</small>`;
+  b.onclick = () => kKvartalu(); rajonyEl.appendChild(b); }
+function pixel(s){ if (!GOST) return; try { new Image().src = "https://aiadmin.app/px/gorod.gif?s=" + encodeURIComponent(s) + "&r=" + Date.now(); } catch(e){} }
+if (GOST) document.body.classList.add("gost");
+const EST_GL = (() => { try { const c = document.createElement("canvas"); return !!(c.getContext("webgl2") || c.getContext("webgl")); } catch(e){ return false; } })();
+if (!EST_GL){ document.getElementById("bezGL").classList.add("vidno"); pixel("bez-webgl"); throw new Error("нет WebGL"); }
+pixel("otkryl-" + LANG);
+const holst = document.getElementById("scena");
+const renderer = new THREE.WebGLRenderer({canvas: holst, antialias: !GLYANEC, preserveDrawingBuffer: ZAPIS, powerPreference: "high-performance"});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.12;
+const kamera = new THREE.PerspectiveCamera(45, 1, 0.3, 3000);
+const ulica = new THREE.Scene();
+const vnutri = new THREE.Scene();
+let gde = "ulica";
+let TEK = 0;
+
+const FinalShader = {
+  uniforms: {tDiffuse:{value:null}, t:{value:0}, vin:{value:.42}, zerno:{value:.016}, aspekt:{value:.56}, niz:{value: ZAPIS ? .6 : .25}},
+  vertexShader: "varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.0); }",
+  fragmentShader: `uniform sampler2D tDiffuse; uniform float t, vin, zerno, aspekt, niz; varying vec2 vUv;
+    float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233)) + t*7.13) * 43758.5453); }
+    void main(){
+      vec4 c = texture2D(tDiffuse, vUv);
+      float l = dot(c.rgb, vec3(.299,.587,.114));
+      c.rgb = mix(c.rgb, c.rgb*vec3(.9,.97,1.1), (1.0-l)*.35);
+      c.rgb = mix(c.rgb, c.rgb*vec3(1.06,1.0,.92), smoothstep(.45,1.,l)*.3);
+      vec2 d = vUv - .5; d.x /= max(aspekt,.3)*1.4;
+      c.rgb *= 1.0 - vin*smoothstep(.32, .95, length(d)*1.18);
+      c.rgb *= 1.0 - niz*smoothstep(.2, .0, vUv.y);
+      c.rgb += (h(floor(vUv*vec2(1080.,1920.))) - .5)*zerno;
+      gl_FragColor = vec4(clamp(c.rgb,0.,1.), 1.0);
+    }`
+};
+let composer = null, prohod = null, bloom = null, final = null;
+function sdelatComposer(){
+  if (!GLYANEC || !THREE.EffectComposer) return;
+  const pr = renderer.getPixelRatio(), w = innerWidth*pr, h = innerHeight*pr;
+  const par = {format: THREE.RGBAFormat, encoding: THREE.sRGBEncoding, minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter};
+  let rt;
+  if (MSAA && renderer.capabilities.isWebGL2 && THREE.WebGLMultisampleRenderTarget){ rt = new THREE.WebGLMultisampleRenderTarget(w, h, par); rt.samples = 4; }
+  else rt = new THREE.WebGLRenderTarget(w, h, par);
+  rt.texture.encoding = THREE.sRGBEncoding;
+  composer = new THREE.EffectComposer(renderer, rt);
+  prohod = new THREE.RenderPass(ulica, kamera); composer.addPass(prohod);
+  bloom = new THREE.UnrealBloomPass(new THREE.Vector2(w, h), 0.95, 0.62, 0.66); composer.addPass(bloom);
+  final = new THREE.ShaderPass(FinalShader); composer.addPass(final);
+}
+
+function sluch(seed){ let a = seed>>>0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const S = sluch(20261114);
+const V3 = (x,y,z) => new THREE.Vector3(x,y,z);
+const lerp = (a,b,u) => a + (b-a)*u;
+const zazhat = (x,a=0,b=1) => Math.max(a, Math.min(b, x));
+const plavno = u => { u = zazhat(u); return u<.5 ? 4*u*u*u : 1 - Math.pow(-2*u+2,3)/2; };
+const myagko = u => { u = zazhat(u); return u*u*(3-2*u); };
+const otrezok = (t,a,b) => zazhat((t-a)/(b-a));
+function holstik(w,h){ const c = document.createElement("canvas"); c.width=w; c.height=h; return c; }
+function tex(c){ const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.anisotropy = 4; return t; }
+function skrugl(g, x, y, w, h, r){ g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath(); }
+const svechenie = (() => { const c = holstik(128,128), g = c.getContext("2d"); const gr = g.createRadialGradient(64,64,0,64,64,64);
+  gr.addColorStop(0,"rgba(255,255,255,1)"); gr.addColorStop(.25,"rgba(255,255,255,.55)"); gr.addColorStop(1,"rgba(255,255,255,0)");
+  g.fillStyle = gr; g.fillRect(0,0,128,128); return tex(c); })();
+const stolbTex = (() => { const c = holstik(4,256), g = c.getContext("2d"); const gr = g.createLinearGradient(0,256,0,0);
+  gr.addColorStop(0,"rgba(255,255,255,.9)"); gr.addColorStop(.35,"rgba(255,255,255,.25)"); gr.addColorStop(1,"rgba(255,255,255,0)");
+  g.fillStyle = gr; g.fillRect(0,0,4,256); return tex(c); })();
+const tenTex = (() => { const c = holstik(64,64), g = c.getContext("2d"); const gr = g.createRadialGradient(32,32,0,32,32,32);
+  gr.addColorStop(0,"rgba(0,0,0,.75)"); gr.addColorStop(1,"rgba(0,0,0,0)"); g.fillStyle = gr; g.fillRect(0,0,64,64); return tex(c); })();
+
+function oknaTex(ottenok, dolya, seed){
+  const r = sluch(seed), c = holstik(128,256), g = c.getContext("2d");
+  g.fillStyle = "#0a0e1a"; g.fillRect(0,0,128,256);
+  const tepl = ["#ffd9a0","#ffe7c2","#ffcf86"], kol = 6, ryad = 16;
+  for (let y=0;y<ryad;y++) for (let x=0;x<kol;x++){
+    const v = r();
+    if (v < dolya) g.fillStyle = r() < .3 ? ottenok : tepl[(r()*3)|0];
+    else g.fillStyle = v < dolya + .12 ? "#1b2234" : "#111727";
+    g.fillRect(6 + x*20, 6 + y*16, 12, 9);
+  }
+  const t = tex(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; return t;
+}
+(function nebo(){
+  const geo = new THREE.SphereGeometry(1400, 32, 16), cv = [], p = geo.attributes.position;
+  const niz = new THREE.Color("#3a2347"), sered = new THREE.Color("#0d1534"), verh = new THREE.Color("#02040b");
+  for (let i=0;i<p.count;i++){ const y = p.getY(i)/1400; const c = y < .08 ? niz.clone().lerp(sered, zazhat(y/.08)) : sered.clone().lerp(verh, zazhat((y-.08)/.6)); cv.push(c.r,c.g,c.b); }
+  geo.setAttribute("color", new THREE.Float32BufferAttribute(cv,3));
+  ulica.add(new THREE.Mesh(geo, new THREE.MeshBasicMaterial({vertexColors:true, side:THREE.BackSide, fog:false, depthWrite:false})));
+  const n = 1800, pos = new Float32Array(n*3);
+  for (let i=0;i<n;i++){ const a = S()*Math.PI*2, b = Math.acos(1 - S()*0.95), r = 1300; pos[i*3]=r*Math.sin(b)*Math.cos(a); pos[i*3+1]=r*Math.cos(b)+40; pos[i*3+2]=r*Math.sin(b)*Math.sin(a); }
+  const sg = new THREE.BufferGeometry(); sg.setAttribute("position", new THREE.BufferAttribute(pos,3));
+  ulica.add(new THREE.Points(sg, new THREE.PointsMaterial({color:0xcfd8ff, size:2.0, sizeAttenuation:false, transparent:true, opacity:.75, fog:false})));
+  const luna = new THREE.Sprite(new THREE.SpriteMaterial({map:svechenie, color:0xdfe8ff, fog:false, transparent:true, depthWrite:false}));
+  luna.scale.set(90,90,1); luna.position.set(-520, 420, -760); ulica.add(luna);
+  const disk = new THREE.Mesh(new THREE.CircleGeometry(16, 48), new THREE.MeshBasicMaterial({color:0xf3f6ff, fog:false}));
+  disk.position.copy(luna.position); disk.lookAt(0,0,0); ulica.add(disk);
+})();
+ulica.fog = new THREE.FogExp2(0x0b1126, 0.0024);
+ulica.add(new THREE.HemisphereLight(0x4a5c9a, 0x0a0806, 0.55));
+const lunaSvet = new THREE.DirectionalLight(0xa9bcff, 0.5); lunaSvet.position.set(-200, 300, 120); ulica.add(lunaSvet);
+(function zemlya(){
+  if (GLYANEC && THREE.Reflector){
+    const razm = ZAPIS ? 1024 : 768;
+    const zer = new THREE.Reflector(new THREE.CircleGeometry(900, 96), {clipBias: .003, textureWidth: razm, textureHeight: razm, color: 0x6b6f7c});
+    zer.rotation.x = -Math.PI/2; zer.position.y = -.02; ulica.add(zer);
+  } else {
+    const z = new THREE.Mesh(new THREE.CircleGeometry(900, 96), new THREE.MeshStandardMaterial({color:0x070a14, roughness:.55, metalness:.35}));
+    z.rotation.x = -Math.PI/2; z.position.y = -.02; ulica.add(z);
+  }
+  const c = holstik(1024, 1024), g = c.getContext("2d"), r = sluch(77);
+  g.fillStyle = "rgb(200,200,200)"; g.fillRect(0,0,1024,1024);
+  for (let i=0;i<900;i++){ const x = r()*1024, y = r()*1024, rad = 8 + r()*r()*60; const gr = g.createRadialGradient(x,y,0,x,y,rad);
+    gr.addColorStop(0, "rgba(40,40,40,.85)"); gr.addColorStop(1, "rgba(40,40,40,0)"); g.fillStyle = gr; g.fillRect(x-rad,y-rad,rad*2,rad*2); }
+  const kr = g.createRadialGradient(512,512,0,512,512,512); kr.addColorStop(0,"rgba(30,30,30,.55)"); kr.addColorStop(.32,"rgba(30,30,30,0)"); kr.addColorStop(.55,"rgba(255,255,255,0)"); kr.addColorStop(.85,"rgba(255,255,255,1)");
+  g.fillStyle = kr; g.fillRect(0,0,1024,1024);
+  const at = new THREE.CanvasTexture(c);
+  const sloj = new THREE.Mesh(new THREE.CircleGeometry(900, 96), new THREE.MeshBasicMaterial({color:0x04060d, alphaMap: at, transparent:true, depthWrite:false, opacity: GLYANEC ? 1 : 0}));
+  sloj.rotation.x = -Math.PI/2; sloj.position.y = .01; sloj.renderOrder = 1; ulica.add(sloj);
+})();
+const VERH_OBELISKA = 46;
+const PROZHEKTORY = [];
+(function obelisk(){
+  const g = new THREE.Group();
+  const bel = new THREE.MeshStandardMaterial({color:0xd9d4ca, roughness:.45, metalness:.05, emissive:0x2a2418, emissiveIntensity:.35});
+  const stvol = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 2.1, 42, 4, 1), bel); stvol.rotation.y = Math.PI/4; stvol.position.y = 21; g.add(stvol);
+  const verh = new THREE.Mesh(new THREE.ConeGeometry(1.25, 4, 4), bel); verh.rotation.y = Math.PI/4; verh.position.y = 44; g.add(verh);
+  const okno = new THREE.Mesh(new THREE.PlaneGeometry(.5,.7), new THREE.MeshBasicMaterial({color:0xffe2a8})); okno.position.set(0, 40.5, 1.0); g.add(okno);
+  const plosh = new THREE.Mesh(new THREE.CircleGeometry(13, 64), new THREE.MeshStandardMaterial({color:0x10141f, roughness:.3, metalness:.5})); plosh.rotation.x = -Math.PI/2; plosh.position.y = .05; g.add(plosh);
+  [6.5, 13.2, 26].forEach((r,i) => { const k = new THREE.Mesh(new THREE.RingGeometry(r, r + (i===2?.5:.25), 96), new THREE.MeshBasicMaterial({color:0xf5c46a, transparent:true, opacity: i===2?.55:.85, blending:THREE.AdditiveBlending, depthWrite:false})); k.rotation.x = -Math.PI/2; k.position.y = .08; g.add(k); });
+  const sp = new THREE.SpotLight(0xffe1b0, 1.5, 90, .32, .6, 1.2); sp.position.set(0, 0.5, 9); sp.target.position.set(0, 30, 0); g.add(sp); g.add(sp.target);
+  const sp2 = sp.clone(); sp2.position.set(0, .5, -9); sp2.target = new THREE.Object3D(); sp2.target.position.set(0,30,0); g.add(sp2); g.add(sp2.target);
+  const ogon = new THREE.Sprite(new THREE.SpriteMaterial({map:svechenie, color:0xffe6b8, blending:THREE.AdditiveBlending, depthWrite:false, transparent:true}));
+  ogon.scale.set(7,7,1); ogon.position.y = VERH_OBELISKA; g.add(ogon); ogon.material.opacity = .8;
+  const konus = new THREE.CylinderGeometry(9, .5, 260, 32, 1, true); konus.translate(0, 130, 0);
+  for (let i=0;i<6;i++){
+    const m = new THREE.Mesh(konus, new THREE.MeshBasicMaterial({map:stolbTex, color: i%2 ? 0xffd9a0 : 0xbfd4ff, transparent:true, opacity:.075, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide, fog:false}));
+    const a = i/6*Math.PI*2; m.position.set(Math.sin(a)*8, 0, Math.cos(a)*8); g.add(m); PROZHEKTORY.push({m, a, f: i*1.3});
+  }
+  const stolb = new THREE.Mesh(new THREE.CylinderGeometry(.5, 1.6, 300, 24, 1, true), new THREE.MeshBasicMaterial({map:stolbTex, color:0xfff0d0, transparent:true, opacity:.1, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide, fog:false}));
+  stolb.position.y = VERH_OBELISKA + 150; g.add(stolb);
+  ulica.add(g);
+})();
+function dvigatProzhektory(t){
+  PROZHEKTORY.forEach(p => { p.m.rotation.set(Math.sin(t*.35 + p.f)*.32 + .18, 0, Math.cos(t*.27 + p.f)*.32); p.m.rotation.order = "YXZ"; p.m.rotation.y = p.a; });
+}
+const KLIK = [];
+const DOMA = {};
+const LUCHI = [];
+const n7 = D.rajony.length || 7;
+const RADIUS = 92;
+
+function geomDoma(w,h,d){
+  const geo = new THREE.BoxGeometry(w,h,d), uv = geo.attributes.uv;
+  for (let f=0; f<6; f++){ if (f===2||f===3) continue; const shir = (f<2 ? d : w);
+    for (let i=f*4;i<f*4+4;i++) uv.setXY(i, uv.getX(i)*shir/4, uv.getY(i)*h/8); }
+  geo.translate(0,h/2,0); return geo;
+}
+const krysha = new THREE.MeshStandardMaterial({color:0x0b0f1a, roughness:.7});
+const REBRA = {};
+function rebra(w, h, d, cvet, op){
+  const k = `${w.toFixed(2)}|${h.toFixed(2)}|${d.toFixed(2)}`;
+  if (!REBRA[k]) { const g = new THREE.EdgesGeometry(new THREE.BoxGeometry(w,h,d)); g.translate(0,h/2,0); REBRA[k] = g; }
+  return new THREE.LineSegments(REBRA[k], new THREE.LineBasicMaterial({color: cvet, transparent:true, opacity: op, blending: THREE.AdditiveBlending, depthWrite:false}));
+}
+const UGLY = {};
+D.rajony.forEach((r, idx) => {
+  const ugol = (idx / n7) * Math.PI*2 + 0.35; UGLY[r.id] = ugol;
+  const rad = r.id === "sovet" ? 52 : RADIUS + (idx%2)*10;
+  const cx = Math.sin(ugol)*rad, cz = Math.cos(ugol)*rad;
+  const gr = new THREE.Group(); gr.position.set(cx, 0, cz); gr.rotation.y = ugol; ulica.add(gr);
+  const cvet = new THREE.Color(r.cvet);
+  const mat = new THREE.MeshStandardMaterial({map: oknaTex(r.cvet, .55, idx*31+7), emissive:0xffffff, roughness:.3, metalness:.55});
+  mat.emissiveMap = mat.map; mat.emissiveIntensity = 1.05;
+  const matSon = new THREE.MeshStandardMaterial({map: oknaTex(r.cvet, .03, idx*31+9), roughness:.5, metalness:.4, emissive:0xffffff, emissiveIntensity:.22}); matSon.emissiveMap = matSon.map;
+
+  let verhDoma;
+  if (r.id === "sovet"){
+    const zol = new THREE.MeshStandardMaterial({color:0xd9b46a, roughness:.25, metalness:.85, emissive:0x3a2a0c, emissiveIntensity:.8});
+    const bel = new THREE.MeshStandardMaterial({color:0xece6d8, roughness:.45, emissive:0x2a2416, emissiveIntensity:.7});
+    const osn = new THREE.Mesh(new THREE.CylinderGeometry(9, 9.6, 2, 48), bel); osn.position.y = 1; gr.add(osn);
+    const ster = new THREE.Mesh(new THREE.CylinderGeometry(6.6, 6.6, 9, 48), new THREE.MeshStandardMaterial({color:0x1a1408, emissive:0xffcf86, emissiveIntensity:.65, roughness:.6})); ster.position.y = 6.5; gr.add(ster);
+    for (let k=0;k<16;k++){ const a = k/16*Math.PI*2; const kol = new THREE.Mesh(new THREE.CylinderGeometry(.42,.48,9,12), bel); kol.position.set(Math.sin(a)*8, 6.5, Math.cos(a)*8); gr.add(kol); }
+    const kar = new THREE.Mesh(new THREE.CylinderGeometry(9, 9, 1.2, 48), bel); kar.position.y = 11.6; gr.add(kar);
+    const kupol = new THREE.Mesh(new THREE.SphereGeometry(6.8, 48, 24, 0, Math.PI*2, 0, Math.PI/2), zol); kupol.position.y = 12.2; gr.add(kupol);
+    const fon = new THREE.Mesh(new THREE.CylinderGeometry(.8, 1.1, 3, 16), zol); fon.position.y = 20.2; gr.add(fon);
+    verhDoma = 22.5;
+    [osn, ster, kar, kupol].forEach(m => { m.userData.rajon = r.id; KLIK.push(m); });
+  } else {
+    const H = 16 + Math.min(r.agentov, 45)*0.45;
+    const baza = new THREE.Mesh(geomDoma(11, 5, 11), mat); gr.add(baza);
+    const bashnya = new THREE.Mesh(geomDoma(7, H, 7), [mat,mat,krysha,krysha,mat,mat]); bashnya.position.y = 5; gr.add(bashnya);
+    const rb = rebra(7, H, 7, cvet, .75); rb.position.y = 5; gr.add(rb);
+    const rb2 = rebra(11, 5, 11, cvet, .5); gr.add(rb2);
+    const korona = new THREE.Mesh(new THREE.ConeGeometry(5.2, 6, 4), new THREE.MeshStandardMaterial({color:cvet, emissive:cvet, emissiveIntensity:.55, roughness:.3, metalness:.6}));
+    korona.rotation.y = Math.PI/4; korona.position.y = 5 + H + 3; gr.add(korona);
+    const kolco = new THREE.Mesh(new THREE.TorusGeometry(5.4, .22, 8, 48), new THREE.MeshBasicMaterial({color:0xf5c46a})); kolco.rotation.x = Math.PI/2; kolco.position.y = 5 + H + .2; gr.add(kolco);
+    verhDoma = 5 + H + 6;
+    [baza, bashnya, korona].forEach(m => { m.userData.rajon = r.id; KLIK.push(m); });
+    if (r.id === "lichnyj"){
+      const c = holstik(512, 200), g = c.getContext("2d");
+      g.fillStyle = "rgba(6,8,16,.92)"; skrugl(g, 6, 6, 500, 188, 36); g.fill(); g.strokeStyle = r.cvet; g.lineWidth = 8; g.stroke();
+      g.fillStyle = "#fff4dc"; g.font = "800 132px Inter, Manrope, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("02:47", 256, 106);
+      const ch = new THREE.Mesh(new THREE.PlaneGeometry(6.2, 2.4), new THREE.MeshBasicMaterial({map: tex(c), toneMapped:false}));
+      ch.position.set(0, 5 + H*.72, -3.56); ch.rotation.y = Math.PI; gr.add(ch); r._chasy = c;
+    }
+  }
+  const stolb = new THREE.Mesh(new THREE.CylinderGeometry(.7, 2.2, 220, 24, 1, true), new THREE.MeshBasicMaterial({map:stolbTex, color:cvet, transparent:true, opacity:.13, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide, fog:false}));
+  stolb.position.y = verhDoma + 108; gr.add(stolb);
+  const svet = new THREE.PointLight(cvet, 2.4, 75, 1.6); svet.position.y = 12; gr.add(svet);
+  const nimb = new THREE.Sprite(new THREE.SpriteMaterial({map:svechenie, color:cvet, blending:THREE.AdditiveBlending, depthWrite:false, transparent:true, opacity:.45}));
+  nimb.scale.set(12,12,1); nimb.position.y = verhDoma; gr.add(nimb);
+  const mesta = [];
+  for (let gx=-8; gx<=8; gx++) for (let gz=-8; gz<=8; gz++){ const x = gx*5.4, z = gz*5.4, d = Math.hypot(x,z); if (d > 9.5) mesta.push([x, z, d + S()*2]); }
+  mesta.sort((a,b) => a[2]-b[2]);
+  const rr = sluch(idx*977+3);
+  r.agenty.forEach((a, k) => {
+    const [x, z] = mesta[k]; const h = 4 + rr()*9 + (/^na_servere$/.test(a.vid) ? 6 : 0);
+    const w = 3 + rr()*1.2;
+    const m = new THREE.Mesh(geomDoma(w, h, w), a.pauza ? [matSon,matSon,krysha,krysha,matSon,matSon] : [mat,mat,krysha,krysha,mat,mat]);
+    m.position.set(x, 0, z); m.userData.rajon = r.id; gr.add(m); KLIK.push(m);
+    if (!a.pauza){ const e = rebra(w, h, w, cvet, a.segodnya ? .7 : .32); e.position.set(x, 0, z); gr.add(e); }
+    if (/^na_servere$/.test(a.vid)){ const og = new THREE.Sprite(new THREE.SpriteMaterial({map:svechenie, color:cvet, blending:THREE.AdditiveBlending, depthWrite:false, transparent:true})); og.scale.set(3.2,3.2,1); og.position.set(x, h+1, z); gr.add(og); }
+  });
+  const naruzh = V3(Math.sin(ugol), 0, Math.cos(ugol));
+  DOMA[r.id] = {poz: V3(cx, 0, cz), verh: verhDoma, naruzh, cvet, ugol,
+    podhod: V3(cx, 0, cz).addScaledVector(naruzh, -30).add(V3(0, 11, 0)), smotret: V3(cx, 9, cz)};
+
+  const A = V3(0, VERH_OBELISKA, 0), B = V3(cx, verhDoma, cz), C = V3(cx*.5, 78, cz*.5);
+  const kriv = new THREE.QuadraticBezierCurve3(A, C, B);
+  const tg = new THREE.TubeGeometry(kriv, 80, .24, 6, false);
+  const tm = new THREE.Mesh(tg, new THREE.MeshBasicMaterial({color:cvet, transparent:true, opacity:.7, blending:THREE.AdditiveBlending, depthWrite:false, fog:false}));
+  ulica.add(tm);
+  const ogni = [];
+  for (let k=0;k<4;k++){ const o = new THREE.Sprite(new THREE.SpriteMaterial({map:svechenie, color:cvet, blending:THREE.AdditiveBlending, depthWrite:false, transparent:true, fog:false})); o.scale.set(4.5,4.5,1); ulica.add(o); ogni.push(o); }
+  LUCHI.push({kriv, tm, ogni, vsego: tg.index.count, idx});
+  const dl = rad - 22; const pr = new THREE.Mesh(new THREE.PlaneGeometry(1.1, dl), new THREE.MeshBasicMaterial({color:0xf5c46a, transparent:true, opacity:.3, blending:THREE.AdditiveBlending, depthWrite:false}));
+  pr.rotation.x = -Math.PI/2; pr.rotation.z = -ugol; pr.position.set(Math.sin(ugol)*(14 + dl/2), .07, Math.cos(ugol)*(14 + dl/2)); ulica.add(pr);
+});
+const KVARTAL = (() => {
+  if (!TIHIJ.length) return null;
+  const ugol = (UGLY.drugie ?? 0) + Math.PI / n7 + .05, rad = 168;
+  const c = V3(Math.sin(ugol)*rad, 0, Math.cos(ugol)*rad);
+  const gr = new THREE.Group(); gr.position.copy(c); gr.rotation.y = ugol; ulica.add(gr);
+  const stena = new THREE.MeshStandardMaterial({color:0x0c111d, roughness:.95, metalness:.05});
+  const sneg = new THREE.MeshStandardMaterial({color:0x56637c, roughness:.95});
+  const teplo = new THREE.MeshBasicMaterial({color:0xffc879});
+  const STATUS_CVET = {"на паузе":"#e2b85e", "заморожен":"#a9d0f0", "свёрнут":"#a9d0f0", "закрыт":"#a6b0c8"};
+  const doma = [];
+  const rr = sluch(4242), kol = 4;
+  TIHIJ.forEach((p, i) => {
+    const x = ((i % kol) - (kol-1)/2) * 12 + (rr()-.5)*2, z = (Math.floor(i/kol) - 1) * 13 + (rr()-.5)*2;
+    const w = 5 + rr()*2, h = 6 + rr()*8;
+    const d = new THREE.Mesh(geomDoma(w, h, w), stena); d.position.set(x, 0, z); gr.add(d);
+    const shap = new THREE.Mesh(new THREE.BoxGeometry(w + .5, .55, w + .5), sneg); shap.position.set(x, h + .27, z); gr.add(shap);
+    const ok = new THREE.Mesh(new THREE.PlaneGeometry(.9, 1.1), teplo); ok.position.set(x + (rr()-.5)*w*.5, 1.8 + rr()*(h-3), z - w/2 - .02); ok.rotation.y = Math.PI; gr.add(ok);
+    const ogon = new THREE.Sprite(new THREE.SpriteMaterial({map:svechenie, color:0xffb45a, blending:THREE.AdditiveBlending, depthWrite:false, transparent:true, opacity:.6}));
+    ogon.scale.set(3,3,1); ogon.position.copy(ok.position).add(V3(0,0,-.3)); gr.add(ogon);
+    const e = rebra(w, h, w, new THREE.Color(STATUS_CVET[p.status] || "#a6b0c8"), .22); e.position.set(x, 0, z); gr.add(e);
+    d.userData.kvartal = true; KLIK.push(d);
+    doma.push({p, poz: new THREE.Vector3(x, h + 1.2, z), h, cvet: STATUS_CVET[p.status] || "#a6b0c8"});
+  });
+  for (let i=0;i<7;i++){ const s = new THREE.Sprite(new THREE.SpriteMaterial({map:svechenie, color:0x6f86b0, transparent:true, opacity:.025, depthWrite:false, fog:false}));
+    s.scale.set(60, 10, 1); s.position.set((rr()-.5)*50, 2 + rr()*3, (rr()-.5)*40); gr.add(s); }
+  const lun = new THREE.PointLight(0x9fb8e8, .45, 80, 1.8); lun.position.set(0, 30, 0); gr.add(lun);
+  const N = 600, pos = new Float32Array(N*3), baza = [];
+  for (let i=0;i<N;i++) baza.push([(rr()-.5)*70, rr()*40, (rr()-.5)*60, .9 + rr()*.9, rr()*6.28]);
+  const sg = new THREE.BufferGeometry(); sg.setAttribute("position", new THREE.BufferAttribute(pos,3));
+  const snegT = new THREE.Points(sg, new THREE.PointsMaterial({map:svechenie, color:0xf2f6ff, size:.75, transparent:true, opacity:.85, depthWrite:false, blending:THREE.AdditiveBlending}));
+  gr.add(snegT);
+  const mir = doma.map(d => d.poz.clone().applyMatrix4(new THREE.Matrix4().makeRotationY(ugol)).add(c));
+  return {gr, c, ugol, doma, mir, sneg: {sg, pos, baza}};
+})();
+function dvigatSneg(t){
+  if (!KVARTAL) return; const {sg, pos, baza} = KVARTAL.sneg;
+  baza.forEach((b, i) => { const y = ((b[1] - t*b[3]) % 40 + 40) % 40; pos[i*3] = b[0] + Math.sin(t*.6 + b[4])*1.2; pos[i*3+1] = y; pos[i*3+2] = b[2] + Math.cos(t*.5 + b[4])*1.0; });
+  sg.attributes.position.needsUpdate = true;
+}
+(function fon(){
+  const mat = new THREE.MeshStandardMaterial({map: oknaTex("#8fb0ff", .1, 555), roughness:.6, metalness:.3, emissive:0xffffff, emissiveIntensity:.45});
+  mat.emissiveMap = mat.map;
+  const N = 520, im = new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1).translate(0,.5,0), mat, N);
+  const zany = Object.values(DOMA).map(d => d.poz);
+  if (KVARTAL) zany.push(KVARTAL.c, KVARTAL.c.clone().multiplyScalar(1.15));
+  const mx = new THREE.Matrix4(); let k = 0, popytka = 0;
+  while (k < N && popytka < 8000){ popytka++;
+    const a = S()*Math.PI*2, r = 34 + Math.pow(S(), .8)*300, x = Math.sin(a)*r, z = Math.cos(a)*r;
+    if (zany.some(p => Math.hypot(p.x-x, p.z-z) < 46)) continue;
+    const h = 2 + S()*S()*16 * (r < 120 ? 1 : .7), w = 3 + S()*4;
+    mx.compose(V3(x,0,z), new THREE.Quaternion().setFromAxisAngle(V3(0,1,0), a), V3(w,h,w)); im.setMatrixAt(k++, mx);
+  }
+  im.count = k; ulica.add(im);
+})();
+const PYL = (() => {
+  const N = 520, pos = new Float32Array(N*3), b = [], r = sluch(99);
+  for (let i=0;i<N;i++) b.push([(r()-.5)*300, 3 + r()*55, (r()-.5)*300, r()*6.28, .3 + r()*.6]);
+  const g = new THREE.BufferGeometry(); g.setAttribute("position", new THREE.BufferAttribute(pos,3));
+  ulica.add(new THREE.Points(g, new THREE.PointsMaterial({map:svechenie, color:0xffd9a0, size:1.1, transparent:true, opacity:.7, depthWrite:false, blending:THREE.AdditiveBlending})));
+  return {g, pos, b};
+})();
+function dvigatPyl(t){ const {g,pos,b} = PYL; b.forEach((x,i) => { pos[i*3] = x[0] + Math.sin(t*x[4] + x[3])*3; pos[i*3+1] = x[1] + Math.sin(t*x[4]*.7 + x[3]*2)*2; pos[i*3+2] = x[2] + Math.cos(t*x[4] + x[3])*3; }); g.attributes.position.needsUpdate = true; }
+const MASHINY = (() => {
+  const N = 220, pos = new Float32Array(N*3), col = new Float32Array(N*3), info = [];
+  const kr = new THREE.Color(0xff5a4a), bel = new THREE.Color(0xfff1d6);
+  const ugly = D.rajony.map((r,i) => (i/n7)*Math.PI*2 + .35);
+  for (let i=0;i<N;i++){ const c = S() < .5 ? kr : bel; col.set([c.r,c.g,c.b], i*3);
+    info.push(S() < .35 ? {t:"k", f:S()*Math.PI*2, v:(S()<.5?1:-1)*(.12+S()*.08)} : {t:"p", u:ugly[(S()*ugly.length)|0], f:S(), v:(S()<.5?1:-1)*(.035+S()*.03), s:(S()-.5)*.8}); }
+  const g = new THREE.BufferGeometry(); g.setAttribute("position", new THREE.BufferAttribute(pos,3)); g.setAttribute("color", new THREE.BufferAttribute(col,3));
+  const p = new THREE.Points(g, new THREE.PointsMaterial({map:svechenie, size:1.6, vertexColors:true, transparent:true, opacity:.95, blending:THREE.AdditiveBlending, depthWrite:false}));
+  ulica.add(p); return {g, pos, info};
+})();
+function dvigatMashiny(t){
+  const {g,pos,info} = MASHINY;
+  info.forEach((m,i) => {
+    if (m.t === "k"){ const a = m.f + t*m.v; const r = 26.6 + (m.v>0?.5:-.5); pos[i*3]=Math.sin(a)*r; pos[i*3+1]=.4; pos[i*3+2]=Math.cos(a)*r; }
+    else { let u = (m.f + t*m.v) % 1; if (u<0) u+=1; const r = 15 + u*62; pos[i*3]=Math.sin(m.u)*r + Math.cos(m.u)*m.s; pos[i*3+1]=.4; pos[i*3+2]=Math.cos(m.u)*r - Math.sin(m.u)*m.s; }
+  });
+  g.attributes.position.needsUpdate = true;
+}
+function obnovitLuchi(t, sila){
+  LUCHI.forEach(L => {
+    const p = typeof sila === "function" ? sila(L.idx) : sila;
+    L.tm.visible = p > 0.001;
+    L.tm.geometry.setDrawRange(0, Math.floor(L.vsego * zazhat(p*1.0001)/6)*6);
+    L.tm.material.opacity = .7 * zazhat(p*3);
+    L.ogni.forEach((o,k) => { let u = (t*.32 + k/4 + L.idx*.13) % 1; o.visible = u <= p && p > .05; o.position.copy(L.kriv.getPoint(u)); o.material.opacity = Math.sin(u*Math.PI); });
+  });
+}
+const FIG = {};
+function figGeo(){
+  if (FIG.ok) return FIG;
+  FIG.tors = new THREE.LatheGeometry([[0,0],[.33,0],[.36,.1],[.32,.3],[.37,.6],[.44,.84],[.41,.97],[.22,1.05],[.12,1.1],[0,1.1]].map(p => new THREE.Vector2(p[0], p[1])), 28);
+  FIG.golova = new THREE.SphereGeometry(.36, 32, 24);
+  FIG.vizor = new THREE.SphereGeometry(.374, 32, 16, Math.PI/2 - 1.05, 2.1, Math.PI/2 - .42, .74);
+  FIG.glaz = new THREE.SphereGeometry(.055, 14, 10);
+  FIG.duga = new THREE.TorusGeometry(.405, .038, 8, 28, Math.PI);
+  FIG.chashka = new THREE.CylinderGeometry(.14, .14, .08, 20);
+  FIG.kist = new THREE.SphereGeometry(.088, 14, 10);
+  FIG.ruka = new THREE.CylinderGeometry(.088, .074, 1, 12); FIG.ruka.translate(0, .5, 0);
+  FIG.noga = new THREE.CylinderGeometry(.12, .095, 1, 12); FIG.noga.translate(0, .5, 0);
+  FIG.botinok = new THREE.BoxGeometry(.22, .13, .36);
+  FIG.sheya = new THREE.CylinderGeometry(.1, .12, .2, 12);
+  FIG.plecho = new THREE.SphereGeometry(.13, 14, 10);
+  FIG.sid = new THREE.BoxGeometry(1.0, .16, .95); FIG.spinka = new THREE.BoxGeometry(.95, 1.15, .14);
+  FIG.stojka = new THREE.CylinderGeometry(.07, .07, .7, 10); FIG.luch = new THREE.BoxGeometry(.6, .06, .09);
+  FIG.mikr = new THREE.CylinderGeometry(.018, .018, .42, 6); FIG.mikr.rotateX(Math.PI/2); FIG.mikr.translate(0, 0, .21);
+  FIG.ok = true; return FIG;
+}
+const MATF = {};
+function matFig(hex, son){
+  const k = hex + (son ? "s" : ""); if (MATF[k]) return MATF[k];
+  const c = new THREE.Color(hex), kurtka = c.clone().lerp(new THREE.Color("#1b2238"), son ? .8 : .42);
+  return MATF[k] = {
+    kurtka: new THREE.MeshStandardMaterial({color: kurtka, roughness:.5, metalness:.15}),
+    shlem: new THREE.MeshStandardMaterial({color: son ? 0x5b6174 : 0xb9c1d2, roughness:.32, metalness:.35}),
+    vizor: new THREE.MeshStandardMaterial({color: 0x03050b, roughness:.1, metalness:.9, emissive: c, emissiveIntensity: son ? 0 : .14}),
+    glaz: new THREE.MeshBasicMaterial({color: son ? 0x30343f : 0xdffcff}),
+    akcent: new THREE.MeshStandardMaterial({color: c, emissive: c, emissiveIntensity: son ? .05 : .9, roughness:.3}),
+    bryuki: new THREE.MeshStandardMaterial({color: 0x151a28, roughness:.7}),
+    stul: new THREE.MeshStandardMaterial({color: 0x1b2030, roughness:.45, metalness:.4}),
+  };
+}
+function kost(geo, mat, a, b){
+  const m = new THREE.Mesh(geo, mat); m.position.copy(a);
+  const d = b.clone().sub(a); m.scale.set(1, d.length(), 1);
+  m.quaternion.setFromUnitVectors(V3(0,1,0), d.normalize()); return m;
+}
+function agentFig(hex, opc = {}){
+  const G = figGeo(), M = matFig(hex, opc.son), g = new THREE.Group();
+  const SID = 1.0;
+  const sid = new THREE.Mesh(G.sid, M.stul); sid.position.set(0, SID, -.05); g.add(sid);
+  const sp = new THREE.Mesh(G.spinka, M.stul); sp.position.set(0, SID + .66, -.55); sp.rotation.x = -.12; g.add(sp);
+  const st = new THREE.Mesh(G.stojka, M.stul); st.position.set(0, SID - .43, -.05); g.add(st);
+  for (let i=0;i<5;i++){ const l = new THREE.Mesh(G.luch, M.stul); const a = i/5*Math.PI*2; l.position.set(Math.sin(a)*.27, .08, -.05 + Math.cos(a)*.27); l.rotation.y = a + Math.PI/2; g.add(l); }
+  const ten = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 1.8), new THREE.MeshBasicMaterial({map: tenTex, transparent:true, depthWrite:false}));
+  ten.rotation.x = -Math.PI/2; ten.position.set(0, .015, .2); g.add(ten);
+  g.userData = {son: !!opc.son, pusto: !!opc.pusto};
+  if (opc.pusto) return g;
+  const telo = new THREE.Group(); telo.position.set(0, SID + .08, -.1); telo.rotation.x = .1; g.add(telo);
+  const tors = new THREE.Mesh(G.tors, M.kurtka); telo.add(tors);
+  const molniya = new THREE.Mesh(new THREE.BoxGeometry(.03, .7, .02), M.akcent); molniya.position.set(0, .55, .385); molniya.rotation.x = -.08; telo.add(molniya);
+  const sheya = new THREE.Mesh(G.sheya, M.shlem); sheya.position.y = 1.14; telo.add(sheya);
+  const gol = new THREE.Group(); gol.position.set(0, 1.55, .02); telo.add(gol);
+  const shlem = new THREE.Mesh(G.golova, M.shlem); shlem.scale.set(1, 1.07, 1); gol.add(shlem);
+  const viz = new THREE.Mesh(G.vizor, M.vizor); gol.add(viz);
+  const glaza = [-1, 1].map(s => { const e = new THREE.Mesh(G.glaz, M.glaz); e.scale.set(1.5, .75, .5); e.position.set(s*.125, .04, .352); gol.add(e); return e; });
+  const duga = new THREE.Mesh(G.duga, M.akcent); duga.position.y = .02; gol.add(duga);
+  [-1, 1].forEach(s => { const u = new THREE.Mesh(new THREE.CylinderGeometry(.13, .13, .1, 18), M.akcent); u.rotation.z = Math.PI/2; u.position.set(s*.4, .0, 0); gol.add(u); });
+  if (opc.mikrofon){ const mk = new THREE.Mesh(G.mikr, M.akcent); mk.position.set(-.4, -.05, 0); mk.rotation.y = .55; mk.rotation.x = .25; gol.add(mk);
+    const sh = new THREE.Mesh(new THREE.SphereGeometry(.045, 10, 8), M.akcent); sh.position.set(-.21, -.15, .35); gol.add(sh); }
+  const shar = [];
+  [-1, 1].forEach(s => {
+    const pl = V3(s*.43, .9, .02), lok = V3(s*.48, .45, .4);
+    const ps = new THREE.Mesh(G.plecho, M.kurtka); ps.position.copy(pl); telo.add(ps);
+    telo.add(kost(G.ruka, M.kurtka, pl, lok));
+    const piv = new THREE.Group(); piv.position.copy(lok); telo.add(piv);
+    const kon = opc.chashka && s > 0 ? V3(-.08, .42, .3) : V3(-s*.2, .1, .52);
+    piv.add(kost(G.ruka, M.kurtka, V3(0,0,0), kon));
+    const ki = new THREE.Mesh(G.kist, M.shlem); ki.position.copy(kon); piv.add(ki);
+    if (opc.chashka && s > 0){ const ch = new THREE.Mesh(G.chashka, M.akcent); ch.scale.set(1, 1.9, 1); ch.position.copy(kon).add(V3(0, .1, .05)); piv.add(ch); }
+    shar.push(piv);
+  });
+  [-1, 1].forEach(s => {
+    const bed = V3(s*.2, SID + .1, -.05), kol = V3(s*.22, SID + .08, .62), stopa = V3(s*.24, .14, .72);
+    g.add(kost(G.noga, M.bryuki, bed, kol)); g.add(kost(G.noga, M.bryuki, kol, stopa));
+    const b = new THREE.Mesh(G.botinok, M.bryuki); b.position.set(s*.24, .07, .8); g.add(b);
+  });
+  Object.assign(g.userData, {telo, gol, glaza, shar, chashka: !!opc.chashka, faza: S()*6.28});
+  return g;
+}
+function zhivoj(fig, t){
+  const u = fig.userData; if (!u.telo || u.son) return;
+  const f = u.faza;
+  u.telo.scale.y = 1 + Math.sin(t*2.1 + f)*.012;
+  u.gol.rotation.y = Math.sin(t*.7 + f)*.22; u.gol.rotation.x = Math.sin(t*1.3 + f*2)*.05;
+  const blink = ((t*.31 + f*.1) % 1) < .035 ? .12 : 1; u.glaza.forEach(e => e.scale.y = .75*blink);
+  u.shar.forEach((p, i) => { if (u.chashka && i === 1){ p.rotation.x = -.2 + Math.max(0, Math.sin(t*.8 + f))*-.5; return; }
+    p.rotation.x = Math.sin(t*11 + f + i*1.7)*.06 + Math.sin(t*3.3 + i)*.03; });
+}
+vnutri.background = new THREE.Color(0x06080f);
+vnutri.fog = new THREE.Fog(0x06080f, 40, 90);
+vnutri.add(new THREE.HemisphereLight(0xffe9cc, 0x1a1420, 0.3));
+const KOMNATY = {};
+function ekranTex(a, cvet, r){
+  const c = holstik(768, 264), g = c.getContext("2d");
+  const gr = g.createLinearGradient(0,0,0,264); gr.addColorStop(0, "rgba(14,22,44,.92)"); gr.addColorStop(1, "rgba(8,12,26,.92)");
+  g.fillStyle = gr; skrugl(g, 4, 4, 760, 256, 22); g.fill();
+  g.strokeStyle = cvet; g.lineWidth = 5; g.stroke();
+  g.fillStyle = cvet; skrugl(g, 22, 20, 210, 40, 12); g.fill();
+  g.fillStyle = "#081018"; g.font = "800 24px Inter, Manrope, sans-serif"; g.textBaseline = "middle";
+  const vid = /^na_servere$/.test(a.vid) ? "АГЕНТ" : /расписан/.test(a.vid) ? "АГЕНТ" : "АГЕНТ"; g.fillText(T(vid), 36, 41);
+  g.fillStyle = "#fff"; g.font = "800 46px Inter, Manrope, sans-serif";
+  const bezKuhni = (GOST || ZAPIS) && r.id === "yana";
+  let imya = T(bezKuhni ? "Агент Yana" : a.imya); if (imya.length > 24) imya = imya.slice(0, 23) + "…";
+  g.fillText(imya, 24, 110);
+  g.fillStyle = a.pauza ? "#8b93a7" : "#f6dfae"; g.font = "600 30px Inter, Manrope, sans-serif";
+  const sego = T(a.pauza ? "на паузе" : bezKuhni ? "работает для салонов" : (a.segodnya || a.chto)); g.fillText(sego.length > 40 ? sego.slice(0, 39) + "…" : sego, 24, 162);
+  if (r.id === "kontent"){
+    const cv = ["#ff7a59","#f5b942","#5fe0a0","#7aa8ff"];
+    for (let i=0;i<4;i++){ let x = 24; const rr = sluch(a.imya.length*13 + i); while (x < 740){ const w = 30 + rr()*110; g.fillStyle = cv[(i + (rr()*4|0)) % 4]; g.globalAlpha = .85; skrugl(g, x, 196 + i*14, Math.min(w, 744 - x), 10, 4); g.fill(); x += w + 6; } }
+    g.globalAlpha = 1;
+  } else for (let i=0;i<3;i++){ g.fillStyle = `rgba(255,255,255,${.1 + i*.04})`; skrugl(g, 24, 196 + i*18, 160 + ((a.imya.length*37 + i*91) % 420), 9, 4); g.fill(); }
+  return tex(c);
+}
+function tabloTex(r, dolya, akcent = -1, pulse = 0){
+  const W = 2048, H = 1180, c = holstik(W, H), g = c.getContext("2d");
+  const gr = g.createLinearGradient(0,0,0,H); gr.addColorStop(0, "#0e1530"); gr.addColorStop(1, "#070a16");
+  g.fillStyle = gr; skrugl(g, 6, 6, W-12, H-12, 46); g.fill();
+  g.strokeStyle = "#f5b942"; g.lineWidth = 10; g.stroke();
+  g.textAlign = "center"; g.textBaseline = "middle";
+  g.fillStyle = "#f5b942"; g.font = "800 46px Inter, Manrope, sans-serif"; g.fillText(GOST ? `${T("СДЕЛАНО ЗА ДЕНЬ")} · ${(D.sobrano || "").slice(0, 10)}` : T("СЕГОДНЯ СДЕЛАНО"), W/2, 86);
+  g.fillStyle = "#fff"; g.font = "700 118px 'Cormorant Garamond', Georgia, serif"; g.fillText(T(r.nazvanie), W/2, 196);
+  let sch = (r.schetchiki || []).filter(s => s.n !== 0);
+  if ((ZAPIS || GOST) && r.id === "yana"){ const rab = sch.filter(s => /в рабочих салонах/.test(s.podpis)); if (rab.length) sch = rab.map(s => ({n: s.n, podpis: s.podpis.replace(" в рабочих салонах", "")})); }
+  sch = sch.slice(0, 4); const n = sch.length;
+  const kol = n > 2 ? 2 : n, ryad = Math.ceil(n / kol), cw = (W - 120) / kol, ch = (H - 300) / ryad;
+  sch.forEach((s, i) => {
+    const cx = 60 + (i % kol)*cw, cy = 280 + Math.floor(i / kol)*ch;
+    const ak = i === akcent;
+    g.fillStyle = ak ? "rgba(245,185,66,.16)" : "rgba(255,255,255,.04)"; skrugl(g, cx + 14, cy + 10, cw - 28, ch - 20, 30); g.fill();
+    if (ak){ g.strokeStyle = r.cvet; g.lineWidth = 6 + pulse*6; g.stroke(); }
+    const v = s.n == null ? "—" : Math.round(s.n * dolya);
+    g.fillStyle = ak ? "#ffffff" : r.cvet; g.font = `700 ${Math.round(250 * (ak ? 1 + pulse*.15 : 1))}px 'Cormorant Garamond', Georgia, serif`; g.fillText(String(v), cx + cw/2, cy + ch*.42);
+    g.fillStyle = "#d4dbea"; g.font = "700 44px Inter, Manrope, sans-serif";
+    const slova = T(s.podpis).split(" "); let a = "", b = "";
+    slova.forEach(w => { if ((a + " " + w).trim().length <= 24 && !b) a = (a + " " + w).trim(); else b = (b + " " + w).trim(); });
+    g.fillText(a, cx + cw/2, cy + ch*.78); if (b) g.fillText(b, cx + cw/2, cy + ch*.78 + 52);
+  });
+  return c;
+}
+function chatTex(i){
+  const c = holstik(320, 220), g = c.getContext("2d"), rr = sluch(i*31 + 5);
+  g.fillStyle = "rgba(8,14,28,.95)"; skrugl(g, 2, 2, 316, 216, 18); g.fill();
+  g.fillStyle = "#25d366"; skrugl(g, 2, 2, 316, 42, 18); g.fill(); g.fillRect(2, 26, 316, 18);
+  g.fillStyle = "#06210f"; g.font = "800 21px Inter, Manrope, sans-serif"; g.textBaseline = "middle"; g.fillText("WhatsApp", 16, 23);
+  for (let b=0;b<4;b++){ const moj = b%2===1; g.fillStyle = moj ? "#f5c46a" : "#2a3556"; const w = 110 + rr()*120; skrugl(g, moj ? 304 - w : 14, 58 + b*39, w, 27, 11); g.fill(); }
+  return tex(c);
+}
+function stroitKomnatu(id){
+  if (KOMNATY[id]) return KOMNATY[id];
+  const r = R[id], gr = new THREE.Group(), cvet = new THREE.Color(r.cvet);
+  const sovet = id === "sovet", yana = id === "yana", kontent = id === "kontent";
+  const n = r.agenty.length, kol = Math.min(8, Math.max(3, Math.ceil(Math.sqrt(n*1.7)))), ryad = Math.ceil(n/kol);
+  const SX = 3.7, SZ = 4.3;
+  const shir = sovet ? 40 : Math.max(32, kol*SX + 12), glub = sovet ? 36 : ryad*SZ + 16 + (yana ? 14 : 0) + (kontent ? 6 : 0);
+  const zadZ = -glub/2;
+  const pol = new THREE.Mesh(new THREE.PlaneGeometry(shir, glub), new THREE.MeshStandardMaterial({color:0x14110d, roughness:.5, metalness:.25})); pol.rotation.x = -Math.PI/2; gr.add(pol);
+  for (let i=-2;i<=2;i++){ const l = new THREE.Mesh(new THREE.PlaneGeometry(.08, glub), new THREE.MeshBasicMaterial({color: cvet, transparent:true, opacity:.35, blending:THREE.AdditiveBlending, depthWrite:false}));
+    l.rotation.x = -Math.PI/2; l.position.set(i*shir/5, .01, 0); gr.add(l); }
+  const stenaM = new THREE.MeshStandardMaterial({color:0x0a0e1c, roughness:.9, metalness:.1});
+  const zad = new THREE.Mesh(new THREE.PlaneGeometry(shir, 18), stenaM); zad.position.set(0, 9, zadZ); gr.add(zad);
+  const lev = new THREE.Mesh(new THREE.PlaneGeometry(glub, 18), stenaM); lev.rotation.y = Math.PI/2; lev.position.set(-shir/2, 9, 0); gr.add(lev);
+  const prav = lev.clone(); prav.rotation.y = -Math.PI/2; prav.position.x = shir/2; gr.add(prav);
+  for (let i=0;i<6;i++){ const z = zadZ + 4 + i*(glub-8)/5; [-1,1].forEach(s => { const p = new THREE.Mesh(new THREE.PlaneGeometry(.12, 14), new THREE.MeshBasicMaterial({color: cvet, transparent:true, opacity:.55})); p.position.set(s*(shir/2 - .05), 8, z); p.rotation.y = -s*Math.PI/2; gr.add(p); }); }
+  [1.2, 16.4].forEach(y => { const pl = new THREE.Mesh(new THREE.PlaneGeometry(shir, .14), new THREE.MeshBasicMaterial({color:0xf5c46a})); pl.position.set(0, y, zadZ + .05); gr.add(pl); });
+  for (let i=-1;i<=1;i++){ const l = new THREE.PointLight(0xffe2b8, .55, 40, 1.8); l.position.set(i*shir/3, 12, 0); gr.add(l);
+    const lampa = new THREE.Mesh(new THREE.BoxGeometry(shir/4, .15, .6), new THREE.MeshBasicMaterial({color:0xfff1d8})); lampa.position.set(i*shir/3, 17.5, -2); gr.add(lampa); }
+  const cvetSvet = new THREE.PointLight(cvet, 1.1, 50, 1.6); cvetSvet.position.set(0, 6, zadZ + 4); gr.add(cvetSvet);
+  const pered = new THREE.PointLight(0xbfd0ff, .45, 50, 1.6); pered.position.set(0, 10, glub/2); gr.add(pered);
+  const tabloC = tabloTex(r, 1), tabloT = tex(tabloC);
+  const tW = sovet ? 22 : Math.min(shir - 6, 19), tablo = new THREE.Mesh(new THREE.PlaneGeometry(tW, tW*1180/2048), new THREE.MeshBasicMaterial({map: tabloT, toneMapped:false}));
+  tablo.position.set(0, sovet ? 8.6 : 10.2, zadZ + .1); gr.add(tablo);
+  const ludi = [];
+  const ekrany = [];
+  if (sovet){
+    const stol = new THREE.Mesh(new THREE.CylinderGeometry(4.8, 4.8, .3, 64), new THREE.MeshStandardMaterial({color:0x2a1d10, roughness:.2, metalness:.5})); stol.position.y = 1.45; gr.add(stol);
+    const noga = new THREE.Mesh(new THREE.CylinderGeometry(1, 1.4, 1.4, 32), new THREE.MeshStandardMaterial({color:0x14100a})); noga.position.y = .7; gr.add(noga);
+    const kant = new THREE.Mesh(new THREE.TorusGeometry(4.8, .07, 8, 96), new THREE.MeshBasicMaterial({color:0xf5c46a})); kant.rotation.x = Math.PI/2; kant.position.y = 1.62; gr.add(kant);
+    const shar = new THREE.Sprite(new THREE.SpriteMaterial({map:svechenie, color:0xffd58a, blending:THREE.AdditiveBlending, transparent:true, depthWrite:false})); shar.scale.set(3,3,1); shar.material.opacity = .55; shar.position.y = 3.2; gr.add(shar);
+    const mini = new THREE.Mesh(new THREE.ConeGeometry(.35, 2.4, 4), new THREE.MeshStandardMaterial({color:0xfff6e6, emissive:0xffe2a8, emissiveIntensity:.8})); mini.position.y = 2.9; gr.add(mini);
+    const eks = D.eksperty || []; const N = eks.length || 1;
+    let tablichka = null, molotok = null;
+    const iSk = Math.max(0, eks.findIndex(e => /скептик/i.test(e)));
+    const sdvig = Math.PI + .35 - iSk/N*Math.PI*2;
+    eks.forEach((imya, i) => {
+      const a = i/N*Math.PI*2 + sdvig;
+      const ch = agentFig(new THREE.Color().setHSL((i/N + .08)%1, .6, .58).getStyle());
+      ch.position.set(Math.sin(a)*5.9, 0, Math.cos(a)*5.9); ch.lookAt(0, 0, 0); gr.add(ch); ludi.push(ch);
+      const sk = /скептик/i.test(imya);
+      const nc = holstik(640, 150), ng = nc.getContext("2d"); ng.fillStyle = "rgba(10,13,26,.88)"; skrugl(ng, 4, 4, 632, 142, 40); ng.fill();
+      ng.strokeStyle = "#f5b942"; ng.lineWidth = 5; ng.stroke(); ng.fillStyle = "#fff"; ng.font = "800 64px Inter, Manrope, sans-serif"; ng.textAlign = "center"; ng.textBaseline = "middle"; ng.fillText(T(imya), 320, 78);
+      const im = new THREE.Sprite(new THREE.SpriteMaterial({map: tex(nc), transparent:true, depthWrite:false}));
+      im.scale.set(2.3, .54, 1); im.position.set(Math.sin(a)*6.4, sk ? 4.6 : 3.75, Math.cos(a)*6.4); gr.add(im); (gr.userData.imena = gr.userData.imena || []).push(im);
+      if (sk){
+        const t = new THREE.Group();
+        const nt = holstik(512, 300), tg = nt.getContext("2d"); tg.fillStyle = "#d1202e"; skrugl(tg, 6, 6, 500, 288, 34); tg.fill(); tg.strokeStyle = "#fff"; tg.lineWidth = 10; tg.stroke();
+        tg.fillStyle = "#fff"; tg.font = "900 190px Inter, Manrope, sans-serif"; tg.textAlign = "center"; tg.textBaseline = "middle"; tg.fillText(T("НЕТ"), 256, 160);
+        const netM = new THREE.MeshBasicMaterial({map: tex(nt), toneMapped:false});
+        const doska = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 1.52), netM); doska.position.y = 1.35; t.add(doska);
+        const doska2 = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 1.52), netM); doska2.position.y = 1.35; doska2.rotation.y = Math.PI; t.add(doska2);
+        const palka = new THREE.Mesh(new THREE.CylinderGeometry(.05, .05, 1.2, 8), new THREE.MeshStandardMaterial({color:0x8a6a3a})); palka.position.y = .1; t.add(palka);
+        t.position.set(Math.sin(a)*5.2, 1.9, Math.cos(a)*5.2); t.lookAt(Math.sin(a)*20, 1.9, Math.cos(a)*20); gr.add(t); tablichka = t;
+        molotok = new THREE.Group(); const dm = new THREE.MeshStandardMaterial({color:0x6b3f1d, roughness:.4, metalness:.2});
+        const ruch = new THREE.Mesh(new THREE.CylinderGeometry(.05, .05, 1.1, 10), dm); ruch.rotation.z = Math.PI/2; ruch.position.x = .55; molotok.add(ruch);
+        const boj = new THREE.Mesh(new THREE.CylinderGeometry(.16, .16, .5, 16), dm); boj.position.x = 1.1; molotok.add(boj);
+        molotok.position.set(Math.sin(a)*3.6, 1.62, Math.cos(a)*3.6); molotok.rotation.y = a + Math.PI/2; gr.add(molotok);
+        const pod = new THREE.Mesh(new THREE.CylinderGeometry(.3, .3, .08, 20), dm); pod.position.set(Math.sin(a)*3.6 + Math.sin(a+Math.PI/2)*1.1, 1.64, Math.cos(a)*3.6 + Math.cos(a+Math.PI/2)*1.1); gr.add(pod);
+      }
+    });
+    KOMNATY[id] = {gr, ludi, ekrany, tabloC, tabloT, r, shir, glub, zadZ, tablichka, molotok};
+  } else {
+    const stolM = new THREE.MeshStandardMaterial({color:0x2b2117, roughness:.3, metalness:.35});
+    const nogaM = new THREE.MeshStandardMaterial({color:0x10141f, roughness:.6, metalness:.5});
+    const klavM = new THREE.MeshStandardMaterial({color:0x0c0f18, roughness:.4, emissive: cvet, emissiveIntensity:.35});
+    r.agenty.forEach((a, k) => {
+      const i = k % kol, j = Math.floor(k / kol);
+      const x = (i - (kol-1)/2) * SX, z = zadZ + 6.5 + j*SZ;
+      const fig = agentFig(r.cvet, {son: a.pauza, pusto: a.pauza, mikrofon: yana, chashka: !a.pauza && (k % 5 === 3)});
+      fig.position.set(x, 0, z); gr.add(fig); ludi.push(fig);
+      const stol = new THREE.Mesh(new THREE.BoxGeometry(2.7, .1, 1.05), stolM); stol.position.set(x, 1.47, z + 1.15); gr.add(stol);
+      [-1,1].forEach(s => { const nb = new THREE.Mesh(new THREE.BoxGeometry(.08, 1.42, .95), nogaM); nb.position.set(x + s*1.25, .72, z + 1.15); gr.add(nb); });
+      const kl = new THREE.Mesh(new THREE.BoxGeometry(.95, .04, .32), klavM); kl.position.set(x, 1.54, z + .92); gr.add(kl);
+      const em = new THREE.MeshBasicMaterial({map: ekranTex(a, a.pauza ? "#5d6476" : r.cvet, r), transparent:true, opacity: a.pauza ? .35 : .95, side: THREE.DoubleSide, toneMapped:false, depthWrite:false});
+      const ekr = new THREE.Mesh(new THREE.PlaneGeometry(2.3, .79), em);
+      ekr.position.set(x, 1.98, z + 1.62); ekr.rotation.x = -.22; ekr.renderOrder = 3; gr.add(ekr);
+      if (!a.pauza){
+        const luchE = new THREE.Mesh(new THREE.PlaneGeometry(2.3, .5), new THREE.MeshBasicMaterial({map: stolbTex, color: cvet, transparent:true, opacity:.22, blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide}));
+        luchE.position.set(x, 1.62, z + 1.6); luchE.rotation.x = -.22; gr.add(luchE);
+        const skan = new THREE.Mesh(new THREE.PlaneGeometry(2.2, .035), new THREE.MeshBasicMaterial({color: 0xffffff, transparent:true, opacity:.5, blending:THREE.AdditiveBlending, depthWrite:false}));
+        ekr.add(skan); skan.position.z = .005; ekrany.push({skan, f: k*.37});
+      }
+    });
+    let arka = null, konveer = null, iskry = null;
+    if (yana){
+      const chatov = ((r.schetchiki || [])[1] || {}).n || 0, N = Math.min(chatov, 24), cz = glub/2 - 9;
+      arka = new THREE.Group(); arka.position.set(0, 0, cz);
+      const glav = agentFig("#ffd27a", {mikrofon: true}); glav.scale.setScalar(1.3); arka.add(glav); ludi.push(glav);
+      const pod = new THREE.Mesh(new THREE.CylinderGeometry(1.9, 2.1, .2, 48), new THREE.MeshStandardMaterial({color:0x8a6a2e, roughness:.3, metalness:.8, emissive:0x3a2a0c, emissiveIntensity:.6})); pod.position.y = .1; arka.add(pod);
+      const kant2 = new THREE.Mesh(new THREE.TorusGeometry(2.0, .045, 8, 64), new THREE.MeshBasicMaterial({color:0xf5c46a})); kant2.rotation.x = Math.PI/2; kant2.position.y = .21; arka.add(kant2);
+      const chaty = [];
+      for (let i=0;i<N;i++){
+        const RYADOV = 3, ryadE = i % RYADOV, s = Math.floor(i/RYADOV), vsego = Math.ceil(N/RYADOV);
+        const a = Math.PI + (-1.25 + 2.5 * (vsego>1 ? s/(vsego-1) : .5));
+        const e = new THREE.Mesh(new THREE.PlaneGeometry(1.62, 1.12), new THREE.MeshBasicMaterial({map: chatTex(i), transparent:true, side:THREE.DoubleSide, toneMapped:false}));
+        const rad = 5.6, y = 1.55 + ryadE*1.32; e.position.set(Math.sin(a)*rad, y, Math.cos(a)*rad); e.lookAt(0, y, 0); arka.add(e);
+        chaty.push({e, por: (i * 7) % N});
+      }
+      arka.userData.chaty = chaty;
+      gr.add(arka);
+    }
+    if (kontent){
+      const L = shir - 6, cz = glub/2 - 5.5;
+      konveer = new THREE.Group(); konveer.position.set(0, 0, cz); gr.add(konveer);
+      const lenta = new THREE.Mesh(new THREE.BoxGeometry(L, .25, 1.6), new THREE.MeshStandardMaterial({color:0x1a1d26, roughness:.5, metalness:.6})); lenta.position.y = 1.0; konveer.add(lenta);
+      const kr = new THREE.Mesh(new THREE.BoxGeometry(L, .06, .06), new THREE.MeshBasicMaterial({color: cvet})); kr.position.set(0, 1.15, .8); konveer.add(kr);
+      for (let s=-1;s<=1;s+=2) for (let k=0;k<8;k++){ const op = new THREE.Mesh(new THREE.BoxGeometry(.12, 1, .12), new THREE.MeshStandardMaterial({color:0x10141f})); op.position.set(-L/2 + k*L/7, .5, s*.7); konveer.add(op); }
+      const kadrC = holstik(256, 160), kg = kadrC.getContext("2d"); kg.fillStyle = "#0b0f1a"; kg.fillRect(0,0,256,160);
+      kg.fillStyle = "#ff7a59"; kg.fillRect(0,0,256,26); kg.fillStyle = "#fff"; for (let i=0;i<7;i++) kg.fillRect(8 + i*36, 6, 18, 14);
+      kg.fillStyle = "#f6dfae"; kg.beginPath(); kg.moveTo(104, 58); kg.lineTo(104, 138); kg.lineTo(170, 98); kg.closePath(); kg.fill();
+      const kadrT = tex(kadrC);
+      const korobki = [];
+      for (let k=0;k<9;k++){ const b = new THREE.Group();
+        const kor = new THREE.Mesh(new THREE.BoxGeometry(1.5, .95, 1.05), new THREE.MeshStandardMaterial({color:0x2a2f3c, roughness:.5}));
+        const lic = new THREE.Mesh(new THREE.PlaneGeometry(1.4, .88), new THREE.MeshBasicMaterial({map: kadrT, toneMapped:false})); lic.position.z = .53;
+        b.add(kor); b.add(lic); b.position.y = 1.6; konveer.add(b); korobki.push(b); }
+      konveer.userData = {korobki, L};
+      const NI = 220, pos = new Float32Array(NI*3), bz = [], ri = sluch(321);
+      for (let i=0;i<NI;i++) bz.push([ri(), (ri()-.5)*4, 3 + ri()*4, (ri()-.5)*4]);
+      const ig = new THREE.BufferGeometry(); ig.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+      const ip = new THREE.Points(ig, new THREE.PointsMaterial({map: svechenie, color: 0xffa040, size: .35, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending}));
+      const pres = new THREE.Group(); pres.position.set(-shir/2 + 4.5, 0, glub/2 - 11); gr.add(pres);
+      const st1 = new THREE.Mesh(new THREE.BoxGeometry(2.4, 2.2, 2.4), new THREE.MeshStandardMaterial({color:0x2c3140, roughness:.4, metalness:.7})); st1.position.y = 1.1; pres.add(st1);
+      const st2 = new THREE.Mesh(new THREE.CylinderGeometry(.5, .5, 1.6, 20), new THREE.MeshStandardMaterial({color:0x9aa3b8, metalness:.9, roughness:.25})); st2.position.y = 3.2; pres.add(st2);
+      const nak = new THREE.Mesh(new THREE.BoxGeometry(1.4, .3, 1.4), new THREE.MeshStandardMaterial({color:0xff7a2a, emissive:0xff5a10, emissiveIntensity:1.2})); nak.position.y = 2.32; pres.add(nak);
+      const sv = new THREE.PointLight(0xff8a3a, 2.2, 14, 1.6); sv.position.y = 3; pres.add(sv);
+      ip.position.y = 2.4; pres.add(ip);
+      iskry = {ig, pos, bz, sv, st2};
+    }
+    KOMNATY[id] = {gr, ludi, ekrany, tabloC, tabloT, r, shir, glub, zadZ, arka, konveer, iskry};
+  }
+  gr.visible = false; vnutri.add(gr);
+  return KOMNATY[id];
+}
+let komnata = null;
+function pokazatKomnatu(id){ Object.values(KOMNATY).forEach(k => k.gr.visible = false); komnata = stroitKomnatu(id); komnata.gr.visible = true; komnata._kl = ""; }
+function obnovitTablo(dolya, akcent = -1, pulse = 0){
+  if (!komnata) return; const d = Math.round(zazhat(dolya)*40)/40, p = Math.round(pulse*8)/8, kl = `${d}|${akcent}|${p}`;
+  if (komnata._kl === kl) return; komnata._kl = kl;
+  const c = tabloTex(komnata.r, plavno(d), akcent, p); const g = komnata.tabloC.getContext("2d"); g.clearRect(0,0,c.width,c.height); g.drawImage(c, 0, 0); komnata.tabloT.needsUpdate = true;
+}
+function zhizn(t, tVhoda){
+  if (!komnata) return;
+  komnata.ludi.forEach(f => zhivoj(f, t));
+  komnata.ekrany.forEach(e => { e.skan.position.y = .36 - ((t*.45 + e.f) % 1)*.72; });
+  if (komnata.arka){ const dt = t - tVhoda; komnata.arka.userData.chaty.forEach(c => { const p = zazhat((dt - .3 - c.por*.09)/.25); c.e.scale.setScalar(p < 1 ? plavno(p)*1.08 : 1); c.e.visible = p > 0; }); }
+  if (komnata.konveer){ const {korobki, L} = komnata.konveer.userData; korobki.forEach((b, k) => { b.position.x = ((t*1.6 + k*L/korobki.length) % L) - L/2; }); }
+  if (komnata.iskry){ const {ig, pos, bz, sv, st2} = komnata.iskry; const ud = (t*1.4) % 1; st2.position.y = 3.2 - Math.max(0, Math.sin(ud*Math.PI*2))*.7;
+    bz.forEach((b, i) => { const age = (t*1.4 + b[0]) % 1; pos[i*3] = b[1]*age; pos[i*3+1] = b[2]*age - 9*age*age; pos[i*3+2] = b[3]*age; });
+    ig.attributes.position.needsUpdate = true; sv.intensity = 1.4 + Math.max(0, Math.sin(t*1.4*Math.PI*2))*2; }
+}
+const SLOJ = document.getElementById("sloj");
+const VYVESKI = [];
+function sdelatVyvesku(id, poz, html, cvet, tip){
+  const el = document.createElement("div"); el.className = "vyv" + (tip === "tih" ? " tih" : ""); el.style.setProperty("--c", cvet); el.innerHTML = html;
+  SLOJ.appendChild(el); const v = {id, poz, el, tip, a: 0, w: 0, h: 0}; VYVESKI.push(v); return v;
+}
+D.rajony.forEach(r => {
+  const d = DOMA[r.id];
+  const ne = (D.eksperty||[]).length;
+  const pod = r.id === "sovet" ? (LANG === "ru" ? `${ne} экспертов за столом` : TF("@eksperty", {n: ne})) : agentovStr(r.agentov);
+  sdelatVyvesku(r.id, d.poz.clone().add(V3(0, d.verh + 3, 0)), `<b>${T(r.nazvanie)}</b><span>${pod}</span>`, r.cvet, "rajon");
+});
+if (KVARTAL){
+  sdelatVyvesku("kvartal", KVARTAL.c.clone().add(V3(0, 26, 0)), GOST ? `<b>${T("Тихий квартал")}</b><span>${T("проекты в тишине")}</span>` : `<b>Тихий квартал</b><span>на паузе, заморожено, закрыто</span>`, "#a9d0f0", "rajon");
+  KVARTAL.doma.forEach((d, i) => { if (GOST) return;
+    const v = sdelatVyvesku("t" + i, KVARTAL.mir[i], `<b>${d.p.imya}</b><span>${d.p.status} ${d.p.data}</span>`, d.cvet, "tih"); v.klient = d.p.klient; });
+}
+let SLOJ_W = innerWidth, SLOJ_H = innerHeight;
+function obnovitVyveski(razreshit, t){
+  const W = SLOJ_W, H = SLOJ_H, polya = ZAPIS ? W*.065 : 14, pravo = ZAPIS ? W*.785 : W - 14, verhMin = ZAPIS ? H*.1 : H*.075, nizMax = ZAPIS ? H*.8 : H*.9;
+  const zanyato = [];
+  if (!ZAPIS && !tur.vkl) document.querySelectorAll(".shapka, .knopki, .panel.otkryta, .rajony").forEach(el => { const b = el.getBoundingClientRect(); if (b.width) zanyato.push({x: b.left - 8, y: b.top - 8, w: b.width + 16, h: b.height + 16}); });
+  [pilEl, klEl].forEach(el => { if (+el.style.opacity > .05){ const b = el.firstElementChild.getBoundingClientRect(); zanyato.push({x: b.left - 10, y: b.top - 10, w: b.width + 20, h: b.height + 34}); } });
+  const pv = new THREE.Vector3();
+  const spisok = VYVESKI.map(v => {
+    let nado = gde === "ulica" && razreshit(v);
+    let x = 0, y = 0, dist = 1e9;
+    if (nado){ pv.copy(v.poz).project(kamera); if (pv.z > 1 || pv.z < -1) nado = false; x = (pv.x+1)/2*W; y = (1-pv.y)/2*H; dist = kamera.position.distanceTo(v.poz); }
+    return {v, nado, x, y, dist};
+  });
+  spisok.sort((a, b) => (b.v.prio || 0) - (a.v.prio || 0) || a.dist - b.dist);
+  spisok.forEach(o => {
+    const v = o.v;
+    if (!v.w){ v.w = v.el.offsetWidth; v.h = v.el.offsetHeight; }
+    let cel = 0, lx = 0, ly = 0;
+    if (o.nado){
+      lx = o.x - v.w/2; ly = o.y - v.h - 10;
+      const lx2 = zazhat(lx, polya, pravo - v.w);
+      const vnutriKadra = Math.abs(lx2 - lx) < v.w*.55 && ly > verhMin && ly + v.h < nizMax;
+      lx = lx2;
+      const r = {x: lx - 6, y: ly - 6, w: v.w + 12, h: v.h + 12};
+      const nalez = zanyato.some(z => r.x < z.x + z.w && r.x + r.w > z.x && r.y < z.y + z.h && r.y + r.h > z.y);
+      if (vnutriKadra && !nalez){ cel = 1; zanyato.push(r); }
+    }
+    v.a = gde !== "ulica" ? 0 : ZAPIS ? lerp(v.a, cel, .34) : lerp(v.a, cel, .2);
+    if (v.a < .02 && cel === 0){ v.el.style.opacity = "0"; return; }
+    if (cel) { v.lx = lx; v.ly = ly; }
+    const s = .92 + .08*v.a;
+    v.el.style.opacity = v.a.toFixed(3);
+    v.el.style.transform = `translate(${(v.lx||0).toFixed(1)}px, ${(v.ly||0).toFixed(1)}px) scale(${s.toFixed(3)})`;
+  });
+}
+const orbita = {az: .55, pol: 1.05, rad: 250, cel: V3(0, 10, 0), min: 50, max: 420, polMin: .3, polMax: 1.42, azMin: -Infinity, azMax: Infinity};
+function vertikal(){ return kamera.aspect < .85; }
+function primenitOrbitu(){
+  const o = orbita, s = Math.sin(o.pol);
+  kamera.position.set(o.cel.x + o.rad*s*Math.sin(o.az), o.cel.y + o.rad*Math.cos(o.pol), o.cel.z + o.rad*s*Math.cos(o.az));
+  kamera.up.set(0,1,0); kamera.lookAt(o.cel);
+}
+function orbitaIzKamery(cel){
+  const v = kamera.position.clone().sub(cel); orbita.cel.copy(cel); orbita.rad = v.length();
+  orbita.pol = Math.acos(zazhat(v.y / orbita.rad, -1, 1)); orbita.az = Math.atan2(v.x, v.z);
+}
+let tvin = null;
+function letet(poz, smotret, dlit, potom, gorb = 0){
+  const p0 = kamera.position.clone(), dir = new THREE.Vector3(); kamera.getWorldDirection(dir);
+  const s0 = kamera.position.clone().addScaledVector(dir, poz.distanceTo(p0) * .6 + 10);
+  tvin = {p0, s0, p1: poz.clone(), s1: smotret.clone(), t0: performance.now(), dlit: dlit*1000, potom, gorb};
+}
+function shagTvina(){
+  if (!tvin) return false;
+  const u = zazhat((performance.now() - tvin.t0)/tvin.dlit), e = plavno(u);
+  kamera.position.lerpVectors(tvin.p0, tvin.p1, e); kamera.position.y += Math.sin(Math.PI*u)*tvin.gorb;
+  kamera.up.set(0,1,0); kamera.lookAt(new THREE.Vector3().lerpVectors(tvin.s0, tvin.s1, e));
+  if (u >= 1){ const f = tvin.potom; tvin = null; f && f(); }
+  return true;
+}
+const vspyshka = document.getElementById("vspyshka");
+function migni(potom){
+  vspyshka.style.transition = "opacity .28s ease-in"; vspyshka.style.opacity = "1";
+  setTimeout(() => { potom && potom(); vspyshka.style.transition = "opacity .45s ease-out"; vspyshka.style.opacity = "0"; }, 300);
+}
+
+let tyanem = null, posledDvizh = 0, tachi = new Map();
+holst.addEventListener("pointerdown", e => { if (tur.vkl) return; holst.setPointerCapture(e.pointerId); tachi.set(e.pointerId, {x:e.clientX, y:e.clientY}); tyanem = {x:e.clientX, y:e.clientY, sx:e.clientX, sy:e.clientY, pinch:null}; posledDvizh = performance.now(); });
+holst.addEventListener("pointermove", e => {
+  if (tur.vkl) return;
+  if (!tyanem){ navesti(e); return; }
+  tachi.set(e.pointerId, {x:e.clientX, y:e.clientY});
+  if (tachi.size === 2){ const [a,b] = [...tachi.values()]; const d = Math.hypot(a.x-b.x, a.y-b.y); if (tyanem.pinch) orbita.rad = zazhat(orbita.rad * tyanem.pinch / d, orbita.min, orbita.max); tyanem.pinch = d; }
+  else if (!tvin){ orbita.az -= (e.clientX - tyanem.x) * .005; orbita.pol = zazhat(orbita.pol - (e.clientY - tyanem.y) * .004, orbita.polMin, orbita.polMax); orbita.az = zazhat(orbita.az, orbita.azMin, orbita.azMax); }
+  tyanem.x = e.clientX; tyanem.y = e.clientY; posledDvizh = performance.now();
+});
+holst.addEventListener("pointerup", e => {
+  tachi.delete(e.pointerId);
+  if (tyanem && Math.hypot(e.clientX - tyanem.sx, e.clientY - tyanem.sy) < 6 && tachi.size === 0) klik(e);
+  if (tachi.size === 0) tyanem = null;
+});
+holst.addEventListener("wheel", e => { if (tur.vkl) return; e.preventDefault(); orbita.rad = zazhat(orbita.rad * (1 + Math.sign(e.deltaY)*.08), orbita.min, orbita.max); posledDvizh = performance.now(); }, {passive:false});
+const luch = new THREE.Raycaster(), mysh = new THREE.Vector2();
+function popadanie(e){
+  if (gde !== "ulica") return null;
+  mysh.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1); luch.setFromCamera(mysh, kamera);
+  const h = luch.intersectObjects(KLIK, false)[0]; if (!h) return null;
+  return h.object.userData.kvartal ? "kvartal" : h.object.userData.rajon;
+}
+function navesti(e){ holst.classList.toggle("ruka", !!popadanie(e)); }
+function klik(e){
+  if (gde === "vnutri" && komnata && komnata.r.id === "kontent"){ ZVUK.ork(); return; }
+  const id = popadanie(e); if (id === "kvartal") kKvartalu(); else if (id) zajti(id);
+}
+
+const panel = document.getElementById("panel");
+function zapolnitPanel(r){
+  document.getElementById("pImya").innerHTML = `<span style="color:${r.cvet}">●</span> ${T(r.nazvanie)}`;
+  document.getElementById("pPod").textContent = `${T(r.podpis)} · ${agentovStr(r.agentov)}`;
+  document.getElementById("pSchet").innerHTML = (r.schetchiki||[]).map(s => `<div class="sch"><b>${s.n == null ? "—" : s.n}</b><span>${T(s.podpis)}</span></div>`).join("");
+  const eks = r.id === "sovet" ? `<div class="ag"><span class="t" style="background:${r.cvet}"></span><div><div class="n">${T("За столом")}</div><div class="c">${(D.eksperty||[]).map(T).join(", ")}</div></div></div>` : "";
+  const agenty = GOST && r.id === "yana" ? `<div class="ag"><span class="t" style="background:${r.cvet}"></span><div><div class="n">${agentovStr(r.agentov)}</div><div class="c">${T("отвечают клиентам, записывают, следят, чтобы никто не ждал")}</div></div></div>`
+    : r.agenty.map(a => `<div class="ag${a.pauza?' pauza':''}"><span class="t" style="background:${a.pauza?'#555':r.cvet}"></span><div><div class="n">${T(a.imya)}</div><div class="c">${T(a.chto)}</div>${a.segodnya?`<div class="s">${T(a.segodnya)}</div>`:""}${a.pauza?`<div class="c">${T("на паузе")}</div>`:""}</div><span class="v">${T(a.vid)}</span></div>`).join("");
+  const wa = GOST && r.id === "yana" ? `<a class="kn wa" style="display:block;text-align:center;margin:12px 8px 4px;text-decoration:none" href="https://wa.me/51959246034?text=${encodeURIComponent(LANG === "ru" ? "ДЕМО ГОРОД. Хочу такого администратора для своего бизнеса" : TF("@wa_salony"))}" target="_blank" rel="noopener" onclick="pixel('wa-salony')">${T("Хочу такого администратора")}</a>` : "";
+  document.getElementById("pSpisok").innerHTML = wa + eks + agenty;
+}
+function zapolnitKvartal(){
+  if (GOST){
+    document.getElementById("pImya").innerHTML = `<span style="color:#a9d0f0">●</span> ${T("Тихий квартал")}`;
+    document.getElementById("pPod").textContent = T("проекты, которые сейчас в тишине");
+    document.getElementById("pSchet").innerHTML = "";
+    document.getElementById("pSpisok").innerHTML = `<div class="ag"><div class="c" style="font-size:14px;line-height:1.5">${T("Здесь проекты, которые сейчас не в работе. Я ищу то, что работает, и держу силы на главном.")}</div></div>`;
+    return;
+  }
+  const vid = TIHIJ.filter(p => !(GOST && p.klient));
+  document.getElementById("pImya").innerHTML = `<span style="color:#a9d0f0">●</span> Тихий квартал`;
+  document.getElementById("pPod").textContent = `проекты на паузе, замороженные и закрытые · ${vid.length}`;
+  const sc = s => vid.filter(p => p.status === s).length;
+  document.getElementById("pSchet").innerHTML = [["на паузе", sc("на паузе")], ["заморожено", sc("заморожен")], ["свёрнуто", sc("свёрнут")], ["закрыто", sc("закрыт")]].filter(([a,b]) => b > 0).map(([a,b]) => `<div class="sch"><b>${b}</b><span>${a}</span></div>`).join("");
+  document.getElementById("pSpisok").innerHTML = vid.map(p => `<div class="ag"><span class="t" style="background:#a9d0f0"></span><div><div class="n">${p.imya}</div><div class="c">${p.pochemu}</div></div><span class="v">${p.status} ${p.data}</span></div>`).join("");
+}
+function kKvartalu(){
+  if (tur.vkl || !KVARTAL) return;
+  if (gde === "vnutri"){ vyjti(); setTimeout(kKvartalu, 1700); return; }
+  const c = KVARTAL.c, nar = c.clone().normalize();
+  letet(c.clone().addScaledVector(nar, -55).add(V3(0, 34, 0)), c.clone().add(V3(0, 4, 0)), 1.6, () => orbitaIzKamery(c.clone().add(V3(0,4,0))), 10);
+  zapolnitKvartal(); panel.classList.add("otkryta"); ZVUK.zona("tihij");
+}
+function startVnutri(id){
+  const k = stroitKomnatu(id);
+  if (id === "sovet") return {poz: V3(0, 11, 17), cel: V3(0, 1.8, 0)};
+  return {poz: V3(0, 13, k.glub/2 + 8), cel: V3(0, 4, -3)};
+}
+let tVhodaSvob = 0;
+function zajti(id){
+  if (tur.vkl || !R[id]) return;
+  const vojti = () => migni(() => {
+    gde = "vnutri"; pokazatKomnatu(id); obnovitTablo(0); komnata._schet = performance.now(); tVhodaSvob = (performance.now() - t00)/1000;
+    const s = startVnutri(id);
+    kamera.position.copy(s.poz).add(V3(0, 3, 8)); kamera.lookAt(s.cel);
+    Object.assign(orbita, {min: 6, max: 60, polMin: .35, polMax: 1.4, azMin: -1.3, azMax: 1.3});
+    if (id === "sovet") Object.assign(orbita, {azMin: -Infinity, azMax: Infinity});
+    letet(s.poz, s.cel, 1.3, () => orbitaIzKamery(s.cel));
+    zapolnitPanel(R[id]); panel.classList.add("otkryta"); document.body.classList.add("vnutri");
+    ZVUK.zona(id); if (id === "kontent") setTimeout(() => ZVUK.ork(0), 500); if (id === "yana") ZVUK.sfx("dzyn", .5); if (id === "sovet") setTimeout(() => ZVUK.sfx("molotok", .7), 600);
+  });
+  if (gde === "vnutri"){ vojti(); return; }
+  ZVUK.sfx("polet", .5);
+  const d = DOMA[id]; letet(d.podhod, d.smotret, 1.2, vojti, 12);
+}
+function vyjti(){
+  if (gde !== "vnutri") return;
+  panel.classList.remove("otkryta"); document.body.classList.remove("vnutri");
+  const id = komnata.r.id;
+  migni(() => {
+    gde = "ulica"; const d = DOMA[id];
+    kamera.position.copy(d.podhod); kamera.lookAt(d.smotret);
+    Object.assign(orbita, {min: 50, max: 420, polMin: .3, polMax: 1.42, azMin: -Infinity, azMax: Infinity});
+    const cel = V3(0, 10, 0), rad = vertikal() ? 290 : 250, az = Math.atan2(d.poz.x, d.poz.z) + .25, pol = 1.08;
+    const poz = V3(rad*Math.sin(pol)*Math.sin(az), 10 + rad*Math.cos(pol), rad*Math.sin(pol)*Math.cos(az));
+    letet(poz, cel, 1.6, () => orbitaIzKamery(cel), 10); ZVUK.zona("centr");
+  });
+}
+document.getElementById("pVyjti").onclick = () => { if (gde === "vnutri") vyjti(); else panel.classList.remove("otkryta"); };
+addEventListener("keydown", e => { if (e.key === "Escape"){ if (document.getElementById("okno").classList.contains("vidno")) document.getElementById("okno").classList.remove("vidno"); else if (gde === "vnutri") vyjti(); else panel.classList.remove("otkryta"); } });
+document.getElementById("kak").onclick = () => document.getElementById("okno").classList.add("vidno");
+document.getElementById("oZakr").onclick = () => document.getElementById("okno").classList.remove("vidno");
+const ZVUK = (() => {
+  const zony = {}, sfxKesh = {}; let vkl = false, tek = null, prigl = 1;
+  const ORK = ["rabota", "gotovo", "esche", "rabota_hozyain"];
+  function audio(src, petlya){ const a = new Audio(src); a.loop = !!petlya; a.preload = "auto"; return a; }
+  function plavnoGromk(a, cel, sek){
+    const nach = a.volume, t0 = performance.now();
+    if (a._raf) cancelAnimationFrame(a._raf);
+    const shag = () => { const u = zazhat((performance.now() - t0)/(sek*1000)); a.volume = zazhat(lerp(nach, cel, u)); if (u < 1) a._raf = requestAnimationFrame(shag); else if (cel === 0) a.pause(); };
+    shag();
+  }
+  function zona(id){
+    if (ZAPIS) return; tek = id; if (!vkl) return;
+    Object.entries(zony).forEach(([k, a]) => { if (k !== id) plavnoGromk(a, 0, .8); });
+    if (!zony[id]) zony[id] = audio(`zvuk/rajony/${id}.mp3`, true);
+    const a = zony[id]; if (a.paused){ a.volume = 0; a.play().catch(() => {}); } plavnoGromk(a, cel(id), .8);
+  }
+  function cel(id){ return (id === "tihij" ? .35 : .55) * (tur.vkl ? .45 : 1) * prigl; }
+  function priglushit(sek){ prigl = .15; if (tek && zony[tek]) plavnoGromk(zony[tek], cel(tek), .25);
+    clearTimeout(priglushit._t); priglushit._t = setTimeout(() => { prigl = 1; if (tek && zony[tek]) plavnoGromk(zony[tek], cel(tek), .5); }, sek*1000); }
+  function sfx(imya, gr = .8){ if (!vkl || ZAPIS) return; const a = audio(`zvuk/sfx/${imya}.mp3`); a.volume = gr; a.play().catch(() => {}); }
+  function ork(i){ if (!vkl || ZAPIS) return; const k = i ?? Math.floor(Math.random()*ORK.length); const a = audio(`zvuk/ork/${ORK[k]}.mp3`); a.volume = 1;
+    priglushit(((window.ORK || {})[ORK[k]] || 2.5) + .4); setTimeout(() => a.play().catch(() => {}), 250); }
+  function golos(i){ if (!vkl || ZAPIS || !window.GOLOS || !GOLOS[i]) return; const a = audio(GOLOS[i].f); a.volume = 1; a.play().catch(() => {}); }
+  function perekl(){ vkl = !vkl; document.getElementById("zvukKn").classList.toggle("vkl", vkl); document.getElementById("zvukKn").textContent = T(vkl ? "Звук: вкл" : "Звук");
+    if (vkl) zona(tek || "centr"); else Object.values(zony).forEach(a => plavnoGromk(a, 0, .4)); }
+  return {zona, sfx, ork, golos, perekl, get vkl(){ return vkl; }};
+})();
+document.getElementById("zvukKn").onclick = () => ZVUK.perekl();
+function sobratPlan(){
+  const G = window.GOLOS || [];
+  const PRIM = [1.4, 6.0, 4.3, 6.2, 2.7, 4.0, 5.1, 6.1, 5.6];
+  const d = i => (G[i] && G[i].d) || PRIM[i];
+  const S = [], F = [], Z = [];
+  let t = .3;
+  const sc = (id, t0, t1, o = {}) => S.push(Object.assign({id, t0, t1}, o));
+  const fr = (i, t0) => { F.push({i, t0, t1: t0 + d(i)}); return t0 + d(i); };
+  let a = 0;
+  const ORKd = (window.ORK && window.ORK.rabota) || 2.7;
+  t = fr(0, .3); sc("obzor", 0, t + .05); a = t + .05;
+  t = fr(1, a); sc("luchi", a, t); a = t;
+  t = fr(2, a); sc("k_yana", a, t + .2); a = t + .2;
+  Z.push({imya: "nyrok", t: a - .5});
+  t = fr(3, a + .1); t = fr(4, t + .08); sc("yana", a, t + .1);
+  Z.push({imya: "dzyn", t: a + .55}); Z.push({imya: "dzyn", t: a + 2.1}); Z.push({imya: "dzyn", t: a + 3.6});
+  a = t + .1;
+  const tOrk = a + .05;
+  sc("p_kontent", a, a + .7); Z.push({imya: "polet", t: a}); a += .7;
+  Z.push({imya: "ork:rabota", t: tOrk, d: ORKd});
+  t = fr(5, Math.max(a + .3, tOrk + ORKd + .1)); sc("kontent", a, t + .25); a = t + .25;
+  sc("p_sovet", a, a + .6); Z.push({imya: "polet", t: a}); a += .6;
+  sc("sovet", a, a + 1.35); Z.push({imya: "molotok", t: a + .6}); a += 1.35;
+  t = fr(6, a + .2); sc("lichnyj", a, t + .1); Z.push({imya: "polet", t: a + .05}); a = t + .1;
+  t = fr(7, a + .1); sc("tihij", a, t + .1); a = t + .1;
+  t = fr(8, a + .1); sc("final", a, t + .3); a = t + .3;
+  const KL = {obzor: ["Я не программист", 0], luchi: ["10+ направлений", 1], k_yana: ["как своим сотрудникам", 2], yana: ["113", 3],
+    kontent: ["kontent", 5], lichnyj: ["до 3 ночи", 6], tihij: ["ищу то, что работает", 7]};
+  return {dlina: +a.toFixed(3), sceny: S, frazy: F, zvuki: Z, kl: KL};
+}
+let PLAN = sobratPlan();
+window.__plan = () => JSON.parse(JSON.stringify(PLAN));
+
+const tur = {vkl: false, start: 0, zv: new Set()};
+const pilEl = document.getElementById("pil"), klEl = document.getElementById("klyuch");
+if (LANG !== "ru") klEl.classList.add("sub");
+function pokazat(el, vid, sdv = 14){ el.style.opacity = PODPISI ? String(zazhat(vid)) : "0"; el.style.transform = `translateY(${((1-zazhat(vid))*sdv).toFixed(1)}px) scale(${(.94 + .06*myagko(vid)).toFixed(3)})`; }
+function orbitaTura(t){ const k = vertikal() ? 1.3 : 1, a = .62 + t*.035; return {p: V3(Math.sin(a)*168*k, 92*k + 8, Math.cos(a)*168*k), s: V3(0, 4, 0)}; }
+function vidObeliska(u){ const k = vertikal() ? 1.25 : 1, a = .62 + .9 + u*.55; return {p: V3(Math.sin(a)*44*k, 8, Math.cos(a)*44*k), s: V3(0, 36 + u*5, 0)}; }
+function polet(A, B, u, gorb){ const e = plavno(u); const p = new THREE.Vector3().lerpVectors(A.p, B.p, e); p.y += Math.sin(Math.PI*u)*gorb; return {p, s: new THREE.Vector3().lerpVectors(A.s, B.s, e)}; }
+function put(tochki, u){
+  const e = plavno(u);
+  return {p: new THREE.CatmullRomCurve3(tochki.map(x => x.p), false, "centripetal").getPoint(e), s: new THREE.CatmullRomCurve3(tochki.map(x => x.s), false, "centripetal").getPoint(e)};
+}
+function nadGorodom(a, r, h){ return {p: V3(Math.sin(a)*r, h, Math.cos(a)*r), s: V3(0, 8, 0)}; }
+function podhodK(id, dal = 30){ const d = DOMA[id]; const k = vertikal() ? 1.25 : 1; return {p: d.poz.clone().addScaledVector(d.naruzh, -dal*k).add(V3(0, 13, 0)), s: d.smotret.clone().add(V3(0, 4, 0))}; }
+function vplotnuyu(id){ const d = DOMA[id]; return {p: d.poz.clone().addScaledVector(d.naruzh, -9).add(V3(0, 7, 0)), s: d.poz.clone().add(V3(0, 7, 0)).addScaledVector(d.naruzh, 4)}; }
+function kvartalVid(u){ const c = KVARTAL.c, nar = c.clone().normalize(), bok = V3(nar.z, 0, -nar.x); const k = vertikal() ? 1.2 : 1;
+  return {p: c.clone().addScaledVector(nar, -(52 - u*14)*k).addScaledVector(bok, (u - .5)*22).add(V3(0, 30 - u*8, 0)), s: c.clone().add(V3(0, 3, 0))}; }
+
+function kadrTura(t){
+  const P = PLAN; t = ((t % P.dlina) + P.dlina) % P.dlina; TEK = t;
+  const sc = P.sceny.find(s => t >= s.t0 && t < s.t1) || P.sceny[P.sceny.length - 1];
+  const u = otrezok(t, sc.t0, sc.t1), k = vertikal() ? 1.3 : 1;
+  let kam, mesto = "ulica", room = null, vsp = 0, luchi = 1, vyv = () => false, kren = 0;
+  let pil = null, kl = null, akcent = -1, tVhoda = sc.t0;
+  const fraza = i => P.frazy.find(f => f.i === i);
+  const klVid = (i, txt) => { if (LANG !== "ru") txt = T("@fraza" + i); const f = fraza(i); if (!f) return null; const v = Math.min(otrezok(t, f.t0 - .05, f.t0 + .25), 1 - otrezok(t, sc.t1 - .25, sc.t1)); return v > 0 ? [txt, v] : null; };
+  switch (sc.id){
+    case "obzor": {
+      kam = orbitaTura(t*.5); luchi = 1;
+      pil = [AGENTOV, Math.min(1, 1 - otrezok(t, sc.t1 - .2, sc.t1 + .3))]; kl = klVid(0, "Я не программист");
+      vyv = v => v.tip === "rajon" && v.id !== "kvartal" && t > .3; kren = Math.sin(t*.8)*.01; break; }
+    case "luchi": {
+      const v0 = orbitaTura(sc.t0*.5);
+      kam = u < .45 ? polet(v0, vidObeliska(0), u/.45, 0) : vidObeliska(otrezok(u, .45, 1));
+      luchi = i => otrezok(u, .3 + i*.06, .62 + i*.06);
+      kl = klVid(1, "10+ направлений"); vyv = v => v.tip === "rajon" && v.id !== "kvartal" && u > .55; kren = -.02*Math.sin(u*Math.PI); break; }
+    case "k_yana": {
+      kam = u < .78 ? polet(vidObeliska(1), podhodK("yana"), u/.78, 18) : polet(podhodK("yana"), vplotnuyu("yana"), (u-.78)/.22, 0);
+      vsp = otrezok(u, .86, 1); kl = klVid(2, "как своим сотрудникам"); vyv = v => v.id === "yana" && u < .8; kren = .03*Math.sin(u*Math.PI); break; }
+    case "yana": {
+      mesto = "vnutri"; room = "yana"; const kk = stroitKomnatu("yana"); const cz = kk.glub/2 - 9;
+      const f4 = fraza(4), uB = otrezok(t, f4.t0 - .9, sc.t1);
+      const A0 = {p: V3(4, 6.8, cz + 12*k), s: V3(0, 3.6, cz - 2)}, A1 = {p: V3(1.5, 5.6, cz + 8.5*k), s: V3(0, 3.4, cz - 2)};
+      const M = {p: V3(7, 12.5, cz - 1), s: V3(0, 7, -kk.glub/4)}, B = {p: V3(0, 10, 8), s: V3(0, 8.6, kk.zadZ)};
+      kam = uB <= 0 ? polet(A0, A1, myagko(otrezok(t, sc.t0, f4.t0 - .9)), 0) : put([A1, M, B], uB);
+      vsp = 1 - otrezok(u, 0, .08); if (u > .94) vsp = otrezok(u, .94, 1);
+      if (t < f4.t0) kl = klVid(3, "работают 24/7");
+      else { kl = klVid(4, `${R.yana.schetchiki[0].n} ответов клиентам`); akcent = 0; }
+      break; }
+    case "p_kontent": {
+      kam = polet(podhodK("yana", 22), vplotnuyu("kontent"), u, 22); vsp = Math.max(1 - otrezok(u, 0, .3), otrezok(u, .72, 1));
+      vyv = v => v.id === "kontent"; kren = .04*Math.sin(u*Math.PI); break; }
+    case "kontent": {
+      mesto = "vnutri"; room = "kontent"; const kk = stroitKomnatu("kontent");
+      const A = {p: V3(-6*k, 9.5, kk.glub/2 + 6*k), s: V3(-1, 5.5, -kk.glub/4)}, B = {p: V3(5*k, 7.5, kk.glub/2 + 3*k), s: V3(1.5, 4.5, -kk.glub/5)};
+      kam = polet(A, B, myagko(u), 0); vsp = 1 - otrezok(u, 0, .1); if (u > .93) vsp = otrezok(u, .93, 1);
+      akcent = 1; { const n = R.kontent.schetchiki[1].n; kl = klVid(5, `${n} ${mnozh(n, "ролик", "ролика", "роликов")} в очереди`); } break; }
+    case "p_sovet": {
+      kam = polet(podhodK("kontent", 22), vplotnuyu("sovet"), u, 18); vsp = Math.max(1 - otrezok(u, 0, .3), otrezok(u, .72, 1));
+      vyv = v => v.id === "sovet"; break; }
+    case "sovet": {
+      mesto = "vnutri"; room = "sovet";
+      const a = .28 - u*.5, r = lerp(16, 12.5, plavno(u))*k, h = lerp(9, 7, plavno(u));
+      kam = {p: V3(Math.sin(a)*r, h, Math.cos(a)*r), s: V3(0, 4, -3)};
+      vsp = 1 - otrezok(u, 0, .14); if (u > .9) vsp = otrezok(u, .9, 1);
+      kl = [LANG === "ru" ? `${(D.eksperty||[]).length} экспертов` : TF("@eksperty_kl", {n: (D.eksperty||[]).length}), Math.min(otrezok(u, .05, .2), 1 - otrezok(u, .86, .95))]; break; }
+    case "lichnyj": {
+      const d = DOMA.lichnyj, H = 16 + Math.min(R.lichnyj.agentov, 45)*0.45, yc = 5 + H*.72;
+      const A = {p: d.poz.clone().addScaledVector(d.naruzh, -34*k).add(V3(0, yc + 6, 0)), s: d.poz.clone().add(V3(0, yc - 2, 0))};
+      const B = {p: d.poz.clone().addScaledVector(d.naruzh, -15*k).add(V3(0, yc + 1, 0)), s: d.poz.clone().add(V3(0, yc, 0))};
+      kam = polet(A, B, myagko(u), 0); vsp = 1 - otrezok(u, 0, .1);
+      kl = klVid(6, "до 3 ночи"); vyv = v => v.id === "lichnyj"; kren = -.015; break; }
+    case "tihij": {
+      if (!KVARTAL){ kam = orbitaTura(t*.5); break; }
+      const d = DOMA.lichnyj;
+      kam = u < .3 ? polet({p: d.poz.clone().addScaledVector(d.naruzh, -15*k).add(V3(0, 20, 0)), s: d.poz.clone().add(V3(0, 18, 0))}, kvartalVid(0), u/.3, 16) : kvartalVid(otrezok(u, .3, 1));
+      luchi = 1 - otrezok(u, 0, .4);
+      kl = klVid(7, "ищу то, что работает"); vyv = v => (v.tip === "tih" && !v.klient && u > .3) || (v.id === "kvartal" && u > .2 && u < .5); break; }
+    case "final": {
+      const kon = orbitaTura(0);
+      const c = KVARTAL ? kvartalVid(1) : nadGorodom(0, 120, 60);
+      const ak = Math.atan2(kon.p.x, kon.p.z), ac = Math.atan2(c.p.x, c.p.z);
+      kam = put([c, nadGorodom((ac + ak)/2 + (Math.abs(ac - ak) > Math.PI ? Math.PI : 0), 150*k, 85*k), kon], u);
+      if (u > .985) kam = kon;
+      luchi = otrezok(u, .35, .9);
+      pil = [AGENTOV, otrezok(u, .72, .96)];
+      vyv = v => v.tip === "rajon" && v.id !== "kvartal" && u > .62 && u < .9; break; }
+  }
+  if (mesto === "vnutri"){ if (gde !== "vnutri" || !komnata || komnata.r.id !== room){ gde = "vnutri"; pokazatKomnatu(room); } }
+  else gde = "ulica";
+  kamera.position.copy(kam.p); kamera.up.set(Math.sin(kren), Math.cos(kren), 0); kamera.lookAt(kam.s);
+  vspyshka.style.transition = "none"; vspyshka.style.opacity = String(zazhat(vsp)*.95);
+  obnovitLuchi(t, luchi); dvigatMashiny(t); dvigatProzhektory(t); dvigatPyl(t); dvigatSneg(t);
+  if (gde === "vnutri"){
+    obnovitTablo(otrezok(t, tVhoda + .2, tVhoda + 1.6), akcent, akcent >= 0 ? (Math.sin(t*5)*.5 + .5) : 0);
+    zhizn(t, tVhoda);
+    if (room === "sovet"){
+      const k2 = komnata; const p = plavno(otrezok(u, .3, .48)); k2.tablichka.position.y = lerp(.4, 3.0, p); k2.tablichka.visible = p > .02;
+      const ud = otrezok(u, .38, .46); k2.molotok.rotation.z = ud < 1 ? -Math.sin(ud*Math.PI)*.9 : 0;
+      (k2.gr.userData.imena || []).forEach(im => im.visible = im.position.z < 1.5);
+    }
+  }
+  if (pil){ document.getElementById("pilB").textContent = it.agentov; document.getElementById("pilS").textContent = agentovStr(it.agentov).replace(String(it.agentov), "").trim();
+    document.getElementById("pilK").textContent = T("Город Михаила"); }
+  pokazat(pilEl, pil ? pil[1] : 0, -14);
+  if (kl) document.getElementById("klyuchT").textContent = kl[0];
+  pokazat(klEl, kl ? kl[1] : 0);
+  obnovitVyveski(vyv, t);
+  if (!ZAPIS && ZVUK.vkl){
+    const zon = {obzor:"centr", luchi:"centr", k_yana:"yana", yana:"yana", p_kontent:"kontent", kontent:"kontent", p_sovet:"sovet", sovet:"sovet", lichnyj:"lichnyj", tihij:"tihij", final:"centr"}[sc.id];
+    if (tur.zona !== zon){ tur.zona = zon; ZVUK.zona(zon); }
+    P.frazy.forEach(f => { const kl = "g" + f.i; if (t >= f.t0 && t < f.t0 + .3 && !tur.zv.has(kl)){ tur.zv.add(kl); ZVUK.golos(f.i); } });
+    P.zvuki.forEach((z, i) => { const kl = "z" + i; if (t >= z.t && t < z.t + .3 && !tur.zv.has(kl)){ tur.zv.add(kl); if (z.imya.startsWith("ork:")) ZVUK.ork(0); else ZVUK.sfx(z.imya); } });
+    if (t < .2) tur.zv.clear();
+  }
+}
+function vklTur(){ tur.vkl = true; tur.start = performance.now(); tur.zv.clear(); tur.zona = null; document.body.classList.add("tur"); panel.classList.remove("otkryta"); tvin = null; }
+function vyklTur(){
+  tur.vkl = false; document.body.classList.remove("tur"); pokazat(pilEl, 0); pokazat(klEl, 0); vspyshka.style.opacity = "0";
+  gde = "ulica"; Object.assign(orbita, {min: 50, max: 420, polMin: .3, polMax: 1.42, azMin: -Infinity, azMax: Infinity});
+  kamera.up.set(0,1,0); orbitaIzKamery(V3(0, 14, 0)); posledDvizh = performance.now(); ZVUK.zona("centr");
+}
+function turSoZvukom(){ if (!ZVUK.vkl) ZVUK.perekl(); posleTuraPokazana = false; vklTur(); pixel("tur"); }
+let posleTuraPokazana = false;
+function posleTura(){ if (!GOST || posleTuraPokazana) return; posleTuraPokazana = true; vyklTur(); document.getElementById("posleTura").classList.add("vidno"); pixel("tur-konec"); }
+document.getElementById("ptZakr").onclick = () => document.getElementById("posleTura").classList.remove("vidno");
+document.getElementById("ptKvartal").onclick = () => { document.getElementById("posleTura").classList.remove("vidno"); kvartal3(); };
+const K3 = [
+  ["Какой у тебя бизнес?", ["Салон красоты", "Барбершоп", "Ногти и брови", "Массаж и спа", "Клиника", "Фитнес и йога", "Другой бизнес", "Просто интересно"]],
+  ["Что сейчас мешает больше всего?", ["Не успеваю отвечать в WhatsApp", "Клиенты пишут ночью", "Клиенты не приходят на запись", "Администратор не справляется", "Хочу больше записей"]],
+  ["Где твой бизнес?", ["Перу", "Аргентина", "ОАЭ", "Кипр", "Испания", "Россия и СНГ", "Другая страна"]],
+];
+let k3 = [];
+function kvartal3(){ k3 = []; document.getElementById("kvartal3").classList.add("vidno"); k3Shag(); pixel("kvartal-start"); }
+function k3Shag(){
+  const i = k3.length, box = document.getElementById("k3Vybor");
+  if (i >= K3.length){
+    const tekst = LANG === "ru" ? `ДЕМО ГОРОД. Бизнес: ${k3[0]}. Мешает: ${k3[1]}. Страна: ${k3[2]}.` : TF("@wa_kvartal", {b: k3[0], m: k3[1], s: k3[2]});
+    document.getElementById("k3Shag").textContent = T("Твой квартал готов");
+    document.getElementById("k3Vopros").textContent = T("Салоны Yana загорелись для тебя");
+    box.innerHTML = `<p style="width:100%">${T("Агенты этого района будут отвечать твоим клиентам, записывать и напоминать о визите. Напиши, соберу демо на твоих услугах.")}</p>
+      <a class="kn wa" style="text-decoration:none" href="https://wa.me/51959246034?text=${encodeURIComponent(tekst)}" target="_blank" rel="noopener" onclick="pixel('wa-kvartal')">${T("Получить демо в WhatsApp")}</a>`;
+    pixel("kvartal-gotov"); svetitSalony(); return;
+  }
+  document.getElementById("k3Shag").textContent = LANG === "ru" ? `Шаг ${i + 1} из 3` : TF("@shag", {i: i + 1});
+  document.getElementById("k3Vopros").textContent = T(K3[i][0]);
+  box.innerHTML = "";
+  K3[i][1].forEach(v => { const b = document.createElement("button"); b.textContent = T(v);
+    b.onclick = () => { if (v === "Просто интересно"){ pixel("prosto-interesno"); location.href = "https://www.instagram.com/mikhail.in.peru/"; return; } k3.push(T(v)); k3Shag(); };
+    box.appendChild(b); });
+}
+document.getElementById("k3Zakr").onclick = () => document.getElementById("kvartal3").classList.remove("vidno");
+function svetitSalony(){
+  if (tur.vkl) vyklTur();
+  const nado = gde === "vnutri"; if (nado) vyjti();
+  setTimeout(() => { const d = DOMA.yana; letet(d.podhod.clone().add(V3(0, 10, 0)), d.smotret, 1.6, () => orbitaIzKamery(d.smotret), 8);
+    const v = VYVESKI.find(x => x.id === "yana"); if (v) v.prio = 5; ZVUK.sfx("dzyn", .6); }, nado ? 1700 : 0);
+}
+document.getElementById("turKn").onclick = turSoZvukom;
+document.getElementById("turBol").onclick = turSoZvukom;
+document.getElementById("turBolS").textContent = LANG === "ru" ? `${Math.round(PLAN.dlina)} с · со звуком` : TF("@tur", {n: Math.round(PLAN.dlina)});
+document.getElementById("zvukKn").textContent = T("Звук");
+document.getElementById("vyhodTur").onclick = vyklTur;
+function razmer(){
+  const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); kamera.aspect = w/h;
+  kamera.fov = w/h < .85 ? 62 : 45; kamera.updateProjectionMatrix();
+  SLOJ_W = w; SLOJ_H = h; VYVESKI.forEach(v => v.w = 0);
+  if (composer){ const pr = renderer.getPixelRatio(); composer.setSize(w*pr, h*pr); final.uniforms.aspekt.value = w/h; }
+}
+sdelatComposer();
+addEventListener("resize", razmer); razmer();
+if (vertikal()) orbita.rad = 290;
+primenitOrbitu();
+let t00 = performance.now();
+function risovat(t){
+  const sc = gde === "ulica" ? ulica : vnutri;
+  if (composer){ prohod.scene = sc; final.uniforms.t.value = t || 0; bloom.strength = gde === "ulica" ? .95 : .6; bloom.threshold = gde === "ulica" ? .66 : .8; composer.render(); }
+  else renderer.render(sc, kamera);
+}
+function cikl(){
+  requestAnimationFrame(cikl);
+  const t = (performance.now() - t00) / 1000;
+  if (tur.vkl){ const tt = (performance.now() - tur.start)/1000; if (GOST && tt >= PLAN.dlina - .05){ posleTura(); } else { kadrTura(tt); risovat(t); return; } }
+  TEK = t;
+  const letim = shagTvina();
+  if (!letim){
+    if (gde === "ulica" && performance.now() - posledDvizh > 4000 && !tyanem) orbita.az += .0012;
+    primenitOrbitu();
+  }
+  obnovitLuchi(t, 1); dvigatMashiny(t); dvigatProzhektory(t); dvigatPyl(t); dvigatSneg(t);
+  if (gde === "vnutri"){ obnovitTablo((performance.now() - (komnata._schet||0) - 600) / 1600); zhizn(t, tVhodaSvob);
+    if (komnata.tablichka){ komnata.tablichka.position.y = 3.0; komnata.tablichka.visible = true; } }
+  obnovitVyveski(v => v.tip === "rajon" || (v.tip === "tih" && KVARTAL && kamera.position.distanceTo(KVARTAL.c) < 130), t);
+  risovat(t);
+}
+window.__kadr = t => { if (!tur.vkl) vklTur(); kadrTura(t); risovat(t); return true; };
+window.__gotovo = false;
+const shrifty = document.fonts ? Promise.all(["700 100px 'Cormorant Garamond'", "600 40px Manrope", "800 40px Inter", "900 40px Inter", "700 40px Inter"].map(f => document.fonts.load(f, "Город АБВ 0123"))) : Promise.resolve();
+Promise.race([shrifty, new Promise(r => setTimeout(r, 5000))]).catch(() => {}).then(() => {
+  ["yana", "kontent", "sovet"].forEach(id => R[id] && stroitKomnatu(id));
+  VYVESKI.forEach(v => v.w = 0);
+  window.__gotovo = true;
+  if (ZAPIS){ document.body.classList.add("zapis"); vklTur(); kadrTura(0); risovat(0); }
+  else { if (TUR_SRAZU) vklTur(); cikl(); }
+});
+</script>
+</body>
+</html>

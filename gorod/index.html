@@ -1,28 +1,26 @@
 <!doctype html>
 <html lang="ru">
 <head>
+<base href="/gorod/">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Город Михаила: живая карта ИИ-агентов</title>
 <meta name="description" content="Живая карта ИИ-агентов Михаила Клименко: районы-направления, дома-агенты, счётчики «сегодня сделано». Экскурсия на 50 секунд с голосом.">
 <link rel="canonical" href="https://horizonventures.app/gorod/">
+<link rel="alternate" hreflang="ru" href="https://horizonventures.app/gorod/">
+<link rel="alternate" hreflang="en" href="https://horizonventures.app/gorod/en/">
+<link rel="alternate" hreflang="es" href="https://horizonventures.app/gorod/es/">
+<link rel="alternate" hreflang="x-default" href="https://horizonventures.app/gorod/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Город Михаила: живая карта ИИ-агентов">
 <meta property="og:description" content="115 ИИ-агентов в одном городе: кто что делает сегодня. Экскурсия на 50 секунд с голосом.">
 <meta property="og:url" content="https://horizonventures.app/gorod/">
+<meta property="og:image" content="https://horizonventures.app/gorod/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
- {"@type":"WebPage","@id":"https://horizonventures.app/gorod/","url":"https://horizonventures.app/gorod/","name":"Город Михаила: живая карта ИИ-агентов","inLanguage":"ru",
-   "description":"Трёхмерная карта ИИ-агентов Михаила Клименко: районы-направления, дома-агенты и счётчики «сегодня сделано».",
-   "author":{"@type":"Person","name":"Михаил Клименко"},"publisher":{"@id":"https://horizonventures.app/#org"}},
- {"@type":"Organization","@id":"https://horizonventures.app/#org","name":"Horizon Ventures E.I.R.L.","url":"https://horizonventures.app/",
-   "taxID":"20612763888","address":{"@type":"PostalAddress","addressCountry":"PE"}},
- {"@type":"FAQPage","mainEntity":[
-  {"@type":"Question","name":"Что такое Город Михаила?","acceptedAnswer":{"@type":"Answer","text":"Живая карта ИИ-агентов Михаила Клименко. Каждый район — направление работы, каждый светящийся дом — один агент, на табло видно, что сделано сегодня."}},
-  {"@type":"Question","name":"Кто такие ИИ-агенты?","acceptedAnswer":{"@type":"Answer","text":"Это программы на искусственном интеллекте, которые сами делают свою работу: отвечают клиентам, монтируют ролики, ведут канал, следят за сроками. Михаил объясняет им задачу как новому сотруднику."}},
-  {"@type":"Question","name":"Можно ли такого агента для моего салона?","acceptedAnswer":{"@type":"Answer","text":"Да. ИИ-администратор отвечает клиентам салона в WhatsApp, записывает и напоминает о визите. Напишите ДЕМО в WhatsApp +51 959 246 034, соберём демо на ваших услугах."}}
- ]}
-]}
+{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://horizonventures.app/gorod/", "url": "https://horizonventures.app/gorod/", "name": "Город Михаила: живая карта ИИ-агентов", "inLanguage": "ru", "description": "Живая карта ИИ-агентов Михаила Клименко: районы-направления, дома-агенты, счётчики «сегодня сделано». Экскурсия на 50 секунд с голосом.", "author": {"@type": "Person", "name": "Михаил Клименко"}, "publisher": {"@id": "https://horizonventures.app/#org"}}, {"@type": "Organization", "@id": "https://horizonventures.app/#org", "name": "Horizon Ventures E.I.R.L.", "url": "https://horizonventures.app/", "taxID": "20612763888", "address": {"@type": "PostalAddress", "addressCountry": "PE"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Что такое Город Михаила?", "acceptedAnswer": {"@type": "Answer", "text": "Живая карта ИИ-агентов Михаила Клименко. Каждый район — направление работы, каждый светящийся дом — один агент, на табло видно, что сделано сегодня."}}, {"@type": "Question", "name": "Кто такие ИИ-агенты?", "acceptedAnswer": {"@type": "Answer", "text": "Это программы на искусственном интеллекте, которые сами делают свою работу: отвечают клиентам, монтируют ролики, ведут канал, следят за сроками. Михаил объясняет им задачу как новому сотруднику."}}, {"@type": "Question", "name": "Можно ли такого агента для моего салона?", "acceptedAnswer": {"@type": "Answer", "text": "Да. ИИ-администратор отвечает клиентам салона в WhatsApp, записывает и напоминает о визите. Напишите ДЕМО в WhatsApp +51 959 246 034, соберём демо на ваших услугах."}}]}]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,6 +127,36 @@ body.tur #turBol,body.vnutri #turBol,body.zapis #turBol{display:none}
 #klyuch span{display:inline-block;max-width:100%;padding:12px 24px 14px;border-radius:18px;background:rgba(250,240,220,.96);color:#14100a;
   font:800 31px/1.08 var(--udar);letter-spacing:-.01em;box-shadow:0 14px 40px rgba(0,0,0,.5)}
 
+
+.kn.wa,#waKn{background:#1fa855;color:#fff;border-color:transparent}
+#waKn{position:fixed;right:16px;bottom:calc(max(14px,env(safe-area-inset-bottom)) + 62px);z-index:6;display:none;align-items:center;gap:8px;font:800 15px var(--udar);
+  border-radius:999px;padding:13px 18px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+body.gost #waKn{display:flex}
+body.gost #turBol{left:16px;transform:none}
+body.tur #waKn,body.vnutri #waKn{display:none}
+@media (max-width:700px){ body.gost #turBol{bottom:calc(max(14px,env(safe-area-inset-bottom)) + 120px);left:16px} body.gost #waKn{left:16px;right:auto} }
+.karta2{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;background:rgba(2,3,8,.66);padding:16px}
+.karta2.vidno{display:flex}
+.karta2 .k{width:min(460px,100%);background:var(--steklo2);border:1px solid var(--liniya);border-radius:22px;padding:22px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.karta2 h3{font-family:var(--serif);font-size:30px;color:var(--zoloto2);line-height:1.05}
+.karta2 p{color:#d8deec;font-size:14px;line-height:1.5;margin-top:8px}
+.karta2 .shag{font:700 12px var(--udar);letter-spacing:.2em;text-transform:uppercase;color:var(--zoloto)}
+.vybor{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.vybor button,.karta2 .kn{font:700 14px var(--udar)}
+.vybor button{color:var(--tekst);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;cursor:pointer}
+.vybor button:hover{border-color:var(--zoloto)}
+.karta2 .niz{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.karta2 a.kn{text-decoration:none}
+#bezGL{position:fixed;inset:0;z-index:20;display:none;flex-direction:column;align-items:center;justify-content:flex-end;padding:24px 16px 40px;
+  background:#04060d url(og.jpg) center/cover no-repeat;text-align:center}
+#bezGL.vidno{display:flex}
+#bezGL h2{font-family:var(--serif);font-size:40px;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.8)}
+#bezGL p{color:#eef1f8;margin:8px 0 16px;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+#klyuch.sub span{font:700 21px/1.28 var(--udar);max-width:min(600px,100%)}
+#yazyki{display:flex;gap:4px;background:var(--steklo);border:1px solid var(--liniya);border-radius:999px;padding:4px;backdrop-filter:blur(10px)}
+#yazyki a{font:800 12px var(--udar);color:var(--tusk);text-decoration:none;padding:6px 9px;border-radius:999px}
+#yazyki a.tek{background:linear-gradient(180deg,#f8d68d,#e0a43c);color:#1a1206}
+body.tur #yazyki{display:none}
 body.tur .shapka,body.tur .rajony,body.tur .panel,body.tur #kak,body.tur #turKn{display:none}
 body.zapis .knopki{display:none}
 body:not(.tur) #vyhodTur{display:none}
@@ -179,7 +207,7 @@ body:not(.tur) #vyhodTur{display:none}
 <div class="okno" id="okno"><div class="karta">
   <h3>Как устроено</h3>
   <div id="oTekst"></div>
-  <div style="margin-top:14px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px">
+  <div id="faq" style="margin-top:14px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px">
     <p><b>Что это?</b> Живая карта моих ИИ-агентов. Район = направление работы, светящийся дом = один агент, табло = что сделано сегодня.</p>
     <p style="margin-top:8px"><b>Кто такие агенты?</b> Программы на ИИ, которые сами делают свою работу: отвечают клиентам, монтируют ролики, ведут канал. Я объясняю задачу как новому сотруднику.</p>
     <p style="margin-top:8px"><b>Можно такого агента для салона?</b> Да: ИИ-администратор отвечает клиентам в WhatsApp, записывает и напоминает о визите. <a href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E" style="color:#f6dfae">Напиши ДЕМО в WhatsApp</a>, соберу демо на твоих услугах.</p>
@@ -187,11 +215,28 @@ body:not(.tur) #vyhodTur{display:none}
   <button class="kn" style="margin-top:16px" id="oZakr">Понятно</button>
 </div></div>
 
+<a id="waKn" href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E%20%D0%93%D0%9E%D0%A0%D0%9E%D0%94" target="_blank" rel="noopener" onclick="pixel('wa')">WhatsApp: хочу демо</a>
+<div class="karta2" id="posleTura"><div class="k">
+  <h3>Хочешь такой отдел у себя?</h3>
+  <p>Агент отвечает клиентам в WhatsApp, записывает и напоминает о визите. Соберу демо на твоих услугах, попробуешь сам.</p>
+  <div class="niz"><button class="kn glavnaya" id="ptKvartal">Собрать мой квартал</button>
+  <a class="kn wa" href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E%20%D0%93%D0%9E%D0%A0%D0%9E%D0%94" target="_blank" rel="noopener" onclick="pixel('wa-posle-tura')">Написать ДЕМО</a>
+  <button class="kn" id="ptZakr">Посмотреть город</button></div>
+</div></div>
+<div class="karta2" id="kvartal3"><div class="k">
+  <div class="shag" id="k3Shag">Шаг 1 из 3</div>
+  <h3 id="k3Vopros">Какой у тебя бизнес?</h3>
+  <div class="vybor" id="k3Vybor"></div>
+  <div class="niz"><button class="kn" id="k3Zakr">Закрыть</button></div>
+</div></div>
+<div id="bezGL"><h2>Город Михаила</h2><p>Живая карта ИИ-агентов. Здесь браузер не показывает трёхмерную графику.</p>
+  <a class="kn wa" style="text-decoration:none;font:800 16px Inter,sans-serif;padding:14px 22px" href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E%20%D0%93%D0%9E%D0%A0%D0%9E%D0%94" target="_blank" rel="noopener">Написать ДЕМО в WhatsApp</a></div>
 <div id="pil"><div class="p"><b id="pilB"></b><span id="pilS"></span></div><span class="k" id="pilK"></span></div>
 <div id="klyuch"><span id="klyuchT"></span></div>
 
 <script src="dannye.js"></script>
 <script src="golos.js"></script>
+<script src="perevody.js"></script>
 <script src="three.min.js"></script>
 <script>
 if (!window.THREE) document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
@@ -214,26 +259,52 @@ const GOST = true;
 const PODPISI = PAR.get("podpisi") !== "0";
 const MSAA = PAR.get("msaa") !== "0";
 const GLYANEC = PAR.get("glyanec") !== "0";
-
+const PER = window.PEREVOD || {};
+const LANG = (() => { const q = (PAR.get("lang") || "").toLowerCase(); if (["ru","en","es"].includes(q)) return q;
+  if (window.LANG_PO_UMOLCH) return window.LANG_PO_UMOLCH;
+  if (!GOST) return "ru"; const n = (navigator.language || "").toLowerCase(); return n.startsWith("es") ? "es" : n.startsWith("ru") ? "ru" : "en"; })();
+function T(s){ if (LANG === "ru" || s == null || s === "") return s; const d = PER[LANG] || {}; return d[s] ?? s; }
+function TF(k, v){ let s = (PER[LANG] || {})[k] || ""; Object.entries(v || {}).forEach(([a, b]) => { s = s.split("{" + a + "}").join(b); }); return s; }
+function agentovStr(n){ return LANG === "ru" ? `${n} ${mnozh(n,"агент","агента","агентов")}` : TF(n === 1 ? "@agent1" : "@agentov", {n}); }
+const WA_SLOVO = LANG === "ru" ? "ДЕМО ГОРОД" : TF("@wa");
+const WA_DEMO = "https://wa.me/51959246034?text=" + encodeURIComponent(WA_SLOVO);
 function mnozh(n, a, b, c){ n=Math.abs(n)%100; const m=n%10; if(n>10&&n<20) return c; if(m>1&&m<5) return b; if(m===1) return a; return c; }
 const R = {}; D.rajony.forEach(r => R[r.id] = r);
 const it = D.itogo;
-const AGENTOV = `${it.agentov} ${mnozh(it.agentov,"агент","агента","агентов")}`;
+const AGENTOV = agentovStr(it.agentov);
 document.getElementById("itog").innerHTML =
   `<span class="chislo">${it.agentov}</span><b>${mnozh(it.agentov,"агент","агента","агентов")}</b> в ${D.rajony.length} районах · сегодня работали ${it.rabotali_segodnya ?? "—"}<br>` +
     `<span style="opacity:.75">обновлено ${D.sobrano || "—"}</span>`;
 document.getElementById("oTekst").innerHTML =
   `<p>${D.kak_schitali}</p><p style="margin-top:10px">Сейчас <b>${it.agentov}</b> агентов, сегодня работали ${it.rabotali_segodnya ?? "—"}.</p>` +
   `<p style="margin-top:10px">Каждый светящийся дом в районе = один агент. Тихий квартал за кольцом: проекты на паузе, замороженные и закрытые (${TIHIJ.length}).</p>`;
+if (LANG !== "ru"){
+  document.getElementById("itog").innerHTML = TF("@itog", {n: it.agentov, r: D.rajony.length, w: it.rabotali_segodnya ?? "—", d: D.sobrano || "—"});
+  document.getElementById("oTekst").innerHTML = TF("@kak", {k: T(D.kak_schitali), n: it.agentov, w: it.rabotali_segodnya ?? "—"});
+  document.documentElement.lang = LANG; if (PER[LANG] && PER[LANG]["@title"]) document.title = PER[LANG]["@title"];
+}
+[".kiker", ".zag", "#turKn", "#kak", "#vyhodTur", "#demoKn", "#pVyjti", "#oZakr", "#waKn", ".okno h3", "#posleTura h3", "#posleTura p", "#ptKvartal",
+ "#posleTura a.kn", "#ptZakr", "#k3Zakr", "#bezGL h2", "#bezGL p", "#bezGL a"].forEach(s => document.querySelectorAll(s).forEach(el => { el.textContent = T(el.textContent.trim()); }));
+document.querySelectorAll("#waKn, #posleTura a.kn, #bezGL a, #demoKn").forEach(a => a.href = WA_DEMO);
+if (LANG !== "ru" && document.getElementById("faq")) document.getElementById("faq").innerHTML = TF("@faq", {wa: WA_DEMO});
+document.querySelector("#turBol").childNodes.forEach(n => { if (n.nodeType === 3 && n.textContent.trim()) n.textContent = " " + T(n.textContent.trim()) + " "; });
+if (GOST){ const y = document.createElement("span"); y.id = "yazyki";
+  y.innerHTML = ["en","es","ru"].map(l => `<a href="?lang=${l}"${l === LANG ? ' class="tek"' : ""}>${l.toUpperCase()}</a>`).join("");
+  document.querySelector(".knopki").prepend(y); }
 const rajonyEl = document.getElementById("rajony");
 D.rajony.forEach(r => {
   const b = document.createElement("button"); b.className = "chip";
-  b.innerHTML = `<i style="color:${r.cvet}"></i>${r.nazvanie}<small>${r.agentov}</small>`;
+  b.innerHTML = `<i style="color:${r.cvet}"></i>${T(r.nazvanie)}<small>${r.agentov}</small>`;
   b.onclick = () => zajti(r.id); rajonyEl.appendChild(b);
 });
 if (TIHIJ.length){ const b = document.createElement("button"); b.className = "chip";
-  b.innerHTML = `<i style="color:#9fc3e0"></i>Тихий квартал<small>${TIHIJ.filter(x => !(GOST && x.klient)).length}</small>`;
+  b.innerHTML = `<i style="color:#9fc3e0"></i>${T("Тихий квартал")}<small>${TIHIJ.filter(x => !(GOST && x.klient)).length}</small>`;
   b.onclick = () => kKvartalu(); rajonyEl.appendChild(b); }
+function pixel(s){ if (!GOST) return; try { new Image().src = "https://aiadmin.app/px/gorod.gif?s=" + encodeURIComponent(s) + "&r=" + Date.now(); } catch(e){} }
+if (GOST) document.body.classList.add("gost");
+const EST_GL = (() => { try { const c = document.createElement("canvas"); return !!(c.getContext("webgl2") || c.getContext("webgl")); } catch(e){ return false; } })();
+if (!EST_GL){ document.getElementById("bezGL").classList.add("vidno"); pixel("bez-webgl"); throw new Error("нет WebGL"); }
+pixel("otkryl-" + LANG);
 const holst = document.getElementById("scena");
 const renderer = new THREE.WebGLRenderer({canvas: holst, antialias: !GLYANEC, preserveDrawingBuffer: ZAPIS, powerPreference: "high-performance"});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -657,12 +728,13 @@ function ekranTex(a, cvet, r){
   g.strokeStyle = cvet; g.lineWidth = 5; g.stroke();
   g.fillStyle = cvet; skrugl(g, 22, 20, 210, 40, 12); g.fill();
   g.fillStyle = "#081018"; g.font = "800 24px Inter, Manrope, sans-serif"; g.textBaseline = "middle";
-  const vid = /^na_servere$/.test(a.vid) ? "АГЕНТ" : /расписан/.test(a.vid) ? "АГЕНТ" : "АГЕНТ"; g.fillText(vid, 36, 41);
+  const vid = /^na_servere$/.test(a.vid) ? "АГЕНТ" : /расписан/.test(a.vid) ? "АГЕНТ" : "АГЕНТ"; g.fillText(T(vid), 36, 41);
   g.fillStyle = "#fff"; g.font = "800 46px Inter, Manrope, sans-serif";
-  let imya = GOST && r.id === "yana" ? "Агент Yana" : a.imya; if (imya.length > 24) imya = imya.slice(0, 23) + "…";
+  const bezKuhni = (GOST || ZAPIS) && r.id === "yana";
+  let imya = T(bezKuhni ? "Агент Yana" : a.imya); if (imya.length > 24) imya = imya.slice(0, 23) + "…";
   g.fillText(imya, 24, 110);
   g.fillStyle = a.pauza ? "#8b93a7" : "#f6dfae"; g.font = "600 30px Inter, Manrope, sans-serif";
-  const sego = a.pauza ? "на паузе" : (a.segodnya || a.chto); g.fillText(sego.length > 40 ? sego.slice(0, 39) + "…" : sego, 24, 162);
+  const sego = T(a.pauza ? "на паузе" : bezKuhni ? "работает для салонов" : (a.segodnya || a.chto)); g.fillText(sego.length > 40 ? sego.slice(0, 39) + "…" : sego, 24, 162);
   if (r.id === "kontent"){
     const cv = ["#ff7a59","#f5b942","#5fe0a0","#7aa8ff"];
     for (let i=0;i<4;i++){ let x = 24; const rr = sluch(a.imya.length*13 + i); while (x < 740){ const w = 30 + rr()*110; g.fillStyle = cv[(i + (rr()*4|0)) % 4]; g.globalAlpha = .85; skrugl(g, x, 196 + i*14, Math.min(w, 744 - x), 10, 4); g.fill(); x += w + 6; } }
@@ -676,9 +748,11 @@ function tabloTex(r, dolya, akcent = -1, pulse = 0){
   g.fillStyle = gr; skrugl(g, 6, 6, W-12, H-12, 46); g.fill();
   g.strokeStyle = "#f5b942"; g.lineWidth = 10; g.stroke();
   g.textAlign = "center"; g.textBaseline = "middle";
-  g.fillStyle = "#f5b942"; g.font = "800 46px Inter, Manrope, sans-serif"; g.fillText("СЕГОДНЯ СДЕЛАНО", W/2, 86);
-  g.fillStyle = "#fff"; g.font = "700 118px 'Cormorant Garamond', Georgia, serif"; g.fillText(r.nazvanie, W/2, 196);
-  const sch = (r.schetchiki || []).filter(s => s.n !== 0).slice(0, 4), n = sch.length;
+  g.fillStyle = "#f5b942"; g.font = "800 46px Inter, Manrope, sans-serif"; g.fillText(GOST ? `${T("СДЕЛАНО ЗА ДЕНЬ")} · ${(D.sobrano || "").slice(0, 10)}` : T("СЕГОДНЯ СДЕЛАНО"), W/2, 86);
+  g.fillStyle = "#fff"; g.font = "700 118px 'Cormorant Garamond', Georgia, serif"; g.fillText(T(r.nazvanie), W/2, 196);
+  let sch = (r.schetchiki || []).filter(s => s.n !== 0);
+  if ((ZAPIS || GOST) && r.id === "yana"){ const rab = sch.filter(s => /в рабочих салонах/.test(s.podpis)); if (rab.length) sch = rab.map(s => ({n: s.n, podpis: s.podpis.replace(" в рабочих салонах", "")})); }
+  sch = sch.slice(0, 4); const n = sch.length;
   const kol = n > 2 ? 2 : n, ryad = Math.ceil(n / kol), cw = (W - 120) / kol, ch = (H - 300) / ryad;
   sch.forEach((s, i) => {
     const cx = 60 + (i % kol)*cw, cy = 280 + Math.floor(i / kol)*ch;
@@ -688,7 +762,7 @@ function tabloTex(r, dolya, akcent = -1, pulse = 0){
     const v = s.n == null ? "—" : Math.round(s.n * dolya);
     g.fillStyle = ak ? "#ffffff" : r.cvet; g.font = `700 ${Math.round(250 * (ak ? 1 + pulse*.15 : 1))}px 'Cormorant Garamond', Georgia, serif`; g.fillText(String(v), cx + cw/2, cy + ch*.42);
     g.fillStyle = "#d4dbea"; g.font = "700 44px Inter, Manrope, sans-serif";
-    const slova = s.podpis.split(" "); let a = "", b = "";
+    const slova = T(s.podpis).split(" "); let a = "", b = "";
     slova.forEach(w => { if ((a + " " + w).trim().length <= 24 && !b) a = (a + " " + w).trim(); else b = (b + " " + w).trim(); });
     g.fillText(a, cx + cw/2, cy + ch*.78); if (b) g.fillText(b, cx + cw/2, cy + ch*.78 + 52);
   });
@@ -744,13 +818,13 @@ function stroitKomnatu(id){
       ch.position.set(Math.sin(a)*5.9, 0, Math.cos(a)*5.9); ch.lookAt(0, 0, 0); gr.add(ch); ludi.push(ch);
       const sk = /скептик/i.test(imya);
       const nc = holstik(640, 150), ng = nc.getContext("2d"); ng.fillStyle = "rgba(10,13,26,.88)"; skrugl(ng, 4, 4, 632, 142, 40); ng.fill();
-      ng.strokeStyle = "#f5b942"; ng.lineWidth = 5; ng.stroke(); ng.fillStyle = "#fff"; ng.font = "800 64px Inter, Manrope, sans-serif"; ng.textAlign = "center"; ng.textBaseline = "middle"; ng.fillText(imya, 320, 78);
+      ng.strokeStyle = "#f5b942"; ng.lineWidth = 5; ng.stroke(); ng.fillStyle = "#fff"; ng.font = "800 64px Inter, Manrope, sans-serif"; ng.textAlign = "center"; ng.textBaseline = "middle"; ng.fillText(T(imya), 320, 78);
       const im = new THREE.Sprite(new THREE.SpriteMaterial({map: tex(nc), transparent:true, depthWrite:false}));
       im.scale.set(2.3, .54, 1); im.position.set(Math.sin(a)*6.4, sk ? 4.6 : 3.75, Math.cos(a)*6.4); gr.add(im); (gr.userData.imena = gr.userData.imena || []).push(im);
       if (sk){
         const t = new THREE.Group();
         const nt = holstik(512, 300), tg = nt.getContext("2d"); tg.fillStyle = "#d1202e"; skrugl(tg, 6, 6, 500, 288, 34); tg.fill(); tg.strokeStyle = "#fff"; tg.lineWidth = 10; tg.stroke();
-        tg.fillStyle = "#fff"; tg.font = "900 190px Inter, Manrope, sans-serif"; tg.textAlign = "center"; tg.textBaseline = "middle"; tg.fillText("НЕТ", 256, 160);
+        tg.fillStyle = "#fff"; tg.font = "900 190px Inter, Manrope, sans-serif"; tg.textAlign = "center"; tg.textBaseline = "middle"; tg.fillText(T("НЕТ"), 256, 160);
         const netM = new THREE.MeshBasicMaterial({map: tex(nt), toneMapped:false});
         const doska = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 1.52), netM); doska.position.y = 1.35; t.add(doska);
         const doska2 = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 1.52), netM); doska2.position.y = 1.35; doska2.rotation.y = Math.PI; t.add(doska2);
@@ -862,12 +936,13 @@ function sdelatVyvesku(id, poz, html, cvet, tip){
 }
 D.rajony.forEach(r => {
   const d = DOMA[r.id];
-  const pod = r.id === "sovet" ? `${(D.eksperty||[]).length} экспертов за столом` : `${r.agentov} ${mnozh(r.agentov,"агент","агента","агентов")}`;
-  sdelatVyvesku(r.id, d.poz.clone().add(V3(0, d.verh + 3, 0)), `<b>${r.nazvanie}</b><span>${pod}</span>`, r.cvet, "rajon");
+  const ne = (D.eksperty||[]).length;
+  const pod = r.id === "sovet" ? (LANG === "ru" ? `${ne} экспертов за столом` : TF("@eksperty", {n: ne})) : agentovStr(r.agentov);
+  sdelatVyvesku(r.id, d.poz.clone().add(V3(0, d.verh + 3, 0)), `<b>${T(r.nazvanie)}</b><span>${pod}</span>`, r.cvet, "rajon");
 });
 if (KVARTAL){
-  sdelatVyvesku("kvartal", KVARTAL.c.clone().add(V3(0, 26, 0)), `<b>Тихий квартал</b><span>на паузе, заморожено, закрыто</span>`, "#a9d0f0", "rajon");
-  KVARTAL.doma.forEach((d, i) => { if (GOST && d.p.klient) return;
+  sdelatVyvesku("kvartal", KVARTAL.c.clone().add(V3(0, 26, 0)), GOST ? `<b>${T("Тихий квартал")}</b><span>${T("проекты в тишине")}</span>` : `<b>Тихий квартал</b><span>на паузе, заморожено, закрыто</span>`, "#a9d0f0", "rajon");
+  KVARTAL.doma.forEach((d, i) => { if (GOST) return;
     const v = sdelatVyvesku("t" + i, KVARTAL.mir[i], `<b>${d.p.imya}</b><span>${d.p.status} ${d.p.data}</span>`, d.cvet, "tih"); v.klient = d.p.klient; });
 }
 let SLOJ_W = innerWidth, SLOJ_H = innerHeight;
@@ -967,15 +1042,23 @@ function klik(e){
 
 const panel = document.getElementById("panel");
 function zapolnitPanel(r){
-  document.getElementById("pImya").innerHTML = `<span style="color:${r.cvet}">●</span> ${r.nazvanie}`;
-  document.getElementById("pPod").textContent = `${r.podpis} · ${r.agentov} ${mnozh(r.agentov,"агент","агента","агентов")}`;
-  document.getElementById("pSchet").innerHTML = (r.schetchiki||[]).map(s => `<div class="sch"><b>${s.n == null ? "—" : s.n}</b><span>${s.podpis}</span></div>`).join("");
-  const eks = r.id === "sovet" ? `<div class="ag"><span class="t" style="background:${r.cvet}"></span><div><div class="n">За столом</div><div class="c">${(D.eksperty||[]).join(", ")}</div></div></div>` : "";
-  const agenty = GOST && r.id === "yana" ? `<div class="ag"><span class="t" style="background:${r.cvet}"></span><div><div class="n">${r.agentov} агентов</div><div class="c">отвечают клиентам, записывают, следят, чтобы никто не ждал</div></div></div>`
-    : r.agenty.map(a => `<div class="ag${a.pauza?' pauza':''}"><span class="t" style="background:${a.pauza?'#555':r.cvet}"></span><div><div class="n">${a.imya}</div><div class="c">${a.chto}</div>${a.segodnya?`<div class="s">${a.segodnya}</div>`:""}${a.pauza?`<div class="c">на паузе</div>`:""}</div><span class="v">${a.vid}</span></div>`).join("");
-  document.getElementById("pSpisok").innerHTML = eks + agenty;
+  document.getElementById("pImya").innerHTML = `<span style="color:${r.cvet}">●</span> ${T(r.nazvanie)}`;
+  document.getElementById("pPod").textContent = `${T(r.podpis)} · ${agentovStr(r.agentov)}`;
+  document.getElementById("pSchet").innerHTML = (r.schetchiki||[]).map(s => `<div class="sch"><b>${s.n == null ? "—" : s.n}</b><span>${T(s.podpis)}</span></div>`).join("");
+  const eks = r.id === "sovet" ? `<div class="ag"><span class="t" style="background:${r.cvet}"></span><div><div class="n">${T("За столом")}</div><div class="c">${(D.eksperty||[]).map(T).join(", ")}</div></div></div>` : "";
+  const agenty = GOST && r.id === "yana" ? `<div class="ag"><span class="t" style="background:${r.cvet}"></span><div><div class="n">${agentovStr(r.agentov)}</div><div class="c">${T("отвечают клиентам, записывают, следят, чтобы никто не ждал")}</div></div></div>`
+    : r.agenty.map(a => `<div class="ag${a.pauza?' pauza':''}"><span class="t" style="background:${a.pauza?'#555':r.cvet}"></span><div><div class="n">${T(a.imya)}</div><div class="c">${T(a.chto)}</div>${a.segodnya?`<div class="s">${T(a.segodnya)}</div>`:""}${a.pauza?`<div class="c">${T("на паузе")}</div>`:""}</div><span class="v">${T(a.vid)}</span></div>`).join("");
+  const wa = GOST && r.id === "yana" ? `<a class="kn wa" style="display:block;text-align:center;margin:12px 8px 4px;text-decoration:none" href="https://wa.me/51959246034?text=${encodeURIComponent(LANG === "ru" ? "ДЕМО ГОРОД. Хочу такого администратора для своего бизнеса" : TF("@wa_salony"))}" target="_blank" rel="noopener" onclick="pixel('wa-salony')">${T("Хочу такого администратора")}</a>` : "";
+  document.getElementById("pSpisok").innerHTML = wa + eks + agenty;
 }
 function zapolnitKvartal(){
+  if (GOST){
+    document.getElementById("pImya").innerHTML = `<span style="color:#a9d0f0">●</span> ${T("Тихий квартал")}`;
+    document.getElementById("pPod").textContent = T("проекты, которые сейчас в тишине");
+    document.getElementById("pSchet").innerHTML = "";
+    document.getElementById("pSpisok").innerHTML = `<div class="ag"><div class="c" style="font-size:14px;line-height:1.5">${T("Здесь проекты, которые сейчас не в работе. Я ищу то, что работает, и держу силы на главном.")}</div></div>`;
+    return;
+  }
   const vid = TIHIJ.filter(p => !(GOST && p.klient));
   document.getElementById("pImya").innerHTML = `<span style="color:#a9d0f0">●</span> Тихий квартал`;
   document.getElementById("pPod").textContent = `проекты на паузе, замороженные и закрытые · ${vid.length}`;
@@ -1052,7 +1135,7 @@ const ZVUK = (() => {
   function ork(i){ if (!vkl || ZAPIS) return; const k = i ?? Math.floor(Math.random()*ORK.length); const a = audio(`zvuk/ork/${ORK[k]}.mp3`); a.volume = 1;
     priglushit(((window.ORK || {})[ORK[k]] || 2.5) + .4); setTimeout(() => a.play().catch(() => {}), 250); }
   function golos(i){ if (!vkl || ZAPIS || !window.GOLOS || !GOLOS[i]) return; const a = audio(GOLOS[i].f); a.volume = 1; a.play().catch(() => {}); }
-  function perekl(){ vkl = !vkl; document.getElementById("zvukKn").classList.toggle("vkl", vkl); document.getElementById("zvukKn").textContent = vkl ? "Звук: вкл" : "Звук";
+  function perekl(){ vkl = !vkl; document.getElementById("zvukKn").classList.toggle("vkl", vkl); document.getElementById("zvukKn").textContent = T(vkl ? "Звук: вкл" : "Звук");
     if (vkl) zona(tek || "centr"); else Object.values(zony).forEach(a => plavnoGromk(a, 0, .4)); }
   return {zona, sfx, ork, golos, perekl, get vkl(){ return vkl; }};
 })();
@@ -1092,6 +1175,7 @@ window.__plan = () => JSON.parse(JSON.stringify(PLAN));
 
 const tur = {vkl: false, start: 0, zv: new Set()};
 const pilEl = document.getElementById("pil"), klEl = document.getElementById("klyuch");
+if (LANG !== "ru") klEl.classList.add("sub");
 function pokazat(el, vid, sdv = 14){ el.style.opacity = PODPISI ? String(zazhat(vid)) : "0"; el.style.transform = `translateY(${((1-zazhat(vid))*sdv).toFixed(1)}px) scale(${(.94 + .06*myagko(vid)).toFixed(3)})`; }
 function orbitaTura(t){ const k = vertikal() ? 1.3 : 1, a = .62 + t*.035; return {p: V3(Math.sin(a)*168*k, 92*k + 8, Math.cos(a)*168*k), s: V3(0, 4, 0)}; }
 function vidObeliska(u){ const k = vertikal() ? 1.25 : 1, a = .62 + .9 + u*.55; return {p: V3(Math.sin(a)*44*k, 8, Math.cos(a)*44*k), s: V3(0, 36 + u*5, 0)}; }
@@ -1113,7 +1197,7 @@ function kadrTura(t){
   let kam, mesto = "ulica", room = null, vsp = 0, luchi = 1, vyv = () => false, kren = 0;
   let pil = null, kl = null, akcent = -1, tVhoda = sc.t0;
   const fraza = i => P.frazy.find(f => f.i === i);
-  const klVid = (i, txt) => { const f = fraza(i); if (!f) return null; const v = Math.min(otrezok(t, f.t0 - .05, f.t0 + .25), 1 - otrezok(t, sc.t1 - .25, sc.t1)); return v > 0 ? [txt, v] : null; };
+  const klVid = (i, txt) => { if (LANG !== "ru") txt = T("@fraza" + i); const f = fraza(i); if (!f) return null; const v = Math.min(otrezok(t, f.t0 - .05, f.t0 + .25), 1 - otrezok(t, sc.t1 - .25, sc.t1)); return v > 0 ? [txt, v] : null; };
   switch (sc.id){
     case "obzor": {
       kam = orbitaTura(t*.5); luchi = 1;
@@ -1153,7 +1237,7 @@ function kadrTura(t){
       const a = .28 - u*.5, r = lerp(16, 12.5, plavno(u))*k, h = lerp(9, 7, plavno(u));
       kam = {p: V3(Math.sin(a)*r, h, Math.cos(a)*r), s: V3(0, 4, -3)};
       vsp = 1 - otrezok(u, 0, .14); if (u > .9) vsp = otrezok(u, .9, 1);
-      kl = [`${(D.eksperty||[]).length} экспертов`, Math.min(otrezok(u, .05, .2), 1 - otrezok(u, .86, .95))]; break; }
+      kl = [LANG === "ru" ? `${(D.eksperty||[]).length} экспертов` : TF("@eksperty_kl", {n: (D.eksperty||[]).length}), Math.min(otrezok(u, .05, .2), 1 - otrezok(u, .86, .95))]; break; }
     case "lichnyj": {
       const d = DOMA.lichnyj, H = 16 + Math.min(R.lichnyj.agentov, 45)*0.45, yc = 5 + H*.72;
       const A = {p: d.poz.clone().addScaledVector(d.naruzh, -34*k).add(V3(0, yc + 6, 0)), s: d.poz.clone().add(V3(0, yc - 2, 0))};
@@ -1190,8 +1274,8 @@ function kadrTura(t){
       (k2.gr.userData.imena || []).forEach(im => im.visible = im.position.z < 1.5);
     }
   }
-  if (pil){ document.getElementById("pilB").textContent = it.agentov; document.getElementById("pilS").textContent = mnozh(it.agentov,"агент","агента","агентов");
-    document.getElementById("pilK").textContent = "Город Михаила"; }
+  if (pil){ document.getElementById("pilB").textContent = it.agentov; document.getElementById("pilS").textContent = agentovStr(it.agentov).replace(String(it.agentov), "").trim();
+    document.getElementById("pilK").textContent = T("Город Михаила"); }
   pokazat(pilEl, pil ? pil[1] : 0, -14);
   if (kl) document.getElementById("klyuchT").textContent = kl[0];
   pokazat(klEl, kl ? kl[1] : 0);
@@ -1210,10 +1294,46 @@ function vyklTur(){
   gde = "ulica"; Object.assign(orbita, {min: 50, max: 420, polMin: .3, polMax: 1.42, azMin: -Infinity, azMax: Infinity});
   kamera.up.set(0,1,0); orbitaIzKamery(V3(0, 14, 0)); posledDvizh = performance.now(); ZVUK.zona("centr");
 }
-function turSoZvukom(){ if (!ZVUK.vkl) ZVUK.perekl(); vklTur(); }
+function turSoZvukom(){ if (!ZVUK.vkl) ZVUK.perekl(); posleTuraPokazana = false; vklTur(); pixel("tur"); }
+let posleTuraPokazana = false;
+function posleTura(){ if (!GOST || posleTuraPokazana) return; posleTuraPokazana = true; vyklTur(); document.getElementById("posleTura").classList.add("vidno"); pixel("tur-konec"); }
+document.getElementById("ptZakr").onclick = () => document.getElementById("posleTura").classList.remove("vidno");
+document.getElementById("ptKvartal").onclick = () => { document.getElementById("posleTura").classList.remove("vidno"); kvartal3(); };
+const K3 = [
+  ["Какой у тебя бизнес?", ["Салон красоты", "Барбершоп", "Ногти и брови", "Массаж и спа", "Клиника", "Фитнес и йога", "Другой бизнес", "Просто интересно"]],
+  ["Что сейчас мешает больше всего?", ["Не успеваю отвечать в WhatsApp", "Клиенты пишут ночью", "Клиенты не приходят на запись", "Администратор не справляется", "Хочу больше записей"]],
+  ["Где твой бизнес?", ["Перу", "Аргентина", "ОАЭ", "Кипр", "Испания", "Россия и СНГ", "Другая страна"]],
+];
+let k3 = [];
+function kvartal3(){ k3 = []; document.getElementById("kvartal3").classList.add("vidno"); k3Shag(); pixel("kvartal-start"); }
+function k3Shag(){
+  const i = k3.length, box = document.getElementById("k3Vybor");
+  if (i >= K3.length){
+    const tekst = LANG === "ru" ? `ДЕМО ГОРОД. Бизнес: ${k3[0]}. Мешает: ${k3[1]}. Страна: ${k3[2]}.` : TF("@wa_kvartal", {b: k3[0], m: k3[1], s: k3[2]});
+    document.getElementById("k3Shag").textContent = T("Твой квартал готов");
+    document.getElementById("k3Vopros").textContent = T("Салоны Yana загорелись для тебя");
+    box.innerHTML = `<p style="width:100%">${T("Агенты этого района будут отвечать твоим клиентам, записывать и напоминать о визите. Напиши, соберу демо на твоих услугах.")}</p>
+      <a class="kn wa" style="text-decoration:none" href="https://wa.me/51959246034?text=${encodeURIComponent(tekst)}" target="_blank" rel="noopener" onclick="pixel('wa-kvartal')">${T("Получить демо в WhatsApp")}</a>`;
+    pixel("kvartal-gotov"); svetitSalony(); return;
+  }
+  document.getElementById("k3Shag").textContent = LANG === "ru" ? `Шаг ${i + 1} из 3` : TF("@shag", {i: i + 1});
+  document.getElementById("k3Vopros").textContent = T(K3[i][0]);
+  box.innerHTML = "";
+  K3[i][1].forEach(v => { const b = document.createElement("button"); b.textContent = T(v);
+    b.onclick = () => { if (v === "Просто интересно"){ pixel("prosto-interesno"); location.href = "https://www.instagram.com/mikhail.in.peru/"; return; } k3.push(T(v)); k3Shag(); };
+    box.appendChild(b); });
+}
+document.getElementById("k3Zakr").onclick = () => document.getElementById("kvartal3").classList.remove("vidno");
+function svetitSalony(){
+  if (tur.vkl) vyklTur();
+  const nado = gde === "vnutri"; if (nado) vyjti();
+  setTimeout(() => { const d = DOMA.yana; letet(d.podhod.clone().add(V3(0, 10, 0)), d.smotret, 1.6, () => orbitaIzKamery(d.smotret), 8);
+    const v = VYVESKI.find(x => x.id === "yana"); if (v) v.prio = 5; ZVUK.sfx("dzyn", .6); }, nado ? 1700 : 0);
+}
 document.getElementById("turKn").onclick = turSoZvukom;
 document.getElementById("turBol").onclick = turSoZvukom;
-document.getElementById("turBolS").textContent = `${Math.round(PLAN.dlina)} с · со звуком`;
+document.getElementById("turBolS").textContent = LANG === "ru" ? `${Math.round(PLAN.dlina)} с · со звуком` : TF("@tur", {n: Math.round(PLAN.dlina)});
+document.getElementById("zvukKn").textContent = T("Звук");
 document.getElementById("vyhodTur").onclick = vyklTur;
 function razmer(){
   const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); kamera.aspect = w/h;
@@ -1234,7 +1354,7 @@ function risovat(t){
 function cikl(){
   requestAnimationFrame(cikl);
   const t = (performance.now() - t00) / 1000;
-  if (tur.vkl){ kadrTura((performance.now() - tur.start)/1000); risovat(t); return; }
+  if (tur.vkl){ const tt = (performance.now() - tur.start)/1000; if (GOST && tt >= PLAN.dlina - .05){ posleTura(); } else { kadrTura(tt); risovat(t); return; } }
   TEK = t;
   const letim = shagTvina();
   if (!letim){
