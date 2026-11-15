@@ -754,7 +754,8 @@ function ekranTex(a, cvet, r){
   let imya = T(bezKuhni ? "Агент Yana" : a.imya); if (imya.length > 24) imya = imya.slice(0, 23) + "…";
   g.fillText(imya, 24, 110);
   g.fillStyle = a.pauza ? "#8b93a7" : "#f6dfae"; g.font = "600 30px Inter, Manrope, sans-serif";
-  const sego = T(a.pauza ? "на паузе" : bezKuhni ? "работает для салонов" : (a.segodnya || a.chto)); g.fillText(sego.length > 40 ? sego.slice(0, 39) + "…" : sego, 24, 162);
+  let sego = a.pauza ? "на паузе" : bezKuhni ? "работает для салонов" : (a.segodnya || a.chto);
+  if (LANG !== "ru") sego = /^сегодня в /.test(sego) ? sego.replace(/^сегодня в /, T("сегодня в ")) : ((PER[LANG] || {})[sego] ?? T("работает")); g.fillText(sego.length > 40 ? sego.slice(0, 39) + "…" : sego, 24, 162);
   if (r.id === "kontent"){
     const cv = ["#ff7a59","#f5b942","#5fe0a0","#7aa8ff"];
     for (let i=0;i<4;i++){ let x = 24; const rr = sluch(a.imya.length*13 + i); while (x < 740){ const w = 30 + rr()*110; g.fillStyle = cv[(i + (rr()*4|0)) % 4]; g.globalAlpha = .85; skrugl(g, x, 196 + i*14, Math.min(w, 744 - x), 10, 4); g.fill(); x += w + 6; } }
@@ -961,9 +962,9 @@ D.rajony.forEach(r => {
   sdelatVyvesku(r.id, d.poz.clone().add(V3(0, d.verh + 3, 0)), `<b>${T(r.nazvanie)}</b><span>${pod}</span>`, r.cvet, "rajon");
 });
 if (KVARTAL){
-  sdelatVyvesku("kvartal", KVARTAL.c.clone().add(V3(0, 26, 0)), GOST ? `<b>${T("Тихий квартал")}</b><span>${T("проекты в тишине")}</span>` : `<b>Тихий квартал</b><span>на паузе, заморожено, закрыто</span>`, "#a9d0f0", "rajon");
+  sdelatVyvesku("kvartal", KVARTAL.c.clone().add(V3(0, 26, 0)), GOST ? `<b>${T("Тихий квартал")}</b><span>${T("проекты в тишине")}</span>` : `<b>${T("Тихий квартал")}</b><span>${T("на паузе, заморожено, закрыто")}</span>`, "#a9d0f0", "rajon");
   KVARTAL.doma.forEach((d, i) => { if (GOST) return;
-    const v = sdelatVyvesku("t" + i, KVARTAL.mir[i], `<b>${d.p.imya}</b><span>${d.p.status} ${d.p.data}</span>`, d.cvet, "tih"); v.klient = d.p.klient; });
+    const v = sdelatVyvesku("t" + i, KVARTAL.mir[i], `<b>${T(d.p.imya)}</b><span>${T(d.p.status + " " + d.p.data)}</span>`, d.cvet, "tih"); v.klient = d.p.klient; });
 }
 let SLOJ_W = innerWidth, SLOJ_H = innerHeight;
 function obnovitVyveski(razreshit, t){
@@ -1164,12 +1165,14 @@ document.getElementById("menuKn").onclick = () => document.querySelector(".knopk
 function sobratPlan(){
   const G = window.GOLOS || [];
   const PRIM = [1.4, 6.0, 4.3, 6.2, 2.7, 4.0, 5.1, 6.1, 5.6];
-  const GV = [G, window.GOLOS_ES || [], window.GOLOS_EN || []];
+  const GY = LANG !== "ru" && window["GOLOS_" + LANG.toUpperCase()];
+  const GV = ZAPIS && GY ? [GY] : [G, window.GOLOS_ES || [], window.GOLOS_EN || []];
   const d = i => Math.max(...GV.map(x => (x[i] && x[i].d) || 0)) || PRIM[i];
   const S = [], F = [], Z = [];
   let t = .3;
   const sc = (id, t0, t1, o = {}) => S.push(Object.assign({id, t0, t1}, o));
-  const fr = (i, t0) => { F.push({i, t0, t1: t0 + d(i)}); return t0 + d(i); };
+  const dop = ZAPIS && GY ? .3 : 0;
+  const fr = (i, t0) => { F.push({i, t0, t1: t0 + d(i)}); return t0 + d(i) + dop; };
   let a = 0;
   const ORKd = (window.ORK && window.ORK.rabota) || 2.7;
   t = fr(0, .3); sc("obzor", 0, t + .05); a = t + .05;

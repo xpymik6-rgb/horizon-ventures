@@ -3,6 +3,15 @@
 // Испанский: живой латиноамериканский, на «tú».
 window.PEREVOD = {
 en: {
+  // ролик на языке (полные данные города, не гостевые)
+   "роликов в очереди Instagram": "videos in the Instagram queue", "проверок склада роликов": "video inbox checks", "ответов на комментарии": "comment replies",
+  "сегодня в ": "today at ", "работает": "working", "по расписанию на ноутбуке": "scheduled on the laptop",
+  
+    
+    
+    
+    
+     
   // интерфейс
   "Живая карта ИИ-агентов": "A live map of AI agents",
   "Город Михаила": "Mikhail's City",
@@ -94,7 +103,7 @@ en: {
   "X: утренний заход": "X: morning session", "X: разбор недели": "X: weekly review", "X: редакция": "X: newsroom", "X: сторож тишины": "X: silence watch",
   "ведёт канал": "runs the channel",
   "Крипто-радар": "Crypto radar", "сканер бирж и события рынка": "exchange scanner and market events",
-  "проходов сканера бирж": "exchange scans", "бумажных сделок закрыто": "paper trades closed", "проверок событий рынка": "market event checks",
+  "проходов сканера бирж": "exchange scans",  "проверок событий рынка": "market event checks",
   "Посты радара": "Radar posts", "Крипто-помощник": "Crypto assistant", "Обзор рынка": "Market review", "Ответы vc.ru": "vc.ru answers",
   "Рост радара": "Radar growth", "Срочная тема": "Breaking topic", "Межбиржевой сканер": "Cross-exchange scanner", "Сторож событий рынка": "Market event watch",
   "следит за рынком": "watches the market",
@@ -119,6 +128,14 @@ en: {
     "An agent is a separate job that AI does on its own: on a schedule, around the clock or when Mikhail asks. The “done today” numbers count the current day."
 },
 es: {
+   "роликов в очереди Instagram": "videos en cola de Instagram", "проверок склада роликов": "revisiones de la bandeja de videos", "ответов на комментарии": "respuestas a comentarios",
+  "сегодня в ": "hoy a las ", "работает": "trabajando", "по расписанию на ноутбуке": "con horario en la laptop",
+  
+    
+    
+    
+    
+     
   "Живая карта ИИ-агентов": "Mapa en vivo de agentes de IA",
   "Город Михаила": "La Ciudad de Mikhail",
   "Экскурсия": "Recorrido",
@@ -208,7 +225,7 @@ es: {
   "X: утренний заход": "X: sesión de la mañana", "X: разбор недели": "X: resumen semanal", "X: редакция": "X: redacción", "X: сторож тишины": "X: guardia de silencio",
   "ведёт канал": "lleva el canal",
   "Крипто-радар": "Radar cripto", "сканер бирж и события рынка": "escáner de exchanges y eventos del mercado",
-  "проходов сканера бирж": "escaneos de exchanges", "бумажных сделок закрыто": "operaciones de prueba cerradas", "проверок событий рынка": "revisiones del mercado",
+  "проходов сканера бирж": "escaneos de exchanges",  "проверок событий рынка": "revisiones del mercado",
   "Посты радара": "Posts del radar", "Крипто-помощник": "Asistente cripto", "Обзор рынка": "Panorama del mercado", "Ответы vc.ru": "Respuestas en vc.ru",
   "Рост радара": "Crecimiento del radar", "Срочная тема": "Tema urgente", "Межбиржевой сканер": "Escáner entre exchanges", "Сторож событий рынка": "Guardia de eventos del mercado",
   "следит за рынком": "vigila el mercado",
