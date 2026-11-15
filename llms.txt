@@ -113,3 +113,7 @@ Smart Search is published and can be installed today from the Atlassian Marketpl
 - [Yana privacy policy](https://horizonventures.app/yana/privacy.html): Yana is our WhatsApp assistant for wellness and fitness studios; it answers messages on the studio's own WhatsApp number and passes bookings to staff. Data is processed on the studio's behalf and stored in the EU.
 - [Yana terms of service](https://horizonventures.app/yana/terms.html): terms for businesses that connect their WhatsApp number to Yana.
 - [Yana data deletion](https://horizonventures.app/yana/data-deletion.html): how a person deletes their data or stops messages.
+
+## Mikhail's AI agents city (Russian)
+
+- [Город Михаила](https://horizonventures.app/gorod/): an interactive 3D map of the AI agents of Mikhail Klimenko, the founder of Horizon Ventures. Each district is a line of work (an AI receptionist for beauty salons, content, a Spanish crypto channel, a personal assistant, an expert council), each lit building is one agent, and a board shows what was done today. Includes a 50-second guided tour with his voice. In Russian. To get a demo of the AI receptionist for a salon, write ДЕМО on WhatsApp +51 959 246 034.
