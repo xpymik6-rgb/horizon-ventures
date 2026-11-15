@@ -157,6 +157,23 @@ body.tur #waKn,body.vnutri #waKn{display:none}
 #yazyki a{font:800 12px var(--udar);color:var(--tusk);text-decoration:none;padding:6px 9px;border-radius:999px}
 #yazyki a.tek{background:linear-gradient(180deg,#f8d68d,#e0a43c);color:#1a1206}
 body.tur #yazyki{display:none}
+
+#turKn{display:none}
+#menuKn{display:none}
+body.tur #menuKn,body.tur #demoKn,body.tur #kak{display:none}
+body.tur #vyhodTur,body.tur #zvukKn{width:42px;height:42px;padding:0;font-size:0;display:inline-grid;place-items:center}
+body.tur #vyhodTur::before{content:"✕";font:700 17px var(--udar)}
+body.tur #zvukKn::before{content:"♪";font:700 19px var(--udar)}
+body.tur #zvukKn:not(.vkl){opacity:.55}
+body.tur .knopki{flex-direction:row}
+@media (max-width:700px){
+  .knopki{flex-direction:row;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+  #menuKn{display:inline-block}
+  body:not(.tur) .knopki > .kn:not(#menuKn){display:none}
+  body:not(.tur) .knopki.otkr{flex-direction:column;align-items:flex-end}
+  body:not(.tur) .knopki.otkr > .kn:not(#menuKn):not(#turKn):not(#vyhodTur){display:inline-block}
+  body.tur #menuKn{display:none}
+}
 body.tur .shapka,body.tur .rajony,body.tur .panel,body.tur #kak,body.tur #turKn{display:none}
 body.zapis .knopki{display:none}
 body:not(.tur) #vyhodTur{display:none}
@@ -187,6 +204,7 @@ body:not(.tur) #vyhodTur{display:none}
 </div>
 <div class="knopki">
   <button class="kn glavnaya" id="turKn">Экскурсия</button>
+  <button class="kn" id="menuKn">Меню</button>
   <button class="kn" id="zvukKn">Звук</button>
   <button class="kn" id="kak">Как устроено</button>
   <a class="kn" id="demoKn" href="https://wa.me/51959246034?text=%D0%94%D0%95%D0%9C%D0%9E" target="_blank" rel="noopener" style="text-decoration:none">Демо для салона</a>
@@ -284,7 +302,7 @@ if (LANG !== "ru"){
   document.getElementById("oTekst").innerHTML = TF("@kak", {k: T(D.kak_schitali), n: it.agentov, w: it.rabotali_segodnya ?? "—"});
   document.documentElement.lang = LANG; if (PER[LANG] && PER[LANG]["@title"]) document.title = PER[LANG]["@title"];
 }
-[".kiker", ".zag", "#turKn", "#kak", "#vyhodTur", "#demoKn", "#pVyjti", "#oZakr", "#waKn", ".okno h3", "#posleTura h3", "#posleTura p", "#ptKvartal",
+[".kiker", ".zag", "#turKn", "#menuKn", "#kak", "#vyhodTur", "#demoKn", "#pVyjti", "#oZakr", "#waKn", ".okno h3", "#posleTura h3", "#posleTura p", "#ptKvartal",
  "#posleTura a.kn", "#ptZakr", "#k3Zakr", "#bezGL h2", "#bezGL p", "#bezGL a"].forEach(s => document.querySelectorAll(s).forEach(el => { el.textContent = T(el.textContent.trim()); }));
 document.querySelectorAll("#waKn, #posleTura a.kn, #bezGL a, #demoKn").forEach(a => a.href = WA_DEMO);
 if (LANG !== "ru" && document.getElementById("faq")) document.getElementById("faq").innerHTML = TF("@faq", {wa: WA_DEMO});
@@ -1141,6 +1159,7 @@ const ZVUK = (() => {
   return {zona, sfx, ork, golos, perekl, get vkl(){ return vkl; }};
 })();
 document.getElementById("zvukKn").onclick = () => ZVUK.perekl();
+document.getElementById("menuKn").onclick = () => document.querySelector(".knopki").classList.toggle("otkr");
 function sobratPlan(){
   const G = window.GOLOS || [];
   const PRIM = [1.4, 6.0, 4.3, 6.2, 2.7, 4.0, 5.1, 6.1, 5.6];
@@ -1264,7 +1283,8 @@ function kadrTura(t){
   }
   if (mesto === "vnutri"){ if (gde !== "vnutri" || !komnata || komnata.r.id !== room){ gde = "vnutri"; pokazatKomnatu(room); } }
   else gde = "ulica";
-  kamera.position.copy(kam.p); kamera.up.set(Math.sin(kren), Math.cos(kren), 0); kamera.lookAt(kam.s);
+  const smotr = kam.s.clone(); if (!ZAPIS && mesto === "vnutri" && vertikal()) smotr.y += 1.6;
+  kamera.position.copy(kam.p); kamera.up.set(Math.sin(kren), Math.cos(kren), 0); kamera.lookAt(smotr);
   vspyshka.style.transition = "none"; vspyshka.style.opacity = String(zazhat(vsp)*.95);
   obnovitLuchi(t, luchi); dvigatMashiny(t); dvigatProzhektory(t); dvigatPyl(t); dvigatSneg(t);
   if (gde === "vnutri"){
